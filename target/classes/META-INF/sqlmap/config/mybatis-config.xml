@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ <configuration>
+ 	<typeAliases>
+ 	<!-- 문희석 -->
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	<!-- 류지환 -->
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	<!-- 이진우 -->
+ 	
+ 	
+ 	
+ 	
+ 	
+	<!-- 김민우 -->
+	
+	
+	
+	
+  	</typeAliases>
+ 	<mappers>
+ 	<!-- 문희석 -->
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	<!-- 류지환 -->
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	<!-- 이진우 -->
+ 	
+ 	
+ 	
+ 	
+ 	
+	<!-- 김민우 -->
+	
+	
+	
+ 	</mappers>
+ </configuration>
