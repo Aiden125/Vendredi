@@ -30,7 +30,7 @@ create table store (
             sLike       number(1) default 0
             );
 SELECT * FROM STORE; 
-SELECT SNAME, STYPE, (sScore/sReplycnt)STSCORE FROM STORE; -- 가게 평점
+SELECT SNAME, STYPE, (sScore/sReplycnt)STSCORE FROM STORE where sNo = 1; -- 가게 평점
     
     
 insert into store (sNo, oId, sImage, sName, sAddress, sTel, sType, sPrice, sTime, sHoliday,

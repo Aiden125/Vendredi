@@ -39,14 +39,22 @@ DELETE Store where sNo = 2 and oId = 'aaa';
 
 -- 5. 해당 가게 평점 출력하기 (메인 페이지에 이와 같이 출력)
                  
-SELECT SNAME, STYPE, (sScore/sReplycnt)STSCORE FROM STORE; 
+SELECT SNAME, STYPE, (sScore/sReplycnt)STSCORE FROM STORE WHERE SNO = 1;
+
 
 -- table storereview
+
+-- 1. reviewWrite / 가게의 리뷰 쓰기
 insert into storereview (srNo, sNo, mProfile, mId, srContent, 
     srImage1, srImage2, srImage3,  srImage4, srImage5, srScore, srDate )
 VALUES (storereview_sq.NEXTVAL, 1, 'noImg.png', 'aaa', '여기 너무 맛있어요',
         'noImg.png', 'noImg.png', 'noImg.png', 'noImg.png', 'noImg.png',
          4 , sysdate);
+         
+-- 1. - 1. addScore / 가게의 평점 등록 (reviewWrite와 동시에 이뤄지며 score + 숫자에는 srScore 가 들어갈 예정)         
+UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
+                   sScore = sScore + 4
+                   WHERE SNO = 1;
          
 -- table request
                  
