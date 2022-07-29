@@ -75,14 +75,6 @@ create table request (
             sNo           number(8) REFERENCES store(sNo), -- 요청한 가게 번호
             oid           varchar2(50) not null, -- 요청한 사장님 아이디
             aId           varchar2(50), -- 관리자 아이디
-<<<<<<< HEAD
-            sName       varchar2(100) not null, -- 요청한 가게 이름
-            rDate        date default sysdate -- 요청 등록된 일시
-    );    
-    
-    commit;
-=======
             sName         varchar2(100) not null, -- 요청한 가게 이름
             rDate         date default sysdate -- 요청 등록된 일시
-    );    
->>>>>>> 1a9829511aa58fe41f738e5d7529b66a665df05d
+    );     
