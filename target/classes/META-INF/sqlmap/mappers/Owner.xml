@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.vendredi.dao.OwnerDao">
+	<resultMap type="Owner" id="ownerResult">
+		<result property="oid" column="oid"/>
+		<result property="oname" column="oname"/>
+		<result property="opw" column="opw"/>
+		<result property="otel" column="otel"/>
+		<result property="oemail" column="oemail"/>
+		<result property="oaddress" column="oaddress"/>
+		<result property="obirth" column="obirth"/>
+		<result property="ogender" column="ogender"/>
+	</resultMap>
+<select id="ownerIdChk" ></select>
+	
+</mapper>
