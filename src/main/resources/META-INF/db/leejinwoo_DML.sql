@@ -33,8 +33,40 @@ SELECT OPW FROM OWNER WHERE OID='owner1' AND ONAME='김사장';
 -- 등록된 글수
 SELECT COUNT(*) FROM OWNERBOARD;
 
+-- 글 목록
+SELECT * FROM 
+    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM OWNERBOARD ORDER BY BNO DESC) A)
+         WHERE RN BETWEEN 1 AND 3;
 -- 글작성
 INSERT INTO OWNERBOARD (BNO, OID, SNAME, BLOC, BTITLE, BCONTENT, BPHOTO1, BPHOTO2, BPHOTO3, BPHOTO4, BPHOTO5, BHIT, BDATE) 
     VALUES (SEQ_OB.NEXTVAL , 'owner1', '오미라식당', '강남', '장사 안돼요', '장사가 진짜 안됩니다 요즘', 'img1.jpg', NULL, NULL, NULL, NULL, 0, SYSDATE);
-
+-- 글상세보기
+SELECT * FROM OWNERBOARD WHERE BNO = 3;
 -- 글수정
+UPDATE OWNERBOARD SET BTITLE = '장사 잘돼요',
+                        BCONTENT = '갑자기 장사 잘돼요',
+                        BPHOTO1 = 'img2.jpg',
+                        BPHOTO2 = NULL,
+                        BPHOTO3 = NULL,
+                        BPHOTO4 = NULL,
+                        BPHOTO5 = NULL;
+-- 글삭제
+DELETE FROM OWNERBOARD WHERE BNO = 1;
+
+-------------BOARD_COMMENT
+
+-- 댓글 갯수
+SELECT COUNT(*) FROM BOARD_COMMENT WHERE BNO=1;
+
+-- 댓글 목록
+SELECT * FROM BOARD_COMMENT WHERE BNO=3 ORDER BY CNO;
+
+-- 댓글 작성
+INSERT INTO BOARD_COMMENT (CNO, BNO, OID, CCONTENT, CDATE)
+    VALUES (SEQ_BC.NEXTVAL, 3, 'owner1', '요즘 경기어렵죠', SYSDATE);
+
+-- 댓글 삭제
+DELETE FROM BOARD_COMMENT WHERE CNO=1;
+
+-- 댓글 수정
+UPDATE BOARD_COMMENT SET CCONTENT = '요즘 경기좋죠';
