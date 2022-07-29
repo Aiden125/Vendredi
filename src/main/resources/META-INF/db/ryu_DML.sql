@@ -55,6 +55,17 @@ SELECT * FROM
 -- 1. reviewWrite / 가게의 리뷰 쓰기
 insert into storereview (srNo, sNo, mProfile, mId, srContent, 
     srImage1, srImage2, srImage3,  srImage4, srImage5, srScore, srDate )
+<<<<<<< HEAD
+VALUES (storereview_sq.NEXTVAL, 3, 'noImg.png', 'aaa', '여기 너무 맛있어요',
+        'noImg.png', 'noImg.png', 'noImg.png', 'noImg.png', 'noImg.png',
+         4 , sysdate); 
+         
+-- 1. - 1. addScore / 가게의 평점 등록 (reviewWrite와 동시에 이뤄지며 score + 숫자에는 srScore 가 들어갈 예정)         
+UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
+                   sScore = sScore + 5
+                   WHERE SNO = 3;
+         
+=======
 VALUES (storereview_sq.NEXTVAL, 2, 'noImg.png', 'aaa', '여기 너무 맛있어요',
         'noImg.png', 'noImg.png', 'noImg.png', 'noImg.png', 'noImg.png',
          4 , sysdate);
@@ -91,6 +102,7 @@ update storereview set
 delete storereview where srno = 18;  
 commit;
  
+>>>>>>> 1a9829511aa58fe41f738e5d7529b66a665df05d
 -- table request
 
 -- 1. writeRequest / 사업자가 가게 등록과 동시에 등록 요청
