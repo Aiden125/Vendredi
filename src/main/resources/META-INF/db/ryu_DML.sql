@@ -76,11 +76,46 @@ select * from
     (select rownum RN, A.* from
     (select * from storereview where sno = 1 order by srno desc)A)
     where RN BETWEEN 1 and 5;
-         
+        
+-- 3. modifyDelete / 특정 리뷰 수정
+update storereview set 
+            srcontent = '이거 진짜 맛있어요!',
+            srimage1 ='review1.png',
+            srimage2 ='review2.png',
+            srimage3 ='review3.png',
+            srimage4 ='review4.png',
+            srimage5 ='review5.png'
+            where srno = 18;
 
-         
+-- 4. reviewDelete / 해당 리뷰 삭제
+delete storereview where srno = 18;  
+commit;
  
 -- table request
+
+-- 1. writeRequest / 사업자가 가게 등록과 동시에 등록 요청
+insert into request (rNo, sNo, oid, sName, rdate)
+values (REQUEST_SQ.nextval, 3, 'aaa', '청진각', sysdate );
+
+-- 2. 0. requestCnt / 리퀘스트 수 (페이징용)
+
+select count(*) cnt from request;
+
+-- 2. requestList / 전체 리퀘스트 목록 조회 (페이징)
+select * from
+    (select rownum RN, A.* from
+    (select * from request order by rno desc)A)
+    where RN BETWEEN 1 and 5;
+-- 2 - 1. myRequestList / 사업자 개인 리퀘스트 조회
+select rno, sno, sname from request where oid = 'aaa' order by rno desc;
+    
+-- 3. requestDone / 확인 후 업체 등록 (관리자용) sno(가게번호)로 두 테이블에 update 진행
+
+update request set sname = CONCAT( sname, ' - 처리 완료 ') where sno = 1; 
+update store set sConfirm = 'Y' where sno = 1;
+commit;
+
+
                  
                  
                  

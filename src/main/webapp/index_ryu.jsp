@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>git git 33</title>
+<title>Insert title here</title>
 </head>
 <body>
- let's git it! 333
+	<jsp:forward page="storeRegister.do"/>
 </body>
 </html>

@@ -64,6 +64,8 @@ create table storereview (
             srScore       number(3) default 0,
             srDate        date default sysdate
     );  
+
+select * from storereview;
     
 drop table request;
 drop SEQUENCE request_sq;
