@@ -28,7 +28,7 @@ update store set sImage = 'modify.jpg',
                  sMenu5 = '훠궈',
                  sMenu5cost = '13400원',
                  sSearchtag = '#리월#리월맛집#옥형성#각청'
-                 where sNo = 2 and oId = 'aaa'; 
+                 where sNo = 3 and oId = 'aaa'; 
                  
 -- 3. storeDetail / 가게 정보 상세보기 (sNo로 DTO 불러오기)
 SELECT * FROM STORE WHERE SNO = 1;
@@ -47,14 +47,14 @@ SELECT SNAME, STYPE, (sScore/sReplycnt)STSCORE FROM STORE WHERE SNO = 1;
 -- 1. reviewWrite / 가게의 리뷰 쓰기
 insert into storereview (srNo, sNo, mProfile, mId, srContent, 
     srImage1, srImage2, srImage3,  srImage4, srImage5, srScore, srDate )
-VALUES (storereview_sq.NEXTVAL, 1, 'noImg.png', 'aaa', '여기 너무 맛있어요',
+VALUES (storereview_sq.NEXTVAL, 3, 'noImg.png', 'aaa', '여기 너무 맛있어요',
         'noImg.png', 'noImg.png', 'noImg.png', 'noImg.png', 'noImg.png',
-         4 , sysdate);
+         4 , sysdate); 
          
 -- 1. - 1. addScore / 가게의 평점 등록 (reviewWrite와 동시에 이뤄지며 score + 숫자에는 srScore 가 들어갈 예정)         
 UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
-                   sScore = sScore + 4
-                   WHERE SNO = 1;
+                   sScore = sScore + 5
+                   WHERE SNO = 3;
          
 -- table request
                  
