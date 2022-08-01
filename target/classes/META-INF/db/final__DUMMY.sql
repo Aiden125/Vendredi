@@ -1,7 +1,4 @@
 ---------------------------------- 지환 시작 ---------------------------------------------
-<<<<<<< HEAD
-
-=======
 -- dummy는 추후 작성예정
 
 -- store storeRegister dummy
@@ -18,7 +15,6 @@ insert into storereview (srNo, sNo, mProfile, mId, srContent,
 VALUES (storereview_sq.NEXTVAL, 3, 'noImg.png', 'aaa', '여기 너무 맛있어요',
         'noImg.png', 'noImg.png', 'noImg.png', 'noImg.png', 'noImg.png',
          4 , sysdate); 
->>>>>>> 44b8fd150f51921789e6a464e1f6dabc8442de50
 
 ----------------------------------- 지환 끝 ---------------------------------------------
 
