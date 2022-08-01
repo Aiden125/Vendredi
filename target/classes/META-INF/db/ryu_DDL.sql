@@ -77,4 +77,4 @@ create table request (
             aId           varchar2(50), -- 관리자 아이디
             sName         varchar2(100) not null, -- 요청한 가게 이름
             rDate         date default sysdate -- 요청 등록된 일시
-    );    
+    );     

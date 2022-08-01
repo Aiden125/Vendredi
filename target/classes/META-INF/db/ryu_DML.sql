@@ -54,11 +54,11 @@ SELECT * FROM
 
 -- 1. reviewWrite / 가게의 리뷰 쓰기
 insert into storereview (srNo, sNo, mProfile, mId, srContent, 
-    srImage1, srImage2, srImage3,  srImage4, srImage5, srScore, srDate )
-VALUES (storereview_sq.NEXTVAL, 2, 'noImg.png', 'aaa', '여기 너무 맛있어요',
+    srImage1, srImage2, srImage3,  srImage4, srImage5, srScore, srDate ) 
+VALUES (storereview_sq.NEXTVAL, 3, 'noImg.png', 'aaa', '여기 너무 맛있어요',
         'noImg.png', 'noImg.png', 'noImg.png', 'noImg.png', 'noImg.png',
-         4 , sysdate);
-select sum(sScore) from store where sno = 1;        
+         4 , sysdate); 
+               
          
 -- 1. - 1. addScore / 가게의 평점 등록 (reviewWrite와 동시에 이뤄지며 score + 숫자에는 srScore 가 들어갈 예정)         
 UPDATE STORE SET   sReplycnt = sReplycnt + 1 ,
