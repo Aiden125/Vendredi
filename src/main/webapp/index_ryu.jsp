@@ -9,5 +9,6 @@
 <body>
  
 	<jsp:forward page="storeRegister.do"/> 
+
 </body>
 </html>
