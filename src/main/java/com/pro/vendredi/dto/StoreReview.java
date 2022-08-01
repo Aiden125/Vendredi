@@ -22,4 +22,6 @@ public class StoreReview {
 	 public String srimage5;
      public int srscore;
      public Date srdate;
+     public int startRow;
+ 	 public int endRow;
 }

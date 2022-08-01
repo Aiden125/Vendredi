@@ -34,4 +34,6 @@ public class Store {
     private int sreplycnt;
     private int sscore;
     private int slike;
+    private int startRow;
+    private int endRow;
 }
