@@ -7,9 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<jsp:forward page="storeRegister.do"/>
-
+ 
+	<jsp:forward page="storeRegister.do"/> 
 
 </body>
 </html>
