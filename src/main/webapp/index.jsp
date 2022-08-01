@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="ownerJoin.do"/>
+	<jsp:forward page=""/>
 </body>
 </html>
