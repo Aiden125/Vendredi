@@ -18,9 +18,9 @@
  	
  	
  	<!-- 이진우 -->
-<!--  		<typeAlias type="com.pro.vendredi.dto.Owner" alias="owner"/> -->
-<!--  		<typeAlias type="com.pro.vendredi.dto.OwnerBoard" alias="ownerBoard"/> -->
-<!--  		<typeAlias type="com.pro.vendredi.dto.BoardComment" alias="boardComment"/> -->
+ 		<typeAlias type="com.pro.vendredi.dto.Owner" alias="owner"/>
+ 		<typeAlias type="com.pro.vendredi.dto.OwnerBoard" alias="ownerBoard"/>
+ 		<typeAlias type="com.pro.vendredi.dto.BoardComment" alias="boardComment"/>
 	<!-- 김민우 -->
 	
 	
@@ -42,9 +42,9 @@
  	
  	
  	<!-- 이진우 -->
-<!--  		<mapper resource="META-INF/sqlmap/mappers/Owner.xml"/> -->
-<!--  		<mapper resource="META-INF/sqlmap/mappers/OwnerBoard.xml"/> -->
-<!--  		<mapper resource="META-INF/sqlmap/mappers/BoardComment.xml"/> -->
+ 		<mapper resource="META-INF/sqlmap/mappers/Owner.xml"/>
+ 		<mapper resource="META-INF/sqlmap/mappers/OwnerBoard.xml"/>
+ 		<mapper resource="META-INF/sqlmap/mappers/BoardComment.xml"/>
 	<!-- 김민우 -->
 	
 	
