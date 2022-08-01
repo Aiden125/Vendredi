@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.pro.vendredi.dao.AdminDao">
+	<resultMap type="Admin" id="AdminResult">
+		<result property="aid" column="aid"/>
+		<result property="apw" column="apw"/>
+		<result property="aemail" column="aemail"/>
+		<result property="aname" column="aname"/>
+		<result property="atel" column="atel"/>
+		<result property="alevel" column="alevel"/>
+		<result property="alevelname" column="alevelname"/>
+	</resultMap>
+
+	
+	<!-- 관리자 아이디 중복조회(adminIdConfirm) -->
+	<select id="adminIdConfirm" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM ADMIN WHERE aID=#{aid}
+	</select>
+
+	
+	<!-- 관리자 등록(adminJoin) -->
+	<insert id="adminJoin" parameterType="Admin">
+		INSERT INTO ADMIN (aID, aPW, aEMAIL, aNAME, aTEL)
+		    VALUES(#{aid}, #{apw}, #{aemail}, #{aname}, #{atel})
+	</insert>
+
+	
+	<!-- 관리자 정보 가져오기(adminDetail) -->
+	<select id="adminDetail" parameterType="String" resultType="Admin">
+		SELECT * FROM ADMIN WHERE aID=#{aid}
+	</select>
+
+
+	<!-- 관리자 정보수정(adminModify) -->
+	<update id="adminModify" parameterType="Admin">
+		UPDATE ADMIN SET aPW=#{apw},
+	                aEMAIL=#{aemail},
+	                aNAME=#{aname},
+	                aTEL=#{atel},
+	                aLEVEL=#{alevel}
+	    WHERE aID=#{aid};
+    </update>
+
+
+	<!-- 관리자 리스트(adminList) -->
+	<select id="adminList" resultMap="AdminResult">
+		SELECT aID, aPW, aEMAIL, aNAME, aTEL, L.aLEVEL_NAME aLEVLENAME
+		    FROM ADMIN A, ADMIN_L L
+		    WHERE A.aLEVEL=L.aLEVEL
+		    ORDER BY A.aLEVEL;
+	</select>
+    
+    
+	<!-- 관리자 삭제(adminDelete) -->
+	<delete id="adminDelete" parameterType="String">
+		DELETE ADMIN WHERE aID=#{aid};
+	</delete>
+	
+	
+</mapper>
