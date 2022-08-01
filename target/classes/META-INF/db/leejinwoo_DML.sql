@@ -1,13 +1,13 @@
 -------------OWNER
 -- OWNER 회원가입시 ID 중복체크
-SELECT * FROM OWNER WHERE OID = 'owner1';
+SELECT COUNT(*) FROM OWNER WHERE OID = 'owner1';
 
 -- OWNER 회원가입
 INSERT INTO OWNER (OID, ONAME, OPW, OTEL, OEMAIL, OADDRESS, OBIRTH, OGENDER)
     VALUES ('owner1', '김사장', 1, '010-5555-5555', 'owner@naver.com', '서울시', '19880808', '남자');
 
 -- OWNER 로그인
-SELECT * FROM OWNER WHERE OID='owner1' AND OPW=1;
+SELECT * FROM OWNER WHERE OID='owner1' AND OPW='1';
 
 -- OID로 DTO가져오기(정보 가져오기)
 SELECT * FROM OWNER WHERE OID='owner1';
@@ -33,16 +33,6 @@ SELECT OPW FROM OWNER WHERE OID='owner1' AND ONAME='김사장';
 -- 등록된 글수
 SELECT COUNT(*) FROM OWNERBOARD;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
--- 글작성
-INSERT INTO OWNERBOARD (BNO, OID, SNAME, BLOC, BTITLE, BCONTENT, BPHOTO1, BPHOTO2, BPHOTO3, BPHOTO4, BPHOTO5, BHIT, BDATE) 
-    VALUES (SEQ_OB.NEXTVAL , 'owner1', '오미라식당', '강남', '장사 안돼요', '장사가 진짜 안됩니다 요즘', 'img1.jpg', NULL, NULL, NULL, NULL, 0, SYSDATE);
-
--- 글수정
-=======
-=======
->>>>>>> 6812274bf540651451d796ec0e6fb9eadb36011d
 -- 글 목록
 SELECT * FROM 
     (SELECT ROWNUM RN, A.* FROM (SELECT * FROM OWNERBOARD ORDER BY BNO DESC) A)
@@ -80,14 +70,3 @@ DELETE FROM BOARD_COMMENT WHERE CNO=1;
 
 -- 댓글 수정
 UPDATE BOARD_COMMENT SET CCONTENT = '요즘 경기좋죠';
-<<<<<<< HEAD
->>>>>>> d6d4de82dce3f62a47d5858e36fa16aa03b5874d
-=======
-=======
--- 글작성
-INSERT INTO OWNERBOARD (BNO, OID, SNAME, BLOC, BTITLE, BCONTENT, BPHOTO1, BPHOTO2, BPHOTO3, BPHOTO4, BPHOTO5, BHIT, BDATE) 
-    VALUES (SEQ_OB.NEXTVAL , 'owner1', '오미라식당', '강남', '장사 안돼요', '장사가 진짜 안됩니다 요즘', 'img1.jpg', NULL, NULL, NULL, NULL, 0, SYSDATE);
-
--- 글수정
->>>>>>> 1a9829511aa58fe41f738e5d7529b66a665df05d
->>>>>>> 6812274bf540651451d796ec0e6fb9eadb36011d

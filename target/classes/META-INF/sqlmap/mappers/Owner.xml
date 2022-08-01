@@ -13,6 +13,43 @@
 		<result property="obirth" column="obirth"/>
 		<result property="ogender" column="ogender"/>
 	</resultMap>
-<select id="ownerIdChk" ></select>
-	
+<!-- ID 중복확인 -->
+<select id="oidConfirm" parameterType="String" resultType="int">
+	SELECT COUNT(*) FROM OWNER WHERE OID = #{oid}
+</select>
+<!-- 오너 회원가입 -->
+<insert id="ownerJoin" parameterType="Owner">
+	INSERT INTO OWNER (OID, ONAME, OPW, OTEL, OEMAIL, OADDRESS, OBIRTH, OGENDER)
+    VALUES (#{oid}, #{oname}, #{opw}, #{otel}, #{oemail}, #{oaddress}, #{obirth}, #{ogender})
+</insert>
+<!-- 오너 로그인 -->
+<select id="ownerLogin" parameterType="Owner" resultType="String">
+	SELECT * FROM OWNER WHERE OID=#{oid} AND OPW=#{opw}
+</select>
+<!-- 내정보 가져오기 -->
+<select id="getOwner" parameterType="String" resultType="Owner">
+	SELECT * FROM OWNER WHERE OID=#{oid}
+</select>
+<!-- 오너 정보수정 -->
+<update id="ownerModify" parameterType="Owner">
+	UPDATE OWNER SET ONAME=#{oname},
+                    OPW=#{opw},
+                    OTEL=#{otel},
+                    OEMAIL=#{oemail},
+                    OADDRESS=#{oaddress},
+                    OBIRTH=#{obirth}
+                WHERE OID=#{oid}
+</update>
+<!-- 오너 회원탈퇴 -->
+<delete id="ownerDelete" parameterType="String">
+	DELETE FROM OWNER WHERE OID=#{oid}
+</delete>
+<!-- 오너 ID찾기 -->
+<select id="schOwnerId" parameterType="Owner" resultType="String">
+	SELECT OID FROM OWNER WHERE ONAME=#{oname} AND OEMAIL=#{oemail}
+</select>
+<!-- 오너 ID찾기 -->
+<select id="schOwnerPw" parameterType="Owner" resultType="String">
+	SELECT OPW FROM OWNER WHERE OID=#{oid} AND ONAME=#{oname}
+</select>
 </mapper>

@@ -3,10 +3,9 @@
 -- table store
 -- 1. storeRegister / 가게 등록하기
 insert into store (sNo, oId, sImage, sName, sAddress, sLocation, sTel, sType, sPrice, sTime, sHoliday,
-            sMenu1 , sMenu1cost , sMenu2, sMenu2cost, sMenu3, sMenu3cost, sMenu4, sMenu4cost,
-            sMenu5, sMenu5cost, sSearchtag) 
+            sMenu1 , sMenu1cost , sMenu2, sMenu2cost, sMenu3, sMenu3cost, sSearchtag) 
 values (store_sq.nextval, 'aaa', 'noimg.jpg', '군옥각2', '리월시 취헌부', '강남', '070-8888-8888', '중식, 중국요리, 짜장면', '2만원-4만원대',  
-        '11:00-19:00', '금요일', '짜장면', '5000원', '짬뽕', '6000원', '탕수육', '10000원', '간짜장', '7500원', '굴짬뽕', '9000원',
+        '11:00-19:00', '금요일', '짜장면', '5000원', '짬뽕', '6000원', '탕수육', '10000원',
         '#강남#강남역#강남역맛집#중국집#중화요리#중국요리');
 -- 2. storeModify / 가게 정보 수정하기
 update store set sImage = 'modify.jpg',
@@ -22,11 +21,7 @@ update store set sImage = 'modify.jpg',
                  sMenu2 = '리월두부',
                  sMenu2cost = '11500원',
                  sMenu3 = '용수면',
-                 sMenu3cost = '9500원',
-                 sMenu4 = '마라전골',
-                 sMenu4cost = '13500원',
-                 sMenu5 = '훠궈',
-                 sMenu5cost = '13400원',
+                 sMenu3cost = '9500원', 
                  sSearchtag = '#리월#리월맛집#옥형성#각청'
                  where sNo = 3 and oId = 'aaa'; 
                  
@@ -37,16 +32,32 @@ SELECT * FROM STORE WHERE SNO = 1;
 -- 4. storeDelete / 가게 정보 삭제 (해당 가게 사장님 아이디 / 관리자 사용 가능)
 DELETE Store where sNo = 2 and oId = 'aaa';
 
--- 5. 해당 가게 평점 출력하기 (메인 페이지에 이와 같이 출력)
+-- 5. storeScore 해당 가게 평점 출력하기 (메인 페이지에 이와 같이 출력)
                  
-SELECT SIMAGE, SNAME, SLOCATION, STYPE, (sScore/sReplycnt)STSCORE FROM STORE WHERE SNO = 1 order by stscore;
+SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE FROM STORE where sNo = 1 order by stscore;
+
+-- 5. 0. storeCnt 가게 숫자세기
+
+select count(*) cnt from store;
+select count(*) cnt from store where ssearchtag like '%'||'강남'||'%';
 
 -- 5 - 1. storeList / 가게 리스트 페이징하기
 SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SNAME, SIMAGE,  SLOCATION, STYPE, (sScore/sReplycnt)STSCORE 
+    (SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE order by STSCORE desc)A)
      WHERE RN BETWEEN 1 AND 50;
+-- 5 - 2. storeListSearch / 가게 리스트 페이징하기
+SELECT * FROM
+    (SELECT ROWNUM RN, A.* FROM
+    (SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+     FROM STORE where sSearchtag like '%'||'강남역'||'%' order by STSCORE desc)A)
+     WHERE RN BETWEEN 1 AND 50;     
+
+-- 6. 1. storeScoreUp     
+UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
+                   sScore = sScore + srScore
+                   WHERE SNo = 2;     
 
 
 
@@ -65,7 +76,7 @@ UPDATE STORE SET   sReplycnt = sReplycnt + 1 ,
                    sScore = sScore + 3
                    WHERE SNO = 1;
 
--- 2. 0. reveiwCnt / 리뷰 숫자 세기 (페이징용)
+-- 2. 0. reviewCnt / 리뷰 숫자 세기 (페이징용)
 
 select count(*) cnt from storereview where sno = 1;
 
@@ -77,7 +88,7 @@ select * from
     (select * from storereview where sno = 1 order by srno desc)A)
     where RN BETWEEN 1 and 5;
         
--- 3. modifyDelete / 특정 리뷰 수정
+-- 3. reviewModify / 특정 리뷰 수정
 update storereview set 
             srcontent = '이거 진짜 맛있어요!',
             srimage1 ='review1.png',
@@ -106,13 +117,16 @@ select * from
     (select rownum RN, A.* from
     (select * from request order by rno desc)A)
     where RN BETWEEN 1 and 5;
+    
 -- 2 - 1. myRequestList / 사업자 개인 리퀘스트 조회
 select rno, sno, sname from request where oid = 'aaa' order by rno desc;
     
 -- 3. requestDone / 확인 후 업체 등록 (관리자용) sno(가게번호)로 두 테이블에 update 진행
 
 update request set sname = CONCAT( sname, ' - 처리 완료 ') where sno = 1; 
+
 update store set sConfirm = 'Y' where sno = 1;
+
 commit;
 
 

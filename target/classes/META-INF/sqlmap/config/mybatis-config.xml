@@ -12,11 +12,10 @@
  	
  	<!-- 류지환 -->
  	
- 	
- 	
- 	
- 	
- 	
+ 	<typeAlias type="com.pro.vendredi.dto.Request" alias="request"/>
+ 	<typeAlias type="com.pro.vendredi.dto.Store" alias="store"/>
+ 	<typeAlias type="com.pro.vendredi.dto.StoreReview" alias="storeReview"/>
+ 	 
  	<!-- 이진우 -->
  		 <typeAlias type="com.pro.vendredi.dto.Owner" alias="owner"/>
  		<typeAlias type="com.pro.vendredi.dto.OwnerBoard" alias="ownerBoard"/>
