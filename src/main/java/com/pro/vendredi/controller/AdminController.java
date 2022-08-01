@@ -4,8 +4,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-<<<<<<< HEAD
-=======
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,14 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pro.vendredi.dto.Admin;
 import com.pro.vendredi.service.AdminService;
->>>>>>> 6ff635ff5c450819ff4b2e1c10fefa0ea6e8ac07
 
 @Controller
 @RequestMapping(value="admin")
 public class AdminController {
-<<<<<<< HEAD
 
-=======
 	@Autowired
 	private AdminService adminService;
 	
@@ -66,5 +61,4 @@ public class AdminController {
 	}
 	
 	
->>>>>>> 6ff635ff5c450819ff4b2e1c10fefa0ea6e8ac07
 }
