@@ -1,13 +1,13 @@
 -------------OWNER
 -- OWNER 회원가입시 ID 중복체크
-SELECT * FROM OWNER WHERE OID = 'owner1';
+SELECT COUNT(*) FROM OWNER WHERE OID = 'owner1';
 
 -- OWNER 회원가입
 INSERT INTO OWNER (OID, ONAME, OPW, OTEL, OEMAIL, OADDRESS, OBIRTH, OGENDER)
     VALUES ('owner1', '김사장', 1, '010-5555-5555', 'owner@naver.com', '서울시', '19880808', '남자');
 
 -- OWNER 로그인
-SELECT * FROM OWNER WHERE OID='owner1' AND OPW=1;
+SELECT * FROM OWNER WHERE OID='owner1' AND OPW='1';
 
 -- OID로 DTO가져오기(정보 가져오기)
 SELECT * FROM OWNER WHERE OID='owner1';
