@@ -1,5 +1,5 @@
 -- 관리자 등록(adminJoin)
-INSERT INTO ADMIN
+INSERT INTO ADMIN (aID, aPW, aEMAIL, aNAME, aTEL)
     VALUES('moan125', '1234', 'moan125@naver.com', '문희석', '010-9284-3694', 2);
     
 
@@ -25,3 +25,5 @@ SELECT aID, aPW, aEMAIL, aNAME, aTEL, L.aLEVEL_NAME
     
 -- 관리자 삭제(adminDelete)
 DELETE ADMIN WHERE aID='ddd';
+
+COMMIT;
