@@ -5,11 +5,11 @@ import org.apache.ibatis.annotations.Mapper;
 import com.pro.vendredi.dto.Request;
 
 @Mapper
-public interface ReqeustDao {
+public interface RequestDao {
 	public int writeRequest(Request request);
 	public List<Request> requestList (Request request);
-	public List<Request> myRequestList (Request request);
+	public List<Request> myRequestList (Request request, String oid);
 	public int requestDoneReq (int sno);
 	public int requestDoneSto (int sno);
-	public int requestCnt (Request request);
+	public int requestCnt(Request request);
 }

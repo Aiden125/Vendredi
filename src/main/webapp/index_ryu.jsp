@@ -8,7 +8,7 @@
 </head>
 <body>
  
-	<jsp:forward page="storeRegister.do"/> 
+	<jsp:forward page="request/requestList.do"/> 
 
 </body>
 </html>

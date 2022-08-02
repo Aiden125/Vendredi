@@ -6,14 +6,14 @@
 	<resultMap type="Store" id="storeResult">
 		<result property="sno" column="sno"/>
 		<result property="simage" column="simage"/>
+		<result property="sname" column="sname"/>
 		<result property="saddress" column="saddress"/>
 		<result property="slocation" column="slocation"/>
 		<result property="stel" column="stel"/>
 		<result property="stype" column="stype"/>
 		<result property="sprice" column="sprice"/>
 		<result property="stime" column="stime"/>
-		<result property="sholiday" column="holiday"/>
-		<result property="stime" column="stime"/>
+		<result property="sholiday" column="holiday"/> 
 		<result property="smenu1" column="smenu1"/>
 		<result property="smenu2" column="smenu2"/>
 		<result property="smenu3" column="smenu3"/> 
@@ -59,24 +59,24 @@
     		SELECT * FROM STORE WHERE SNO = #{sno}
 </select> 
 <select id="storeCnt" resultType="int">
-    		select count(*) cnt from store
+    		select count(*) cnt from store where sConfirm = 'Y'
 </select>
 <select id="storeCntSearch" parameterType="string" resultType="int">
-    		select count(*) cnt from store where ssearchtag like '%'||#{ssearchtag}||'%'
+    		select count(*) cnt from store where ssearchtag like '%'||#{ssearchtag}||'%' and sConfirm = 'Y'
 </select>
 
 <select id="storeList" parameterType="Store" resultMap="storeResult">
 	SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
     (SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
-     FROM STORE order by STSCORE desc)A)
+     FROM STORE where sConfirm = 'Y' order by sno desc)A)
      WHERE RN BETWEEN #{startRow} AND #{endRow}
 </select>
 <select id="storeListSearch" parameterType="string" resultMap="storeResult">
 	SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
     (SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
-     FROM STORE where sSearchtag like '%'||#{ssearchtag}||'%' order by STSCORE desc)A)
+     FROM STORE where sSearchtag like '%'||#{ssearchtag}||'%' and sConfirm = 'Y' order by STSCORE desc)A)
      WHERE RN BETWEEN #{startRow} AND #{endRow} 
 </select> 
 

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.pro.vendredi.dao.ReqeustDao;
+import com.pro.vendredi.dao.RequestDao;
 import com.pro.vendredi.dto.Request;
 import com.pro.vendredi.util.Paging;
 
@@ -13,7 +13,7 @@ import com.pro.vendredi.util.Paging;
 public class RequestServiceImpl implements RequestService {
 
 	@Autowired
-	public ReqeustDao requestDao;
+	public RequestDao requestDao;
 	
 	@Override
 	public int writeRequest(Request request) { 
@@ -29,8 +29,8 @@ public class RequestServiceImpl implements RequestService {
 	}
 
 	@Override
-	public List<Request> myRequestList(Request request) {
-		 return requestDao.myRequestList(request);
+	public List<Request> myRequestList(Request request, String oid) {
+		 return requestDao.myRequestList(request, oid);
 	}
 
 	@Override

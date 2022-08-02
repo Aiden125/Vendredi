@@ -10,7 +10,7 @@ import com.pro.vendredi.dto.Request;
 public interface RequestService {
 	public int writeRequest(Request request);
 	public List<Request> requestList (Request request, String pageNum);
-	public List<Request> myRequestList (Request request);
+	public List<Request> myRequestList (Request request, String oid);
 	public int requestDoneReq (int sno);
 	public int requestDoneSto (int sno);
 	public int requestCnt (Request request);
