@@ -121,16 +121,16 @@ span {
                     <img src="assets/img/tw.png" alt="twitter">
                     <img src="assets/img/gl.png" alt="google">
                 </div>
-                <form id="login" action="" class="input-group">
+                <form id="login" action="${conPath }/member/mlogin.do" method="post" class="input-group">
                     <input type="text" class="input-field" id="mid" name="mid" value="${mid }" placeholder="User ID" required>
-                    <input type="password" class="input-field" placeholder="Password" required>
-                    <input type="checkbox" class="checkbox"><span>Don't have an account?</span>
+                    <input type="password" class="input-field" id="mpw" name="mpw" placeholder="Password" required>
+                    <a href="${conPath }/member/joinForm.do"><input type="checkbox" class="checkbox"><span>Don't have an account?</span></a>
                     <button class="submit">Login</button>
                 </form>
-                <form id="register" action="" class="input-group">
+                <form id="register" action="${conPath }/owner/ologin.do" method="post" class="input-group">
                    <input type="text" class="input-field"  id="oid" name="oid" value="${oid }" placeholder="Owner ID" required>
-                    <input type="password" class="input-field" placeholder="Password" required>
-                    <a href="${conPath }/joinView.do"> <input type="checkbox" class="checkbox"><span>Don't have an account?</span></a>
+                    <input type="password" class="input-field" id="opw" name="oid" placeholder="Password" required>
+                    <a href="${conPath }/owner/join.do"> <input type="checkbox" class="checkbox"><span>Don't have an account?</span></a>
                     <button class="submit">Login</button>
                 </form>
             </div>

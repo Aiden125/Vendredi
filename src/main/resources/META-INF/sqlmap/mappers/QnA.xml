@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.vendredi.dao.QnADao">
+	<resultMap type="QnA" id="QnAResult">
+		<result property="qno" column="qno"/>
+		<result property="qid" column="qid"/>
+		<result property="qsubject" column="qsubject"/>
+		<result property="qcontent" column="qcontent"/>
+		<result property="qfile" column="qfile"/>
+		<result property="qhit" column="qhit"/>
+		<result property="qgroup" column="qgroup"/>
+		<result property="qstep" column="qstep"/>
+		<result property="qrdate" column="qrdate"/>
+		<result property="qsecret" column="qsecret"/>
+	</resultMap>
+	
+	<!-- 문의글 갯수 -->
+	<select id="qnaTotCnt" resultType="int">
+		SELECT COUNT(*)CNT FROM QNA
+	</select>
+	
+	<!-- 문의글 리스트(답변이 완료되면 답변완료 추가) -->
+	<select id="qnaList" parameterType="QnA" resultMap="QnAResult">
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
+    (select qno, qid, qsubject, qcontent,  qhit, qgroup, qstep, qrdate, qsecret,
+    (select count(*) from qna where qno=q.qno and qstep>0 ) replyok
+    from qna Q order by qgroup)A)
+    WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 문의글 작성 -->
+	<insert id="qnaWrite" parameterType="QnA">
+	<if test="qsecret =='Y'">
+		INSERT INTO QNA VALUES(QNA_SQ.NEXTVAL, #{qid},#{qsubject},#{qcontent},#{qhit},QNA_SQ.CURRVAL,#{qstep},SYSDATE,#{qsecret})	
+	</if>
+	<if test ="qsecret != 'Y'">
+		INSERT INTO QNA (qno,qid,qsubject,qcontent,qhit,qgroup,qstep,qrdate)
+		VALUES(QNA_SQ.NEXTVAL, #{qid},#{qsubject},#{qcontent},#{qhit},QNA_SQ.CURRVAL,#{qstep},SYSDATE)	
+	</if>
+	</insert>
+	
+	<!-- 문의글 상세보기 -->
+	<select id="qnaDetail" parameterType="int" resultType="QnA">
+		select * from qna where qno=#{qno}
+	</select>
+	
+	<!-- 문의글 수정 -->
+	<update id="qnaModify" parameterType="QnA">
+		update qna set 
+	    qsubject = #{qsubject},
+	    qcontent = #{qcontent}
+	    where qno = #{qno}
+	</update>
+	
+	<!-- 문의글 조회수 증가 -->
+	<update id="qnaHitup" parameterType="int">
+		update qna set qhit = qhit +1 where qno=#{qno}
+	</update> 
+	
+	<!-- 문의글 삭제 -->
+	<delete id="qnaDelete" parameterType="int">
+		DELETE FROM QNA WHERE QNO= #{qno}
+	</delete>
+	
+	<!-- 답변글 쓰기전 step A -->
+	<update id="qnaReplyPre" parameterType="QnA" >
+		UPDATE  QNA SET QSTEP=QSTEP +1 WHERE QGROUP = #{qgroup}
+	</update>
+	
+	<!-- 답변글 쓰기 -->
+	<insert id="qnaReply" parameterType="QnA">
+		INSERT INTO QNA (QNO, QID, QSUBJECT, QCONTENT,QGROUP,QSTEP )
+    VALUES (QNA_SQ.NEXTVAL,#{qid},#{qsubject},#{qcontent},#{qgroup},#{qstep})
+	</insert>
+	
+	
+</mapper>

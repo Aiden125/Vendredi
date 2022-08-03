@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lec.pro.vendredi.dao.MemberDao">
+<mapper namespace="com.pro.vendredi.dao.MemberDao">
 	<resultMap type="Member" id="MemberResult">
 		<result property="mid" column="mid"/>
 		<result property="mname" column="mname"/>
@@ -25,8 +25,8 @@
 	</select>
 	<!-- 회원가입 -->
 	<insert id="memberJoin" parameterType="Member">
-		INSERT INTO MEMBER VALUES
-		(#{mid}, #{mname}, #{mpw}, #{mtel}, #{memail}, #{maddress}, #{mgender}, #{mbirth}, #{mprofile})
+		INSERT INTO MEMBER VALUES (mid, mname, mpw, mtel, memail, maddress, mgender, mbirth)
+		(#{mid}, #{mname}, #{mpw}, #{mtel}, #{memail}, #{maddress}, #{mgender}, #{mbirth})
 	</insert>
 	<!-- 아이디 찾기 -->
 	<select id="memberSearchId" parameterType="Member" resultType="String">
@@ -46,13 +46,21 @@
 	</select>
 	<!-- 회원 정보 수정 -->
 	<update id="memberModify" parameterType="Member">
+	<if test="mprofile==''">
 		UPDATE MEMBER SET MPW = #{mpw},
                   MNAME = #{mname},
                   mtel = #{mtel},
                   memail = #{memail},
-                  maddress = #{maddress},                  
-                  mProfile= #{mprofile}
-                 where mid = #{mid};
+                  maddress = #{maddress}
+                 where mid = #{mid}
+	</if>
+	UPDATE MEMBER SET MPW = #{mpw},
+                  MNAME = #{mname},
+                  mtel = #{mtel},
+                  memail = #{memail},
+                  maddress = #{maddress}.
+                  mprofile = #{mprofile}
+                 where mid = #{mid}
 	</update>
 	<!-- 회원 수  -->
 	<select id="memberTotCnt" resultType="int">

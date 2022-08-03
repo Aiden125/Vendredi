@@ -21,7 +21,8 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public int memberIdConfirm(String mid) {
-		return memberDao.memberIdConfirm(mid);
+		int cnt = memberDao.memberIdConfirm(mid);
+		return cnt;
 	}
 
 	@Override
@@ -59,6 +60,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public String memberLogin(String mid, String mpw, HttpSession httpSession) {
+		System.out.println("넘어온 rj : " + mid + " / " + mpw);
 		String result  = "로그인 성공";
 		Member member = memberDao.memberGetDetail(mid);
 		if(member ==null) {
@@ -80,17 +82,18 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public Member memberSearchId(String mname, String memail) {
+	public String memberSearchId(Member member) {
 		return null;
 	}
-
+	
 	@Override
-	public Member memberSearchPw(String mid, String mname) {
+	public String memberSearchPw(Member member) {
 		return null;
 	}
 
 	@Override
 	public int memberModify(Member member) {
+		
 		return memberDao.memberModify(member);
 	}
 
@@ -105,8 +108,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String memberEmailConfirm(String memail) {
+	public int memberEmailConfirm(String memail) {
 		return memberDao.memberEmailConfirm(memail);
 	}
+
 
 }
