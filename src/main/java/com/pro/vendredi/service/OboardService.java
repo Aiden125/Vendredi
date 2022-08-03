@@ -8,11 +8,11 @@ import com.pro.vendredi.dto.OwnerBoard;
 
 public interface OboardService {
 	public List<OwnerBoard> oboardList(String pageNum);
-	public int totCnt();
+	public int oboardtotCnt();
 	public int oboardHitup(int bno);
 	public OwnerBoard oboardContent(int bno);
-	public int oboardWrite(MultipartHttpServletRequest mRequest, OwnerBoard ownerBoard);
-	public int oboardModify(MultipartHttpServletRequest mRequest, OwnerBoard ownerBoard);
+	public int oboardWrite(MultipartHttpServletRequest mRequest, OwnerBoard oboard);
+	public int oboardModify(MultipartHttpServletRequest mRequest, OwnerBoard oboard);
 	public int oboardDelete(int bno);
-	
+	public void dummyDataInsert();
 }

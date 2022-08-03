@@ -19,4 +19,6 @@ public class OwnerBoard {
 	private String bphoto5;
 	private int bhit;
 	private Date bdate;
+	private int startRow;
+	private int endRow;
 }

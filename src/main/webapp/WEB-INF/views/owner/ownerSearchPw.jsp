@@ -8,8 +8,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<link href="${conPath }/css/style.css" rel="stylesheet">
 </head>
 <body>
-	<jsp:forward page="owner/LoginForm.do"/>
+	<form action="${conPath }/owner/SearchPw.do" method="get">
+		<table>
+			<tr>
+				<td>이름</td>
+				<td><input type="text" name="oname"></td>
+			</tr>
+			<tr>
+				<td>ID</td>
+				<td><input type="text" name="oid"></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="PW찾기">
+				</td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>
