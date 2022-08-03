@@ -1,11 +1,10 @@
 -------------OWNER
 -- OWNER 회원가입시 ID 중복체크
-SELECT COUNT(*) FROM OWNER WHERE OID = 'owner1';
-
+SELECT COUNT(*) FROM OWNER WHERE OID = 'dlwlsdn';
 -- OWNER 회원가입
-INSERT INTO OWNER (OID, ONAME, OPW, OTEL, OEMAIL, OADDRESS, OBIRTH, OGENDER)
+INSERT INTO OWNER (OID, ONAME, OPW, OPROFILE, OTEL, OEMAIL, OADDRESS, OBIRTH, OGENDER)
     VALUES ('owner1', '김사장', 1, '010-5555-5555', 'owner@naver.com', '서울시', '19880808', '남자');
-
+SELECT * FROM OWNER;
 -- OWNER 로그인
 SELECT * FROM OWNER WHERE OID='owner1' AND OPW='1';
 
@@ -45,16 +44,20 @@ SELECT * FROM OWNERBOARD WHERE BNO = 3;
 -- 글수정
 UPDATE OWNERBOARD SET BTITLE = '장사 잘돼요',
                         BCONTENT = '갑자기 장사 잘돼요',
-                        BPHOTO1 = 'img2.jpg',
-                        BPHOTO2 = NULL,
-                        BPHOTO3 = NULL,
-                        BPHOTO4 = NULL,
-                        BPHOTO5 = NULL;
+                        BPHOTO1 = 'img2.png',
+                        BPHOTO2 = 'img5.png',
+                        BPHOTO3 = 'img4.png',
+                        BPHOTO4 = 'img1.png',
+                        BPHOTO5 = NULL
+                    WHERE BNO=2;
 -- 글삭제
 DELETE FROM OWNERBOARD WHERE BNO = 1;
 
+-- 조회수 올리기
+UPDATE OWNERBOARD SET BHIT = 1
+    WHERE BNO =2;
 -------------BOARD_COMMENT
-
+select * from owner;
 -- 댓글 갯수
 SELECT COUNT(*) FROM BOARD_COMMENT WHERE BNO=1;
 
@@ -70,3 +73,5 @@ DELETE FROM BOARD_COMMENT WHERE CNO=1;
 
 -- 댓글 수정
 UPDATE BOARD_COMMENT SET CCONTENT = '요즘 경기좋죠';
+
+commit;
