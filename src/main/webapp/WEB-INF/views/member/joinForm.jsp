@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="${conPath }/assets/css/join.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script>
-	$(document)
+	 $(document)
 	.ready(
 			function() {
 				$('input[name="mid"]').keyup(function() {
@@ -21,7 +21,7 @@
 						url : '${conPath}/member/idConfirm.do',
 						type : 'get',
 						dataType : 'html',
-						data : "mid=" + mid,
+						data : 'mid='+mid,
 						success : function(data) {
 							$('#idConfirmResult').html(data);
 						}
@@ -47,12 +47,11 @@
 											'input[name="memail"]')
 											.val();
 									if (patternMail.test(memail)) {
-										$
-												.ajax({
+										$.ajax({
 													url : '${conPath}/member/emailConfirm.do',
 													type : 'get',
 													dataType : 'html',
-													data : "memail="
+													data : 'memail='
 															+ memail,
 													success : function(
 															data) {
@@ -68,7 +67,7 @@
 												'메일 형식을 지켜주세요');
 									}//if
 								});// mEmail keyup 이벤트
-				$('form')
+				   $('form')
 						.submit(
 								function() {
 									var idConfirmResult = $('#idConfirmResult').text()
@@ -93,8 +92,8 @@
 												.focus();
 										return false;
 									}
-								});
-			});//mIdConfirm의 click이벤트
+								});  
+			});//mIdConfirm의 click이벤트  
 	</script>
 	<link rel="stylesheet"
 	href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
@@ -132,8 +131,8 @@ $(function() {
           <div class="col-md-7">
             <div class="card-body">
               
-              <p class="login-card-description">JOIN </p>
-              <form action="${conPath }/join.do" method="post">
+              <p class="login-card-description">CUSTOMER JOIN </p>
+              <form action="${conPath }/member/join.do" method="post">
 				 <div class="form-group">
                     <label for="mname" class="sr-only">이름</label>
                     <input type="text" name="mname" id="mid" required="required" class="form-control" placeholder="이름">

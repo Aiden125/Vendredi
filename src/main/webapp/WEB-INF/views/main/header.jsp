@@ -334,7 +334,7 @@
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index_minwoo.jsp">Vendredi</a></h1>
+      <h1 class="logo"><a href="${conPath }/main.do">Vendredi</a></h1>
       
 	<!--로그인 전 화면  -->
 	<c:if test="${empty member and empty owner }">
@@ -344,6 +344,7 @@
           <li><a class="nav-link scrollto" href="${conPath }/member/loginForm.do">Login</a></li>
           <li><a class="nav-link scrollto" href="${conPath }/member/joinForm.do">Join</a></li>
           <li><a class="nav-link scrollto " href="${conPath }">맛집 리스트</a></li>
+          <li><a class="nav-link scrollto" href="${conPath }/qna/list.do">Q&A</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
          <!--  <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
         </ul>
@@ -355,10 +356,9 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="index_minwoo.jsp">${member.mname }님</a></li>
-          <li><a class="nav-link scrollto" href="${conPath }/member/login.jsp">my Page</a></li>
-          <li><a class="nav-link scrollto " href="${conPath }">맛집 리스트</a></li>
-          <li><a class="nav-link scrollto" href="${conPath }">QnA</a></li>
-          
+          <li><a class="nav-link scrollto" href="${conPath }/member/modify.do">my Page</a></li>
+          <li><a class="nav-link scrollto" href="${conPath }/qna/list.do">QnA</a></li>
+          <li><a class="nav-link scrollto " href="${conPath }">맛집 리스트</a></li>          
           <li><a href="blog.html">like</a></li>
           <li class="dropdown"><a href="#"><span>최근에 본 맛집</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -378,6 +378,7 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="${conPath }/member/logout.do">Logout</a></li>
          <!--  <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

@@ -43,6 +43,7 @@
  		<mapper resource="META-INF/sqlmap/mappers/BoardComment.xml"/>
 	<!-- 김민우 -->
 		<mapper resource="META-INF/sqlmap/mappers/Member.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/QnA.xml"/>
 	
 	
  	</mappers>
