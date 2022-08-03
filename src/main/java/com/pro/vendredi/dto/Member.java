@@ -12,7 +12,7 @@ public class Member {
 	private String mtel;
 	private String memail;
 	private String maddress;
-	private Date mbirth;
 	private String mprofile;
+	private Date mbirth;
 	private String mgender;
 }

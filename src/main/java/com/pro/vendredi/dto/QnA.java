@@ -11,8 +11,11 @@ public class QnA {
 	private String qsubject;
 	private String qcontent;
 	private String qfile;
-	private String qhit;
-	private String qgroup;
+	private int qhit;
+	private int qgroup;
+	private int qstep;
 	private Date qrdate;
 	private String qsecret;
+	private int startRow;
+	private int endRow;
 }

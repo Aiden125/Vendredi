@@ -13,89 +13,89 @@ import com.pro.vendredi.dto.Member;
 import com.pro.vendredi.service.MemberService;
 
 @Controller
-@RequestMapping(value = "member")
+@RequestMapping(value="member")
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	// 회원 가입
-	@RequestMapping(value = "joinForm", method = RequestMethod.GET)
+	// 회원 가입 화면
+	@RequestMapping(value = "/joinForm", method = RequestMethod.GET)
 	public String joinForm() {
 		return "member/joinForm";
 	}
-
-	@RequestMapping(value = "join", method = RequestMethod.POST)
+	// 회원 가입 처리
+	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String join(@ModelAttribute("mDto") Member member, HttpSession httpSession, Model model) {
 		model.addAttribute("joinResult", memberService.memberJoin(member, httpSession));
-		return "forward:member.do?method=loginForm";
+		return "forward:loginForm.do";
 	}
 
-	// 로그인
-	@RequestMapping(value = "loginForm", method = { RequestMethod.GET, RequestMethod.POST })
+	// 로그인 화면
+	@RequestMapping(value = "/loginForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String loginForm() {
 		return "member/loginForm";
 	}
-
-	@RequestMapping(value = "login", method = RequestMethod.POST)
+	// 로그인 처리
+	@RequestMapping(value = "/mlogin", method = RequestMethod.POST)
 	public String login(String mid, String mpw, Model model, HttpSession httpSession) {
 		String result = memberService.memberLogin(mid, mpw, httpSession);
 		if (result.equals("로그인 성공")) {
-			return "redirect:main.do";
+			return "redirect:../main.do";
 		} else {
 			model.addAttribute("mid", mid);
 			model.addAttribute("mpw", mpw);
 			model.addAttribute("result", result);
-			return "forward:member.do?method=loginForm";
+			return "forward:loginForm.do";
 		}
 	}
 
-	// 회원 수정
-	@RequestMapping(value = "modifyForm", method = { RequestMethod.GET, RequestMethod.POST })
-	public String modifyForm() {
-		return "member/modifyForm";
+	// 회원 수정 화면
+	@RequestMapping(value = "/modify", method =  RequestMethod.GET)
+	public String modifyView() {
+		return "member/modify";
 	}
-
-	@RequestMapping(value = "modify", method = RequestMethod.POST)
+	// 회원 수정 처리
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modify(@ModelAttribute("mDto") Member member, Model model, HttpSession httpSession) {
 		model.addAttribute("modifyResult", memberService.memberModify(member));
 		httpSession.setAttribute("member", member);
-		return "forward:main.do";
+		return "forward:../main.do";
 	}
 	//회원 탈퇴 
-	@RequestMapping(value = "withdrawal", method = RequestMethod.GET)
+	@RequestMapping(value = "/withdrawal", method = RequestMethod.GET)
 	public String withdrawal(String mid, Model model) {
 		model.addAttribute("withdrawalResult",memberService.memberWithdrawal(mid));
-		return "foward:main.do";
+		return "foward:../main.do";
 	}
 	//아이디 중복 확인
-	@RequestMapping(value = "idConfirm", method = RequestMethod.GET)
+	@RequestMapping(value = "/idConfirm", method = RequestMethod.GET)
 	public String idConfirm(String mid, Model model) {
 		model.addAttribute("idConfirmResult", memberService.memberIdConfirm(mid));
 		return "member/idConfirm";
 	}
 	//이메일 중복 확인
-	@RequestMapping(value= "emailConfirm", method=RequestMethod.GET)
+	@RequestMapping(value= "/emailConfirm", method=RequestMethod.GET)
 	public String emailConfirm(String memail, Model model) {
 		model.addAttribute("emailConfirmResult", memberService.memberEmailConfirm(memail));
 		return "member/emailConfirm";
 	}
 	//아이디 찾기
-	@RequestMapping(value = "searchId", method=RequestMethod.GET)
-	public String searchId(String mname, String memail, Model model) {
-		model.addAttribute("searchIdResult", memberService.memberSearchId(mname, memail));
+	@RequestMapping(value = "/searchId", method=RequestMethod.GET)
+	public String searchId(@ModelAttribute("mDto") Member member, Model model) {
+		model.addAttribute("searchIdResult", memberService.memberSearchId(member));
 		return "member/loginForm";
 	}
 	//비밀번호 찾기
-	@RequestMapping(value = "searchPw" , method=RequestMethod.GET)
-	public String searchPw(String mid, String mname, Model model) {
-		model.addAttribute("searchPwResult", memberService.memberSearchPw(mid, mname));
-		return "member/loginForm";
+	@RequestMapping(value = "/searchPw" , method=RequestMethod.GET)
+	public String searchPw(@ModelAttribute("mDto") Member member, Model model) {
+		model.addAttribute("searchPwResult", memberService.memberSearchPw(member));
+		return "loginForm";
 	}
 	
 	//로그아웃
 	@RequestMapping(params="method=logout")
-	public String logout(HttpSession httpSession) {
+	public String logout(String mid, HttpSession httpSession) {
 		httpSession.invalidate();
-		return "redirect:main.do";
+		return "redirect:../main.do";
 	}
 }
