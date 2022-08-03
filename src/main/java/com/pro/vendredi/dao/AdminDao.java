@@ -1,5 +1,7 @@
 package com.pro.vendredi.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.pro.vendredi.dto.Admin;
@@ -12,6 +14,6 @@ public interface AdminDao {
 	public Admin adminDetail(String aid); // 관리자 정보 가져오기
 	public int adminModify(Admin admin); // 정보수정
 	
-	public Admin adminList(); // 관리자 리스트
+	public List<Admin> adminList(); // 관리자 리스트
 	public int adminDelete(String aid); // 관리자 삭제
 }

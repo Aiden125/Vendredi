@@ -17,8 +17,12 @@
 	</script>
 </head>
 <body>
+
+<jsp:include page="../admin/header.jsp"/>
+
+<div id="content">
 	<form action="${conPath }/admin/login.do" method="POST">
-		<table>
+		<table id="login_table">
 			<tr>
 				<th>아이디</th>
 				<td><input type="text" name="aid" required="required"></td>
@@ -34,5 +38,7 @@
 			</tr>
 		</table>
 	</form>
+</div>
+
 </body>
 </html>

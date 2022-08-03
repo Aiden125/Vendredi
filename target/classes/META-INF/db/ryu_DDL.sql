@@ -27,7 +27,7 @@ create table store (
             sLike       number(1) default 0
             );
 SELECT * FROM STORE; 
-SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE FROM STORE where sNo = 1; -- 가게 평점
+SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE FROM STORE where sNo = 4; -- 가게 평점
    
     
 insert into store (sNo, oId, sImage, sName, sAddress, sLocation, sTel, sType, sPrice, sTime, sHoliday,
@@ -39,8 +39,8 @@ commit;
         
 UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
                    sScore = sScore +1
-                   WHERE SNo = 1;
-                   
+                   WHERE SNo = 4;
+                  
                    
 drop table storereview;
 drop SEQUENCE storereview_sq;
@@ -48,8 +48,8 @@ create SEQUENCE storereview_sq MAXVALUE 999999 NOCACHE NOCYCLE;
 create table storereview (
             srNo         number(8) PRIMARY KEY,
             sNo          number(8) REFERENCES store(sNo),
-            mProfile       varchar2(1000) not null,
-            mId            varchar2(100),
+            mId            varchar2(100) not null,
+            mProfile      varchar2(1000) not null,
             srContent     varchar2(2000) not null,
             srImage1      varchar2(500),
             srImage2      varchar2(500),
