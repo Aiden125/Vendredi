@@ -17,8 +17,13 @@
 	</script>
 </head>
 <body>
+
+<jsp:include page="../admin/header.jsp"/>
+
+<div id="content">
 	<form action="${conPath }/admin/join.do" method="POST">
-		<table>
+		<table id="join_table">
+			<caption>관리자 등록</caption>
 			<tr>
 				<th>아이디</th>
 				<td><input type="text" name="aid"></td>
@@ -37,7 +42,7 @@
 			</tr>
 			<tr>
 				<th>이메일</th>
-				<td><input type="email" name="ameail"></td>
+				<td><input type="email" name="aemail"></td>
 			</tr>
 			<tr>
 				<td colspan="2">
@@ -46,5 +51,7 @@
 			</tr>
 		</table>
 	</form>
+</div>
+
 </body>
 </html>

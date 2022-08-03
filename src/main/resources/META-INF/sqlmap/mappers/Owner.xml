@@ -14,8 +14,12 @@
 		<result property="ogender" column="ogender"/>
 	</resultMap>
 <!-- ID 중복확인 -->
-<select id="oidConfirm" parameterType="String" resultType="int">
+<select id="owneridConfirm" parameterType="String" resultType="int">
 	SELECT COUNT(*) FROM OWNER WHERE OID = #{oid}
+</select>
+<!-- email 중복확인 -->
+<select id="owneremailConfirm" parameterType="String" resultType="int">
+	SELECT COUNT(*) FROM OWNER WHERE OEMAIL = #{oemail}
 </select>
 <!-- 오너 회원가입 -->
 <insert id="ownerJoin" parameterType="Owner">
@@ -27,7 +31,7 @@
 	SELECT * FROM OWNER WHERE OID=#{oid} AND OPW=#{opw}
 </select>
 <!-- 내정보 가져오기 -->
-<select id="getOwner" parameterType="String" resultType="Owner">
+<select id="ownerInfo" parameterType="String" resultType="Owner">
 	SELECT * FROM OWNER WHERE OID=#{oid}
 </select>
 <!-- 오너 정보수정 -->
@@ -45,11 +49,11 @@
 	DELETE FROM OWNER WHERE OID=#{oid}
 </delete>
 <!-- 오너 ID찾기 -->
-<select id="schOwnerId" parameterType="Owner" resultType="String">
-	SELECT OID FROM OWNER WHERE ONAME=#{oname} AND OEMAIL=#{oemail}
+<select id="ownerSearchId" parameterType="Owner" resultType="Owner">
+	SELECT * FROM OWNER WHERE ONAME=#{oname} AND OEMAIL=#{oemail}
 </select>
-<!-- 오너 ID찾기 -->
-<select id="schOwnerPw" parameterType="Owner" resultType="String">
-	SELECT OPW FROM OWNER WHERE OID=#{oid} AND ONAME=#{oname}
+<!-- 오너 PW찾기 -->
+<select id="ownerSearchPw" parameterType="Owner" resultType="Owner">
+	SELECT * FROM OWNER WHERE OID=#{oid} AND ONAME=#{oname}
 </select>
 </mapper>

@@ -5,11 +5,13 @@
     
 <mapper namespace="com.pro.vendredi.dao.AdminDao">
 	<resultMap type="Admin" id="AdminResult">
+		<result property="ano" column="ano"/>
 		<result property="aid" column="aid"/>
 		<result property="apw" column="apw"/>
 		<result property="aemail" column="aemail"/>
 		<result property="aname" column="aname"/>
 		<result property="atel" column="atel"/>
+		<result property="ardate" column="ardate"/>
 		<result property="alevel" column="alevel"/>
 		<result property="alevelname" column="alevelname"/>
 	</resultMap>
@@ -23,8 +25,8 @@
 	
 	<!-- 관리자 등록(adminJoin) -->
 	<insert id="adminJoin" parameterType="Admin">
-		INSERT INTO ADMIN (aID, aPW, aEMAIL, aNAME, aTEL)
-		    VALUES(#{aid}, #{apw}, #{aemail}, #{aname}, #{atel})
+		INSERT INTO ADMIN (aNO, aID, aPW, aEMAIL, aNAME, aTEL)
+		    VALUES(ADMIN_SQ.NEXTVAL, #{aid}, #{apw}, #{aemail}, #{aname}, #{atel})
 	</insert>
 
 	
@@ -41,22 +43,22 @@
 	                aNAME=#{aname},
 	                aTEL=#{atel},
 	                aLEVEL=#{alevel}
-	    WHERE aID=#{aid};
+	    WHERE aID=#{aid}
     </update>
 
 
 	<!-- 관리자 리스트(adminList) -->
 	<select id="adminList" resultMap="AdminResult">
-		SELECT aID, aPW, aEMAIL, aNAME, aTEL, L.aLEVEL_NAME aLEVLENAME
+		SELECT aID, aPW, aEMAIL, aNAME, aTEL, aLEVEL_NAME aLEVELNAME
 		    FROM ADMIN A, ADMIN_L L
 		    WHERE A.aLEVEL=L.aLEVEL
-		    ORDER BY A.aLEVEL;
+		    ORDER BY A.aLEVEL DESC, aRDATE
 	</select>
     
     
 	<!-- 관리자 삭제(adminDelete) -->
 	<delete id="adminDelete" parameterType="String">
-		DELETE ADMIN WHERE aID=#{aid};
+		DELETE ADMIN WHERE aID=#{aid}
 	</delete>
 	
 	

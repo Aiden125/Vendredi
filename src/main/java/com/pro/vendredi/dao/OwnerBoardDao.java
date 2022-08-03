@@ -8,10 +8,10 @@ import com.pro.vendredi.dto.OwnerBoard;
 @Mapper
 public interface OwnerBoardDao {
 	public List<OwnerBoard> oboardList(OwnerBoard ownerBoard);
-	public int totCnt();
+	public int oboardtotCnt();
 	public int oboardHitup(int bno);
 	public OwnerBoard oboardContent(int bno);
-	public int oboardWrite(OwnerBoard ownerBoard);
-	public int oboardModify(OwnerBoard ownerBoard);
+	public int oboardWrite(OwnerBoard oboard);
+	public int oboardModify(OwnerBoard oboard);
 	public int oboardDelete(int bno);
 }

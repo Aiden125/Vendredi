@@ -10,7 +10,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="${conPath }/assets/css/bootstrap1.css">
 <link rel="stylesheet" href="${conPath }/assets/css/join.css">
-	
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script>
 	 $(document)

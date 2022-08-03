@@ -18,22 +18,31 @@ public class OwnerSerivceImpl implements OwnerService {
 	private OwnerDao ownerDao;
 	@Autowired
 	private JavaMailSenderImpl mailSender;
+	
+	// ID중복체크
 	@Override
-	public int oidConfirm(String oid) {
-		
-		return ownerDao.oidConfirm(oid);
+	public int owneridConfirm(String oid) {
+		return ownerDao.owneridConfirm(oid);
 	}
-
+	
+	// E-MAIL중복체크
+	@Override
+	public int owneremailConfirm(String oemail) {
+		return ownerDao.owneremailConfirm(oemail);
+	}
+	
+	// 오너 회원가입
 	@Override
 	public int ownerJoin(Owner owner, HttpSession session) {
-		session.setAttribute("oid", owner.getOname());
+		session.setAttribute("oid", owner.getOid());
 		return ownerDao.ownerJoin(owner);
 	}
-
+	
+	// 오너 로그인
 	@Override
 	public String ownerLogin(String oid, String opw, HttpSession session) {
 		String result = "로그인 성공";
-		Owner owner = ownerDao.getOwner(oid);
+		Owner owner = ownerDao.ownerInfo(oid);
 		if(owner == null) {
 			// 아이디없음
 			result = "존재하지 않는 ID입니다.";
@@ -47,51 +56,57 @@ public class OwnerSerivceImpl implements OwnerService {
 		}
 		return result;
 	}
-
+	// 오너 아이디 찾기
 	@Override
-	public String schOwnerId(final Owner owner) {
+	public Owner ownerSearchId(final Owner owner) {
 		MimeMessagePreparator message = new MimeMessagePreparator() {
-			String content = "<h1>"+owner.getOname()+"님의 ID는</h1>\r\n" + 
-					"	<h2>"+owner.getOid()+"입니다.</h2>";
+			Owner oid = ownerDao.ownerSearchId(owner);
+			String content = "<h1>"+oid.getOname()+"님의 ID는</h1>\r\n" + 
+					"	<h2>"+oid.getOid()+"입니다.</h2>";
 			
 			@Override
 			public void prepare(MimeMessage mimeMessage) throws Exception {
-				mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(owner.getOemail()));
+				mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(oid.getOemail()));
 				mimeMessage.setFrom(new InternetAddress("dlwlsdn5244@gmail.com"));
 				mimeMessage.setSubject("회원 ID정보");
 				mimeMessage.setText(content, "utf-8", "html");
 			}
 		};
 		mailSender.send(message);
-		return ownerDao.schOwnerId(owner);
+		return ownerDao.ownerSearchId(owner);
 	}
-
+	// 오너 비밀번호 찾기
 	@Override
-	public String schOwnerPw(final Owner owner) {
+	public Owner ownerSearchPw(final Owner owner) {
 		MimeMessagePreparator message = new MimeMessagePreparator() {
-			String content = "<h1>"+owner.getOname()+"님의 비밀번호는</h1>\r\n" + 
-					"	<h2>"+owner.getOpw()+"입니다.</h2>";
+			Owner opw = ownerDao.ownerSearchPw(owner);
+			String content = "<h1>"+opw.getOname()+"님의 비밀번호는</h1>\r\n" + 
+					"	<h2>"+opw.getOpw()+"입니다.</h2>";
 			
 			@Override
 			public void prepare(MimeMessage mimeMessage) throws Exception {
-				mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(owner.getOemail()));
+				mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(opw.getOemail()));
 				mimeMessage.setFrom(new InternetAddress("dlwlsdn5244@gmail.com"));
 				mimeMessage.setSubject("회원 비밀번호정보");
 				mimeMessage.setText(content, "utf-8", "html");
 			}
 		};
 		mailSender.send(message);
-		return ownerDao.schOwnerPw(owner);
+		return ownerDao.ownerSearchPw(owner);
 	}
-
+	
+	// 오너 정보
 	@Override
-	public Owner getOwner(String oid) {
-		return ownerDao.getOwner(oid);
+	public Owner ownerInfo(String oid) {
+		return ownerDao.ownerInfo(oid);
 	}
-
+	
+	// 오너 정보수정
 	@Override
 	public int ownerModify(Owner owner) {
 		return ownerDao.ownerModify(owner);
 	}
+
+	
 
 }

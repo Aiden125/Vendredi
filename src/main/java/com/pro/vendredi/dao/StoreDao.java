@@ -12,6 +12,7 @@ public interface StoreDao {
 	public List<Store> storeList (Store store);
 	public List<Store> storeListSearch (Store store);
 	public Store storeDetail (int sno);
+	public int storeCnt (Store store);
 	public int storeCntSearch (String ssearchtag);
 	public Store storeScore (int sno);
 }

@@ -28,21 +28,17 @@
 	
   	</typeAliases>
  	<mappers>
+ 	<!-- 류지환 -->
+ 		<mapper resource="META-INF/sqlmap/mappers/Request.xml"/>
+ 		<mapper resource="META-INF/sqlmap/mappers/Store.xml"/>
+ 		<mapper resource="META-INF/sqlmap/mappers/StoreReview.xml"/>
+ 	 
  	<!-- 문희석 -->
  		<mapper resource="META-INF/sqlmap/mappers/Admin.xml"/>
- 	
- 	
- 	
- 	
- 	<!-- 류지환 -->
- 	
- 	
- 	
- 	
- 	
+ 	  
  	
  	<!-- 이진우 -->
- 		 <mapper resource="META-INF/sqlmap/mappers/Owner.xml"/>
+ 		<mapper resource="META-INF/sqlmap/mappers/Owner.xml"/>
  		<mapper resource="META-INF/sqlmap/mappers/OwnerBoard.xml"/>
  		<mapper resource="META-INF/sqlmap/mappers/BoardComment.xml"/>
 	<!-- 김민우 -->

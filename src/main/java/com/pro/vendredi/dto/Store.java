@@ -36,4 +36,5 @@ public class Store {
     private int slike;
     private int startRow;
     private int endRow;
+    private double stscore;
 }

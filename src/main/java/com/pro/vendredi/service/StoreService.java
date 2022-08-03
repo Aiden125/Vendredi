@@ -11,9 +11,10 @@ import com.pro.vendredi.dto.Store;
 public interface StoreService {
 	public int storeRegister (Store store, MultipartHttpServletRequest mRequest);
 	public int storeModify (Store store, MultipartHttpServletRequest mRequest);
-	public List<Store> storeList ();
+	public List<Store> storeList (String pageNum, Store store);
 	public List<Store> storeListSearch (String pageNum, String ssearchtag, Store store);
 	public Store storeDetail (int sno);
 	public int storeCntSearch (String ssearchtag);
+	public int storeCnt(Store store);
 	public Store storeScore (int sno);
 }

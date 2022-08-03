@@ -4,12 +4,12 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pro.vendredi.dao.OwnerBoardDao">
 	<resultMap type="OwnerBoard" id="ownerResult">
-		<result property="bno" column="oid"/>
-		<result property="oid" column="oname"/>
-		<result property="sname" column="opw"/>
-		<result property="bloc" column="otel"/>
-		<result property="btitle" column="oemail"/>
-		<result property="bcontent" column="oaddress"/>
+		<result property="bno" column="bno"/>
+		<result property="oid" column="oid"/>
+		<result property="sname" column="sname"/>
+		<result property="bloc" column="bloc"/>
+		<result property="btitle" column="btitle"/>
+		<result property="bcontent" column="bcontent"/>
 		<result property="bphoto1" column="bphoto1"/>
 		<result property="bphoto2" column="bphoto2"/>
 		<result property="bphoto3" column="bphoto3"/>
@@ -18,6 +18,43 @@
 		<result property="bhit" column="bhit"/>
 		<result property="bdate" column="bdate"/>
 	</resultMap>
-		
-	
+<!-- 오너게시판 등록글수 -->
+	<select id="oboardtotCnt" resultType="int">
+		SELECT COUNT(*) FROM OWNERBOARD
+	</select>
+<!-- 오너게시판 글목록 -->
+	<select id="oboardList" parameterType="OwnerBoard" resultMap="ownerResult">
+		SELECT * FROM 
+	    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM OWNERBOARD ORDER BY BNO DESC) A)
+	         WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>		
+<!-- 오너게시판 글작성 -->
+	<insert id="oboardWrite" parameterType="OwnerBoard">
+		INSERT INTO OWNERBOARD (BNO, OID, SNAME, BLOC, BTITLE, BCONTENT, BPHOTO1, BPHOTO2, BPHOTO3, BPHOTO4, BPHOTO5, BHIT, BDATE) 
+   		 VALUES (SEQ_OB.NEXTVAL , #{oid}, #{sname}, #{bloc}, #{btitle}, #{bcontent}, #{bphoto1}, #{bphoto2}, #{bphoto3}, #{bphoto4}, #{bphoto5}, #{bhit}, SYSDATE)
+	</insert>
+<!-- 오너게시판 글수정 -->	
+	<update id="oboardModify" parameterType="OwnerBoard">
+		UPDATE OWNERBOARD SET BTITLE = #{btitie},
+                        BCONTENT = #{bcontent},
+                        BPHOTO1 = #{bphoto1},
+                        BPHOTO2 = #{bphoto2},
+                        BPHOTO3 = #{bphoto3},
+                        BPHOTO4 = #{bphoto4},
+                        BPHOTO5 = #{bphoto5}
+                    WHERE BNO=#{bno}
+	</update>
+<!-- 오너게시판 글삭제 -->
+	<delete id="oboardDelete" parameterType="int">
+		DELETE FROM OWNERBOARD WHERE BNO = #{bno}
+	</delete>
+<!-- 오너게시판 상세보기 -->
+	<select id="oboardContent" parameterType="int" resultType="OwnerBoard">
+		SELECT * FROM OWNERBOARD WHERE BNO = #{bno}
+	</select>
+<!-- 조회수 올리기 -->
+	<select id="oboardHitup" parameterType="int" resultType="int">
+		UPDATE OWNERBOARD SET BHIT = #{bhit}
+    		WHERE BNO = #{bno};
+	</select>
 </mapper>

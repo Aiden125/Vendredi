@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StoreReview {
 	 public int srno;
-	 public int sno; 
-	 public int mprofile;
-	 public int mid;
+	 public int sno;  
+	 public String mid;
+	 public String mprofile;
 	 public String srcontent;
 	 public String srimage1;
 	 public String srimage2;

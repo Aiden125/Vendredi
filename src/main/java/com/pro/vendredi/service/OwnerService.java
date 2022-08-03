@@ -5,11 +5,12 @@ import javax.servlet.http.HttpSession;
 import com.pro.vendredi.dto.Owner;
 
 public interface OwnerService {
-	public int oidConfirm(String oid);
+	public int owneridConfirm(String oid);
+	public int owneremailConfirm(String oemail);
 	public int ownerJoin(Owner owner, HttpSession session);
 	public String ownerLogin(String oid, String opw, HttpSession session);
-	public String schOwnerId(Owner owner);
-	public String schOwnerPw(Owner owner);
-	public Owner getOwner(String oid);
+	public Owner ownerSearchId(Owner owner);
+	public Owner ownerSearchPw(Owner owner);
+	public Owner ownerInfo(String oid);
 	public int ownerModify(Owner owner);
 }

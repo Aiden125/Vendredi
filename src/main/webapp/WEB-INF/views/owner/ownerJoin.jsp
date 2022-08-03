@@ -14,7 +14,7 @@
 	<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 	<script>
 		$(function() {
-		   $("#mbirth").datepicker(
+		   $("#obirth").datepicker(
 		         {
 		            dateFormat : 'yy-mm-dd',
 		            changeMonth : true, // 월을 바꿀 수 있는 셀렉트 박스 표시
@@ -36,29 +36,29 @@
 			$('input[name="oid"]').keyup(function(){
 				var oid = $('input[name="oid"]').val();
 				$.ajax({
-					url : '${conPath}/owner/oidConfirm.do',
+					url : '${conPath}/owner/idConfirm.do',
 					type : 'get',
 					dataType : 'html',
-					data : "oid="+$('#oid').val();
+					data : 'oid='+oid,
 					success : function(data, status){
 						$('#idConfirmResult').html(data);
 					}
 				});
 			});
-			$('input[name="memail"]').keyup(function(){
+			$('input[name="oemail"]').keyup(function(){
 				var patternMail = /^[a-zA-Z0-9_]+@[a-zA-Z0-9]+(\.[a-zA-Z]+){1,2}$/; // 메일 패턴
-				var memail = $('input[name="memail"]').val();
-				if(patternMail.test(memail)){
+				var oemail = $('input[name="oemail"]').val();
+				if(patternMail.test(oemail)){
 					$.ajax({
-						url : '${conPath}/emailConfirm.do',
+						url : '${conPath}/owner/emailConfirm.do',
 						type : 'get',
 						dataType : 'html',
-						data : "memail="+memail,
-						success : function(data){
+						data : "oemail="+oemail,
+						success : function(data, status){
 							$('#emailConfirmResult').html(data);
 						}
 					});//ajax
-				}else if(!memail){
+				}else if(!oemail){
 					$('#emailConfirmResult').html(' &nbsp; ');
 				}else{
 					$('#emailConfirmResult').html('<b>메일 형식을 지켜주세요</b>');
@@ -73,6 +73,20 @@
 					$('#pwChkResult').html('<b>비밀번호 불일치</b>');
 				}
 			});
+			$('form').submit(function(){
+				var idConfirmResult = $('#idConfirmResult').text().trim();
+				if(idConfirmResult != '사용가능한 ID입니다'){
+					alert('아이디를 확인해주세요');
+					$('input[name="oid"]').focus();
+					return false;
+				}
+				var emailConfirmResult = $('#emailConfirmResult').text().trim();
+				if(emailConfirmResult != '사용가능한 E-MAIL입니다'){
+					alert('E-MAIL을 확인해주세요');
+					$('input[name="oemail"]').focus();
+					return false;
+				}
+			});
 		});
 	</script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -82,6 +96,7 @@
 	<div id="content">
 		<form action="${conPath }/owner/Join.do" method="post">
 			<table>
+			<caption>회원가입 화면</caption>
 				<tr>
 					<td>아이디</td>
 					<td>
@@ -122,9 +137,18 @@
 					</td>
 				</tr>
 				<tr>
+					<td>우편번호</td>
+					<td>
+						<input type="text" id="sample4_postcode" name="mpost" class="text_box"  placeholder="우편번호">
+						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+					</td>
+				</tr>
+				<tr>
 					<td>주소</td>
 					<td>
-						<input type="text" name="oaddress"  placeholder="도로명주소">
+						<input type="text" id="sample4_roadAddress" name="oaddress"  placeholder="도로명주소">
+						<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소">
+						<span id="guide"></span>
 					</td>
 				</tr>
 				<tr>

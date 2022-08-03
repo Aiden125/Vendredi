@@ -21,9 +21,12 @@
  	
  	
  	<!-- 류지환 -->
-
+	<resources mapping="/request/**" location="/request/" />
+	<resources mapping="/store/**" location="/store/" /> 
  	
  	<!-- 이진우 -->
+	<resources mapping="/js/**" location="/js/" />
+	<resources mapping="/oboardImg/**" location="/oboardImg/" />
 
  	
 	<!-- 김민우 -->
