@@ -126,11 +126,7 @@ public class StoreServicImpl implements StoreService {
 		return result;
 	}
 
-	@Override
-	public List<Store> storeList() {
-		Store store = new Store();
-		return storeDao.storeList(store);
-	}
+	 
 
 	@Override
 	public List<Store> storeListSearch(String pageNum, String ssearchtag, Store store) {
@@ -153,6 +149,19 @@ public class StoreServicImpl implements StoreService {
 	@Override
 	public Store storeScore(int sno) { 
 		return storeDao.storeScore(sno);
+	}
+
+	@Override
+	public List<Store> storeList(String pageNum, Store store) {
+		Paging paging = new Paging(storeDao.storeCnt(store), pageNum, 10, 3);
+		store.setStartRow(paging.getStartRow());
+		store.setEndRow(paging.getEndRow());
+		return storeDao.storeList(store);
+	}
+
+	@Override
+	public int storeCnt(Store store) { 
+		return storeDao.storeCnt(store);
 	}
 
 }

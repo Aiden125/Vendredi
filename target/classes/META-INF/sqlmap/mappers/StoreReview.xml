@@ -7,6 +7,7 @@
 		<result property="srno" column="srno"/>
 		<result property="sno" column="sno"/>
 		<result property="mid" column="mid"/>
+		<result property="mprofile" column="mprofile"/>
 		<result property="srcontent" column="srcontent"/>
 		<result property="srimage1" column="srimage1"/>
 		<result property="srimage2" column="srimage2"/>
@@ -18,9 +19,9 @@
 	</resultMap>
 	
 <insert id="reviewWrite" parameterType="StoreReview">
-	insert into storereview (srNo, sNo, mProfile, mId, srContent, 
+	insert into storereview (srNo, sNo, mId, mProfile, srContent, 
     srImage1, srImage2, srImage3,  srImage4, srImage5, srScore, srDate ) 
-	VALUES (storereview_sq.NEXTVAL, #{sno}, #{mprofile}, #{mid}, #{srcontent}, 
+	VALUES (storereview_sq.NEXTVAL, #{sno}, #{mid}, #{mprofile}, #{srcontent}, 
     #{srimage1}, #{srimage2}, #{srimage3}, #{srimage4}, #{srimage5}, #{srscore}, sysdate)
 </insert>
 
