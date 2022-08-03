@@ -31,8 +31,7 @@
 	insert into store (sNo, oId, sImage, sName, sAddress, sLocation, sTel, sType, sPrice, sTime, sHoliday,
             sMenu1 , sMenu1cost , sMenu2, sMenu2cost, sMenu3, sMenu3cost, sSearchtag) 
 	values (store_sq.nextval, #{oid}, #{simage}, #{sname}, #{saddress}, #{slocation}, #{stel}, #{stype}, #{sprice} , #{stime},  
-        '#{sholiday}, #{smenu1} , #{smenu1cost , #{smenu2}, #{smenu2cost}, #{smenu3}, #{smenu3cost}, #{smenu4}, #{smenu4cost},
-            #{smenu5}, #{smenu5cost}, #{ssearchtag})
+        '#{sholiday}, #{smenu1}, #{smenu1cost} , #{smenu2}, #{smenu2cost}, #{smenu3}, #{smenu3cost}, #{ssearchtag})
         
 </insert>
 <update id="storeModify" parameterType="Store">
@@ -72,7 +71,7 @@
      FROM STORE where sConfirm = 'Y' order by sno desc)A)
      WHERE RN BETWEEN #{startRow} AND #{endRow}
 </select>
-<select id="storeListSearch" parameterType="string" resultMap="storeResult">
+<select id="storeListSearch" parameterType="Store" resultMap="storeResult">
 	SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
     (SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 

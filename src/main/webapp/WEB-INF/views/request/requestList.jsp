@@ -118,15 +118,16 @@ span {
 <body>
 	<jsp:include page="../main/header.jsp"/>
 	<div class="wrap">
+		<div class="form-wrap">
 	<table style="margin : 0 auto;"> 
 		<tr>
 			<th>등록번호</th><th>가게번호</th><th>사업자 아이디</th>
 			<th>가게 이름</th><th>등록일</th>
 		</tr>
-		<c:if test="${totCnt eq 0 }">
+		<c:if test="${paging.totCnt eq 0 }">
 			<tr> <th colspan="5">등록된 요청 없습니다.</th> </tr>
 		</c:if>
-		<c:if test="${totCnt != 0 }">
+		<c:if test="${paging.totCnt != 0 }">
 			<c:forEach items="${requestList }" var="request">
 				<tr> 
 					<td>${request.rno }</td>
@@ -144,21 +145,22 @@ span {
 			</c:forEach>
 		</c:if>
 	</table>
+		</div>
 	</div>
 	<div id="paging" align="center">
 		<c:if test="${paging.startPage> paging.blockSize }">
-		[<a href="${conPath }/request.do?method=requestListList&pageNum=${paging.startPage-1}&schItem=${param.schItem }">이전</a>]
+		[<a href="${conPath }/request.do?method=requestList&pageNum=${paging.startPage-1}&schItem=${param.schItem }">이전</a>]
 		</c:if>
 		<c:forEach var="i" begin="${paging.startPage }" end="${paging.endPage}">
 			<c:if test="${i eq paging.currentPage }">
 			[<b style="color : red;">${i}</b>]
 			</c:if>
 			<c:if test="${i != paging.currentPage }">
-			[<a href="${conPath }/request.do?method=requestListList&pageNum=${i}&schItem=${param.schItem }">${i}</a>]
+			[<a href="${conPath }/request.do?method=requestList&pageNum=${i}&schItem=${param.schItem }">${i}</a>]
 			</c:if>
 		</c:forEach>
 		<c:if test="${paging.endPage < paging.pageCnt }">
-		[<a href="${conPath }/request.do?method=requestListList&pageNum=${paging.endPage +1}&schItem=${param.schItem }">다음</a>]
+		[<a href="${conPath }/request.do?method=requestList&pageNum=${paging.endPage +1}&schItem=${param.schItem }">다음</a>]
 		</c:if>
 	</div>
 
