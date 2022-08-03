@@ -1,5 +1,7 @@
 package com.pro.vendredi.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,7 @@ public class AdminServiceImpl implements AdminService {
 		}else if(! apw.equals(admin.getApw())) {
 			result = "비밀번호를 확인하세요";
 		}else {
+			// 로그인 성공
 			session.setAttribute("admin", admin);
 			session.setAttribute("aid", aid);
 		}
@@ -51,9 +54,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public Admin adminList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Admin> adminList() {
+		return adminDao.adminList();
 	}
 
 	@Override
