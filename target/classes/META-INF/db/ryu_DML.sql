@@ -30,16 +30,19 @@ SELECT * FROM STORE WHERE SNO = 1;
 
 
 -- 4. storeDelete / 가게 정보 삭제 (해당 가게 사장님 아이디 / 관리자 사용 가능)
-DELETE Store where sNo = 2 and oId = 'aaa';
+DELETE Store where sNo = 5 and oId = 'aaa';
+commit;
 
 -- 5. storeScore 해당 가게 평점 출력하기 (메인 페이지에 이와 같이 출력)
                  
 SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE FROM STORE where sNo = 1 order by stscore;
 
--- 5. 0. storeCnt 가게 숫자세기
+-- 5. 0. storeCnt 등록 완료된 가게 숫자세기
 
-select count(*) cnt from store;
-select count(*) cnt from store where ssearchtag like '%'||'강남'||'%';
+select count(*) cnt from store where sConfirm = 'Y';
+
+-- 5. 0. storeSearchCnt 가게 숫자세기
+select count(*) cnt from store where ssearchtag like '%'||'강남'||'%'  and sConfirm = 'Y'; 
 
 -- 5 - 1. storeList / 가게 리스트 페이징하기
 SELECT * FROM
@@ -47,12 +50,20 @@ SELECT * FROM
     (SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE order by STSCORE desc)A)
      WHERE RN BETWEEN 1 AND 50;
+     
 -- 5 - 2. storeListSearch / 가게 리스트 페이징하기
 SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
     (SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
-     FROM STORE where sSearchtag like '%'||'강남역'||'%' order by STSCORE desc)A)
-     WHERE RN BETWEEN 1 AND 50;     
+     FROM STORE where sSearchtag like '%'||'강남역'||'%' and sConfirm = 'Y' order by STSCORE desc)A)
+     WHERE RN BETWEEN 1 AND 50;
+     
+-- 5 - 3. storeListNew / 가게 리스트 페이징하기
+SELECT * FROM
+    (SELECT ROWNUM RN, A.* FROM
+    (SELECT SIMAGE, SNAME, SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+     FROM STORE where sConfirm = 'Y' order by sno desc)A)
+     WHERE RN BETWEEN 1 AND 50;
 
 -- 6. 1. storeScoreUp     
 UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
@@ -64,28 +75,28 @@ UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
 -- table storereview
 
 -- 1. reviewWrite / 가게의 리뷰 쓰기
-insert into storereview (srNo, sNo, mProfile, mId, srContent, 
-    srImage1, srImage2, srImage3,  srImage4, srImage5, srScore, srDate ) 
-VALUES (storereview_sq.NEXTVAL, 3, 'noImg.png', 'aaa', '여기 너무 맛있어요',
+insert into storereview (srNo, sNo, mId, mProfile, srContent, 
+    srImage1, srImage2, srImage3, srImage4, srImage5, srScore, srDate ) 
+VALUES (storereview_sq.NEXTVAL, 3, 'aaa', 'noImg.jpg', '여기 너무 맛있어요',
         'noImg.png', 'noImg.png', 'noImg.png', 'noImg.png', 'noImg.png',
          4 , sysdate); 
                
          
 -- 1. - 1. addScore / 가게의 평점 등록 (reviewWrite와 동시에 이뤄지며 score + 숫자에는 srScore 가 들어갈 예정)         
 UPDATE STORE SET   sReplycnt = sReplycnt + 1 ,
-                   sScore = sScore + 3
-                   WHERE SNO = 1;
+                   sScore = sScore + 4
+                   WHERE SNO = 3;
 
 -- 2. 0. reviewCnt / 리뷰 숫자 세기 (페이징용)
 
-select count(*) cnt from storereview where sno = 1;
+select count(*) cnt from storereview where sno = 3;
 
 -- 2. reviewList / 해당 가게의 리뷰 목록 조회하기
 
 select * from storereview where sno = 1 order by srno desc;
 select * from
     (select rownum RN, A.* from
-    (select * from storereview where sno = 1 order by srno desc)A)
+    (select * from storereview where sno = 3 order by srno desc)A)
     where RN BETWEEN 1 and 5;
         
 -- 3. reviewModify / 특정 리뷰 수정

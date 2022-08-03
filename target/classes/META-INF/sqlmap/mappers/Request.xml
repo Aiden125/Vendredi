@@ -22,16 +22,14 @@
     		select count(*) cnt from request  
 </select>
 
-<select id="requestList" parameterType="Request" resultMap="requestResult">
-	
+<select id="requestList" parameterType="Request" resultMap="RequestResult">
 	select * from
     (select rownum RN, A.* from
-    (select * from request order by rno desc)A)
+    (select * from request order by rno desc) A)
     where RN BETWEEN #{startRow} and #{endRow} 
-    
 </select>
 
-<select id="myRequestList" parameterType="Request" resultMap="requestResult">
+<select id="myRequestList" parameterType="string" resultMap="RequestResult">
 	
 	select rno, sno, sname from request where oid = #{oid} 
 									order by rno desc
