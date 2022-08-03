@@ -37,7 +37,7 @@
 	<table id="main_table">
 		<caption>관리자 목록</caption>
 		<tr><td></td></tr>
-		<tr>
+		<tr class="tr_top">
 			<th>이름</th><th>번호</th><th>이메일</th><th>등급</th>
 			<c:if test="${admin.alevel == 2 }"><th>수정</th></c:if>
 		</tr>

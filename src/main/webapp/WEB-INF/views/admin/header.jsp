@@ -20,7 +20,15 @@
 	<div id="header">
 	<div id="nav">
 		<ul>
-			<li><a href="${conPath }/admin/main.do">홈</a></li>
+			<li class="font2_0"><a href="${conPath }/admin/main.do">Vendredi</a></li>
+			<li class="font0_5">AdminMode</li>
+		</ul>
+		<br><hr><br>
+		<ul>
+			<li><c:if test="${not empty admin }">${admin.aid }님 접속중</c:if></li>
+		</ul>
+		<br><hr><br>
+		<ul>
 		<c:if test="${empty admin }">
 			<li><a href="${conPath }/admin/loginView.do">로그인</a></li>
 		</c:if>
@@ -33,11 +41,11 @@
 			<li><a href="${conPath }/admin/logout.do">로그아웃</a></li>
 		</c:if>
 		</ul>
-		<br><br><br><br>
+		<br><hr><br>
 		<ul>
-			<li>QnA글 관리</li>
+			<li class="left">QnA 관리</li>
 		</ul>
-		<br><br><br><br>
+		<br><hr><br>
 		<ul>
 			<li>사용자 모드</li>
 		</ul>
