@@ -11,6 +11,16 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 </head>
 <body>
+	<c:if test="${ not empty oboardDelete }">
+		<script>
+			alert('해당글이 삭제되었습니다');
+		</script>
+	</c:if>
+	<c:if test="${ not empty writeResult }">
+		<script>
+			alert('글작성 완료');
+		</script>
+	</c:if>
 	<div id="content">
 		<table>
 			<caption>사장님 게시판</caption>
@@ -29,16 +39,13 @@
 				<c:forEach var="owners" items="${oboardList }">
 					<tr>
 						<td>
-							<input type="text" name="oid" value=${owners.oid } readonly="readonly">
-				
+							${owners.oid }
 						</td>
 						<td>
-							<input type="text" name="sname" value=${owners.sname } readonly="readonly">
-				
+							${owners.sname }				
 						</td>
 						<td>
-							<input type="text" name="bloc" value=${owners.bloc } readonly="readonly">
-				
+							${owners.bloc }
 						</td>
 						<td>
 							<input type="text" name="btitle" value=${owners.btitle } 
@@ -47,11 +54,10 @@
 				
 						</td>
 						<td>
-							<input type="text" name="bhit" value=${owners.bhit } readonly="readonly">
-				
+							<fmt:formatNumber value="${owners.bhit }" groupingUsed="true"/>				
 						</td>
 						<td>
-							<input type="text" name="bdate" value=${owners.bdate } readonly="readonly">
+							${owners.bdate }
 						</td>
 					</tr>
 				</c:forEach>
