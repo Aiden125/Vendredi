@@ -35,13 +35,13 @@
 	</insert>
 <!-- 오너게시판 글수정 -->	
 	<update id="oboardModify" parameterType="OwnerBoard">
-		UPDATE OWNERBOARD SET BTITLE = #{btitie},
-                        BCONTENT = #{bcontent},
-                        BPHOTO1 = #{bphoto1},
-                        BPHOTO2 = #{bphoto2},
-                        BPHOTO3 = #{bphoto3},
-                        BPHOTO4 = #{bphoto4},
-                        BPHOTO5 = #{bphoto5}
+		UPDATE OWNERBOARD SET BTITLE = #{btitle},
+                        <if test="bphoto1 != null and bphoto1 !=''">BPHOTO1 = #{bphoto1},</if>
+                        <if test="bphoto2 != null and bphoto2 !=''">BPHOTO2 = #{bphoto2},</if>
+                        <if test="bphoto3 != null and bphoto3 !=''">BPHOTO3 = #{bphoto3},</if>
+                        <if test="bphoto4 != null and bphoto4 !=''">BPHOTO4 = #{bphoto4},</if>
+                        <if test="bphoto5 != null and bphoto5 !=''">BPHOTO5 = #{bphoto5},</if>
+                        BCONTENT = #{bcontent}
                     WHERE BNO=#{bno}
 	</update>
 <!-- 오너게시판 글삭제 -->
@@ -53,8 +53,8 @@
 		SELECT * FROM OWNERBOARD WHERE BNO = #{bno}
 	</select>
 <!-- 조회수 올리기 -->
-	<select id="oboardHitup" parameterType="int" resultType="int">
-		UPDATE OWNERBOARD SET BHIT = #{bhit}
-    		WHERE BNO = #{bno};
-	</select>
+	<update id="oboardHitup" parameterType="int">
+		UPDATE OWNERBOARD SET BHIT = BHIT + 1
+    		WHERE BNO = #{bno}
+	</update>
 </mapper>

@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/admin.css" rel="stylesheet">
+	<link href="${conPath }/css/adminList.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script>
 		$(document).ready(function(){
@@ -31,15 +31,24 @@
 	<script>alert("정보수정 실패")</script>
 </c:if>
 
+<c:if test="${deleteResult == 1 }">
+	<script>alert("삭제 완료")</script>
+</c:if>
+<c:if test="${deleteResult == 0 }">
+	<script>alert("삭제 실패")</script>
+</c:if>
+
 <jsp:include page="../admin/header.jsp"/>
 
 <div id="content">
 	<table id="main_table">
 		<caption>관리자 목록</caption>
-		<tr><td></td></tr>
 		<tr class="tr_top">
 			<th>이름</th><th>번호</th><th>이메일</th><th>등급</th>
-			<c:if test="${admin.alevel == 2 }"><th>수정</th></c:if>
+			<c:if test="${admin.alevel == 2 }">
+				<th>수정</th>
+				<th>삭제</th>
+			</c:if>
 		</tr>
 		
 		<c:forEach var="adminList" items="${adminList }">
@@ -50,6 +59,7 @@
 			<td>${adminList.alevelname }</td>
 			<c:if test="${admin.alevel == 2 }">
 				<td><a href="${conPath }/admin/modifyView.do?aid=${adminList.aid}" style="color:blue;">수정하기</a></td>
+				<td><a href="${conPath }/admin/delete.do?aid=${adminList.aid}" style="color:blue;">삭제하기</a></td>
 			</c:if>
 		</tr>
 		</c:forEach>

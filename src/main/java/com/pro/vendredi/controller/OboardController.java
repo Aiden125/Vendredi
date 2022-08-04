@@ -36,7 +36,8 @@ public class OboardController {
 	@RequestMapping(value="/Write", method = RequestMethod.POST)
 	public String oboardWrite(MultipartHttpServletRequest mRequest, OwnerBoard oboard, Model model) {
 		model.addAttribute("writeResult", oboardService.oboardWrite(mRequest, oboard));
-		return "ownerBoard/oboardList";
+		System.out.println(1);
+		return "forward:List.do";
 	}
 	@RequestMapping(value="/Content", method = RequestMethod.GET)
 	public String oboardContent(int bno, Model model) {
@@ -45,7 +46,7 @@ public class OboardController {
 	}
 	@RequestMapping(value="/ModifyForm", method = RequestMethod.GET)
 	public String oboardModifyForm(int bno, Model model) {
-		model.addAttribute("oboard", oboardService.oboardContent(bno));
+		model.addAttribute("oboard", oboardService.oboardModifyContent(bno));
 		return "ownerBoard/oboardModify";
 	}
 	@RequestMapping(value="/Modify", method = RequestMethod.POST)
@@ -56,6 +57,6 @@ public class OboardController {
 	@RequestMapping(value="/Delete", method = RequestMethod.GET)
 	public String oboardDelete(int bno, Model model) {
 		model.addAttribute("oboardDelete", oboardService.oboardDelete(bno));
-		return "ownerBoard/oboardList";
+		return "forward:List.do";
 	}
 }

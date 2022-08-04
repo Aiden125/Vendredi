@@ -20,7 +20,7 @@
 	<div id="header">
 	<div id="nav">
 		<ul>
-			<li class="font2_0"><a href="${conPath }/admin/main.do">Vendredi</a></li>
+			<li class="font2_0 blue"><a href="${conPath }/admin/main.do">Vendredi</a></li>
 			<li class="font0_5">AdminMode</li>
 		</ul>
 		<br><hr><br>
@@ -37,7 +37,7 @@
 			<c:if test="${admin.alevel == 2 || admin.alevel == 1}">
 				<li><a href="${conPath }/admin/joinView.do">관리자 등록</a></li>
 			</c:if>
-			<li><a href="${conPath }/admin/modifyView.do?aid=${aid}">정보수정</a></li>
+			<li><a href="${conPath }/admin/modifyView.do?aid=${aid}">내 정보수정</a></li>
 			<li><a href="${conPath }/admin/logout.do">로그아웃</a></li>
 		</c:if>
 		</ul>
