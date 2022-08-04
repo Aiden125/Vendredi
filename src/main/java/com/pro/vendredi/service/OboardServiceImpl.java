@@ -21,7 +21,7 @@ import com.pro.vendredi.util.Paging;
 public class OboardServiceImpl implements OboardService {
 	@Autowired
 	private OwnerBoardDao oboardDao;
-	String backupPath = "F:/Vendredi/Vendredi/src/main/webapp/oboardImg";
+	String backupPath = "F:/Vendredi/Vendredi/src/main/webapp/oboardImg/";
 	
 	// 오너게시판 글목록
 	@Override
@@ -39,18 +39,17 @@ public class OboardServiceImpl implements OboardService {
 		return oboardDao.oboardtotCnt();
 	}
 	
-	// 오너게시판 조회수 올리기
-	@Override
-	public int oboardHitup(int bno) {
-		return oboardDao.oboardHitup(bno);
-	}
-	
 	// 오너게시판 상세보기
 	@Override
 	public OwnerBoard oboardContent(int bno) {
+		oboardDao.oboardHitup(bno);
 		return oboardDao.oboardContent(bno);
 	}
-	
+	// 수정 시 상세보기
+	@Override
+	public OwnerBoard oboardModifyContent(int bno) {
+		return oboardDao.oboardContent(bno);
+	}
 	// 오너게시판 글작성
 	@Override
 	public int oboardWrite(MultipartHttpServletRequest mRequest, OwnerBoard oboard) {
@@ -115,6 +114,7 @@ public class OboardServiceImpl implements OboardService {
 		}
 		return isCopy;
 	}
+	// 오너게시판 글수정
 	@Override
 	public int oboardModify(MultipartHttpServletRequest mRequest, OwnerBoard oboard) {
 		String uploadPath = mRequest.getRealPath("oboardImg/");
@@ -140,7 +140,7 @@ public class OboardServiceImpl implements OboardService {
 				}
 			}else {
 				// 파일첨부 안하면 oimg[idx] = ""
-				// oimg[idx] ="";
+				oimg[idx] = null;
 			} // if
 			idx++;
 		}// while - oimg배열에 파일이름 저장
@@ -149,14 +149,19 @@ public class OboardServiceImpl implements OboardService {
 		oboard.setBphoto3(oimg[2]);
 		oboard.setBphoto4(oimg[3]);
 		oboard.setBphoto5(oimg[4]);
-		return oboardDao.oboardModify(oboard);
+		System.out.println("수정 내용 :  "+oboard);
+		int result = oboardDao.oboardModify(oboard);
+		System.out.println("수정 완료");
+		return result;
 	}
-
+	
+	// 오너게시판 글삭제
 	@Override
 	public int oboardDelete(int bno) {
 		return oboardDao.oboardDelete(bno);
 	}
-
+	
+	//더미데이터 집어넣기
 	@Override
 	public void dummyDataInsert() {
 		OwnerBoard oboard = new OwnerBoard();
@@ -177,5 +182,7 @@ public class OboardServiceImpl implements OboardService {
 			System.out.println(result == 1? i+"번째 성공" : i+"실패");
 		}
 	}
+
+	
 
 }
