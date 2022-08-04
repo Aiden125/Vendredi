@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${conPath }/assets/css/boardwrite.css">
+<link rel="stylesheet" href="${conPath }/assets/css/qnawrite.css">
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>

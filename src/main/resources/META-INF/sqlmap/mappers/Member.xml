@@ -25,15 +25,15 @@
 	</select>
 	<!-- 회원가입 -->
 	<insert id="memberJoin" parameterType="Member">
-		INSERT INTO MEMBER VALUES (mid, mname, mpw, mtel, memail, maddress, mgender, mbirth)
+		INSERT INTO MEMBER  (mid, mname, mpw, mtel, memail, maddress, mgender, mbirth) VALUES
 		(#{mid}, #{mname}, #{mpw}, #{mtel}, #{memail}, #{maddress}, #{mgender}, #{mbirth})
 	</insert>
 	<!-- 아이디 찾기 -->
-	<select id="memberSearchId" parameterType="Member" resultType="String">
+	<select id="memberSearchId" parameterType="Member" resultType="Member">
 		SELECT MID FROM MEMBER WHERE MNAME = #{mname} AND MEMAIL =#{memail}
 	</select>
 	<!-- 비밀번호 찾기 -->
-	<select id="memberSearchPw" parameterType="Member" resultType="String">
+	<select id="memberSearchPw" parameterType="Member" resultType="Member">
 		SELECT Mpw FROM MEMBER WHERE MID = #{mid} AND Mname = #{mname}
 	</select>
 	<!-- 회원 로그인 -->
@@ -46,7 +46,7 @@
 	</select>
 	<!-- 회원 정보 수정 -->
 	<update id="memberModify" parameterType="Member">
-	<if test="mprofile==''">
+	<if test="mprofile ==''">
 		UPDATE MEMBER SET MPW = #{mpw},
                   MNAME = #{mname},
                   mtel = #{mtel},
@@ -54,13 +54,15 @@
                   maddress = #{maddress}
                  where mid = #{mid}
 	</if>
+	<if test="mprofile !=''">
 	UPDATE MEMBER SET MPW = #{mpw},
                   MNAME = #{mname},
                   mtel = #{mtel},
                   memail = #{memail},
-                  maddress = #{maddress}.
+                  maddress = #{maddress},
                   mprofile = #{mprofile}
                  where mid = #{mid}
+    </if>
 	</update>
 	<!-- 회원 수  -->
 	<select id="memberTotCnt" resultType="int">

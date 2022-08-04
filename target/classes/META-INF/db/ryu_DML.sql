@@ -57,6 +57,7 @@ SELECT * FROM
     (SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE where sSearchtag like '%'||'강남역'||'%' and sConfirm = 'Y' order by STSCORE desc)A)
      WHERE RN BETWEEN 1 AND 50;
+     commit;
      
 -- 5 - 3. storeListNew / 가게 리스트 페이징하기
 SELECT * FROM

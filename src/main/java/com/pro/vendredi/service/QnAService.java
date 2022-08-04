@@ -9,10 +9,10 @@ import com.pro.vendredi.dto.QnA;
 public interface QnAService {
 	public List<QnA> qnaList(String pageNum);
 	public int qnaTotCnt();
-	public int qnaWrite(QnA qna, HttpServletRequest request);
+	public int qnaWrite(QnA qna);
 	public QnA qnaDetail(int qno);
 	public QnA qnaModifyReplyView(int qno);
-	public int qnaModify(QnA qna, HttpServletRequest request);
+	public int qnaModify(QnA qna);
 	public int qnaDelete(int qno);
 	public int qnaReply(QnA qna , HttpServletRequest request);
 }

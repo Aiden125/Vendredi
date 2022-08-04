@@ -8,14 +8,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${conPath }/assets/css/boardwrite.css">
+<link rel="stylesheet" href="${conPath }/assets/css/qnalist.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		$(document).ready(function(){
 			$('tr').click(function(){
 				var qno = Number($(this).children().eq(0).text());
 				if(!isNaN(qno)){
-					location.href='${conPath}/qna/detail.do?qno='+qno+'&pageNum=${pageNum}';
+					location.href='${conPath}/qna/detail.do?qno='+qno+'&pageNum=${paging.currentPage}';
 				}
 				
 			});
@@ -49,7 +49,7 @@
 	
 	<jsp:include page="../main/header.jsp"/>
 	  <div id="logos">
-			<p>QNA_BOARD</p>
+			<p>FAQ</p>
          </div>
 	<div id="wrap">
 	<div id="writeform">
@@ -57,7 +57,7 @@
 		<tr><td>
 			<c:if test="${not empty member }">
 				<a href="${conPath }/qna/writeView.do">&nbsp;&nbsp;&nbsp;
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;글쓰기</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;글쓰기</a>
 			</c:if>
 			<c:if test="${empty member }">
 				<a href="${conPath }/member/loginForm.do">글쓰기는 사용자 로그인 후에 이용 가능합니다</a>
@@ -76,7 +76,11 @@
 			<tr>
 			<td>${qna.qno }</td>
 			<td>${qna.qid }</td>
-			<td>${qna.qsubject }</td>
+			<td>${qna.qsubject }
+			<c:if test="${qna.qsecret eq 'Y'}">
+				<img src="${conPath }/assets/img/비밀글.jpg" alt="비밀글" width="20px">
+			</c:if>
+			</td>
 			<td>${qna.qhit }</td>
 			<td><fmt:formatDate value="${qna.qrdate }" type="date" dateStyle="short"/></td>
 			</tr>
@@ -84,6 +88,22 @@
 		</c:if>
 	</table>
 	</div> <!-- listform -->
+	<div class="paging">
+		<c:if test="${paging.startPage > paging.blockSize }">
+			[ <a href="${conPath }/qna/list.do?pageNum=${paging.startPage-1}">이전</a> ]
+		</c:if>
+		<c:forEach var="i" begin="${paging.startPage }" end="${paging.endPage }">
+			<c:if test="${i eq paging.currentPage }">
+				[ <b> ${i } </b> ]
+			</c:if>
+			<c:if test="${i != paging.currentPage }">
+				[ <a href="${conPath }/qna/list.do?pageNum=${i}">${i }</a> ]
+			</c:if>
+		</c:forEach>
+		<c:if test="${paging.endPage < paging.pageCnt }">
+			[ <a href="${conPath }/qna/list.do?pageNum=${paging.endPage+1}">다음</a> ]
+		</c:if>
+	</div>
 	</div> <!-- wrap -->
 </body>
 </html>

@@ -26,7 +26,7 @@ create table store (
             sScore      number(8) default 0,
             sLike       number(1) default 0
             );
-SELECT * FROM STORE; 
+SELECT * FROM STORE;
 SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE FROM STORE where sNo = 4; -- 가게 평점
    
     
