@@ -13,7 +13,7 @@
 		<result property="stype" column="stype"/>
 		<result property="sprice" column="sprice"/>
 		<result property="stime" column="stime"/>
-		<result property="sholiday" column="holiday"/> 
+		<result property="sholiday" column="sholiday"/> 
 		<result property="smenu1" column="smenu1"/>
 		<result property="smenu2" column="smenu2"/>
 		<result property="smenu3" column="smenu3"/> 
@@ -31,7 +31,7 @@
 	insert into store (sNo, oId, sImage, sName, sAddress, sLocation, sTel, sType, sPrice, sTime, sHoliday,
             sMenu1 , sMenu1cost , sMenu2, sMenu2cost, sMenu3, sMenu3cost, sSearchtag) 
 	values (store_sq.nextval, #{oid}, #{simage}, #{sname}, #{saddress}, #{slocation}, #{stel}, #{stype}, #{sprice} , #{stime},  
-        '#{sholiday}, #{smenu1}, #{smenu1cost} , #{smenu2}, #{smenu2cost}, #{smenu3}, #{smenu3cost}, #{ssearchtag})
+        #{sholiday}, #{smenu1}, #{smenu1cost} , #{smenu2}, #{smenu2cost}, #{smenu3}, #{smenu3cost}, #{ssearchtag})
         
 </insert>
 <update id="storeModify" parameterType="Store">
@@ -41,10 +41,10 @@
                  sTel = #{stel},
                  sType = #{stype}, 
                  sPrice = #{sprice},
-                 sTime = '#{stime} ,
+                 sTime = #{stime} ,
                  sHoliday = #{sholiday},
                  sMenu1 = #{smenu1},
-                 sMenu1cost = '#{smenu1cost},
+                 sMenu1cost = #{smenu1cost},
                  sMenu2 = #{smenu2},
                  sMenu2cost = #{smenu2cost},
                  sMenu3 = #{smenu3},

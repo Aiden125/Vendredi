@@ -141,6 +141,9 @@ span {
 					<td>
 						<fmt:formatDate value="${request.rdate }" pattern="yy년MM월dd일"/>
 					 </td> 
+					 <td>
+					 	<input type="button" value="처리완료" onclick="">
+					 </td>
 				</tr> 
 			</c:forEach>
 		</c:if>

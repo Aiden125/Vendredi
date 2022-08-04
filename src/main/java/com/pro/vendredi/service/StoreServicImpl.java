@@ -57,33 +57,31 @@ public class StoreServicImpl implements StoreService {
 	@Override
 	public int storeRegister(Store store, MultipartHttpServletRequest mRequest) {
 		String uploadPath = mRequest.getRealPath("storeImgFileUpload/");
-		Iterator<String> params = mRequest.getFileNames(); // tempBimg1, temptBimg2
-		String[] bimg = new String[0];
-		int idx  = 0;
+		Iterator<String> params = mRequest.getFileNames(); // tempsimg1, temptsimg2
+		String simg = ""; 
 		while (params.hasNext()) {
 			String param = params.next(); // 마라미터의 다음 객체
 			MultipartFile mFile = mRequest.getFile(param);// 파라미터에 첨부된 파일 객체
-			bimg[idx] = mFile.getOriginalFilename();
-			if(bimg[idx]!=null && !bimg[idx].equals("")) {
-				if(new File(uploadPath + bimg[idx]).exists()) {
-					bimg[idx] = System.currentTimeMillis() + "_" + bimg[idx];
+			simg = mFile.getOriginalFilename();
+			if(simg!=null && !simg.equals("")) {
+				if(new File(uploadPath + simg).exists()) {
+					simg = System.currentTimeMillis() + "_" + simg;
 					
 				}// if
 				try {
-					mFile.transferTo(new File(uploadPath + bimg[idx]));
-					System.out.println("서버파일 : "+ uploadPath + bimg[idx]);
-					System.out.println("백업파일 : "+ backupPath + bimg[idx]);
-					Boolean result = fileCopy(uploadPath + bimg[idx], backupPath + bimg[idx] );
-					System.out.println(result ? idx+"번째 백업 성공": idx+"번째 백업 실패");
+					mFile.transferTo(new File(uploadPath + simg));
+					System.out.println("서버파일 : "+ uploadPath + simg);
+					System.out.println("백업파일 : "+ backupPath + simg);
+					Boolean result = fileCopy(uploadPath + simg, backupPath + simg );
+					System.out.println(result ? "번째 백업 성공": "번째 백업 실패");
 				} catch (Exception e) {
 					System.out.println(e.getMessage()+"StoreService register error");
 				}  
 			} else {
 				
 			}// if
-			idx++;
-		}//while - bimg 배열에 파일 이름 저장
-		store.setSimage(bimg[0]); // 첫번째 청구할 파일 이름
+		}//while - simg 배열에 파일 이름 저장
+		store.setSimage(simg); // 첫번째 청구할 파일 이름
 		System.out.println("서비스 저장 전 : " + store);
 		int result = storeDao.storeRegister(store);
 		System.out.println("서비스 저장 후 : " + store);
@@ -93,33 +91,30 @@ public class StoreServicImpl implements StoreService {
 	@Override
 	public int storeModify(Store store, MultipartHttpServletRequest mRequest) {
 		String uploadPath = mRequest.getRealPath("storeImgFileUpload/");
-		Iterator<String> params = mRequest.getFileNames(); // tempBimg1, temptBimg2
-		String[] bimg = new String[0];
-		int idx  = 0;
+		Iterator<String> params = mRequest.getFileNames(); // tempsimg1, temptsimg2
+		String simg = ""; 
 		while (params.hasNext()) {
 			String param = params.next(); // 마라미터의 다음 객체
 			MultipartFile mFile = mRequest.getFile(param);// 파라미터에 첨부된 파일 객체
-			bimg[idx] = mFile.getOriginalFilename();
-			if(bimg[idx]!=null && !bimg[idx].equals("")) {
-				if(new File(uploadPath + bimg[idx]).exists()) {
-					bimg[idx] = System.currentTimeMillis() + "_" + bimg[idx];
-					
+			simg = mFile.getOriginalFilename();
+			if(simg!=null && !simg.equals("")) {
+				if(new File(uploadPath + simg).exists()) {
+					simg = System.currentTimeMillis() + "_" + simg; 
 				}// if
 				try {
-					mFile.transferTo(new File(uploadPath + bimg[idx]));
-					System.out.println("서버파일 : "+ uploadPath + bimg[idx]);
-					System.out.println("백업파일 : "+ backupPath + bimg[idx]);
-					Boolean result = fileCopy(uploadPath + bimg[idx], backupPath + bimg[idx] );
-					System.out.println(result ? idx+"번째 백업 성공": idx+"번째 백업 실패");
+					mFile.transferTo(new File(uploadPath + simg));
+					System.out.println("서버파일 : "+ uploadPath + simg);
+					System.out.println("백업파일 : "+ backupPath + simg);
+					Boolean result = fileCopy(uploadPath + simg, backupPath + simg );
+					System.out.println(result ? "번째 백업 성공": "번째 백업 실패");
 				} catch (Exception e) {
-					System.out.println(e.getMessage()+"StoreService modify error");
+					System.out.println(e.getMessage()+"StoreService register error");
 				}  
 			} else {
 				
 			}// if
-			idx++;
-		}//while - bimg 배열에 파일 이름 저장
-		store.setSimage(bimg[0]); // 첫번째 청구할 파일 이름
+		}//while - simg 배열에 파일 이름 저장
+		store.setSimage(simg); // 첫번째 청구할 파일 이름
 		System.out.println("서비스 저장 전 : " + store);
 		int result = storeDao.storeModify(store);
 		System.out.println("서비스 저장 후 : " + store);
