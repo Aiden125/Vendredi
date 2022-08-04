@@ -100,11 +100,11 @@ public class StoreReviewServiceImpl implements StoreReviewService {
 	}
 
 	@Override
-	public List<StoreReview> reviewList(StoreReview storeReview, String pageNum, int sno) {
+	public List<StoreReview> storeReviewList(StoreReview storeReview, String pageNum, int sno) {
 		Paging paging = new Paging(storeReviewDao.reviewCnt(sno), pageNum, 10, 5);
 		storeReview.setStartRow(paging.getStartRow());
 		storeReview.setEndRow(paging.getEndRow());
-		return storeReviewDao.reviewList(storeReview);
+		return storeReviewDao.storeReviewList(storeReview);
 	}
 
 	@Override

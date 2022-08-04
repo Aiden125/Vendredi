@@ -26,6 +26,13 @@ public class AdminController {
 		return "admin/main";
 	}
 	
+	// 아이디 중복 조회
+	@RequestMapping(value="/idConfirm", method = RequestMethod.GET)
+	public String adminIdConfirm(String aid, Model model) {
+		model.addAttribute("result", adminService.adminIdConfirm(aid));
+		return "admin/idConfirm";
+	}
+	
 	// 로그인 화면 보기
 	@RequestMapping(value="/loginView", method = {RequestMethod.GET, RequestMethod.POST})
 	public String adminLoginView() {
@@ -79,5 +86,12 @@ public class AdminController {
 	public String adminLogout(HttpSession session) {
 		session.invalidate();
 		return "redirect:main.do";
+	}
+	
+	// 관리자 삭제하기
+	@RequestMapping(value="/delete", method = RequestMethod.GET)
+	public String adminDelete(String aid, Model model) {
+		model.addAttribute("deleteResult", adminService.adminDelete(aid));
+		return "forward:main.do";
 	}
 }

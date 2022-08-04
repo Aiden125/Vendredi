@@ -32,7 +32,7 @@ public class AdminServiceImpl implements AdminService {
 		String result = "로그인 성공";
 		Admin admin = adminDao.adminDetail(aid);
 		if(admin == null) {
-			result = "유효하지 않은 아이디";
+			result = "아이디를 확인하세요";
 		}else if(! apw.equals(admin.getApw())) {
 			result = "비밀번호를 확인하세요";
 		}else {

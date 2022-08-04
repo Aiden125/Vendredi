@@ -119,11 +119,12 @@ span {
 	<jsp:include page="../main/header.jsp"/>
 	<div class="wrap">
             <div class="form-wrap">
-	<form action="${conPath }/store/storeRegister.do" method="POST">
+	<form action="${conPath }/store/storeRegister.do" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="oid" value="aaa">
 		<table>
 			<tr>
 				<th>가게 사진</th>
-				<td><input type="file" name="simage" required="required"></td>
+				<td><input type="file" name="simg" required="required"></td>
 			</tr>
 			<tr>
 				<th>가게 이름</th>
@@ -147,6 +148,10 @@ span {
 			<tr>
 				<th>가게 전화번호</th>
 				<td><input type="tel" name="stel" required="required"></td>
+			</tr>
+			<tr>
+				<th>가게 종류</th>
+				<td><input type="text" name="stype" required="required"></td>
 			</tr>
 			<tr>
 				<th>가게 가격대</th>

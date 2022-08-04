@@ -9,7 +9,7 @@ import com.pro.vendredi.dto.StoreReview;
 public interface StoreReviewDao {
 	public int reviewWrite (StoreReview storeReview);
 	public int addScore (int sno);
-	public List<StoreReview> reviewList (StoreReview storeReview);
+	public List<StoreReview> storeReviewList (StoreReview storeReview);
 	public int reviewModify (StoreReview storeReview);
 	public int reviewDelete (int srno);
 	public int reviewCnt (int sno);
