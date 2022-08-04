@@ -27,7 +27,7 @@ create table store (
             sScore      number(8) default 0,
             sLike       number(1) default 0
             );
-SELECT * FROM STORE; 
+SELECT * FROM STORE;
 SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE FROM STORE where sNo = 1; -- 가게 평점
    
     
@@ -36,12 +36,12 @@ insert into store (sNo, oId, sImage, sName, sAddress, sLocation, sTel, sType, sP
 values (store_sq.nextval, 'aaa', 'noimg.jpg', '군옥각', '리월시 취헌부', '강남', '070-8888-8888', '중식, 중국요리, 짜장면', '2만원-4만원대',  
         '11:00-19:00', '금요일', '짜장면', '5000원', '짬뽕', '6000원', '탕수육', '10000원',
         '#강남#강남역#강남역맛집#중국집#중화요리#중국요리');
-commit;        
-        
+commit;         
+       
 UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
                    sScore = sScore +1
-                   WHERE SNo = 1;
-                   
+                   WHERE SNo = 4;
+                  
                    
 drop table storereview;
 drop SEQUENCE storereview_sq;
@@ -49,8 +49,8 @@ create SEQUENCE storereview_sq MAXVALUE 999999 NOCACHE NOCYCLE;
 create table storereview (
             srNo         number(8) PRIMARY KEY,
             sNo          number(8) REFERENCES store(sNo),
-            mProfile       varchar2(1000) not null,
-            mId            varchar2(100),
+            mId            varchar2(100) not null,
+            mProfile      varchar2(1000) not null,
             srContent     varchar2(2000) not null,
             srImage1      varchar2(500),
             srImage2      varchar2(500),
@@ -73,7 +73,7 @@ create table request (
             aId           varchar2(50), -- 관리자 아이디
             sName         varchar2(100) not null, -- 요청한 가게 이름
             rDate         date default sysdate -- 요청 등록된 일시
-    ); 
+    );  
 
 ----------------------------------- 지환 끝 ---------------------------------------------
 

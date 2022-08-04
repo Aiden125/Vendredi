@@ -23,8 +23,7 @@
     position: absolute;
 }
 .form-wrap {
-    width: 380px;
-    height: 480px;
+    width: 500px; 
     position: relative;
     margin: 6% auto;
     background: #fff;
@@ -113,9 +112,95 @@ span {
 <body>
 	<jsp:include page="../main/header.jsp"/>
 	<div class="wrap">
-	</div>
-	<div class="wrap">
-		<jsp:include page="storeReviewList.jsp"/>
-	</div>
+	<div class="form-wrap"> 
+		<table>
+		<tr>
+			<td colspan="2"> 
+				${store.sno }
+				<img alt="가게 이미지" src="${conPath }/storeReviewImgFileUpload/${store.simage }" width = "75px">
+			</td>
+		</tr>
+		<tr> 	  
+			<td>
+				<h1>${store.sname }</h1>
+			</td>
+			<td style="color:orange;">
+				<fmt:formatNumber value="${store.sscore/store.sreplycnt }" pattern=".0"/>
+			 </td>
+		</tr> 
+		<tr>
+			<th>
+				주소
+			</th>	
+			<td> 
+				${store.saddress }
+			</td>
+		</tr>
+		<tr>
+			<th>
+				전화번호
+			</th>	
+			<td> 
+				${store.stel }
+			</td>
+		</tr>
+		<tr>
+			<th>
+				가격대
+			</th>	
+			<td> 
+				${store.sprice }
+			</td>
+		</tr>
+		<tr>
+			<th>
+				운영시간
+			</th>	
+			<td> 
+				${store.stime }
+			</td>
+		</tr>
+		<tr>
+			<th>
+				휴무
+			</th>	
+			<td> 
+				${store.sholiday }
+			</td>
+		</tr> 
+		<tr>	
+			<th colspan="2" align="center">
+				대표 메뉴 
+			</th>
+		</tr>  
+		<tr>
+			<th>
+				${store.smenu1}
+			</th>	
+			<td> 
+				${store.smenu1cost }
+			</td>
+		</tr>
+		<tr>
+			<th>
+				${store.smenu2}
+			</th>	
+			<td> 
+				${store.smenu2cost }
+			</td>
+		</tr>
+		<tr>
+			<th>
+				${store.smenu3}
+			</th>	
+			<td> 
+				${store.smenu3cost }
+			</td>
+		</tr>
+		</table>		
+		<br>
+		<jsp:include page="/storeReview/storeReviewList.do?sno=${param.sno }&pageNum=1"/>
+	</div>	 
+	</div> 
 </body>
 </html>

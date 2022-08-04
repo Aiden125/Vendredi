@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
  
 import com.pro.vendredi.util.Paging;
-import com.pro.vendredi.dto.Store;
-import com.pro.vendredi.dto.StoreReview;
+import com.pro.vendredi.dto.Store; 
 import com.pro.vendredi.service.StoreReviewService;
 import com.pro.vendredi.service.StoreService;
 
@@ -20,20 +19,18 @@ public class StoreController {
 	// 해당 컨트롤러에서는 Store table StoreReview table의 기능을 다룹니다. 
 	
 	@Autowired
-	private StoreService storeService;
-	@Autowired
-	private StoreReviewService storeReviewService;
+	private StoreService storeService; 
 
 	// 가게 등록 화면 보기
-	@RequestMapping(value="/storeRegisterView", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/storeRegisterView", method = {RequestMethod.GET, RequestMethod.POST}  )
 	public String storeRegisterView() {
 		return "store/StoreRegister";
 	}
 	// 가게 등록 하기 -- 추후 request의 테이블에 등록 파일로 고침
-	@RequestMapping(value = "storeRegister", method = RequestMethod.POST)
+	@RequestMapping(value = "storeRegister", method = {RequestMethod.GET, RequestMethod.POST} )
 	public String storeRegister(@ModelAttribute("store") Store store , MultipartHttpServletRequest mRequest, Model model) {
 		model.addAttribute("storeRegisterResult", storeService.storeRegister(store, mRequest));
-		return "forward:request.do?method=writeRequest";
+		return "forward:store/storeRegisterView.do";
 	}
 	
 	// 가게 수정 입력창 보기
@@ -73,50 +70,50 @@ public class StoreController {
 	}
 	
 	
-	// --------------------------------storeReview----------------------------------------------------
-	
-	
-	// 가게 리뷰 목록 
-	@RequestMapping(value = "storeReviewList", method = {RequestMethod.POST, RequestMethod.GET})
-	public String storeReviewList(String pageNum, Model model, StoreReview storeReview , int sno ) {
-		model.addAttribute("storeReviewList", storeReviewService.reviewList(storeReview, pageNum, sno) );
-		model.addAttribute("paging", new Paging(storeReviewService.reviewCnt(sno), pageNum, 5, 3));
-		return "store/storeReviewList";
-	}
-	// 리뷰 등록 하기 -- 추후 addScore (Store Table에 리뷰 수 + 1 / 리뷰 점수 추가) 기능로 이동
-	@RequestMapping(value = "writeReview", method = RequestMethod.POST)
-	public String storeRegister(@ModelAttribute("storeReview") StoreReview storeReview, MultipartHttpServletRequest mRequest, Model model) {
-		model.addAttribute("writeReviewResult", storeReviewService.reviewWrite(storeReview, mRequest));
-		return "forward:store.do?method=storeaddScore";
-	}
-	
-	// 리뷰 등록 후 Store Table에 리뷰 수 + 1 / 리뷰 점수 추가하기 
-	@RequestMapping(value = "addScore", method = RequestMethod.POST)
-	public String addScore(int sno) {
-		storeReviewService.addScore(sno);
-		return "forward:store.do?method=storeReviewList";
-	}
-	
-	// 리뷰 수정 보기 
-	@RequestMapping(value = "reviewModifyView", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reviewModifyView() {
-		return "store/reviewModifyView";
-	}
-	
-	// 리뷰 수정 하기 -- 추후 storeReviewList 파일로 이동
-	@RequestMapping(value = "reviewModify", method = RequestMethod.POST)
-	public String reviewModify(@ModelAttribute("storeReview") StoreReview storeReview, MultipartHttpServletRequest mRequest, Model model) {
-		model.addAttribute("reviewModify", storeReviewService.reviewModify(storeReview, mRequest));
-		return "forward:store.do?method=storeReviewList";
-	}
-	
-	// 리뷰 삭제하기 
-	@RequestMapping(value = "reviewDelete", method = RequestMethod.POST)
-	public String reviewDelete(int srno) {
-		storeReviewService.reviewDelete(srno);
-		return "forward:store.do?method=storeReviewList";
-	}
-	
+//	// --------------------------------storeReview----------------------------------------------------
+//	
+//	
+//	// 가게 리뷰 목록 
+//	@RequestMapping(value = "storeReviewList", method = {RequestMethod.POST, RequestMethod.GET})
+//	public String storeReviewList(String pageNum, Model model, StoreReview storeReview , int sno ) {
+//		model.addAttribute("storeReviewList", storeReviewService.reviewList(storeReview, pageNum, sno) );
+//		model.addAttribute("paging", new Paging(storeReviewService.reviewCnt(sno), pageNum, 5, 3));
+//		return "store/storeReviewList";
+//	}
+//	// 리뷰 등록 하기 -- 추후 addScore (Store Table에 리뷰 수 + 1 / 리뷰 점수 추가) 기능로 이동
+//	@RequestMapping(value = "writeReview", method = RequestMethod.POST)
+//	public String storeRegister(@ModelAttribute("storeReview") StoreReview storeReview, MultipartHttpServletRequest mRequest, Model model) {
+//		model.addAttribute("writeReviewResult", storeReviewService.reviewWrite(storeReview, mRequest));
+//		return "forward:store.do?method=storeaddScore";
+//	}
+//	
+//	// 리뷰 등록 후 Store Table에 리뷰 수 + 1 / 리뷰 점수 추가하기 
+//	@RequestMapping(value = "addScore", method = RequestMethod.POST)
+//	public String addScore(int sno) {
+//		storeReviewService.addScore(sno);
+//		return "forward:store.do?method=storeReviewList";
+//	}
+//	
+//	// 리뷰 수정 보기 
+//	@RequestMapping(value = "reviewModifyView", method = { RequestMethod.GET, RequestMethod.POST })
+//	public String reviewModifyView() {
+//		return "store/reviewModifyView";
+//	}
+//	
+//	// 리뷰 수정 하기 -- 추후 storeReviewList 파일로 이동
+//	@RequestMapping(value = "reviewModify", method = RequestMethod.POST)
+//	public String reviewModify(@ModelAttribute("storeReview") StoreReview storeReview, MultipartHttpServletRequest mRequest, Model model) {
+//		model.addAttribute("reviewModify", storeReviewService.reviewModify(storeReview, mRequest));
+//		return "forward:store.do?method=storeReviewList";
+//	}
+//	
+//	// 리뷰 삭제하기 
+//	@RequestMapping(value = "reviewDelete", method = RequestMethod.POST)
+//	public String reviewDelete(int srno) {
+//		storeReviewService.reviewDelete(srno);
+//		return "forward:store.do?method=storeReviewList";
+//	}
+//	
 	
 		
 	

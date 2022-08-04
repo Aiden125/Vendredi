@@ -58,6 +58,7 @@ SELECT * FROM
      FROM STORE where sSearchtag like '%'||'강남역'||'%' and sConfirm = 'Y' order by STSCORE desc)A)
      WHERE RN BETWEEN 1 AND 50;
      
+     
 -- 5 - 3. storeListNew / 가게 리스트 페이징하기
 SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
@@ -140,7 +141,7 @@ update store set sConfirm = 'Y' where sno = 1;
 
 commit;
 
-
+select * from owner;
                  
                  
                  

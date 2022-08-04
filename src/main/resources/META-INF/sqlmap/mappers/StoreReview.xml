@@ -34,7 +34,7 @@
     		select count(*) cnt from storereview where sno = #{sno} 
 </select>
 
-<select id="reviewList" parameterType="StoreReview" resultMap="storeReviewResult">
+<select id="storeReviewList" parameterType="StoreReview" resultMap="storeReviewResult">
 	select * from
     (select rownum RN, A.* from
     (select * from storereview where sno = #{sno} 
