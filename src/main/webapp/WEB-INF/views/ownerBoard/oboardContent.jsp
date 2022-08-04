@@ -61,8 +61,12 @@
 			</tr>
 		</table>
 		<c:if test="${owner.oid eq oboard.oid }">
-			<input type="button" value="수정" onclick="location.href='${conPath}/oboard/ModifyForm.do'">
-			<input type="button" value="삭제" onclick="location='${conPath}/oboard/Delete.do?bno=${oboard.bno }&pageNum=${param.pageNum }'">
+			<input type="button" value="수정" onclick="location.href='${conPath}/oboard/ModifyForm.do?bno=${oboard.bno }&pageNum=${param.pageNum }'">
+			<input type="button" value="삭제" onclick="location.href='${conPath}/oboard/Delete.do?bno=${oboard.bno }&pageNum=${param.pageNum }'">
+			<input type="button" value="목록" onclick="location.href='${conPath}/oboard/List.do?bno=${oboard.bno }&pageNum=${param.pageNum }'">
+		</c:if>
+		<c:if test="${! (owner.oid eq oboard.oid) }">
+			<input type="button" value="목록" onclick="location.href='${conPath}/oboard/List.do?bno=${oboard.bno }&pageNum=${param.pageNum }'">
 		</c:if>
 	</div>
 </body>

@@ -24,7 +24,7 @@ UPDATE MEMBER SET MPW = '111',
 select count(*)cnt from member;
 commit;
 --(8) id=memberWithdrawal (회원탈퇴)
-delete from member where mid = 'maxed';
+delete from member where mid = 'carlos';
 rollback;
 select * from qna;
 
@@ -70,5 +70,5 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA ORDER BY QRDATE DES
     WHERE RN BETWEEN 1 AND 3;
  
 --(5) id = qnaReplyDelete (문의글 삭제)
-DELETE FROM QNA WHERE QNO= 1;
+DELETE FROM QNA WHERE QNO= 11;
 COMMIT;

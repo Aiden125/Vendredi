@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${conPath }/assets/css/member.css">
+<link rel="stylesheet" href="${conPath }/assets/css/qnawrite.css">
 </head>
 <body>
 	<c:set var="SUCCESS" value="1" />
@@ -26,36 +26,37 @@
 	</c:if>
 	<jsp:include page="../main/header.jsp" />
 	<div id="logos">
-		<p>QNA_Detail</p>
+		<p>QNA상세보기</p>
 	</div>
 	<div id="border">
 		<table>
-			<caption>${qnaDetail.qno }noCONTENT</caption>
+			<caption>${qDto.qno }번 글</caption>
 			<tr>
 				<td><b>작성자</b></td>
-				<td><b>${qnaDetail.qid }님</b></td>
+				<td><b>${qDto.qid }님</b></td>
 			</tr>
 			<tr>
 				<td><b>제목</b></td>
-				<td><b>${qnaDetail.qtitle }</b></td>
+				<td><b>${qDto.qsubject }</b></td>
 			</tr>
 			<tr>
 				<td><b>본문</b></td>
-				<td><b>${qnaDetail.qcontent }</b></td>
+				<td><b>${qDto.qcontent }</b></td>
 			</tr>
 			<tr>
-				<td colspan="2"><c:if test="${member.mid eq qnaDetail.qid }">
+				<td colspan="2"><c:if test="${member.mid eq qDto.qid }">
 						<button class="btn"
-							onclick="location='${conPath}/qna/modify.do?qno=${qnaDetail.qno }&pageNum=${param.pageNum }'">수정</button>
+							onclick="location='${conPath}/qna/modifyView.do?qno=${qDto.qno }&pageNum=${param.pageNum }'">수정</button>
 					</c:if> 
-					<c:if test="${member.mid eq qnaDetail.qid or not empty admin}">
+					<c:if test="${member.mid eq qDto.qid or not empty admin}">
 						<button class="btn"
-							onclick="location='${conPath}/qna/delete.do?qno=${qnaDetail.qno }&pageNum=${param.pageNum }'">삭제</button>
+							onclick="location='${conPath}/qna/delete.do?qno=${qDto.qno }&pageNum=${param.pageNum }'">삭제</button>
 					</c:if> 
 					<c:if test="${not empty admin and empty member.mid }">
 						<button class="btn"
-							onclick="location='${conPath}/qna/reply.do?qno=${qnaDetail.qno }&pageNum=${param.pageNum }&aid=${admin.aid }'">답변</button>
-					</c:if> <input type="button" value="목록" class="btn"
+							onclick="location='${conPath}/qna/reply.do?qno=${qDto.qno }&pageNum=${param.pageNum }&aid=${admin.aid }'">답변</button>
+					</c:if> 
+					<input type="button" value="목록" class="btn"
 					onclick="location='${conPath}/qna/list.do?pageNum=${param.pageNum }'">
 				</td>
 			</tr>

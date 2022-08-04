@@ -27,7 +27,15 @@ create table store (
             sLike       number(1) default 0
             );
 SELECT * FROM STORE;
+<<<<<<< HEAD
 SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE FROM STORE where sNo = 1; -- 가게 평점 
+=======
+<<<<<<< HEAD
+SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE FROM STORE where sNo = 4; -- 가게 평점
+=======
+SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE FROM STORE where sNo = 1; -- 가게 평점
+>>>>>>> 9edb0d821d03cdc0bdbaa6b5d3a7939f086d8bf8
+>>>>>>> f1f15ead17b8ae2379a8c37a08417dbf8df48ce4
    
     
 insert into store (sNo, oId, sImage, sName, sAddress, sLocation, sTel, sType, sPrice, sTime, sHoliday,

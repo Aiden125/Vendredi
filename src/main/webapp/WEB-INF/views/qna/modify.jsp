@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${conPath }/assets/css/member.css">
+<link rel="stylesheet" href="${conPath }/assets/css/boardwrite.css">
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -16,22 +16,22 @@
 		<p>QNA_MODIFY</p>
 	</div>
 	<div id="border3">
-	<form action="${conPath }/qna/modify.do">
-	<input type="hidden" name="qno" value="${qnaModify.qno }">
+	<form action="${conPath }/qna/modify.do" method="post">
+	<input type="hidden" name="qno" value="${qDto.qno }">
 	<input type="hidden" name="pageNum" value="${param.pageNum }">
 		<table>
-			<caption>${qnaModify.qno }MODIFY</caption>
+			<caption>${qDto.qno }번글 수정</caption>
 			<tr>
 				<th>작성자</th>
-				<td><input type="text" required="required" value="${qnaModify.qid }" readonly="readonly"></td>
+				<td><input type="text" required="required" value="${qDto.qid }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>제목</th>
-				<td><input type="text" name ="qusbject" value="${qnaModify.qsubject }"></td>
+				<td><input type="text" name ="qsubject" value="${qDto.qsubject }"></td>
 			</tr>
 			<tr>
 				<th>본문</th>
-				<td><textarea rows="10" cols="38" name="qcontent">${qnaModify.qcontent }</textarea></td>
+				<td><textarea rows="10" cols="38" name="qcontent">${qDto.qcontent }</textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2">

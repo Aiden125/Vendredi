@@ -15,7 +15,7 @@
     font-family: sans-serif;
 }
 .wrap {
-    height: 100%;
+    height: 500px;
     width: 100%;
     background-image: url(assets/img/디저트.jpg);
     background-position: center;
@@ -105,11 +105,18 @@ span {
 #register {
     left: 450px;
 }
+p{
+	font-family: sans-serif;
+	font-size: 0.8em;
+	text-decoration: none;
+	
+}
+
 </style>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-	 <div class="wrap">
+	 <div class="wrap" >
             <div class="form-wrap">
                 <div class="button-wrap">
                     <div id="btn"></div>
@@ -117,20 +124,21 @@ span {
                     <button type="button" class="togglebtn" onclick="register()">OWNER</button>
                 </div>
                 <div class="social-icons">
-                    <img src="assets/img/fb.png" alt="facebook">
-                    <img src="assets/img/tw.png" alt="twitter">
-                    <img src="assets/img/gl.png" alt="google">
+                    <img src="${conPath }/assets/img/fb.png" alt="facebook">
+                    <img src="${conPath }/assets/img/tw.png" alt="twitter">
+                    <img src="${conPath }/assets/img/gl.png" alt="google">
                 </div>
                 <form id="login" action="${conPath }/member/mlogin.do" method="post" class="input-group">
                     <input type="text" class="input-field" id="mid" name="mid" value="${mid }" placeholder="User ID" required>
-                    <input type="password" class="input-field" id="mpw" name="mpw" placeholder="Password" required>
-                    <a href="${conPath }/member/joinForm.do"><input type="checkbox" class="checkbox"><span>Don't have an account?</span></a>
+                    <input type="password" class="input-field" id="mpw" name="mpw" placeholder="Password" required><br>
+                    <a href="${conPath }/member/joinForm.do"><p>Don't have an account?</p></a><br>
+                    <a href="${conPath }/member/search.do"><p>Forget ID or PW?</p></a><br>
                     <button class="submit">Login</button>
                 </form>
                 <form id="register" action="${conPath }/owner/ologin.do" method="post" class="input-group">
                    <input type="text" class="input-field"  id="oid" name="oid" value="${oid }" placeholder="Owner ID" required>
                     <input type="password" class="input-field" id="opw" name="oid" placeholder="Password" required>
-                    <a href="${conPath }/owner/join.do"> <input type="checkbox" class="checkbox"><span>Don't have an account?</span></a>
+                    <a href="${conPath }/owner/join.do"><input type="checkbox" class="checkbox"> <span>Don't have an account?</span></a>
                     <button class="submit">Login</button>
                 </form>
             </div>

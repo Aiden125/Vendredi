@@ -9,8 +9,8 @@ public interface MemberDao {
 	public int memberEmailConfirm(String memail);
 	public int memberJoin(Member member);
 	public String memberLogin(Member member);
-	public String memberSearchId(Member member);
-	public String memberSearchPw(Member member);
+	public Member memberSearchId(Member member);
+	public Member memberSearchPw(Member member);
 	public Member memberGetDetail(String mid);
 	public int memberModify(Member member);
 	public int memberTotCnt();

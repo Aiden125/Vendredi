@@ -12,6 +12,12 @@
 </head>
 <body>
 	<div id="content">
+		<c:if test="${empty owner }">
+			<script>
+				alert('글쓰기는 로그인 후 가능합니다');
+				location.href="${conPath}/owner/LoginForm.do";
+			</script>
+		</c:if>
 		<form action="${conPath }/oboard/Write.do" method ="post" enctype="multipart/form-data">
 			<table>
 				<tr>
