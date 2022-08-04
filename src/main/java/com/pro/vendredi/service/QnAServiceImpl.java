@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.pro.vendredi.dao.QnADao;
 import com.pro.vendredi.dto.QnA;
@@ -61,6 +62,29 @@ public class QnAServiceImpl implements QnAService {
 	@Override
 	public QnA qnaModifyReplyView(int qno) {
 		return qnaDao.qnaDetail(qno);
+	}
+	//QNA 질문글 리스트(희석추가)
+	@Override
+	public List<QnA> qnaQuestList(String pageNum) {
+		Paging paging = new Paging(qnaDao.qnaQuestionTotCnt(), pageNum);
+		QnA qna = new QnA();
+		qna.setStartRow(paging.getStartRow());
+		qna.setEndRow(paging.getEndRow());
+		return qnaDao.qnaList(qna);
+	}
+	//QNA 답변글 리스트(희석추가)
+	@Override
+	public List<QnA> qnaAnswerList(String pageNum) {
+		Paging paging = new Paging(qnaDao.qnaQuestionTotCnt(), pageNum);
+		QnA qna = new QnA();
+		qna.setStartRow(paging.getStartRow());
+		qna.setEndRow(paging.getEndRow());
+		return qnaDao.qnaList(qna);
+	}
+	//QNA 질문글 갯수(희석추가)
+	@Override
+	public int qnaQuestionTotCnt() {
+		return qnaDao.qnaQuestionTotCnt();
 	}
 
 }

@@ -15,4 +15,7 @@ public interface QnAService {
 	public int qnaModify(QnA qna);
 	public int qnaDelete(int qno);
 	public int qnaReply(QnA qna , HttpServletRequest request);
+	public List<QnA> qnaQuestList(String pageNum);
+	public List<QnA> qnaAnswerList(String pageNum);
+	public int qnaQuestionTotCnt();
 }

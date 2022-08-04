@@ -17,5 +17,7 @@ public interface QnADao {
 	public int qnaDelete(int qno);
 	public int qnaReplyPre(QnA qna);
 	public int qnaReply(QnA qna);
-	
+	public List<QnA> qnaQuestList(QnA qna);
+	public List<QnA> qnaAnswerList(QnA qna);
+	public int qnaQuestionTotCnt();
 }

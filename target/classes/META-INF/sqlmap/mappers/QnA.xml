@@ -13,6 +13,7 @@
 		<result property="qstep" column="qstep"/>
 		<result property="qrdate" column="qrdate"/>
 		<result property="qsecret" column="qsecret"/>
+		<result property="qreplycheck" column="qreplycheck"/>
 	</resultMap>
 	
 	<!-- 문의글 갯수 -->
@@ -28,6 +29,26 @@
     from qna Q order by qgroup)A)
     WHERE RN BETWEEN #{startRow} AND #{endRow}
 	</select>
+	
+	<!-- 질문글 리스트(희석 추가) -->
+	<select id="qnaQuestList" parameterType="QnA" resultMap="QnAResult">
+	SELECT * FROM
+	    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP=0 ORDER BY QNO) A)
+	    WHERE RN BETWEEN #{startRwo} AND ${endRow}
+	</select>
+	
+	<!-- 답변글 보기(희석 추가) -->
+	<select id="qnaAnswerList" parameterType="QnA" resultMap="QnAResult">
+	SELECT * FROM
+	    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP!=0 ORDER BY QNO) A)
+	    WHERE RN BETWEEN #{startRwo} AND ${endRow}
+	</select>
+	
+	<!-- 질문글 갯수(희석 추가) -->
+	<select id="qnaQuestionTotCnt" resultType="int">
+		SELECT COUNT(*) FROM QNA WHERE QSTEP=0
+	</select>
+	
 	
 	<!-- 문의글 작성 -->
 	<insert id="qnaWrite" parameterType="QnA">
