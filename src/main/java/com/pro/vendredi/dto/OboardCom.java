@@ -5,7 +5,7 @@ import java.sql.Date;
 import lombok.Data;
 
 @Data
-public class BoardComment {
+public class OboardCom {
 	private int cno;
 	private int bno;
 	private String oid;

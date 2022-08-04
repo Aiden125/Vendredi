@@ -14,13 +14,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.pro.vendredi.dao.OboardComDao;
 import com.pro.vendredi.dao.OwnerBoardDao;
+import com.pro.vendredi.dto.OboardCom;
 import com.pro.vendredi.dto.OwnerBoard;
 import com.pro.vendredi.util.Paging;
 @Service
 public class OboardServiceImpl implements OboardService {
 	@Autowired
 	private OwnerBoardDao oboardDao;
+	
+	@Autowired
+	private OboardComDao obcomDao;
+	
 	String backupPath = "F:/Vendredi/Vendredi/src/main/webapp/oboardImg/";
 	
 	// 오너게시판 글목록
@@ -149,15 +155,13 @@ public class OboardServiceImpl implements OboardService {
 		oboard.setBphoto3(oimg[2]);
 		oboard.setBphoto4(oimg[3]);
 		oboard.setBphoto5(oimg[4]);
-		System.out.println("수정 내용 :  "+oboard);
-		int result = oboardDao.oboardModify(oboard);
-		System.out.println("수정 완료");
-		return result;
+		return oboardDao.oboardModify(oboard);
 	}
 	
 	// 오너게시판 글삭제
 	@Override
 	public int oboardDelete(int bno) {
+		oboardDao.oboardComDelete(bno);
 		return oboardDao.oboardDelete(bno);
 	}
 	
@@ -181,6 +185,30 @@ public class OboardServiceImpl implements OboardService {
 			int result = oboardDao.oboardWrite(oboard);
 			System.out.println(result == 1? i+"번째 성공" : i+"실패");
 		}
+	}
+	
+	// 오너게시팔 댓글목록
+	@Override
+	public List<OboardCom> oboardComList(int bno) {
+		return obcomDao.oboardComList(bno);
+	}
+	
+	// 오너게시판 댓글쓰기
+	@Override
+	public OboardCom oboardComWrite(OboardCom obCom) {
+		return obcomDao.oboardComWrite(obCom);
+	}
+	
+	// 오너게시판 댓글수정
+	@Override
+	public int oboardComModify(OboardCom obCom) {
+		return obcomDao.oboardComModify(obCom);
+	}
+	
+	// 오너게시판 댓글삭제
+	@Override
+	public int oboardComDelete(int cno) {
+		return obcomDao.oboardComDelete(cno);
 	}
 
 	

@@ -48,6 +48,10 @@
 	<delete id="oboardDelete" parameterType="int">
 		DELETE FROM OWNERBOARD WHERE BNO = #{bno}
 	</delete>
+	<delete id="oboardComDelete" parameterType="int">
+		DELETE FROM BOARD_COMMENT WHERE BNO = #{bno}
+	</delete>
+	
 <!-- 오너게시판 상세보기 -->
 	<select id="oboardContent" parameterType="int" resultType="OwnerBoard">
 		SELECT * FROM OWNERBOARD WHERE BNO = #{bno}

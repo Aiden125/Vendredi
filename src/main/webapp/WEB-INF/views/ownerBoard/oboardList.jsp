@@ -11,7 +11,7 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 </head>
 <body>
-	<c:if test="${ not empty oboardDelete }">
+	<c:if test="${ oboardDelete > 0 }">
 		<script>
 			alert('해당글이 삭제되었습니다');
 		</script>
@@ -19,6 +19,11 @@
 	<c:if test="${ not empty writeResult }">
 		<script>
 			alert('글작성 완료');
+		</script>
+	</c:if>
+	<c:if test="${ not empty oboardModify }">
+		<script>
+			alert('글수정 완료');
 		</script>
 	</c:if>
 	<div id="content">
@@ -48,7 +53,7 @@
 							${owners.bloc }
 						</td>
 						<td>
-							<input type="text" name="btitle" value=${owners.btitle } 
+							<input type="text" name="btitle" value="${owners.btitle }" 
 							onclick="location.href='Content.do?bno=${owners.bno}&pageNum=${paging.currentPage}'" 
 							 readonly="readonly" style="cursor: pointer">
 				

@@ -14,4 +14,5 @@ public interface OwnerBoardDao {
 	public int oboardWrite(OwnerBoard oboard);
 	public int oboardModify(OwnerBoard oboard);
 	public int oboardDelete(int bno);
+	public int oboardComDelete(int bno);
 }
