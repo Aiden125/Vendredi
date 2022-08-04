@@ -17,14 +17,13 @@
 .wrap {
     height: 100%;
     width: 100%;
-    background-image: url(assets/img/디저트.jpg);
+    background-image: url('${conPath}/assets/img/피자.jpg');
     background-position: center;
     background-size: cover;
     position: absolute;
 }
 .form-wrap {
-    width: 380px;
-    height: 480px;
+    width: 600px; 
     position: relative;
     margin: 6% auto;
     background: #fff;
@@ -119,77 +118,53 @@ span {
 		}
 	</script>
 </head>
-<body>
-	<jsp:include page="../main/header.jsp"/>
+<body> 
 	<div class="wrap">
-	<div class="form-wrap">
+		<div class="form-wrap">
 	<table style="margin : 0 auto;"> 
+		<tr>
+			<th>등록번호</th><th>가게번호</th><th>사업자 아이디</th>
+			<th>가게 이름</th><th>등록일</th>
+		</tr>
 		<c:if test="${paging.totCnt eq 0 }">
-			<tr> <th colspan="5">등록된 가게가 없습니다.</th> </tr>
+			<tr> <th colspan="5">등록된 요청 없습니다.</th> </tr>
 		</c:if>
 		<c:if test="${paging.totCnt != 0 }">
-				<c:forEach items="${storeList }" var="store">
-				<tr onclick="trclicked(${store.sno })"> 
+			<c:forEach items="${myRequestList }" var="request">
+				<tr onclick="trclicked(${request.sno })"> 
+					<td>${request.rno }</td>
+					<td>${request.sno }</td>
+					<td> 
+						${request.oid }
+					</td>
+					<td> 
+						${request.sname }
+					</td>  
 					<td>
-						<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage}" width = "100px">
-					</td>
-					<td>${store.sname }</td>
-					<td> 
-						${store.slocation }
-					</td>
-					<td> 
-						${store.stype }
-					</td>
-					<td> 
-						${store.stscore }
-					</td>    
+						<fmt:formatDate value="${request.rdate }" pattern="yy년MM월dd일"/>
+					 </td>  
 				</tr> 
 			</c:forEach>
 		</c:if>
 	</table>
-		<div id="paging" align="center">
+		</div>
+	</div>
+	<div id="paging" align="center">
 		<c:if test="${paging.startPage> paging.blockSize }">
-		[<a href="${conPath }/store.do?method=storeListSearch&pageNum=${paging.startPage-1}&ssearchtag=${param.ssearchtag }">이전</a>]
+		[<a href="${conPath }/request.do?method=requestList&pageNum=${paging.startPage-1}&schItem=${param.schItem }">이전</a>]
 		</c:if>
 		<c:forEach var="i" begin="${paging.startPage }" end="${paging.endPage}">
 			<c:if test="${i eq paging.currentPage }">
 			[<b style="color : red;">${i}</b>]
 			</c:if>
 			<c:if test="${i != paging.currentPage }">
-			[<a href="${conPath }/store.do?method=storeListSearch&pageNum=${i}&ssearchtag=${param.ssearchtag }">${i}</a>]
+			[<a href="${conPath }/request.do?method=requestList&pageNum=${i}&schItem=${param.schItem }">${i}</a>]
 			</c:if>
 		</c:forEach>
 		<c:if test="${paging.endPage < paging.pageCnt }">
-		[<a href="${conPath }/store.do?method=storeListSearch&pageNum=${paging.endPage +1}&ssearchtag=${param.ssearchtag }">다음</a>]
+		[<a href="${conPath }/request.do?method=requestList&pageNum=${paging.endPage +1}&schItem=${param.schItem }">다음</a>]
 		</c:if>
-		</div>
 	</div>
-	</div>
-	</div> 
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

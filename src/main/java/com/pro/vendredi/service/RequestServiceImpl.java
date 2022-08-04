@@ -2,6 +2,7 @@ package com.pro.vendredi.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +17,8 @@ public class RequestServiceImpl implements RequestService {
 	public RequestDao requestDao;
 	
 	@Override
-	public int writeRequest(Request request) { 
+	public int writeRequest(Request request) {
+		System.out.println("가게 요청 등록 완료");
 		return requestDao.writeRequest(request);
 	}
 
@@ -29,8 +31,9 @@ public class RequestServiceImpl implements RequestService {
 	}
 
 	@Override
-	public List<Request> myRequestList(Request request, String oid) {
-		 return requestDao.myRequestList(request, oid);
+	public List<Request> myRequestList(Request request, @Param("oid") String oid) {
+		 System.out.println("사업자 개인 요청 리스트");
+		return requestDao.myRequestList(request, oid);
 	}
 
 	@Override

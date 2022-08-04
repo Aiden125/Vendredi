@@ -17,13 +17,14 @@
 .wrap {
     height: 100%;
     width: 100%;
-    background-image: url(assets/img/디저트.jpg);
+    background-image: url('${conPath}/assets/img/디저트.jpg');
     background-position: center;
     background-size: cover;
     position: absolute;
 }
 .form-wrap {
-    width: 500px; 
+    width: 600px; 
+    height : 1200px;
     position: relative;
     margin: 6% auto;
     background: #fff;
@@ -105,18 +106,16 @@ span {
     left: 450px;
 }
 </style>
-	<link href="${conPath }/assets/css/style.css" rel="stylesheet">
-	
+	<link href="${conPath }/assets/css/style.css" rel="stylesheet"> 
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
 	<div class="wrap">
-	<div class="form-wrap"> 
-		<table>
+	<div class="form-wrap">
+		<table style="margin : 0 auto;" >
 		<tr>
-			<td colspan="2"> 
-				${store.sno }
+			<td colspan="2">  
 				<img alt="가게 이미지" src="${conPath }/storeReviewImgFileUpload/${store.simage }" width = "75px">
 			</td>
 		</tr>
@@ -200,8 +199,8 @@ span {
 		<tr>
 			<th colspan="2">
 				추후 owner, admin 적용하게 바꿀예정 <br>
-				<input type="button" value="등록 요청" onclick="location='${conPath}/request/requestWrite.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'">
-				<input type="button" value="가게 정보 수정" onclick="location='${conPath}/store/storeModifyView.do?sno=${param.sno }'">> 
+				<input type="button" value="등록 요청" onclick="location='${conPath}/request/writeRequest.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'">
+				<input type="button" value="가게 정보 수정" onclick="location='${conPath}/store/storeModifyView.do?sno=${param.sno }'">
 			</th>
 		</tr>
 		</table>		

@@ -113,83 +113,10 @@ span {
 		$(document).ready(function(){
 			
 		});
-		function trclicked(sno) {
-			location.href = '${conPath}/store/storeDetail.do?sno='+ sno ;
-			
-		}
 	</script>
 </head>
 <body>
-	<jsp:include page="../main/header.jsp"/>
-	<div class="wrap">
-	<div class="form-wrap">
-	<table style="margin : 0 auto;"> 
-		<c:if test="${paging.totCnt eq 0 }">
-			<tr> <th colspan="5">등록된 가게가 없습니다.</th> </tr>
-		</c:if>
-		<c:if test="${paging.totCnt != 0 }">
-				<c:forEach items="${storeList }" var="store">
-				<tr onclick="trclicked(${store.sno })"> 
-					<td>
-						<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage}" width = "100px">
-					</td>
-					<td>${store.sname }</td>
-					<td> 
-						${store.slocation }
-					</td>
-					<td> 
-						${store.stype }
-					</td>
-					<td> 
-						${store.stscore }
-					</td>    
-				</tr> 
-			</c:forEach>
-		</c:if>
-	</table>
-		<div id="paging" align="center">
-		<c:if test="${paging.startPage> paging.blockSize }">
-		[<a href="${conPath }/store.do?method=storeListSearch&pageNum=${paging.startPage-1}&ssearchtag=${param.ssearchtag }">이전</a>]
-		</c:if>
-		<c:forEach var="i" begin="${paging.startPage }" end="${paging.endPage}">
-			<c:if test="${i eq paging.currentPage }">
-			[<b style="color : red;">${i}</b>]
-			</c:if>
-			<c:if test="${i != paging.currentPage }">
-			[<a href="${conPath }/store.do?method=storeListSearch&pageNum=${i}&ssearchtag=${param.ssearchtag }">${i}</a>]
-			</c:if>
-		</c:forEach>
-		<c:if test="${paging.endPage < paging.pageCnt }">
-		[<a href="${conPath }/store.do?method=storeListSearch&pageNum=${paging.endPage +1}&ssearchtag=${param.ssearchtag }">다음</a>]
-		</c:if>
-		</div>
-	</div>
-	</div>
-	</div> 
+	<jsp:forward page="requestDoneSto.do?sno=${param.sno }"/>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

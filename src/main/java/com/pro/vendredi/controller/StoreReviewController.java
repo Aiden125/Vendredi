@@ -48,7 +48,8 @@ public class StoreReviewController {
 	
 	// 리뷰 수정 보기 
 	@RequestMapping(value = "reviewModifyView", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reviewModifyView() {
+	public String reviewModifyView(int srno, Model model) {
+		model.addAttribute("storeReview", storeReviewService.reviewDetail(srno));
 		return "store/reviewModifyView";
 	}
 	

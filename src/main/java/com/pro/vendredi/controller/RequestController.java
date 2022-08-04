@@ -1,5 +1,6 @@
 package com.pro.vendredi.controller;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +24,7 @@ public class RequestController {
 	@RequestMapping(value = "writeRequest", method = {RequestMethod.POST, RequestMethod.GET})
 	public String writeRequest(@ModelAttribute("request") Request request, Model model) {
 		model.addAttribute("writeRequestResult", requestService.writeRequest(request)); 
-		return "forward:store.do?method=storeRegisterView";
+		return "forward:requestList.do";
 	}
 	
 	// 요청 목록 - 관리자용 (전체 목록) 
@@ -36,24 +37,21 @@ public class RequestController {
 	
 	// 요청 목록 - 사업자용 (개인 목록) 
 	@RequestMapping(value = "myRequestList", method = {RequestMethod.POST, RequestMethod.GET})
-	public String myRequestList(String pageNum, Model model, Request request, String oid) {
+	public String myRequestList(Model model, Request request, @Param("oid")String oid) {
 		model.addAttribute("myRequestList", requestService.myRequestList(request, oid)); 
 		return "request/myRequestList";
 	}
 	
 	// 요청 목록에서 요청 처리하기 (request table 에서 처리 완료 문구 추가)
-	@RequestMapping(value = "requestDoneReq", method = {RequestMethod.POST, RequestMethod.GET})
-	public String requestDoneReq(String pageNum, Model model, Request request, int sno) {
+	@RequestMapping(value = "requestDone", method = {RequestMethod.POST, RequestMethod.GET})
+	public String requestDone(String pageNum, Model model, Request request, int sno) {
 		requestService.requestDoneReq(sno);
-		return "forward:request.do?method=requestDoneSto";
-	}
-	
-	// 요청 목록에서 요청 처리하기 (store table 에서 처리 완료 sConfirm = 'Y')
-	@RequestMapping(value = "requestDoneSto", method = {RequestMethod.POST, RequestMethod.GET})
-	public String requestDoneSto(String pageNum, Model model, Request request, int sno) {
+		System.out.println("테이블에 처리 완료 문구 추가");
 		requestService.requestDoneSto(sno);
-		return "forward:request.do?method=requestList";
+		System.out.println("스토어 테이블에 sconfirm Y 변경");
+		return "forward:requestList.do";
 	}
+	 
 	
 	
 }

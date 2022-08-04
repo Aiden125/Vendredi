@@ -56,6 +56,10 @@
 <delete id="reviewDelete"  parameterType="int">
 	delete storereview where srno = #{srno}
 </delete>
+
+<select id="reviewDetail"  parameterType="int" resultType="Store">
+	select * from storereview where srno = #{srno}
+</select>
  
 </mapper>
 

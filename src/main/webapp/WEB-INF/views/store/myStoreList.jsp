@@ -139,28 +139,25 @@ span {
 					</td>
 					<td> 
 						${store.stype }
-					</td>
-					<td> 
-						${store.stscore }
-					</td>    
+					</td> 
 				</tr> 
 			</c:forEach>
 		</c:if>
 	</table>
 		<div id="paging" align="center">
 		<c:if test="${paging.startPage> paging.blockSize }">
-		[<a href="${conPath }/store.do?method=storeListSearch&pageNum=${paging.startPage-1}&ssearchtag=${param.ssearchtag }">이전</a>]
+		[<a href="${conPath }/store.do?method=myStoreList&pageNum=${paging.startPage-1}&ssearchtag=${param.ssearchtag }">이전</a>]
 		</c:if>
 		<c:forEach var="i" begin="${paging.startPage }" end="${paging.endPage}">
 			<c:if test="${i eq paging.currentPage }">
 			[<b style="color : red;">${i}</b>]
 			</c:if>
 			<c:if test="${i != paging.currentPage }">
-			[<a href="${conPath }/store.do?method=storeListSearch&pageNum=${i}&ssearchtag=${param.ssearchtag }">${i}</a>]
+			[<a href="${conPath }/store.do?method=myStoreList&pageNum=${i}&ssearchtag=${param.ssearchtag }">${i}</a>]
 			</c:if>
 		</c:forEach>
 		<c:if test="${paging.endPage < paging.pageCnt }">
-		[<a href="${conPath }/store.do?method=storeListSearch&pageNum=${paging.endPage +1}&ssearchtag=${param.ssearchtag }">다음</a>]
+		[<a href="${conPath }/store.do?method=myStoreList&pageNum=${paging.endPage +1}&ssearchtag=${param.ssearchtag }">다음</a>]
 		</c:if>
 		</div>
 	</div>

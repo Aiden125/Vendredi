@@ -17,14 +17,13 @@
 .wrap {
     height: 100%;
     width: 100%;
-    background-image: url(assets/img/디저트.jpg);
+    background-image: url('${conPath}/assets/img/스파게티.jpg');
     background-position: center;
     background-size: cover;
     position: absolute;
 }
 .form-wrap {
-    width: 380px;
-    height: 480px;
+    width: 600px; 
     position: relative;
     margin: 6% auto;
     background: #fff;
@@ -112,7 +111,7 @@ span {
 	<script>
 		$(document).ready(function(){
 			
-		});
+		}); 
 	</script>
 </head>
 <body>
@@ -142,7 +141,7 @@ span {
 						<fmt:formatDate value="${request.rdate }" pattern="yy년MM월dd일"/>
 					 </td> 
 					 <td>
-					 	<input type="button" value="처리완료" onclick="">
+					 	<input type="button" value="처리완료" onclick="location='${conPath}/request/requestDone.do?sno=${request.sno }'">
 					 </td>
 				</tr> 
 			</c:forEach>

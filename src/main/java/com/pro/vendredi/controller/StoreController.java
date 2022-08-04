@@ -30,12 +30,14 @@ public class StoreController {
 	@RequestMapping(value = "storeRegister", method = {RequestMethod.GET, RequestMethod.POST} )
 	public String storeRegister(@ModelAttribute("store") Store store , MultipartHttpServletRequest mRequest, Model model) {
 		model.addAttribute("storeRegisterResult", storeService.storeRegister(store, mRequest));
-		return "forward:storeRegisterView.do";
+		System.out.println("컨트롤러 화인 : "+ store);
+		return "forward:myStoreList.do";
 	}
 	
 	// 가게 수정 입력창 보기
 	@RequestMapping(value = "storeModifyView", method = { RequestMethod.GET, RequestMethod.POST })
-	public String storeModifyView() {
+	public String storeModifyView(int sno, Model model) {
+		model.addAttribute("store", storeService.storeDetail(sno));
 		return "store/storeModifyView";
 	}
 	
@@ -68,6 +70,13 @@ public class StoreController {
 			model.addAttribute("paging", new Paging(storeService.storeCnt(store), pageNum, 8, 3));
 			return "store/storeList";
 	}
+	// 가게 목록 보기 - 등록된 가게들 중 최신순
+		@RequestMapping(value = "myStoreList", method = {RequestMethod.POST, RequestMethod.GET})
+		public String myStoreList(String pageNum, Model model, Store store, String oid ) {
+			model.addAttribute("storeList", storeService.myStoreList(pageNum, store, oid));
+			model.addAttribute("paging", new Paging(storeService.storeCntMy(oid), pageNum, 5, 1));
+			return "store/myStoreList";
+		}
 	
 	
 //	// --------------------------------storeReview----------------------------------------------------

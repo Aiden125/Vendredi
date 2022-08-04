@@ -47,32 +47,38 @@ select count(*) cnt from store where ssearchtag like '%'||'강남'||'%'  and sCo
 -- 5 - 1. storeList / 가게 리스트 페이징하기
 SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+    (SELECT SNO, SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE order by STSCORE desc)A)
      WHERE RN BETWEEN 1 AND 50;
      
 -- 5 - 2. storeListSearch / 가게 리스트 페이징하기
 SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+    (SELECT SNO, SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE where sSearchtag like '%'||'강남역'||'%' and sConfirm = 'Y' order by STSCORE desc)A)
      WHERE RN BETWEEN 1 AND 50;
-     commit;
      
      
 -- 5 - 3. storeListNew / 가게 리스트 페이징하기
 SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SIMAGE, SNAME, SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+    (SELECT SNO, SIMAGE, SNAME, SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE where sConfirm = 'Y' order by sno desc)A)
      WHERE RN BETWEEN 1 AND 50;
+
+-- 5 - 4. myStoreList / 가게 리스트 페이징하기
+SELECT * FROM
+    (SELECT ROWNUM RN, A.* FROM
+    (SELECT SNO, SIMAGE, SNAME, SLOCATION, STYPE 
+     FROM STORE where oid = 'bbb' order by sno desc)A)
+     WHERE RN BETWEEN 1 AND 50; 
+commit;     
 
 -- 6. 1. storeScoreUp     
 UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
                    sScore = sScore + srScore
                    WHERE SNo = 2;     
-
-
+ 
 
 -- table storereview
 
@@ -86,8 +92,8 @@ VALUES (storereview_sq.NEXTVAL, 3, 'aaa', 'noImg.jpg', '여기 너무 맛있어�
          
 -- 1. - 1. addScore / 가게의 평점 등록 (reviewWrite와 동시에 이뤄지며 score + 숫자에는 srScore 가 들어갈 예정)         
 UPDATE STORE SET   sReplycnt = sReplycnt + 1 ,
-                   sScore = sScore + 4
-                   WHERE SNO = 3;
+                   sScore = sScore + 3
+                   WHERE SNO = 6; 
 
 -- 2. 0. reviewCnt / 리뷰 숫자 세기 (페이징용)
 
@@ -114,6 +120,9 @@ update storereview set
 -- 4. reviewDelete / 해당 리뷰 삭제
 delete storereview where srno = 18;  
 commit;
+
+-- 5.reviewDetail (srno로 dto)
+select * from storereview where srno = 1;
  
 -- table request
 
@@ -132,13 +141,14 @@ select * from
     where RN BETWEEN 1 and 5;
     
 -- 2 - 1. myRequestList / 사업자 개인 리퀘스트 조회
-select rno, sno, sname from request where oid = 'aaa' order by rno desc;
+select rno, oid, sno, sname, rdate from request where oid = 'aaa' order by rno desc;
     
 -- 3. requestDone / 확인 후 업체 등록 (관리자용) sno(가게번호)로 두 테이블에 update 진행
-
+ 
 update request set sname = CONCAT( sname, ' - 처리 완료 ') where sno = 1; 
+update request set sname = '카즈하스시' where sno = 9;
 
-update store set sConfirm = 'Y' where sno = 1;
+update store set sConfirm = 'Y' where sno = 9;
 
 commit;
 

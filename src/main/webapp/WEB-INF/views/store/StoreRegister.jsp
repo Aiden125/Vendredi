@@ -17,7 +17,7 @@
 .wrap {
     height: 100%;
     width: 100%;
-    background-image: url(assets/img/디저트.jpg);
+    background-image: url('${conPath}/assets/img/중식1.jpg');
     background-position: center;
     background-size: cover;
     position: absolute;
@@ -120,7 +120,7 @@ span {
 	<div class="wrap">
             <div class="form-wrap">
 	<form action="${conPath }/store/storeRegister.do" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="oid" value="aaa">
+		<input type="hidden" name="oid" value="bbb">
 		<table>
 			<tr>
 				<th>가게 사진</th>
@@ -141,7 +141,7 @@ span {
     					<option value="강남" selected>강남</option>
     					<option value="강북" >강북</option>
     					<option value="경기 북부">경기 북부</option>
-    					<option value="경기 남부">경기 북부</option>
+    					<option value="경기 남부">경기 남부</option>
   					</select> 
 				</td>
 			</tr>

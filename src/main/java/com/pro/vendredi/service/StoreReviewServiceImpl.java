@@ -157,4 +157,9 @@ public class StoreReviewServiceImpl implements StoreReviewService {
 		return storeReviewDao.reviewCnt(sno);
 	}
 
+	@Override
+	public StoreReview reviewDetail(int srno) { 
+		return storeReviewDao.reviewDetail(srno) ;
+	}
+
 }

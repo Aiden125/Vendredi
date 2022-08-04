@@ -15,4 +15,5 @@ public interface StoreReviewService {
 	public int reviewModify (StoreReview storeReview, MultipartHttpServletRequest mRequest);
 	public int reviewDelete (int srno);
 	public int reviewCnt (int sno);
+	public StoreReview reviewDetail (int srno);
 }

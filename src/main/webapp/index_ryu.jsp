@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <jsp:forward page="store/storeDetail.do?sno=6"/> 
+  <jsp:forward page="store/storeList.do"/> 
 
 </body>
 </html>

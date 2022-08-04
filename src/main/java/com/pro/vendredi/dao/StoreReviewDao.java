@@ -13,4 +13,5 @@ public interface StoreReviewDao {
 	public int reviewModify (StoreReview storeReview);
 	public int reviewDelete (int srno);
 	public int reviewCnt (int sno);
+	public StoreReview reviewDetail (int srno);
 }
