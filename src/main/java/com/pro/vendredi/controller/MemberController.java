@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.pro.vendredi.dto.Member;
 import com.pro.vendredi.service.MemberService;
@@ -56,8 +57,8 @@ public class MemberController {
 	}
 	// 회원 수정 처리
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modify(@ModelAttribute("mDto") Member member, Model model, HttpSession httpSession) {
-		model.addAttribute("modifyResult", memberService.memberModify(member));
+	public String modify(@ModelAttribute("mDto") Member member, Model model, HttpSession httpSession, MultipartHttpServletRequest mRequest) {
+		model.addAttribute("modifyResult", memberService.memberModify(member,mRequest));
 		httpSession.setAttribute("member", member);
 		return "forward:../main.do";
 	}
@@ -79,7 +80,12 @@ public class MemberController {
 		model.addAttribute("emailConfirmResult", memberService.memberEmailConfirm(memail));
 		return "member/emailConfirm";
 	}
-	//아이디 찾기
+	//아이디or비번 찾기 view
+	@RequestMapping(value="/search", method=RequestMethod.GET)
+	public String searchAccount() {
+		return "member/search";
+	}
+	//아이디 찾기 
 	@RequestMapping(value = "/searchId", method=RequestMethod.GET)
 	public String searchId(@ModelAttribute("mDto") Member member, Model model) {
 		model.addAttribute("searchIdResult", memberService.memberSearchId(member));
@@ -89,7 +95,7 @@ public class MemberController {
 	@RequestMapping(value = "/searchPw" , method=RequestMethod.GET)
 	public String searchPw(@ModelAttribute("mDto") Member member, Model model) {
 		model.addAttribute("searchPwResult", memberService.memberSearchPw(member));
-		return "loginForm";
+		return "member/loginForm";
 	}
 	
 	//로그아웃

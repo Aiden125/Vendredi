@@ -13,17 +13,17 @@
 	<script src="${conPath }/js/address.js"></script>
 </head>
 <body>
-		<jsp:include page="../main/header.jsp"/>
+	<jsp:include page="../main/header.jsp"/>
 		<div id="middle">
 	<div id="logos">
 		<p>MODIFY</p>
     </div>
 	<div id="memberinfo">
-	<form action="${conPath }/member/modify.do" method="post">
+	<form action="${conPath }/member/modify.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="method" value="modify">
 		<input type="hidden" name="mid" value="${member.mid }">
 		<table>
-		<tr><td>프로필</td><td>${member.mprofile }</tr>	
+		<tr><td>프로필</td><td><img src="${conPath }/memberImg/${member.mprofile }"></tr>	
 			<tr><td>아이디</td><td>${member.mid }</td></tr>
 			<tr><td>비밀번호</td><td><input type="password" name="mpw" value="${member.mpw }"></td></tr>
 			<tr><td>이름</td><td><input type="text" name="mname" value="${member.mname }"></td></tr>
@@ -37,7 +37,7 @@
 						<input type="hidden" id="sample4_jibunAddress" name="X" placeholder="지번주소">
 						<span id="guide"></span>
 				</td></tr>
-			<tr><td>사진수정</td><td><input type="file" name=mprofile value="${member.mprofile }"></tr>	
+			<tr><td>사진수정</td><td><input type="file" name="temp_mprofile" value="${member.mprofile }"></tr>	
 			<tr><td colspan="3">
 								<input type="button" value="이전" onclick="history.go(-1)" class="btn">
 								<input type="submit" value="정보수정" class="btn">

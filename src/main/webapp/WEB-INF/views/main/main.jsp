@@ -14,8 +14,6 @@
 <meta content="" name="description">
 <meta content="" name="keywords">
 <style type="">
-
-
 </style>
 <!-- Favicons -->
 <link href="assets/img/favicon.png" rel="icon">
@@ -40,13 +38,58 @@
 
 <!-- Template Main CSS File -->
 <link href="assets/css/style.css" rel="stylesheet">
+<style>
+ body,html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  
+    }
 
-<!-- =======================================================
-  * Template Name: Groovin - v4.8.1
-  * Template URL: https://bootstrapmade.com/groovin-free-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    .searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+      .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:red;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+    }
+</style>
 </head>
 
 <body>
@@ -68,17 +111,20 @@
 							<div class="carousel-content">
 								<h2 class="animate__animated animate__fadeInDown">Vendredi</h2>
 								<p class="animate__animated animate__fadeInUp">당신의 금요일을 도와줄
-									Vendrei를 통해 솔직한 리뷰와 믿을 수 있는 가게를 알아보세요!</p>
-								<div class="search-box">
-									<input type="text" class="search-input"
-										placeholder="Start Looking For Something!"> <a
-										class="search-btn" href="#"> <!-- Seach Icon --> <i
-										class="fas fa-search"></i>
-									</a>
-								</div>
+									Vendrei를 통해 솔직한 리뷰와 믿을 수 있는 가게를 알아보세요!
+									
+									</p>
+									    <div class="container h-100">
+      <div class="d-flex justify-content-center h-100">
+        <div class="searchbar">
+          <input class="search_input" type="text" name="" placeholder="Search...">
+          <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+        </div>
+      </div>
+    </div>
 							</div>
 						</div>
-					</div>
+					
 
 					<!-- Slide 2 -->
 					<div class="carousel-item"
@@ -121,7 +167,7 @@
 							</div>
 						</div>
 					</div>
-
+					
 				</div>
 
 				<a class="carousel-control-prev" href="#heroCarousel" role="button"
@@ -133,9 +179,12 @@
 					class="carousel-control-next-icon bi bi-chevron-right"
 					aria-hidden="true"></span>
 				</a>
-
+				</div>
+						
 			</div>
+			
 		</div>
+		
 	</section>
 	<!-- End Hero -->
 

@@ -8,7 +8,6 @@
 		<result property="qid" column="qid"/>
 		<result property="qsubject" column="qsubject"/>
 		<result property="qcontent" column="qcontent"/>
-		<result property="qfile" column="qfile"/>
 		<result property="qhit" column="qhit"/>
 		<result property="qgroup" column="qgroup"/>
 		<result property="qstep" column="qstep"/>
@@ -32,24 +31,24 @@
 	
 	<!-- 문의글 작성 -->
 	<insert id="qnaWrite" parameterType="QnA">
-	<if test="qsecret =='Y'">
-		INSERT INTO QNA VALUES(QNA_SQ.NEXTVAL, #{qid},#{qsubject},#{qcontent},#{qhit},QNA_SQ.CURRVAL,#{qstep},SYSDATE,#{qsecret})	
+	<if test="qsecret == 'Y'">
+		INSERT INTO QNA VALUES (QNA_SQ.NEXTVAL, #{qid},#{qsubject},#{qcontent},#{qhit},QNA_SQ.CURRVAL,#{qstep},SYSDATE,#{qsecret})	
 	</if>
-	<if test ="qsecret != 'Y'">
+	<if test ="qsecret == null or qsecret != 'Y'">
 		INSERT INTO QNA (qno,qid,qsubject,qcontent,qhit,qgroup,qstep,qrdate)
-		VALUES(QNA_SQ.NEXTVAL, #{qid},#{qsubject},#{qcontent},#{qhit},QNA_SQ.CURRVAL,#{qstep},SYSDATE)	
+		VALUES (QNA_SQ.NEXTVAL, #{qid},#{qsubject},#{qcontent},#{qhit},QNA_SQ.CURRVAL,#{qstep},SYSDATE)	
 	</if>
 	</insert>
 	
 	<!-- 문의글 상세보기 -->
-	<select id="qnaDetail" parameterType="int" resultType="QnA">
+	<select id="qnaDetail" parameterType="QnA" resultType="QnA">
 		select * from qna where qno=#{qno}
 	</select>
 	
 	<!-- 문의글 수정 -->
 	<update id="qnaModify" parameterType="QnA">
 		update qna set 
-	    qsubject = #{qsubject},
+	    qsubject = #{qsubject, jdbcType=VARCHAR},
 	    qcontent = #{qcontent}
 	    where qno = #{qno}
 	</update>
