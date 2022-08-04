@@ -17,23 +17,28 @@
 	</script>
 </head>
 <body>
+	<c:if test="${not empty result}">
+		<script>alert('${result}');</script>
+	</c:if>
 
 <jsp:include page="../admin/header.jsp"/>
 
 <div id="content">
 	<form action="${conPath }/admin/login.do" method="POST">
 		<table id="login_table">
+			<caption>관리자 로그인</caption>
 			<tr>
-				<th>아이디</th>
-				<td><input type="text" name="aid" required="required"></td>
+				<td colspan="2"><p class="left">아이디 </p>
+				<input type="text" class="box" name="aid" required="required" value="${aid }"></td>
 			</tr>
 			<tr>
-				<th>비밀번호</th>
-				<td><input type="password" name="apw" required="required"></td>
+				<td colspan="2"><p class="left">비밀번호 </p>
+				<input type="password" class="box" name="apw" required="required"></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="로그인">
+					<input type="submit" value="로그인" class="blue_btn">
+					<input type="button" value="취소" class="reset_btn" onclick="history.back();">
 				</td>
 			</tr>
 		</table>

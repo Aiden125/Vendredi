@@ -25,40 +25,42 @@
 		<table id="modify_table">
 			<caption>관리자 정보 수정(${adminModify.aname })</caption>
 			<tr>
-				<th>아이디</th>
-				<td><input type="text" name="aid" value="${adminModify.aid }" readonly="readonly"></td>
+				<td colspan="2"><p class="left">아이디</p>
+				<input type="text" class="box readonly" name="aid" value="${adminModify.aid }" readonly="readonly"></td>
 			</tr>
 			<tr>
-				<th>비밀번호</th>
-				<td><input type="password" name="apw" value="${adminModify.apw }" required="required"></td>
+				<td colspan="2"><p class="left">비밀번호</p>
+				<input type="password" class="box" name="apw" value="${adminModify.apw }" required="required"></td>
 			</tr>
 			<tr>
-				<th>이름</th>
-				<td><input type="text" name="aname" value="${adminModify.aname }" required="required"></td>
+				<td colspan="2"><p class="left">이름</p>
+				<input type="text" class="box" name="aname" value="${adminModify.aname }" required="required">
 			</tr>
 			<tr>
-				<th>번호</th>
-				<td><input type="text" name="atel" value="${adminModify.atel }" required="required"></td>
+				<td colspan="2"><p class="left">번호</p>
+				<input type="text" class="box" name="atel" value="${adminModify.atel }" required="required">
 			</tr>
 			<tr>
-				<th>이메일</th>
-				<td><input type="email" name="aemail" value="${adminModify.aemail }" required="required"></td>
+				<td colspan="2"><p class="left">이메일</p>
+				<input type="email" class="box" name="aemail" value="${adminModify.aemail }" required="required"></td>
 			</tr>
-			<tr>
-				<th>등급</th>
-				<td>
-					<select name="alevel">
-						<option value="">선택</option>
-						<option value="0" ${adminModify.alevel == 0 ? "selected":""}>MANAGER</option>
-						<option value="1" ${adminModify.alevel == 1 ? "selected":""}>HEAD_MANAGER</option>
-						<option value="2" ${adminModify.alevel == 2 ? "selected":""}>MASTER</option>
-					</select>
-			</tr>
+			<c:if test="${admin.alevel == 2 }">
+				<tr>
+					<td colspan="2"><p class="left">등급</p>
+						<select name="alevel" class="box">
+							<option value="">선택</option>
+							<option value="0" ${adminModify.alevel == 0 ? "selected":""}>MANAGER</option>
+							<option value="1" ${adminModify.alevel == 1 ? "selected":""}>HEAD_MANAGER</option>
+							<option value="2" ${adminModify.alevel == 2 ? "selected":""}>MASTER</option>
+						</select>
+					</td>
+				</tr>
+			</c:if>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="정보수정">
-					<input type="button" value="삭제"
-					onclick="location.href='${conPath}/admin/delete.do?aid=${adminModify.aid }'">
+					<input type="submit" class="blue_btn" value="수정">
+					<input type="button" class="reset_btn" value="취소"
+					onclick="history.back();">
 				</td>
 			</tr>
 		</table>
