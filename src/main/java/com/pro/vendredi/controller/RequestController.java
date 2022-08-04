@@ -20,8 +20,8 @@ public class RequestController {
 	public RequestService requestService;
 	
 	// 요청 등록 하기 -- 추후 storeRegisterView 기능로 이동
-	@RequestMapping(value = "writeRequest", method = RequestMethod.POST)
-	public String writeRequest(@ModelAttribute("request") Request request, MultipartHttpServletRequest mRequest, Model model) {
+	@RequestMapping(value = "writeRequest", method = {RequestMethod.POST, RequestMethod.GET})
+	public String writeRequest(@ModelAttribute("request") Request request, Model model) {
 		model.addAttribute("writeRequestResult", requestService.writeRequest(request)); 
 		return "forward:store.do?method=storeRegisterView";
 	}

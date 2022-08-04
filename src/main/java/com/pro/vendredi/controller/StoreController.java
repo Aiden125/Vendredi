@@ -30,7 +30,7 @@ public class StoreController {
 	@RequestMapping(value = "storeRegister", method = {RequestMethod.GET, RequestMethod.POST} )
 	public String storeRegister(@ModelAttribute("store") Store store , MultipartHttpServletRequest mRequest, Model model) {
 		model.addAttribute("storeRegisterResult", storeService.storeRegister(store, mRequest));
-		return "forward:store/storeRegisterView.do";
+		return "forward:storeRegisterView.do";
 	}
 	
 	// 가게 수정 입력창 보기

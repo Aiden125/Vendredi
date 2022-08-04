@@ -197,6 +197,13 @@ span {
 				${store.smenu3cost }
 			</td>
 		</tr>
+		<tr>
+			<th colspan="2">
+				추후 owner, admin 적용하게 바꿀예정 <br>
+				<input type="button" value="등록 요청" onclick="location='${conPath}/request/requestWrite.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'">
+				<input type="button" value="가게 정보 수정" onclick="location='${conPath}/store/storeModifyView.do?sno=${param.sno }'">> 
+			</th>
+		</tr>
 		</table>		
 		<br>
 		<jsp:include page="/storeReview/storeReviewList.do?sno=${param.sno }&pageNum=1"/>
