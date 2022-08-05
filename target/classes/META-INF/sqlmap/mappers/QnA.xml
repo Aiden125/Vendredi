@@ -41,9 +41,9 @@
 	</if>
 	</insert>
 	
-	<!-- 문의글 상세보기 -->
+	<!-- 문의글(원글) 상세보기 -->
 	<select id="qnaDetail" parameterType="QnA" resultType="QnA">
-		select * from qna where qno=#{qno}
+		SELECT * FROM QNA WHERE QGROUP=#{qgroup} AND QSTEP=0
 	</select>
 	
 	<!-- 문의글 수정 -->
@@ -117,5 +117,10 @@
 		UPDATE QNA SET QREPLYCHECK=1
         WHERE QNO=#{qno}
 	</update> 
+	
+	<!-- 답변글 상세보기 -->
+	<select id="qnaReplyDetail" parameterType="QnA" resultType="QnA">
+		SELECT * FROM QNA WHERE QGROUP=#{qgroup} AND QSTEP!=0
+	</select>
 	
 </mapper>

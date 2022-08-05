@@ -26,4 +26,5 @@ public interface QnADao {
 	public List<QnA> qnaReplyList(QnA qna);
 	public int qnaReplyTotCnt();
 	public int qnaStateUpdate(int qno);
+	public QnA qnaReplyDetail(int qno);
 }

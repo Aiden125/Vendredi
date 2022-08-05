@@ -104,7 +104,7 @@ public class QnAController {
 	@RequestMapping(value="/reply", method=RequestMethod.POST)
 	public String reply(QnA qna, HttpServletRequest request, Model model) {
 		model.addAttribute("replyResult",qnaService.qnaReply(qna, request));
-		return "forward:listAdminVer.do";
+		return "forward:replyYetList.do";
 	}
 	
 	//문의글 수정 뷰단 - 관리자

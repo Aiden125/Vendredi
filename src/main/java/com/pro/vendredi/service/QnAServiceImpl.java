@@ -111,5 +111,10 @@ public class QnAServiceImpl implements QnAService {
 	public int qnaStateUpdate(int qno) {
 		return qnaDao.qnaStateUpdate(qno);
 	}
+	//QNA 답변 상세보기
+	@Override
+	public QnA qnaReplyDetail(int qno) {
+		return qnaDao.qnaReplyDetail(qno);
+	}
 
 }

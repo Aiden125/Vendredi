@@ -24,4 +24,5 @@ public interface QnAService {
 	public List<QnA> qnaReplyList(String pageNum);
 	public int qnaReplyTotCnt();
 	public int qnaStateUpdate(int qno);
+	public QnA qnaReplyDetail(int qno);
 }

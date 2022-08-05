@@ -42,33 +42,34 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM
 
 
 
--- 희석 추가(답변완료 여부 나타내는 페이징 리스트)(질문글만 보이게)
+-- 답변완료 여부 나타내는 페이징 리스트(질문글만 보이게) - 희석 추가
 SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP=0 ORDER BY QRDATE DESC) A)
     WHERE RN BETWEEN 1 AND 10;
 
--- 희석 추가(질문글 총 갯수 for paging)
+-- 질문글 총 갯수 for paging - 희석 추가
 SELECT COUNT(*) FROM QNA WHERE QSTEP=0;
 
--- 희석 추가(답변안된 질문만 보기)
+-- 답변안된 질문만 보기 - 희석 추가
 SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP=0 AND QREPLYCHECK=0 ORDER BY QRDATE DESC) A)
     WHERE RN BETWEEN 2 AND 3;
 
--- 희석 추가(답변안된 질문글 총 갯수 for paging)
+-- 답변안된 질문글 총 갯수 for paging - 희석 추가
 SELECT COUNT(*) FROM QNA WHERE QSTEP=0 AND QREPLYCHECK=0;
 
--- 희석 추가(답변만 보기)
+-- 답변만 보기 - 희석 추가
 SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP!=0 ORDER BY QRDATE DESC) A)
     WHERE RN BETWEEN 2 AND 3;
 
--- 희석 추가(답변들 총 갯수)
+-- 답변들 총 갯수 - 희석 추가
 SELECT COUNT(*) FROM QNA WHERE QSTEP!=0;
 
--- 답변되면서 업데이트(답변들 총 갯수)
-UPDATE QNA SET QREPLYCHECK=1
-        WHERE QNO=1;
+-- 원글 상세보기
+SELECT * FROM QNA WHERE QGROUP=1 AND QSTEP=0;
+-- 답글 상세보기
+SELECT * FROM QNA WHERE QGROUP=1 AND QSTEP!=0;
 
     
 --(2) id = qnaWrite (문의글 작성)
