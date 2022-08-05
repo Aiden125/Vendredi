@@ -1,12 +1,23 @@
 package com.pro.vendredi.service;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.text.ParseException;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import javax.mail.Message;
 import javax.mail.internet.InternetAddress;
@@ -20,8 +31,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.pro.vendredi.dao.MemberDao;
 import com.pro.vendredi.dto.Member;
+
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -92,46 +107,54 @@ public class MemberServiceImpl implements MemberService {
 
 	// 아이디 찾기 - 메일발송
 	@Override
-	public Member memberSearchId(final Member member) {
-		Member mid = memberDao.memberSearchId(member);
+	public String memberSearchId(final Member member) {
+		final Member mid = memberDao.memberSearchId(member);
 		if (mid != null) {
 			MimeMessagePreparator message = new MimeMessagePreparator() {
 				Member mid = memberDao.memberSearchId(member);
-				String content = "<h1>" + member.getMname() + "님의 ID는</h1>\r\n" + "	<h2>" + member.getMid()
-						+ "입니다.</h2>";
+				String content = "<h1>" + mid.getMname() + "님의 ID는</h1>\r\n" + "	<h2>" + mid.getMid() + "입니다.</h2>";
 
 				@Override
 				public void prepare(MimeMessage mimeMessage) throws Exception {
-					mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(member.getMemail()));
+					mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(mid.getMemail()));
 					mimeMessage.setFrom(new InternetAddress("dlwlsdn5244@gmail.com"));
 					mimeMessage.setSubject("회원 ID정보");
 					mimeMessage.setText(content, "utf-8", "html");
 				}
 			};
 			mailSender.send(message);
+			String result = "가입하신 E-MAIL로 ID가 전송되었습니다.";
+			return result;
+		} else {
+			String result = "가입한 이름과 E-MAIL을 확인해주세요";
+			return result;
 		}
-		return mid;
 	}
 
 	// 비밀번호 찾기 - 메일발송
 	@Override
-	public Member memberSearchPw(final Member member) {
-		Member mpw = memberDao.memberSearchPw(member);
+	public String memberSearchPw(final Member member) {
+		final Member mpw = memberDao.memberSearchPw(member);
 		if (mpw != null) {
 			MimeMessagePreparator message = new MimeMessagePreparator() {
-				String content = "<h1>" + member.getMname() + "님의 비밀번호는</h1>\r\n" + "	<h2>" + member.getMpw()
-						+ "입니다.</h2>";
+				String content = "<h1>" + mpw.getMname() + "님의 비밀번호는</h1>\r\n" + "	<h2>" + mpw.getMpw() + "입니다.</h2>";
+
 				@Override
 				public void prepare(MimeMessage mimeMessage) throws Exception {
-					mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(member.getMemail()));
+					mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(mpw.getMemail()));
 					mimeMessage.setFrom(new InternetAddress("dlwlsdn5244@gmail.com"));
 					mimeMessage.setSubject("회원 비밀번호정보");
 					mimeMessage.setText(content, "utf-8", "html");
 				}
 			};
 			mailSender.send(message);
+			String result = "가입하신 E-MAIL로 비밀번호가 전송되었습니다.";
+			return result;
+			
+		} else {
+			String result = "가입한 ID와 이름을 확인해주세요";
+			return result;
 		}
-		return null;
 	}
 
 	// 회원 정보 수정 - 사진변경
@@ -217,4 +240,252 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.memberEmailConfirm(memail);
 	}
 
+	//카카오 로그인 
+	@Override
+	//서비스에 토큰 요청 
+	public String getAccessToken(String authorize_code) {
+		String access_Token = "";
+		String refresh_Token = "";
+		String reqURL = "https://kauth.kakao.com/oauth/token";
+		try {
+			URL url = new URL(reqURL);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			// POST 요청을 위해 기본값이 false인 setDoOutput을 true로
+           
+			conn.setRequestMethod("POST");
+			conn.setDoOutput(true);
+			// POST 요청에 필요로 요구하는 파라미터 스트림을 통해 전송
+            
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+			StringBuilder sb = new StringBuilder();
+			sb.append("grant_type=authorization_code");
+			sb.append("&client_id=9ab3a25c7202d038fb2c93a42fefcc2c"); //본인이 발급받은 key
+			sb.append("&redirect_uri=http://localhost:8081/vendredi/member/kakaoLogin.do"); // 본인이 설정한 주소
+			sb.append("&code=" + authorize_code);
+			bw.write(sb.toString());
+			bw.flush();
+            
+			// 결과 코드가 200이라면 성공
+			int responseCode = conn.getResponseCode();
+			System.out.println("responseCode : " + responseCode);
+            
+			// 요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			String line = "";
+			String result = "";
+            
+			while ((line = br.readLine()) != null) {
+				result += line;
+			}
+			System.out.println("response body : " + result);
+            
+			// Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
+			JsonParser parser = new JsonParser();
+			JsonElement element = parser.parse(result);
+            
+			access_Token = element.getAsJsonObject().get("access_token").getAsString();
+			refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
+            
+			System.out.println("access_token : " + access_Token);
+			System.out.println("refresh_token : " + refresh_Token);
+            
+			br.close();
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return access_Token;
+	}
+	//access_Token에 사용자 정보 받기
+//	@Override
+//	public HashMap<String, Object> getUserInfo (String access_Token) {
+//	    
+//	    //    요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
+//	    HashMap<String, Object> userInfo = new HashMap<>();
+//	    String reqURL = "https://kapi.kakao.com/v2/user/me";
+//	    try {
+//	        URL url = new URL(reqURL);
+//	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//	        conn.setRequestMethod("POST");
+//	        
+//	        //    요청에 필요한 Header에 포함될 내용
+//	        conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+//	        
+//	        int responseCode = conn.getResponseCode();
+//	        System.out.println("responseCode : " + responseCode);
+//	        
+//	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//	        
+//	        String line = "";
+//	        String result = "";
+//	        
+//	        while ((line = br.readLine()) != null) {
+//	            result += line;
+//	        }
+//	        System.out.println("response body : " + result);
+//	        
+//	        JsonParser parser = new JsonParser();
+//	        System.out.println("parser : "+parser);
+//	        JsonElement element = parser.parse(result);
+//	        System.out.println("element : "+element);
+//	        
+//	        JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
+//	        JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
+//	        String nickname = properties.getAsJsonObject().get("nickname").getAsString();
+////	        System.out.println("널 확인 : " + kakao_account.getAsJsonObject().get("email"));
+////	        String email = kakao_account.getAsJsonObject().get("email").getAsString();
+//	        boolean hasEmail = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("has_email").getAsBoolean();
+//	        String email = "";
+//	        if(hasEmail){
+//	            email = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("email").getAsString();
+//	        }
+//	        
+//	        userInfo.put("nickname", nickname);
+//	        userInfo.put("email", email);
+//	        System.out.println(3); //3출력 안됨  오류남
+//	    } catch (IOException e) {
+//	        // TODO Auto-generated catch block
+//	        e.printStackTrace();
+//	    }
+//	    
+//	    return userInfo;
+//	}
 }
+	
+//	@Override
+//	public String getToken(String code) throws Exception {
+//		 // 인가코드로 토큰받기
+//        String host = "https://kauth.kakao.com/oauth/token";
+//        URL url = new URL(host);
+//        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+//        String token = "";
+//        try {
+//            urlConnection.setRequestMethod("POST");
+//            urlConnection.setDoOutput(true); // 데이터 기록 알려주기
+//
+//            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(urlConnection.getOutputStream()));
+//            StringBuilder sb = new StringBuilder();
+//            sb.append("grant_type=authorization_code");
+//            sb.append("&client_id=9ab3a25c7202d038fb2c93a42fefcc2c");
+//            sb.append("&redirect_uri=http://localhost:8081/vendredi/member/loginForm.do");
+//            sb.append("&code=" + code);
+//
+//            bw.write(sb.toString());
+//            bw.flush();
+//
+//            int responseCode = urlConnection.getResponseCode();
+//            System.out.println("responseCode = " + responseCode);
+//
+//            BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+//            String line = "";
+//            String result = "";
+//            while ((line = br.readLine()) != null) {
+//                result += line;
+//            }
+//            System.out.println("result = " + result);
+//
+//            // json parsing
+//            JSONParser parser = new JSONParser();
+//            JSONObject elem = (JSONObject) parser.parse(result);
+//
+//            String access_token = elem.get("access_token").toString();
+//            String refresh_token = elem.get("refresh_token").toString();
+//            System.out.println("refresh_token = " + refresh_token);
+//            System.out.println("access_token = " + access_token);
+//
+//            token = access_token;
+//
+//            br.close();
+//            bw.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//        return token;
+//	}
+//
+//	@Override
+//	public Map<String, Object> getUserInfo(String access_token) throws Exception {
+//		 String host = "https://kapi.kakao.com/v2/user/me";
+//	        Map<String, Object> result = new HashMap<>();
+//	        try {
+//	            URL url = new URL(host);
+//
+//	            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+//	            urlConnection.setRequestProperty("Authorization", "Bearer " + access_token);
+//	            urlConnection.setRequestMethod("GET");
+//
+//	            int responseCode = urlConnection.getResponseCode();
+//	            System.out.println("responseCode = " + responseCode);
+//
+//
+//	            BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+//	            String line = "";
+//	            String res = "";
+//	            while((line=br.readLine())!=null)
+//	            {
+//	                res+=line;
+//	            }
+//
+//	            System.out.println("res = " + res);
+//
+//
+//	            JSONParser parser = new JSONParser();
+//	            JSONObject obj = (JSONObject) parser.parse(res);
+//	            JSONObject kakao_account = (JSONObject) obj.get("kakao_account");
+//	            JSONObject properties = (JSONObject) obj.get("properties");
+//
+//
+//	            String id = obj.get("id").toString();
+//	            String nickname = properties.get("nickname").toString();
+//	            String age_range = kakao_account.get("age_range").toString();
+//
+//	            result.put("id", id);
+//	            result.put("nickname", nickname);
+//	            result.put("age_range", age_range);
+//
+//	            br.close();
+//
+//
+//	        } catch (IOException e) {
+//	            e.printStackTrace();
+//	        }
+//
+//	        return result;
+//	}
+//
+//	@Override
+//	public String getAgreementInfo(String access_token) {
+//		 String result = "";
+//	        String host = "https://kapi.kakao.com/v2/user/scopes";
+//	        try{
+//	            URL url = new URL(host);
+//	            HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
+//	            urlConnection.setRequestMethod("GET");
+//	            urlConnection.setRequestProperty("Authorization", "Bearer "+access_token);
+//
+//	            BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+//	            String line = "";
+//	            while((line=br.readLine())!=null)
+//	            {
+//	                result+=line;
+//	            }
+//
+//	            int responseCode = urlConnection.getResponseCode();
+//	            System.out.println("responseCode = " + responseCode);
+//
+//	            // result is json format
+//	            br.close();
+//
+//	        } catch (MalformedURLException e) {
+//	            e.printStackTrace();
+//	        } catch (ProtocolException e) {
+//	            e.printStackTrace();
+//	        } catch (IOException e) {
+//	            e.printStackTrace();
+//	        }
+//	        return result;
+//	    }
+	
+

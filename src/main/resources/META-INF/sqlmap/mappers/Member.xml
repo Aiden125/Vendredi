@@ -30,11 +30,11 @@
 	</insert>
 	<!-- 아이디 찾기 -->
 	<select id="memberSearchId" parameterType="Member" resultType="Member">
-		SELECT MID FROM MEMBER WHERE MNAME = #{mname} AND MEMAIL =#{memail}
+		SELECT * FROM MEMBER WHERE MNAME = #{mname} AND MEMAIL =#{memail}
 	</select>
 	<!-- 비밀번호 찾기 -->
 	<select id="memberSearchPw" parameterType="Member" resultType="Member">
-		SELECT Mpw FROM MEMBER WHERE MID = #{mid} AND Mname = #{mname}
+		SELECT * FROM MEMBER WHERE MID = #{mid} AND Mname = #{mname}
 	</select>
 	<!-- 회원 로그인 -->
 	<select id="memberLogin" parameterType="Member" resultType="int">
