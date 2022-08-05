@@ -25,7 +25,15 @@ VALUES (storereview_sq.NEXTVAL, 3, 'noImg.png', 'aaa', '여기 너무 맛있어�
 
 
 ---------------------------------- 민우 시작 ---------------------------------------------
-
+--member Dummy
+INSERT INTO MEMBER VALUES('aaa', '지코','1', '010-1234-1234','zico@naver.com','서울시 강남구 역삼동','남자','1992/09/14','zico.jpg');
+INSERT INTO MEMBER VALUES('kang', '강동원','1', '010-4321-4321','kang@naver.com','서울시 강남구 역삼동','남자','1992/09/14','kang.jpg');
+INSERT INTO MEMBER (MID, MNAME, MPW, MTEL, MEMAIL, MADDRESS, MGENDER,MBIRTH) VALUES ('carlos','김민우','111','010-9236-6409','max9236@naver.com','서울시 강남구 청담동','남자','1999/03/21');
+commit;
+--Q&A Dummy
+INSERT INTO QNA (qno,qid,qsubject,qcontent,qhit,qgroup,qstep,qrdate)VALUES(QNA_SQ.NEXTVAL, 'son','가게 사장님과 컨택질문','광고 가능한가요3?',0,QNA_SQ.CURRVAL,0,SYSDATE);
+INSERT INTO QNA VALUES(QNA_SQ.NEXTVAL, 'kang','질문이 있습니다1','광고 가능한가요1?',0,QNA_SQ.CURRVAL,0,SYSDATE,'N');
+INSERT INTO QNA VALUES(QNA_SQ.NEXTVAL, 'son','질문!!','예약 가능한가요?',0,QNA_SQ.CURRVAL,0,SYSDATE,'N');
 
 ----------------------------------- 민우 끝 ---------------------------------------------
 
@@ -38,7 +46,35 @@ VALUES (storereview_sq.NEXTVAL, 3, 'noImg.png', 'aaa', '여기 너무 맛있어�
 
 
 ---------------------------------- 진우 시작 ---------------------------------------------
+------------OWNER DATA
+INSERT INTO OWNER (OID, ONAME, OPW, OTEL, OEMAIL, OADDRESS, OBIRTH, OGENDER)
+    VALUES ('owner2', '박사장', 1, '010-1111-1111', 'ownerPARK@naver.com', '서울시', '19900708', '여자');
+INSERT INTO OWNER (OID, ONAME, OPW, OTEL, OEMAIL, OADDRESS, OBIRTH, OGENDER)
+    VALUES ('owner3', '이사장', 1, '010-7777-7777', 'ownerLEE@naver.com', '전주시', '19991010', '남자');
+INSERT INTO OWNER (OID, ONAME, OPW, OTEL, OEMAIL, OADDRESS, OBIRTH, OGENDER)
+    VALUES ('owner4', '최사장', 1, '010-3333-3333', 'ownerCHOI@naver.com', '광명시', '19670812', '남자');
+INSERT INTO OWNER (OID, ONAME, OPW, OTEL, OEMAIL, OADDRESS, OBIRTH, OGENDER)
+    VALUES ('owner5', '윤사장', 1, '010-9999-9999', 'ownerYOON@naver.com', '천안시', '19910427', '여자');
 
+------------OWNERBOARD DATA
+INSERT INTO OWNERBOARD (BNO, OID, SNAME, BLOC, BTITLE, BCONTENT, BPHOTO1, BPHOTO2, BPHOTO3, BPHOTO4, BPHOTO5, BHIT, BDATE) 
+    VALUES (SEQ_OB.NEXTVAL , 'owner2', '보승회관', '강남', '진상손님', '진상손님 많아요', 'img1.jpg', NULL, NULL, NULL, NULL, 0, SYSDATE);
+INSERT INTO OWNERBOARD (BNO, OID, SNAME, BLOC, BTITLE, BCONTENT, BPHOTO1, BPHOTO2, BPHOTO3, BPHOTO4, BPHOTO5, BHIT, BDATE) 
+    VALUES (SEQ_OB.NEXTVAL , 'owner3', '보배반점', '제주', '짜장면짱', '짬뽕도짱', 'img1.jpg', NULL, NULL, NULL, NULL, 0, SYSDATE);
+INSERT INTO OWNERBOARD (BNO, OID, SNAME, BLOC, BTITLE, BCONTENT, BPHOTO1, BPHOTO2, BPHOTO3, BPHOTO4, BPHOTO5, BHIT, BDATE) 
+    VALUES (SEQ_OB.NEXTVAL , 'dlwlsdn', '강식당', '건대', '내가게는', '음식내용', NULL, NULL, NULL, NULL, NULL, 0, SYSDATE);
+INSERT INTO OWNERBOARD (BNO, OID, SNAME, BLOC, BTITLE, BCONTENT, BPHOTO1, BPHOTO2, BPHOTO3, BPHOTO4, BPHOTO5, BHIT, BDATE) 
+    VALUES (SEQ_OB.NEXTVAL , 'dlwlsdn', '윤식당', '건대', '내가게는', '음식내용', NULL, NULL, NULL, NULL, NULL, 0, SYSDATE);
+
+-- 페이징을 위한 나머지 DATA는 JAVA로 삽입
+SELECT * FROM OWNER WHERE ONAME='이진우' AND OID='dlwlsdn11';
+------------OWNERBOARD DATA
+INSERT INTO BOARD_COMMENT (CNO, BNO, OID, CCONTENT, CDATE)
+    VALUES (SEQ_BC.NEXTVAL, 3, 'owner5', '못살겠어요', SYSDATE);
+INSERT INTO BOARD_COMMENT (CNO, BNO, OID, CCONTENT, CDATE)
+    VALUES (SEQ_BC.NEXTVAL, 4, 'owner2', '맞죠맞죠~', SYSDATE);
+INSERT INTO BOARD_COMMENT (CNO, BNO, OID, CCONTENT, CDATE)
+    VALUES (SEQ_BC.NEXTVAL, 5, 'owner4', '볶음밥도 짱', SYSDATE);
 
 ----------------------------------- 진우 끝 ---------------------------------------------
 

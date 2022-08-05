@@ -10,6 +10,15 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="${conPath }/assets/css/bootstrap1.css">
 <link rel="stylesheet" href="${conPath }/assets/css/join.css">
+<style>
+	body,html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  	background-color: white;
+    }
+</style>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script>
 	 $(document)
@@ -176,8 +185,7 @@ $(function() {
                   <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="회원가입">
                		
                 </form>
-                <p class="login-card-footer-text">Already have an account? <a href="${conPath}/loginView.do" class="text-reset">Login</a></p>
-               
+                <p class="login-card-footer-text">Already have an account? <a href="${conPath}/member/loginForm.do" class="text-reset">Login</a></p>
             </div>
           </div>
         </div>
