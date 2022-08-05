@@ -20,10 +20,10 @@
 		<script>alert('${result}');</script>
 	</c:if>
 	<c:if test="${not empty searchId}">
-		<script>alert('가입 E-MAIL로 ID 전송되었습니다');</script>
+		<script>alert('${searchId}');</script>
 	</c:if>
 	<c:if test="${not empty searchPw}">
-		<script>alert('가입 E-MAIL로 비밀번호 전송되었습니다');</script>
+		<script>alert('${searchPw}');</script>
 	</c:if>
 	<form action="${conPath }/owner/Login.do" method="post">
 		<table>

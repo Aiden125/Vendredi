@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
  
 import com.pro.vendredi.util.Paging;
-import com.pro.vendredi.dto.Store; 
+import com.pro.vendredi.dto.Store;
+import com.pro.vendredi.dto.StoreReview;
 import com.pro.vendredi.service.StoreReviewService;
 import com.pro.vendredi.service.StoreService;
 
@@ -20,6 +21,8 @@ public class StoreController {
 	
 	@Autowired
 	private StoreService storeService; 
+	@Autowired
+	private StoreReviewService storeReviewService;
 
 	// 가게 등록 화면 보기
 	@RequestMapping(value="/storeRegisterView", method = {RequestMethod.GET, RequestMethod.POST}  )
@@ -30,12 +33,14 @@ public class StoreController {
 	@RequestMapping(value = "storeRegister", method = {RequestMethod.GET, RequestMethod.POST} )
 	public String storeRegister(@ModelAttribute("store") Store store , MultipartHttpServletRequest mRequest, Model model) {
 		model.addAttribute("storeRegisterResult", storeService.storeRegister(store, mRequest));
-		return "forward:store/storeRegisterView.do";
+		System.out.println("컨트롤러 화인 : "+ store);
+		return "forward:myStoreList.do";
 	}
 	
 	// 가게 수정 입력창 보기
 	@RequestMapping(value = "storeModifyView", method = { RequestMethod.GET, RequestMethod.POST })
-	public String storeModifyView() {
+	public String storeModifyView(int sno, Model model) {
+		model.addAttribute("store", storeService.storeDetail(sno));
 		return "store/storeModifyView";
 	}
 	
@@ -48,8 +53,10 @@ public class StoreController {
 	
 	// 가게 상세 보기
 	@RequestMapping(value = "storeDetail", method = { RequestMethod.GET, RequestMethod.POST })
-	public String storeDetail(int sno, Model model) {
+	public String storeDetail(int sno, Model model, String pageNum, StoreReview storeReview) {
 		model.addAttribute("store", storeService.storeDetail(sno));
+		model.addAttribute("storeReviewList", storeReviewService.storeReviewList(storeReview, pageNum, sno) );
+		model.addAttribute("paging", new Paging(storeReviewService.reviewCnt(sno), pageNum, 3, 1));
 		return "store/storeDetail";
 	} 
 	
@@ -68,6 +75,13 @@ public class StoreController {
 			model.addAttribute("paging", new Paging(storeService.storeCnt(store), pageNum, 8, 3));
 			return "store/storeList";
 	}
+	// 가게 목록 보기 - 등록된 가게들 중 최신순
+		@RequestMapping(value = "myStoreList", method = {RequestMethod.POST, RequestMethod.GET})
+		public String myStoreList(String pageNum, Model model, Store store, String oid ) {
+			model.addAttribute("storeList", storeService.myStoreList(pageNum, store, oid));
+			model.addAttribute("paging", new Paging(storeService.storeCntMy(oid), pageNum, 5, 1));
+			return "store/myStoreList";
+		}
 	
 	
 //	// --------------------------------storeReview----------------------------------------------------

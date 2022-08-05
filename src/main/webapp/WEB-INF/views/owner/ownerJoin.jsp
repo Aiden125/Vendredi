@@ -10,6 +10,8 @@
 	<title>Insert title here</title>
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="${conPath }/assets/css/bootstrap1.css">
+	<link rel="stylesheet" href="${conPath }/assets/css/join.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 	<script>
@@ -93,88 +95,71 @@
 	<script src="${conPath }/js/address.js"></script>
 </head>
 <body>
-	<div id="content">
-		<form action="${conPath }/owner/Join.do" method="post">
-			<table>
-			<caption>회원가입 화면</caption>
-				<tr>
-					<td>아이디</td>
-					<td>
-						<input type="text" name="oid" required="required">
-						<div id="idConfirmResult" class="in"> &nbsp; </div>
-					</td>
-				</tr>
-				<tr>
-					<td>비밀번호</td>
-					<td>
-						<input type="password" name="opw" id="opw" required="required">
-					</td>
-				</tr>
-				<tr>
-					<td>비밀번호확인</td>
-					<td>
-						<input type="password" name="opwChk" id="opwChk" required="required">
-						<div id="pwChkResult" class="in"> &nbsp; </div>
-					</td>
-				</tr>
-				<tr>
-					<td>이름</td>
-					<td>
-						<input type="text" name="oname" required="required">
-					</td>
-				</tr>
-				<tr>
-					<td>전화번호</td>
-					<td>
-						<input type="text" name="otel" required="required">
-					</td>
-				</tr>
-				<tr>
-					<td>E-MAIL</td>
-					<td>
-						<input type="email" name="oemail" required="required">
-						<div id="emailConfirmResult" class="in"> &nbsp; </div>
-					</td>
-				</tr>
-				<tr>
-					<td>우편번호</td>
-					<td>
-						<input type="text" id="sample4_postcode" name="mpost" class="text_box"  placeholder="우편번호">
-						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
-					</td>
-				</tr>
-				<tr>
-					<td>주소</td>
-					<td>
-						<input type="text" id="sample4_roadAddress" name="oaddress"  placeholder="도로명주소">
-						<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소">
-						<span id="guide"></span>
-					</td>
-				</tr>
-				<tr>
-					<td>생년월일</td>
-					<td>
-						<input type="text" id="obirth" name="obirth" required="required">
-					</td>
-				</tr>
-				<tr>
-					<td>성별</td>
-					<td>
-						<select id="ogender" name="ogender" class="in" required="required">
-							<option>성별</option>
-							<option value="남자">남자</option>
-							<option value="여자">여자</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<input type="submit" class="btn" value="회원가입">
-						<input type="button" class="btn" value="취소" onclick="location.href='${conPath}/main.do'">
-					</td>
-				</tr>
-			</table>
-		</form>
-	</div>
+	
+	 <jsp:include page="../main/header.jsp"/>
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+    <div class="container">
+      <div class="card login-card">
+        <div class="row no-gutters">
+           <div class="col-md-5">
+             <img src="${conPath }/assets/img/햄버거2.jpg" alt="login" class="login-card-img" style="height:900px; width:500px;"> 
+          </div>
+          <div class="col-md-7">
+            <div class="card-body">
+              
+              <p class="login-card-description">OWNER JOIN </p>
+              <form action="${conPath }/owner/Join.do" method="post">
+				 <div class="form-group">
+                    <label for="oname" class="sr-only">이름</label>
+                    <input type="text" name="oname" id="oid" required="required" class="form-control" placeholder="이름">
+                  </div>	              
+                  <div class="form-group">
+                    <label for="oid" class="sr-only">아이디</label>
+                    <input type="text" name="oid" id="mid" value="${oid }" required="required" class="form-control" placeholder="아이디">
+                  </div>
+                  <div id="idConfirmResult">&nbsp;</div>
+                  <div class="form-group mb-4">
+                    <label for="password" class="sr-only">비밀번호</label>
+                    <input type="password" name="opw" id="password" required="required"  class="form-control" placeholder="비밀번호">
+                  </div>
+                   <div class="form-group mb-4">
+                    <label for="password" class="sr-only">비밀번호확인</label>
+                    <input type="password" name="opwChk" id="password" required="required"  class="form-control" placeholder="비밀번호확인">
+                  </div>
+                   <div id="pwChkResult">&nbsp;</div>
+                   <div class="form-group">
+                    <label for="otel" class="sr-only">전화번호</label>
+                    <input type="text" name="otel" id="otel" required="required" class="form-control" placeholder="전화번호">
+                  </div>
+                  <div class="form-group">
+                    <label for="oemail" class="sr-only">이메일</label>
+                    <input type="email" name="oemail" id="oemail" required="required" class="form-control" placeholder="이메일">
+                  </div>
+                   <div id="emailConfirmResult">&nbsp;</div>
+                  <div class="form-group">
+                    <label for="oaddress" class="sr-only">주소</label>
+                    <input type="text" name="oaddress" id="oaddress"  class="form-control" placeholder="주소">
+                  </div>
+                  <div class="form-group">
+                    <label for="obirth" class="sr-only">생년월일</label>
+                    <input type="text" name="obirth" id="obirth"  class="form-control" placeholder="생년월일">
+                  </div>
+                   <div class="form-group">
+                    <label for="ogender" class="sr-only">성별</label>
+                    <input type="radio" name="ogender" id="ogender"   checked="checked" placeholder="성별">남자
+                    <input type="radio" name="ogender" id="ogender"  >여자
+                  </div>
+                  <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="회원가입">
+               		
+                </form>
+                <p class="login-card-footer-text">Already have an account? <a href="${conPath}/owner/LoginForm.do" class="text-reset">Login</a></p>
+               
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </main>
 </body>
 </html>

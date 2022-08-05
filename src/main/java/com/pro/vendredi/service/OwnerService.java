@@ -9,8 +9,8 @@ public interface OwnerService {
 	public int owneremailConfirm(String oemail);
 	public int ownerJoin(Owner owner, HttpSession session);
 	public String ownerLogin(String oid, String opw, HttpSession session);
-	public Owner ownerSearchId(Owner owner);
-	public Owner ownerSearchPw(Owner owner);
+	public String ownerSearchId(Owner owner);
+	public String ownerSearchPw(Owner owner);
 	public Owner ownerInfo(String oid);
 	public int ownerModify(Owner owner);
 }

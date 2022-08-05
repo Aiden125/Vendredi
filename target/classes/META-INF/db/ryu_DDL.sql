@@ -26,6 +26,7 @@ create table store (
             sScore      number(8) default 0,
             sLike       number(1) default 0
             );
+<<<<<<< HEAD
 SELECT * FROM STORE;
 SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE FROM STORE where sNo = 1; -- 가게 평점
    
@@ -40,6 +41,9 @@ commit;
 UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
                    sScore = sScore +1
                    WHERE SNo = 4;
+=======
+
+>>>>>>> 74af8d7bb1229c748de0bf421cc4e13a781c00d0
                   
                    
 drop table storereview;
@@ -73,3 +77,4 @@ create table request (
             sName         varchar2(100) not null, -- 요청한 가게 이름
             rDate         date default sysdate -- 요청 등록된 일시
     );     
+SELECT * FROM request;

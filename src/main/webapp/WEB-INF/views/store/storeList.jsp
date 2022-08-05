@@ -17,7 +17,7 @@
 .wrap {
     height: 100%;
     width: 100%;
-    background-image: url(assets/img/디저트.jpg);
+    background-image: url('${conPath}/assets/img/디저트.jpg');
     background-position: center;
     background-size: cover;
     position: absolute;
@@ -106,13 +106,17 @@ span {
     left: 450px;
 }
 </style>
-	<link href="conPath/assets/css/style.css" rel="stylesheet">
+	<link href="${conPath }/assets/css/style.css" rel="stylesheet">
 	
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script>
 		$(document).ready(function(){
 			
 		});
+		function trclicked(sno) {
+			location.href ='${conPath}/store/storeDetail.do?sno='+ sno ;
+			
+		}
 	</script>
 </head>
 <body>
@@ -125,8 +129,9 @@ span {
 		</c:if>
 		<c:if test="${paging.totCnt != 0 }">
 			<c:forEach items="${storeList }" var="store">
-				<tr> 
+				<tr onclick="trclicked(${store.sno })"> 
 					<td>
+						${store.sno }
 						<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage}" width = "100px">
 					</td>
 					<td>${store.sname }</td>

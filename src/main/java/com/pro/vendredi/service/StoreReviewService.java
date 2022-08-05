@@ -10,9 +10,10 @@ import com.pro.vendredi.dto.StoreReview;
 @Service
 public interface StoreReviewService {
 	public int reviewWrite (StoreReview storeReview, MultipartHttpServletRequest mReques);
-	public int addScore (int sno);
+	public int addScore (StoreReview storeReview);
 	public List<StoreReview> storeReviewList (StoreReview storeReview, String pageNum, int sno);
 	public int reviewModify (StoreReview storeReview, MultipartHttpServletRequest mRequest);
 	public int reviewDelete (int srno);
 	public int reviewCnt (int sno);
+	public StoreReview reviewDetail (int srno);
 }

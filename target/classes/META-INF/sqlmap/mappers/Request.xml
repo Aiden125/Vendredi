@@ -29,10 +29,9 @@
     where RN BETWEEN #{startRow} and #{endRow} 
 </select>
 
-<select id="myRequestList" parameterType="string" resultMap="RequestResult">
+<select id="myRequestList" parameterType="Request" resultMap="RequestResult">
 	
-	select rno, sno, sname from request where oid = #{oid} 
-									order by rno desc
+select rno, oid, sno, sname, rdate from request where oid = #{oid} order by rno desc
     
 </select>
 

@@ -39,9 +39,39 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM
     (select count(*) from qna where qno=q.qno and qstep>0 ) replyok
     from qna Q order by qgroup)A)
     WHERE RN BETWEEN 1 AND 3;
+
+
+
+-- 답변완료 여부 나타내는 페이징 리스트(질문글만 보이게) - 희석 추가
+SELECT * FROM
+    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP=0 ORDER BY QRDATE DESC) A)
+    WHERE RN BETWEEN 1 AND 10;
+
+-- 질문글 총 갯수 for paging - 희석 추가
+SELECT COUNT(*) FROM QNA WHERE QSTEP=0;
+
+-- 답변안된 질문만 보기 - 희석 추가
+SELECT * FROM
+    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP=0 AND QREPLYCHECK=0 ORDER BY QRDATE DESC) A)
+    WHERE RN BETWEEN 2 AND 3;
+
+-- 답변안된 질문글 총 갯수 for paging - 희석 추가
+SELECT COUNT(*) FROM QNA WHERE QSTEP=0 AND QREPLYCHECK=0;
+
+-- 답변만 보기 - 희석 추가
+SELECT * FROM
+    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP!=0 ORDER BY QRDATE DESC) A)
+    WHERE RN BETWEEN 2 AND 3;
+
+-- 답변들 총 갯수 - 희석 추가
+SELECT COUNT(*) FROM QNA WHERE QSTEP!=0;
+
+-- 원글 상세보기
+SELECT * FROM QNA WHERE QGROUP=1 AND QSTEP=0;
+-- 답글 상세보기
+SELECT * FROM QNA WHERE QGROUP=1 AND QSTEP!=0;
+
     
-SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA ORDER BY QRDATE DESC)A)
-    WHERE RN BETWEEN 1 AND 3;    
 --(2) id = qnaWrite (문의글 작성)
 INSERT INTO QNA (qno,qid,qsubject,qcontent,qhit,qgroup,qstep,qrdate)VALUES(QNA_SQ.NEXTVAL, 'son','질문이 있습니다1','광고 가능한가요3?',0,QNA_SQ.CURRVAL,0,SYSDATE);
 SELECT * FROM QNA;
@@ -58,8 +88,8 @@ update qna set qhit = qhit +1 where qno=2;
 UPDATE  QNA SET QSTEP=QSTEP +1 WHERE QGROUP = 1 ;
 SELECT * FROM QNA  ORDER BY QGROUP ;
 --(4) id = qnaReplyWrite (문의글 답변)
-INSERT INTO QNA (QNO, QID, QSUBJECT, QCONTENT,QGROUP,QSTEP )
-    VALUES (QNA_SQ.NEXTVAL, '관리자','1번글 답변','연락 드리겠습니다',1,1);
+INSERT INTO QNA (QNO, QID, QSUBJECT, QCONTENT,QGROUP,QSTEP, QREPLYCHECK)
+    VALUES (QNA_SQ.NEXTVAL, '관리자','1번글 답변','연락 드리겠습니다',1,1, 1);
 --(4) id = qnaReplyAfter (답변이 완료되면 제목에 답변완료 추가)
 select qno, qid, qsubject, qcontent,qhit, qgroup, qstep, qrdate, qsecret,
     (select count(*) from qna where qno=q.qno and qstep>0 ) replyok

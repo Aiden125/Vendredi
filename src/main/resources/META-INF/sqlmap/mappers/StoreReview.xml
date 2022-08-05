@@ -25,9 +25,9 @@
     #{srimage1}, #{srimage2}, #{srimage3}, #{srimage4}, #{srimage5}, #{srscore}, sysdate)
 </insert>
 
-<update id="addScore" parameterType="int" >
+<update id="addScore" parameterType="StoreReview" >
     		UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
-                   sScore = sScore + #{srScore]
+                   sScore = sScore + #{srscore}
                    WHERE SNo = #{sno} 
 </update>
 <select id="reviewCnt" parameterType="int" resultType="int">
@@ -56,6 +56,10 @@
 <delete id="reviewDelete"  parameterType="int">
 	delete storereview where srno = #{srno}
 </delete>
+
+<select id="reviewDetail"  parameterType="int" resultType="Store">
+	select * from storereview where srno = #{srno}
+</select>
  
 </mapper>
 

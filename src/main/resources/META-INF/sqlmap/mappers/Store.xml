@@ -63,19 +63,29 @@
 <select id="storeCntSearch" parameterType="string" resultType="int">
     		select count(*) cnt from store where ssearchtag like '%'||#{ssearchtag}||'%' and sConfirm = 'Y'
 </select>
+<select id="storeCntMy" resultType="int">
+    		select count(*) cnt from store where oid = #{oid}
+</select>
 
 <select id="storeList" parameterType="Store" resultMap="storeResult">
 	SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+    (SELECT SNO, SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE where sConfirm = 'Y' order by sno desc)A)
      WHERE RN BETWEEN #{startRow} AND #{endRow}
 </select>
 <select id="storeListSearch" parameterType="Store" resultMap="storeResult">
 	SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+    (SELECT SNO, SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE where sSearchtag like '%'||#{ssearchtag}||'%' and sConfirm = 'Y' order by STSCORE desc)A)
+     WHERE RN BETWEEN #{startRow} AND #{endRow} 
+</select>
+<select id="myStoreList" parameterType="Store" resultMap="storeResult">
+	SELECT * FROM
+    (SELECT ROWNUM RN, A.* FROM
+    (SELECT SNO, SIMAGE, SNAME, SLOCATION, STYPE 
+     FROM STORE where oid = #{oid} order by sno desc)A)
      WHERE RN BETWEEN #{startRow} AND #{endRow} 
 </select> 
 
