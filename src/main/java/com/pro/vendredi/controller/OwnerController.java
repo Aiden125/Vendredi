@@ -43,7 +43,7 @@ public class OwnerController {
 	// 오너 로그인폼
 	@RequestMapping(value="/LoginForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String ownerLoginForm() {
-		return "owner/ownerLogin";
+		return "owner/ownerLoginForm";
 	}
 	// 오너 로그인
 	@RequestMapping(value="/Login", method = RequestMethod.POST)
@@ -82,6 +82,12 @@ public class OwnerController {
 		model.addAttribute("modifyResult", ownerService.ownerModify(owner));
 		session.setAttribute("owner", owner);
 		return "forward:Info.do";
+	}
+	// 오너 내 가게(미구현)
+	@RequestMapping(value="/myStoreList", method = RequestMethod.GET)
+	public String ownermyStoreList(String oid, Model model) {
+		
+		return "owner/ownerMyStoreList";
 	}
 	// 오너 ID찾기 폼
 	@RequestMapping(value="/SearchIdForm", method = RequestMethod.GET)

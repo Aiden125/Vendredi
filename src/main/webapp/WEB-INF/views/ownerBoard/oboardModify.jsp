@@ -11,6 +11,12 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 </head>
 <body>
+	<c:if test="${empty owner }">
+			<script>
+				alert('글수정은 로그인 후 가능합니다');
+				location.href="${conPath}/owner/LoginForm.do";
+			</script>
+		</c:if>
 	<div id="content">
 		<form action="${conPath }/oboard/Modify.do" method ="post" enctype="multipart/form-data">
 			<input type="hidden" name="pageNum" value="${param.pageNum }">
