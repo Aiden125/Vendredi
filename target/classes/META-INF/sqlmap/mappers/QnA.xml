@@ -30,26 +30,6 @@
     WHERE RN BETWEEN #{startRow} AND #{endRow}
 	</select>
 	
-	<!-- 질문글 리스트(희석 추가) -->
-	<select id="qnaQuestList" parameterType="QnA" resultMap="QnAResult">
-	SELECT * FROM
-	    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP=0 ORDER BY QNO) A)
-	    WHERE RN BETWEEN #{startRwo} AND ${endRow}
-	</select>
-	
-	<!-- 답변글 보기(희석 추가) -->
-	<select id="qnaAnswerList" parameterType="QnA" resultMap="QnAResult">
-	SELECT * FROM
-	    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP!=0 ORDER BY QNO) A)
-	    WHERE RN BETWEEN #{startRwo} AND ${endRow}
-	</select>
-	
-	<!-- 질문글 갯수(희석 추가) -->
-	<select id="qnaQuestionTotCnt" resultType="int">
-		SELECT COUNT(*) FROM QNA WHERE QSTEP=0
-	</select>
-	
-	
 	<!-- 문의글 작성 -->
 	<insert id="qnaWrite" parameterType="QnA">
 	<if test="qsecret == 'Y'">
@@ -84,16 +64,58 @@
 		DELETE FROM QNA WHERE QNO= #{qno}
 	</delete>
 	
-	<!-- 답변글 쓰기전 step A -->
+	<!-- 답변글 쓰기전 step A(미사용 예정) -->
 	<update id="qnaReplyPre" parameterType="QnA" >
-		UPDATE  QNA SET QSTEP=QSTEP +1 WHERE QGROUP = #{qgroup}
+		UPDATE  QNA SET QSTEP=QSTEP +1 WHERE QGROUP = #{qgroup} AND qSTEP>0
 	</update>
 	
 	<!-- 답변글 쓰기 -->
 	<insert id="qnaReply" parameterType="QnA">
-		INSERT INTO QNA (QNO, QID, QSUBJECT, QCONTENT,QGROUP,QSTEP )
-    VALUES (QNA_SQ.NEXTVAL,#{qid},#{qsubject},#{qcontent},#{qgroup},#{qstep})
+		INSERT INTO QNA (QNO, QID, QSUBJECT, QCONTENT,QGROUP,QSTEP, QREPLYCHECK)
+    VALUES (QNA_SQ.NEXTVAL,#{qid},#{qsubject},#{qcontent},#{qgroup},1, 1)
 	</insert>
 	
+	
+	<!-- 질문글 리스트(희석 추가) -->
+	<select id="qnaQuestionList" parameterType="QnA" resultMap="QnAResult">
+	SELECT * FROM
+	    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP=0 ORDER BY QRDATE DESC) A)
+	    WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 질문글 총 갯수(희석 추가) -->
+	<select id="qnaQuestionTotCnt" resultType="int">
+		SELECT COUNT(*) FROM QNA WHERE QSTEP=0
+	</select>
+		
+	<!-- 답변 안된 질문글만 보기(희석 추가) -->
+	<select id="qnaReplyYetList" parameterType="QnA" resultMap="QnAResult">
+	SELECT * FROM
+	    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP=0 AND QREPLYCHECK=0 ORDER BY QRDATE DESC) A)
+	    WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 답변글 갯수(희석 추가) -->
+	<select id="qnaReplyYetTotCnt" resultType="int">
+		SELECT COUNT(*) FROM QNA WHERE QSTEP=0 AND QREPLYCHECK=0
+	</select>
+	
+	<!-- 답변글만 보기(희석 추가) -->
+	<select id="qnaReplyList" parameterType="QnA" resultMap="QnAResult">
+	SELECT * FROM
+	    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP!=0 ORDER BY QRDATE DESC) A)
+	    WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 답변글 갯수(희석 추가) -->
+	<select id="qnaReplyTotCnt" resultType="int">
+		SELECT COUNT(*) FROM QNA WHERE QSTEP!=0
+	</select>
+	
+	<!-- 답변되면 상태변경(희석 추가) -->
+	<update id="qnaStateUpdate" parameterType="int">
+		UPDATE QNA SET QREPLYCHECK=1
+        WHERE QNO=#{qno}
+	</update> 
 	
 </mapper>

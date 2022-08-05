@@ -50,12 +50,9 @@
 
 	<div id="content">
 		<table id="main_table">
-			<caption>QnA 관리</caption>
+			<caption>답변 안된 질문</caption>
 			<tr class="tr_top">
 				<th>글번호</th><th>글제목</th><th>작성자</th><th>조회수</th><th>날짜</th><th>답변여부</th>
-				<c:if test="${not empty admin }">
-					<th>수정</th><th>삭제</th>
-				</c:if>
 			</tr>
 			
 			<c:if test="${qnaList.size() != 0 }">
@@ -73,14 +70,13 @@
 						<td>${qna.qhit }</td>
 						<td><fmt:formatDate value="${qna.qrdate }" type="date" dateStyle="short"/></td>
 						<td>
-							<c:if test="${qna.qreplycheck == 0 }">답변대기</c:if>
-							<c:if test="${qna.qreplycheck == 1 }">답변완료</c:if>
+							<c:if test="${empty admin }">
+								답변대기
+							</c:if>
+							<c:if test="${not empty admin }">
+								<a href="${conPath }/qna/replyView.do?qno=${qna.qno}&qgroup=${qna.qgroup}">답변대기</a>
+							</c:if>
 						</td>
-						
-						<c:if test="${not empty admin }">
-							<td><a href="${conPath }/qna/modifyViewAdminVer.do?qno=${qna.qno}">수정하기</a></td>
-							<td><a href="${conPath }/qna/deleteAdminVer.do?qno=${qna.qno}">삭제하기</a></td>
-						</c:if>
 					</tr>
 				</c:forEach>
 			</c:if>

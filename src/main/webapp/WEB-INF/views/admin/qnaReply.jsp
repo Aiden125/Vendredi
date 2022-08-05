@@ -17,6 +17,8 @@
 <div id="content">
 	<form action="${conPath }/qna/reply.do" method="post">
 	<input type="hidden" name="qid" value=${admin.aid }>
+	<input type="hidden" name="qno" value=${param.qno }>
+	<input type="hidden" name="qgroup" value=${param.qgroup }>
 		<table id="modify_table">
 			<tr>
 				<th>제목</th>
