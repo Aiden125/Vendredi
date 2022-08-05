@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
-import com.pro.vendredi.dao.StoreDao;
+ 
+import com.pro.vendredi.dao.StoreDao; 
 import com.pro.vendredi.dto.Store;
 import com.pro.vendredi.util.Paging;
 
@@ -22,7 +22,7 @@ import com.pro.vendredi.util.Paging;
 public class StoreServicImpl implements StoreService {
 
 	@Autowired
-	public StoreDao storeDao;
+	public StoreDao storeDao; 
 	
 	String backupPath="D:/webPro_ryu/source/Vendredi/Vendredi/src/main/webapp/storeImgFileUpload/";
 	
@@ -157,6 +157,19 @@ public class StoreServicImpl implements StoreService {
 	@Override
 	public int storeCnt(Store store) { 
 		return storeDao.storeCnt(store);
+	}
+
+	@Override 
+	public List<Store> myStoreList(String pageNum, Store store, String oid) {
+		Paging paging = new Paging(storeDao.storeCntMy(oid), pageNum, 10, 3);
+		store.setStartRow(paging.getStartRow());
+		store.setEndRow(paging.getEndRow());
+		return storeDao.myStoreList(store);
+	}
+
+	@Override
+	public int storeCntMy(String oid) {
+		return storeDao.storeCntMy(oid);
 	}
 
 }

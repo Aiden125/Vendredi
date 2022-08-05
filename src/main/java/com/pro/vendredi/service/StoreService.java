@@ -16,5 +16,7 @@ public interface StoreService {
 	public Store storeDetail (int sno);
 	public int storeCntSearch (String ssearchtag);
 	public int storeCnt(Store store);
+	public int storeCntMy(String oid);
 	public Store storeScore (int sno);
+	public List<Store> myStoreList(String pageNum, Store store, String oid);
 }

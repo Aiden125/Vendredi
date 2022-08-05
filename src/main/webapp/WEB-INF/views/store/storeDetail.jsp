@@ -17,13 +17,14 @@
 .wrap {
     height: 100%;
     width: 100%;
-    background-image: url(assets/img/디저트.jpg);
+    background-image: url('${conPath}/assets/img/디저트.jpg');
     background-position: center;
     background-size: cover;
     position: absolute;
 }
 .form-wrap {
-    width: 500px; 
+    width: 600px; 
+    height : 2000px;
     position: relative;
     margin: 6% auto;
     background: #fff;
@@ -105,19 +106,17 @@ span {
     left: 450px;
 }
 </style>
-	<link href="${conPath }/assets/css/style.css" rel="stylesheet">
-	
+	<link href="${conPath }/assets/css/style.css" rel="stylesheet"> 
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
 	<div class="wrap">
-	<div class="form-wrap"> 
-		<table>
+	<div class="form-wrap">
+		<table style="margin : 0 auto;" >
 		<tr>
-			<td colspan="2"> 
-				${store.sno }
-				<img alt="가게 이미지" src="${conPath }/storeReviewImgFileUpload/${store.simage }" width = "75px">
+			<td colspan="2">  
+				<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage }" width = "75px">
 			</td>
 		</tr>
 		<tr> 	  
@@ -197,9 +196,106 @@ span {
 				${store.smenu3cost }
 			</td>
 		</tr>
+		<tr>
+			<th colspan="2">
+				추후 owner, admin 적용하게 바꿀예정 <br>
+				<input type="button" value="등록 요청" onclick="location='${conPath}/request/writeRequest.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'">
+				<input type="button" value="가게 정보 수정" onclick="location='${conPath}/store/storeModifyView.do?sno=${param.sno }'">
+			</th>
+		</tr>
 		</table>		
-		<br>
-		<jsp:include page="/storeReview/storeReviewList.do?sno=${param.sno }&pageNum=1"/>
+		<br> 
+	<form action="${conPath }/storeReview/writeReview.do" method="POST" enctype="multipart/form-data"> 
+	<input type="hidden" value="${store.sno}" name="sno">
+	<input type="hidden" value="aaa" name="mid">
+	<input type="hidden" value="noimg.png" name="mprofile">
+	<table>
+		<tr>
+			<td colspan="2"><textarea rows="5" cols="57" name="srcontent"></textarea>
+		<tr>
+		<tr>
+			<td colspan="2">
+				<p>리뷰사진 1 <input type="file" name="srimg1"> </p> <br>
+				<p>리뷰사진 2 <input type="file" name="srimg2"> </p> <br>
+				<p>리뷰사진 3 <input type="file" name="srimg3"> </p> <br>
+				<p>리뷰사진 4 <input type="file" name="srimg4"> </p> <br>
+				<p>리뷰사진 5 <input type="file" name="srimg5"> </p> <br> 	
+			</td>
+		</tr>
+		<tr>
+			<td>
+				가게 점수
+				<select name="srscore"> 
+    					<option value="1">1</option>
+    					<option value="2">2</option>
+    					<option value="3">3</option>
+    					<option value="4">4</option>
+  						<option value="5" selected>5</option>
+  				</select>
+			</td>
+			<td align="right">
+				<input type="submit" value="리뷰등록" >
+			</td>
+		</tr>
+	</table>
+	</form>
+	
+	<table style="margin : 0 auto;"> 
+		<c:if test="${paging.totCnt eq 0 }">
+			<tr> <th colspan="5">등록된 리뷰가 없습니다.</th> </tr>
+		</c:if>
+		<c:if test="${paging.totCnt != 0 }">
+				<c:forEach items="${storeReviewList }" var="storeReview">
+				<tr>  
+					<td>
+						${storeReview.mid } <br>
+						<img alt="프로필 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.mprofile }" width = "75px">
+				    </td>
+					<td> 
+						평가 점수 : ${storeReview.srscore }
+					</td>
+				</tr>
+				<tr>	
+					<td> 
+						${storeReview.srcontent }
+					</td> 
+				</tr>
+				<tr>	
+					<td>
+						<img alt="리뷰 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage1}" width = "75px">
+						<c:if test="${storeReview.srimage2 != null} ">
+						<img alt="리뷰 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage2}" width = "75px">
+						</c:if>
+						<c:if test="${storeReview.srimage3 != null} ">
+						<img alt="리뷰 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage3}" width = "75px">
+						</c:if>
+						<c:if test="${storeReview.srimage4 != null} ">
+						<img alt="리뷰 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage4}" width = "75px">
+						</c:if>
+						<c:if test="${storeReview.srimage5 != null} ">
+						<img alt="리뷰 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage5}" width = "75px"> 
+						</c:if>
+					</td>    
+				</tr> 
+			</c:forEach>
+		</c:if>
+	</table> 
+	<div id="paging" align="center">
+		<c:if test="${paging.startPage> paging.blockSize }">
+		[<a href="${conPath }/store/storeDetail.do?sno=${param.sno}&pageNum=${paging.startPage-1}">이전</a>]
+		</c:if>
+		<c:forEach var="i" begin="${paging.startPage }" end="${paging.endPage}">
+			<c:if test="${i eq paging.currentPage }">
+			[<b style="color : red;">${i}</b>]
+			</c:if>
+			<c:if test="${i != paging.currentPage }">
+			[<a href="${conPath }/store/storeDetail.do?sno=${param.sno}&pageNum=${i}">${i}</a>]
+			</c:if>
+		</c:forEach>
+		<c:if test="${paging.endPage < paging.pageCnt }">
+		[<a href="${conPath }/store/storeDetail.do?sno=${param.sno}&pageNum=${paging.endPage +1}">다음</a>]
+		</c:if>
+	</div>
 	</div>	 
 	</div> 
 </body>

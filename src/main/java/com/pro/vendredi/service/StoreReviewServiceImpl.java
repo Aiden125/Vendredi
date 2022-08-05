@@ -57,23 +57,23 @@ public class StoreReviewServiceImpl implements StoreReviewService {
 	@Override
 	public int reviewWrite(StoreReview storeReview, MultipartHttpServletRequest mRequest) {
 		String uploadPath = mRequest.getRealPath("storeImgFileUpload/");
-		Iterator<String> params = mRequest.getFileNames(); // tempBimg1, temptBimg2
-		String[] bimg = new String[4];
+		Iterator<String> params = mRequest.getFileNames(); // tempsrimg1, temptsrimg2
+		String[] srimg = new String[5];
 		int idx  = 0;
 		while (params.hasNext()) {
 			String param = params.next(); // 마라미터의 다음 객체
 			MultipartFile mFile = mRequest.getFile(param);// 파라미터에 첨부된 파일 객체
-			bimg[idx] = mFile.getOriginalFilename();
-			if(bimg[idx]!=null && !bimg[idx].equals("")) {
-				if(new File(uploadPath + bimg[idx]).exists()) {
-					bimg[idx] = System.currentTimeMillis() + "_" + bimg[idx];
+			srimg[idx] = mFile.getOriginalFilename();
+			if(srimg[idx]!=null && !srimg[idx].equals("")) {
+				if(new File(uploadPath + srimg[idx]).exists()) {
+					srimg[idx] = System.currentTimeMillis() + "_" + srimg[idx];
 					
 				}// if
 				try {
-					mFile.transferTo(new File(uploadPath + bimg[idx]));
-					System.out.println("서버파일 : "+ uploadPath + bimg[idx]);
-					System.out.println("백업파일 : "+ backupPath + bimg[idx]);
-					Boolean result = fileCopy(uploadPath + bimg[idx], backupPath + bimg[idx] );
+					mFile.transferTo(new File(uploadPath + srimg[idx]));
+					System.out.println("서버파일 : "+ uploadPath + srimg[idx]);
+					System.out.println("백업파일 : "+ backupPath + srimg[idx]);
+					Boolean result = fileCopy(uploadPath + srimg[idx], backupPath + srimg[idx] );
 					System.out.println(result ? idx+"번째 백업 성공": idx+"번째 백업 실패");
 				} catch (Exception e) {
 					System.out.println(e.getMessage()+"StoreReviewService write error");
@@ -82,26 +82,26 @@ public class StoreReviewServiceImpl implements StoreReviewService {
 				
 			}// if
 			idx++;
-		}//while - bimg 배열에 파일 이름 저장
-		storeReview.setSrimage1(bimg[0]);
-		storeReview.setSrimage1(bimg[1]);
-		storeReview.setSrimage1(bimg[2]);
-		storeReview.setSrimage1(bimg[3]);
-		storeReview.setSrimage1(bimg[4]);// 첫번째 청구할 파일 이름
-		System.out.println("서비스 저장 전 : " + storeReview);
+		}//while - srimg 배열에 파일 이름 저장
+		storeReview.setSrimage1(srimg[0]);
+		storeReview.setSrimage2(srimg[1]);
+		storeReview.setSrimage3(srimg[2]);
+		storeReview.setSrimage4(srimg[3]);
+		storeReview.setSrimage5(srimg[4]);// 첫번째 청구할 파일 이름
+		System.out.println("reviewWrite 서비스 저장 전 : " + storeReview);
 		int result = storeReviewDao.reviewWrite(storeReview);
-		System.out.println("서비스 저장 후 : " + storeReview);
+		System.out.println("reviewWrite 서비스 저장 후 : " + storeReview);
 		return result; // DB INSERT 
 	}
 
 	@Override
-	public int addScore(int sno) { 
-		return storeReviewDao.addScore(sno);
+	public int addScore(StoreReview storeReview) { 
+		return storeReviewDao.addScore(storeReview);
 	}
 
 	@Override
 	public List<StoreReview> storeReviewList(StoreReview storeReview, String pageNum, int sno) {
-		Paging paging = new Paging(storeReviewDao.reviewCnt(sno), pageNum, 10, 5);
+		Paging paging = new Paging(storeReviewDao.reviewCnt(sno), pageNum, 3, 1);
 		storeReview.setStartRow(paging.getStartRow());
 		storeReview.setEndRow(paging.getEndRow());
 		return storeReviewDao.storeReviewList(storeReview);
@@ -110,23 +110,23 @@ public class StoreReviewServiceImpl implements StoreReviewService {
 	@Override
 	public int reviewModify(StoreReview storeReview, MultipartHttpServletRequest mRequest) {
 		String uploadPath = mRequest.getRealPath("storeImgFileUpload/");
-		Iterator<String> params = mRequest.getFileNames(); // tempBimg1, temptBimg2
-		String[] bimg = new String[4];
+		Iterator<String> params = mRequest.getFileNames(); // tempsrimg1, temptsrimg2
+		String[] srimg = new String[5];
 		int idx  = 0;
 		while (params.hasNext()) {
 			String param = params.next(); // 마라미터의 다음 객체
 			MultipartFile mFile = mRequest.getFile(param);// 파라미터에 첨부된 파일 객체
-			bimg[idx] = mFile.getOriginalFilename();
-			if(bimg[idx]!=null && !bimg[idx].equals("")) {
-				if(new File(uploadPath + bimg[idx]).exists()) {
-					bimg[idx] = System.currentTimeMillis() + "_" + bimg[idx];
+			srimg[idx] = mFile.getOriginalFilename();
+			if(srimg[idx]!=null && !srimg[idx].equals("")) {
+				if(new File(uploadPath + srimg[idx]).exists()) {
+					srimg[idx] = System.currentTimeMillis() + "_" + srimg[idx];
 					
 				}// if
 				try {
-					mFile.transferTo(new File(uploadPath + bimg[idx]));
-					System.out.println("서버파일 : "+ uploadPath + bimg[idx]);
-					System.out.println("백업파일 : "+ backupPath + bimg[idx]);
-					Boolean result = fileCopy(uploadPath + bimg[idx], backupPath + bimg[idx] );
+					mFile.transferTo(new File(uploadPath + srimg[idx]));
+					System.out.println("서버파일 : "+ uploadPath + srimg[idx]);
+					System.out.println("백업파일 : "+ backupPath + srimg[idx]);
+					Boolean result = fileCopy(uploadPath + srimg[idx], backupPath + srimg[idx] );
 					System.out.println(result ? idx+"번째 백업 성공": idx+"번째 백업 실패");
 				} catch (Exception e) {
 					System.out.println(e.getMessage()+"StoreReviewService modify error");
@@ -135,15 +135,15 @@ public class StoreReviewServiceImpl implements StoreReviewService {
 				
 			}// if
 			idx++;
-		}//while - bimg 배열에 파일 이름 저장
-		storeReview.setSrimage1(bimg[0]);
-		storeReview.setSrimage1(bimg[1]);
-		storeReview.setSrimage1(bimg[2]);
-		storeReview.setSrimage1(bimg[3]);
-		storeReview.setSrimage1(bimg[4]);// 첫번째 청구할 파일 이름
-		System.out.println("서비스 저장 전 : " + storeReview);
+		}//while - srimg 배열에 파일 이름 저장
+		storeReview.setSrimage1(srimg[0]);
+		storeReview.setSrimage2(srimg[1]);
+		storeReview.setSrimage3(srimg[2]);
+		storeReview.setSrimage4(srimg[3]);
+		storeReview.setSrimage5(srimg[4]);// 첫번째 청구할 파일 이름
+		System.out.println("reviewModify 서비스 저장 전 : " + storeReview);
 		int result = storeReviewDao.reviewModify(storeReview);
-		System.out.println("서비스 저장 후 : " + storeReview);
+		System.out.println("reviewModify 서비스 저장 후 : " + storeReview);
 		return result;
 	}
 
@@ -155,6 +155,11 @@ public class StoreReviewServiceImpl implements StoreReviewService {
 	@Override
 	public int reviewCnt(int sno) { 
 		return storeReviewDao.reviewCnt(sno);
+	}
+
+	@Override
+	public StoreReview reviewDetail(int srno) { 
+		return storeReviewDao.reviewDetail(srno) ;
 	}
 
 }

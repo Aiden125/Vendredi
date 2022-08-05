@@ -113,6 +113,10 @@ span {
 		$(document).ready(function(){
 			
 		});
+		function trclicked(sno) {
+			location.href = '${conPath}/store/storeDetail.do?sno='+ sno ;
+			
+		}
 	</script>
 </head>
 <body>
@@ -125,7 +129,7 @@ span {
 		</c:if>
 		<c:if test="${paging.totCnt != 0 }">
 				<c:forEach items="${storeList }" var="store">
-				<tr> 
+				<tr onclick="trclicked(${store.sno })"> 
 					<td>
 						<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage}" width = "100px">
 					</td>
