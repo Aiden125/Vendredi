@@ -1,3 +1,194 @@
+---------------------------------- 민우 시작 ---------------------------------------------
+----------------------------------------------------------------------
+--                          MEMBER.Xml                              --
+----------------------------------------------------------------------
+--(1)  id = memberLogin (로그인)
+SELECT * FROM MEMBER WHERE MID ='aaa' and mpw='1';
+--(2)  id = memberJoin (회원가입) 
+INSERT INTO MEMBER VALUES('son', '손흥민','1', '010-6789-6789','son@naver.com','서울시 강남구 청담동','남자','1992/07/08','1.jpg');
+--(3)  id = memberSearchId(아이디 찾기)
+SELECT MID FROM MEMBER WHERE MNAME = '손흥민' AND MEMAIL ='son@naver.com' ;
+--(4)  id = memberSearchPw(비밀번호 찾기)
+SELECT Mpw FROM MEMBER WHERE MID = 'son' AND Mname ='손흥민' ;
+--(5)  id = memberGetDetail (mid로 dto가져오기)
+SELECT * FROM MEMBER WHERE MID='son';
+--(6)  id = memberModify(회원정보 수정)
+UPDATE MEMBER SET MPW = '111',
+                  MNAME = '손흥민',
+                  mtel = '010-0000-1111',
+                  memail = 'sony@naver.com',
+                  maddress = '서울시 강남구 대치동',   
+                  mprofile = 'son.jpg'
+                 where mid = 'son';
+--(7) id= memberTotCnt( 회원수)                 
+select count(*)cnt from member;
+commit;
+--(8) id=memberWithdrawal (회원탈퇴)
+delete from member where mid = 'carlos';
+rollback;
+select * from qna;
+
+----------------------------------------------------------------------
+--                           QnA.xml                              --
+----------------------------------------------------------------------
+-- id = qnaTotCnt (글 갯수)   
+SELECT COUNT(*)CNT FROM QNA;
+--(1) id= qnaList (문의글 목록 paiging처리, 최신글 순  )
+SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
+    (select qno, qid, qsubject, qcontent, qhit, qgroup, qstep, qrdate, qsecret,
+    (select count(*) from qna where qno=q.qno and qstep>0 ) replyok
+    from qna Q order by qgroup)A)
+    WHERE RN BETWEEN 1 AND 3;
+    
+SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA ORDER BY QRDATE DESC)A)
+    WHERE RN BETWEEN 1 AND 3;    
+--(2) id = qnaWrite (문의글 작성)
+INSERT INTO QNA (qno,qid,qsubject,qcontent,qhit,qgroup,qstep,qrdate)VALUES(QNA_SQ.NEXTVAL, 'son','질문이 있습니다1','광고 가능한가요3?',0,QNA_SQ.CURRVAL,0,SYSDATE);
+SELECT * FROM QNA;
+--(3) id = qnaModify (문의글 수정) 제목, 내용 
+update qna set 
+    qsubject = '질문',
+    qcontent = '업체문의는 어디서 해야하나요'   
+    where qno = 1;
+--(4) id = qnaDetail (문의글 상세보기) 
+select * from qna where qno=1;
+--() id = qnaHitup(조회수 증가)
+update qna set qhit = qhit +1 where qno=2;
+--(4) id = qnaReplyPre (답변글 쓰기 전 step A)
+UPDATE  QNA SET QSTEP=QSTEP +1 WHERE QGROUP = 1 ;
+SELECT * FROM QNA  ORDER BY QGROUP ;
+--(4) id = qnaReplyWrite (문의글 답변)
+INSERT INTO QNA (QNO, QID, QSUBJECT, QCONTENT,QGROUP,QSTEP )
+    VALUES (QNA_SQ.NEXTVAL, '관리자','1번글 답변','연락 드리겠습니다',1,1);
+--(4) id = qnaReplyAfter (답변이 완료되면 제목에 답변완료 추가)
+select qno, qid, qsubject, qcontent,qhit, qgroup, qstep, qrdate, qsecret,
+    (select count(*) from qna where qno=q.qno and qstep>0 ) replyok
+  from qna Q order by qgroup; -- <c:if test="${replyok eq 1 and qstep eq 0 }"> 답변완료</c:if>
+  
+-- id= qnaList (문의글 목록 paiging처리, 최신글 순, 답변완료 여부  )
+SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA ORDER BY QRDATE DESC)A)
+    WHERE RN BETWEEN 1 AND 3;
+ 
+--(5) id = qnaReplyDelete (문의글 삭제)
+DELETE FROM QNA WHERE QNO= 11;
+COMMIT;
+
+
+----------------------------------- 민우 끝 ---------------------------------------------
+
+---------------------------------- 진우 시작 ---------------------------------------------
+-------------OWNER
+-- OWNER 회원가입시 ID 중복체크
+SELECT COUNT(*) FROM OWNER WHERE OID = 'dlwlsdn';
+-- OWNER 회원가입
+INSERT INTO OWNER (OID, ONAME, OPW, OPROFILE, OTEL, OEMAIL, OADDRESS, OBIRTH, OGENDER)
+    VALUES ('owner1', '김사장', 1, '010-5555-5555', 'owner@naver.com', '서울시', '19880808', '남자');
+SELECT * FROM OWNER;
+-- OWNER 로그인
+SELECT * FROM OWNER WHERE OID='owner1' AND OPW='1';
+
+-- OID로 DTO가져오기(정보 가져오기)
+SELECT * FROM OWNER WHERE OID='owner1';
+
+-- 사장님 회원정보 수정
+UPDATE OWNER SET ONAME='이사장',
+                    OPW='1',
+                    OTEL='010-1111-1111',
+                    OEMAIL='owner@daum.net',
+                    OADDRESS='제주도',
+                    OBIRTH='19880809'
+                WHERE OID='owner1';
+
+-- 사장님 회원탈퇴
+DELETE FROM OWNER WHERE OID='owner1';
+
+-- 사장님 ID찾기
+SELECT OID FROM OWNER WHERE ONAME='김사장' AND OEMAIL='owner@naver.com';
+-- 사장님 PW찾기
+SELECT OPW FROM OWNER WHERE OID='owner1' AND ONAME='김사장';
+
+-------------OWNERBOARD
+-- 등록된 글수
+SELECT COUNT(*) FROM OWNERBOARD;
+
+-- 글 목록
+SELECT * FROM 
+    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM OWNERBOARD ORDER BY BNO DESC) A)
+         WHERE RN BETWEEN 1 AND 3;
+-- 글작성
+INSERT INTO OWNERBOARD (BNO, OID, SNAME, BLOC, BTITLE, BCONTENT, BPHOTO1, BPHOTO2, BPHOTO3, BPHOTO4, BPHOTO5, BHIT, BDATE) 
+    VALUES (SEQ_OB.NEXTVAL , 'owner1', '오미라식당', '강남', '장사 안돼요', '장사가 진짜 안됩니다 요즘', 'img1.jpg', NULL, NULL, NULL, NULL, 0, SYSDATE);
+-- 글상세보기
+SELECT * FROM OWNERBOARD WHERE BNO = 3;
+-- 글수정
+UPDATE OWNERBOARD SET BTITLE = '장사 잘돼요',
+                        BCONTENT = '갑자기 장사 잘돼요',
+                        BPHOTO1 = 'img2.png',
+                        BPHOTO2 = 'img5.png',
+                        BPHOTO3 = 'img4.png',
+                        BPHOTO4 = 'img1.png',
+                        BPHOTO5 = NULL
+                    WHERE BNO=2;
+-- 글삭제
+DELETE FROM OWNERBOARD WHERE BNO = 1;
+
+-- 조회수 올리기
+UPDATE OWNERBOARD SET BHIT = BHIT +1
+    WHERE BNO =2;
+-------------BOARD_COMMENT
+select * from owner;
+-- 댓글 갯수
+SELECT COUNT(*) FROM BOARD_COMMENT WHERE BNO=1;
+
+-- 댓글 목록
+SELECT * FROM BOARD_COMMENT WHERE BNO=3 ORDER BY CNO;
+
+-- 댓글 작성
+INSERT INTO BOARD_COMMENT (CNO, BNO, OID, CCONTENT, CDATE)
+    VALUES (SEQ_BC.NEXTVAL, 3, 'owner1', '요즘 경기어렵죠', SYSDATE);
+
+-- 댓글 삭제
+DELETE FROM BOARD_COMMENT WHERE CNO=1;
+
+-- 댓글 수정
+UPDATE BOARD_COMMENT SET CCONTENT = '요즘 경기좋죠';
+
+commit;
+
+----------------------------------- 진우 끝 ---------------------------------------------
+
+
+
+----------------------------------- 희석 시작 ---------------------------------------------
+-- 관리자 등록(adminJoin)
+INSERT INTO ADMIN
+    VALUES('moan125', '1234', 'moan125@naver.com', '문희석', '010-9284-3694', 2);
+    
+
+-- 관리자 로그인(adminLogin)
+SELECT * FROM ADMIN WHERE aID='moan125' AND aPW='1234';
+
+
+-- 관리자 정보수정(adminModify)
+UPDATE ADMIN SET aPW='1234',
+                aEMAIL='moan125@naver.com',
+                aNAME='문희석',
+                aTEL='010-9284-3694',
+                aLEVEL='MASTER'
+    WHERE aID='moan125';
+
+
+-- 관리자 리스트(adminList)
+SELECT aID, aPW, aEMAIL, aNAME, aTEL, L.aLEVEL_NAME
+    FROM ADMIN A, ADMIN_L L
+    WHERE A.aLEVEL=L.aLEVEL
+    ORDER BY A.aLEVEL;
+    
+    
+-- 관리자 삭제(adminDelete)
+DELETE ADMIN WHERE aID='ddd';
+----------------------------------- 희석 끝 ---------------------------------------------
+
 ---------------------------------- 지환 시작 ---------------------------------------------
 -- ryu DML store / storereview / request queries
 
@@ -141,78 +332,6 @@ update request set sname = CONCAT( sname, ' - 처리 완료 ') where sno = 1;
 update store set sConfirm = 'Y' where sno = 1; 
 
 ----------------------------------- 지환 끝 ---------------------------------------------
-
-
-
-
-
-
-
----------------------------------- 민우 시작 ---------------------------------------------
-
-
------------------------------------ 민우 끝 ---------------------------------------------
-
-
-
-
-
-
-
-
-
----------------------------------- 진우 시작 ---------------------------------------------
-
-
------------------------------------ 진우 끝 ---------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
------------------------------------ 희석 시작 ---------------------------------------------
--- 관리자 등록(adminJoin)
-INSERT INTO ADMIN
-    VALUES('moan125', '1234', 'moan125@naver.com', '문희석', '010-9284-3694', 2);
-    
-
--- 관리자 로그인(adminLogin)
-SELECT * FROM ADMIN WHERE aID='moan125' AND aPW='1234';
-
-
--- 관리자 정보수정(adminModify)
-UPDATE ADMIN SET aPW='1234',
-                aEMAIL='moan125@naver.com',
-                aNAME='문희석',
-                aTEL='010-9284-3694',
-                aLEVEL='MASTER'
-    WHERE aID='moan125';
-
-
--- 관리자 리스트(adminList)
-SELECT aID, aPW, aEMAIL, aNAME, aTEL, L.aLEVEL_NAME
-    FROM ADMIN A, ADMIN_L L
-    WHERE A.aLEVEL=L.aLEVEL
-    ORDER BY A.aLEVEL;
-    
-    
--- 관리자 삭제(adminDelete)
-DELETE ADMIN WHERE aID='ddd';
------------------------------------ 희석 끝 ---------------------------------------------
-
-
 
 
 
