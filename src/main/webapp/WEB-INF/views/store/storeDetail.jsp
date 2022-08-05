@@ -110,6 +110,16 @@ span {
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 <body>
+	<c:if test="${writeRequestResult != null }">
+		<script type="text/javascript">
+		alert("가게 등록이 완료되었습니다.");
+		</script> 
+	</c:if>
+	<c:if test="${storeModifyResult != null }">
+		<script type="text/javascript">
+		alert("가게 정보 수정이 완료되었습니다.");
+		</script> 
+	</c:if>
 	<jsp:include page="../main/header.jsp"/>
 	<div class="wrap">
 	<div class="form-wrap">
@@ -133,6 +143,22 @@ span {
 			</th>	
 			<td> 
 				${store.saddress }
+			</td>
+		</tr>
+		<tr>
+			<th>
+				가게 지역
+			</th>	
+			<td> 
+				${store.slocation }
+			</td>
+		</tr>
+		<tr>
+			<th>
+				가게 종류
+			</th>	
+			<td> 
+				${store.stype }
 			</td>
 		</tr>
 		<tr>
@@ -200,7 +226,7 @@ span {
 			<th colspan="2">
 				추후 owner, admin 적용하게 바꿀예정 <br>
 				<input type="button" value="등록 요청" onclick="location='${conPath}/request/writeRequest.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'">
-				<input type="button" value="가게 정보 수정" onclick="location='${conPath}/store/storeModifyView.do?sno=${param.sno }'">
+				<input type="button" value="가게 정보 수정" onclick="location='${conPath}/store/storeModifyView.do?sno=${param.sno }&oid=aaa'">
 			</th>
 		</tr>
 		</table>		
@@ -223,14 +249,13 @@ span {
 			</td>
 		</tr>
 		<tr>
-			<td>
-				가게 점수
+			<td> 
 				<select name="srscore"> 
-    					<option value="1">1</option>
-    					<option value="2">2</option>
-    					<option value="3">3</option>
-    					<option value="4">4</option>
-  						<option value="5" selected>5</option>
+    					<option value="1">★☆☆☆☆</option>
+    					<option value="2">★★☆☆☆</option>
+    					<option value="3">★★★☆☆</option>
+    					<option value="4">★★★★☆</option>
+  						<option value="5" selected>★★★★★</option>
   				</select>
 			</td>
 			<td align="right">

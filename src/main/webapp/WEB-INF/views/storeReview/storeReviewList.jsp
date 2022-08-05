@@ -132,11 +132,11 @@ span {
 			<td>
 				가게 점수
 				<select name="srscore"> 
-    					<option value="1">1</option>
-    					<option value="2">2</option>
-    					<option value="3">3</option>
-    					<option value="4">4</option>
-  						<option value="5" selected>5</option>
+    					<option value="1">★☆☆☆☆</option>
+    					<option value="2">★★☆☆☆</option>
+    					<option value="3">★★★☆☆</option>
+    					<option value="4">★★★★☆</option>
+  						<option value="5" selected>★★★★★</option>
   				</select>
 			</td>
 			<td align="right">

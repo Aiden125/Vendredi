@@ -35,7 +35,10 @@
         
 </insert>
 <update id="storeModify" parameterType="Store">
-	update store set sImage = #{simage},
+	update store set
+				<if test="simage != null and simage != '' ">
+				 sImage = #{simage},
+				 </if>
                  sName = #{sname},
                  sAddress = #{saddress},
                  sTel = #{stel},
