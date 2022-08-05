@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
  
 import com.pro.vendredi.util.Paging;
-import com.pro.vendredi.dto.Store; 
+import com.pro.vendredi.dto.Store;
+import com.pro.vendredi.dto.StoreReview;
 import com.pro.vendredi.service.StoreReviewService;
 import com.pro.vendredi.service.StoreService;
 
@@ -20,6 +21,8 @@ public class StoreController {
 	
 	@Autowired
 	private StoreService storeService; 
+	@Autowired
+	private StoreReviewService storeReviewService;
 
 	// 가게 등록 화면 보기
 	@RequestMapping(value="/storeRegisterView", method = {RequestMethod.GET, RequestMethod.POST}  )
@@ -50,8 +53,10 @@ public class StoreController {
 	
 	// 가게 상세 보기
 	@RequestMapping(value = "storeDetail", method = { RequestMethod.GET, RequestMethod.POST })
-	public String storeDetail(int sno, Model model) {
+	public String storeDetail(int sno, Model model, String pageNum, StoreReview storeReview) {
 		model.addAttribute("store", storeService.storeDetail(sno));
+		model.addAttribute("storeReviewList", storeReviewService.storeReviewList(storeReview, pageNum, sno) );
+		model.addAttribute("paging", new Paging(storeReviewService.reviewCnt(sno), pageNum, 3, 1));
 		return "store/storeDetail";
 	} 
 	

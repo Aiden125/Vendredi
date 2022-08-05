@@ -76,9 +76,8 @@ commit;
 
 -- 6. 1. storeScoreUp     
 UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
-                   sScore = sScore + srScore
+                   sScore = sScore + 5
                    WHERE SNo = 2;     
- 
 
 -- table storereview
 
@@ -141,7 +140,7 @@ select * from
     where RN BETWEEN 1 and 5;
     
 -- 2 - 1. myRequestList / 사업자 개인 리퀘스트 조회
-select rno, oid, sno, sname, rdate from request where oid = 'aaa' order by rno desc;
+select rno, oid, sno, sname, rdate from request where oid = 'ccc' order by rno desc;
     
 -- 3. requestDone / 확인 후 업체 등록 (관리자용) sno(가게번호)로 두 테이블에 update 진행
  

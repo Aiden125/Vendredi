@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
  
-import com.pro.vendredi.util.Paging;
-import com.pro.vendredi.dto.Store;
+import com.pro.vendredi.util.Paging; 
 import com.pro.vendredi.dto.StoreReview;
-import com.pro.vendredi.service.StoreReviewService;
-import com.pro.vendredi.service.StoreService;
+import com.pro.vendredi.service.StoreReviewService; 
 
 @Controller
 @RequestMapping(value="storeReview")
@@ -29,21 +27,24 @@ public class StoreReviewController {
 	@RequestMapping(value = "storeReviewList", method = {RequestMethod.POST, RequestMethod.GET})
 	public String storeReviewList(String pageNum, Model model, StoreReview storeReview , int sno ) {
 		model.addAttribute("storeReviewList", storeReviewService.storeReviewList(storeReview, pageNum, sno) );
-		model.addAttribute("paging", new Paging(storeReviewService.reviewCnt(sno), pageNum, 5, 3));
+		model.addAttribute("paging", new Paging(storeReviewService.reviewCnt(sno), pageNum, 3, 1));
 		return "storeReview/storeReviewList";
 	}
 	// 리뷰 등록 하기 -- 추후 addScore (Store Table에 리뷰 수 + 1 / 리뷰 점수 추가) 기능로 이동
-	@RequestMapping(value = "writeReview", method = RequestMethod.POST)
+	@RequestMapping(value = "writeReview", method = {RequestMethod.POST, RequestMethod.GET})
 	public String storeRegister(@ModelAttribute("storeReview") StoreReview storeReview, MultipartHttpServletRequest mRequest, Model model) {
 		model.addAttribute("writeReviewResult", storeReviewService.reviewWrite(storeReview, mRequest));
-		return "forward:store.do?method=storeaddScore";
+		storeReviewService.addScore(storeReview); 
+		System.out.println("스토어에 점수 추가 완료");
+		return "forward:../store/storeDetail.do";  
 	}
 	
 	// 리뷰 등록 후 Store Table에 리뷰 수 + 1 / 리뷰 점수 추가하기 
-	@RequestMapping(value = "addScore", method = RequestMethod.POST)
-	public String addScore(int sno) {
-		storeReviewService.addScore(sno);
-		return "forward:store.do?method=storeReviewList";
+	@RequestMapping(value = "addScore", method = {RequestMethod.POST, RequestMethod.GET})
+	public String addScore(StoreReview storeReview) {
+		  
+		 
+		return null;
 	}
 	
 	// 리뷰 수정 보기 

@@ -76,9 +76,8 @@ commit;
 
 -- 6. 1. storeScoreUp     
 UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
-                   sScore = sScore + srScore
+                   sScore = sScore + 5
                    WHERE SNo = 2;     
- 
 
 -- table storereview
 
