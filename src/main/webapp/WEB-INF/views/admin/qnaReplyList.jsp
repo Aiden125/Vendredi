@@ -50,9 +50,9 @@
 
 	<div id="content">
 		<table id="main_table">
-			<caption>QnA 관리</caption>
+			<caption>관리자 답변 관리</caption>
 			<tr class="tr_top">
-				<th>글번호</th><th>글제목</th><th>작성자</th><th>조회수</th><th>날짜</th><th>답변여부</th>
+				<th>글번호</th><th>글제목</th><th>작성자</th><th>날짜</th>
 				<c:if test="${not empty admin }">
 					<th>수정</th><th>삭제</th>
 				</c:if>
@@ -70,12 +70,7 @@
 							</c:if>
 						</td>
 						<td>${qna.qid }</td>
-						<td>${qna.qhit }</td>
 						<td><fmt:formatDate value="${qna.qrdate }" type="date" dateStyle="short"/></td>
-						<td>
-							<c:if test="${qna.qreplycheck == 0 }">답변대기</c:if>
-							<c:if test="${qna.qreplycheck == 1 }">답변완료</c:if>
-						</td>
 						
 						<c:if test="${not empty admin }">
 							<td><a href="${conPath }/qna/modifyViewAdminVer.do?qno=${qna.qno}">수정하기</a></td>

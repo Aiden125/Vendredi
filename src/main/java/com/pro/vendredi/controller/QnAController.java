@@ -21,7 +21,7 @@ public class QnAController {
 	//문의글 리스트
 	@RequestMapping(value= "/list" , method= {RequestMethod.GET,RequestMethod.POST})
 	public String list(String pageNum, Model model) {
-		model.addAttribute("qnaList", qnaService.qnaQuestList(pageNum));
+		model.addAttribute("qnaList", qnaService.qnaQuestionList(pageNum));
 		model.addAttribute("paging",new Paging(qnaService.qnaQuestionTotCnt(), pageNum));
 		return "qna/list";
 	}
@@ -74,7 +74,7 @@ public class QnAController {
 	//문의글 리스트 - 관리자
 	@RequestMapping(value= "/listAdminVer" , method= {RequestMethod.GET,RequestMethod.POST})
 	public String listAdminVer(String pageNum, Model model) {
-		model.addAttribute("qnaList", qnaService.qnaQuestList(pageNum));
+		model.addAttribute("qnaList", qnaService.qnaQuestionList(pageNum));
 		model.addAttribute("paging",new Paging(qnaService.qnaQuestionTotCnt(), pageNum));
 		return "admin/qnaList";
 	}
@@ -114,11 +114,27 @@ public class QnAController {
 		return "admin/qnaModify";
 	}
 	
-	//문의글 수정 처리
+	//문의글 수정 처리 - 관리자
 	@RequestMapping(value="/modifyAdminVer",method=RequestMethod.POST)
 	public String modifyAdminVer(QnA qna, Model model) {
 		model.addAttribute("modifyResult",qnaService.qnaModify(qna));
 		return "forward:listAdminVer.do";
+	}
+	
+	//답변안된 질문글 리스트 - 관리자
+	@RequestMapping(value= "/replyYetList" , method= {RequestMethod.GET,RequestMethod.POST})
+	public String replyYetList(String pageNum, Model model) {
+		model.addAttribute("qnaList", qnaService.qnaReplyYetList(pageNum));
+		model.addAttribute("paging",new Paging(qnaService.qnaReplyYetTotCnt(), pageNum));
+		return "admin/qnaReplyYetList";
+	}
+	
+	//답변글 관리 - 관리자
+	@RequestMapping(value= "/replyList" , method= {RequestMethod.GET,RequestMethod.POST})
+	public String replyList(String pageNum, Model model) {
+		model.addAttribute("qnaList", qnaService.qnaReplyList(pageNum));
+		model.addAttribute("paging",new Paging(qnaService.qnaReplyTotCnt(), pageNum));
+		return "admin/qnaReplyList";
 	}
 	
 }

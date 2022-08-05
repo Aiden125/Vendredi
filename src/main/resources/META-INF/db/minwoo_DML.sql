@@ -40,19 +40,36 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM
     from qna Q order by qgroup)A)
     WHERE RN BETWEEN 1 AND 3;
 
+
+
 -- 희석 추가(답변완료 여부 나타내는 페이징 리스트)(질문글만 보이게)
 SELECT * FROM
-    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP=0 ORDER BY QNO) A)
-    WHERE RN BETWEEN 2 AND 3;
-
-
--- 희석 추가(답변만 보기)
-SELECT * FROM
-    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP!=0 ORDER BY QNO) A)
-    WHERE RN BETWEEN 2 AND 3;
+    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP=0 ORDER BY QRDATE DESC) A)
+    WHERE RN BETWEEN 1 AND 10;
 
 -- 희석 추가(질문글 총 갯수 for paging)
 SELECT COUNT(*) FROM QNA WHERE QSTEP=0;
+
+-- 희석 추가(답변안된 질문만 보기)
+SELECT * FROM
+    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP=0 AND QREPLYCHECK=0 ORDER BY QRDATE DESC) A)
+    WHERE RN BETWEEN 2 AND 3;
+
+-- 희석 추가(답변안된 질문글 총 갯수 for paging)
+SELECT COUNT(*) FROM QNA WHERE QSTEP=0 AND QREPLYCHECK=0;
+
+-- 희석 추가(답변만 보기)
+SELECT * FROM
+    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP!=0 ORDER BY QRDATE DESC) A)
+    WHERE RN BETWEEN 2 AND 3;
+
+-- 희석 추가(답변들 총 갯수)
+SELECT COUNT(*) FROM QNA WHERE QSTEP!=0;
+
+-- 답변되면서 업데이트(답변들 총 갯수)
+UPDATE QNA SET QREPLYCHECK=1
+        WHERE QNO=1;
+
     
 --(2) id = qnaWrite (문의글 작성)
 INSERT INTO QNA (qno,qid,qsubject,qcontent,qhit,qgroup,qstep,qrdate)VALUES(QNA_SQ.NEXTVAL, 'son','질문이 있습니다1','광고 가능한가요3?',0,QNA_SQ.CURRVAL,0,SYSDATE);
@@ -70,8 +87,8 @@ update qna set qhit = qhit +1 where qno=2;
 UPDATE  QNA SET QSTEP=QSTEP +1 WHERE QGROUP = 1 ;
 SELECT * FROM QNA  ORDER BY QGROUP ;
 --(4) id = qnaReplyWrite (문의글 답변)
-INSERT INTO QNA (QNO, QID, QSUBJECT, QCONTENT,QGROUP,QSTEP )
-    VALUES (QNA_SQ.NEXTVAL, '관리자','1번글 답변','연락 드리겠습니다',1,1);
+INSERT INTO QNA (QNO, QID, QSUBJECT, QCONTENT,QGROUP,QSTEP, QREPLYCHECK)
+    VALUES (QNA_SQ.NEXTVAL, '관리자','1번글 답변','연락 드리겠습니다',1,1, 1);
 --(4) id = qnaReplyAfter (답변이 완료되면 제목에 답변완료 추가)
 select qno, qid, qsubject, qcontent,qhit, qgroup, qstep, qrdate, qsecret,
     (select count(*) from qna where qno=q.qno and qstep>0 ) replyok

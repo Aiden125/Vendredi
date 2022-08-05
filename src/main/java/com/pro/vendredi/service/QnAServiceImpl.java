@@ -56,6 +56,7 @@ public class QnAServiceImpl implements QnAService {
 	@Override
 	public int qnaReply(QnA qna, HttpServletRequest request) {
 		qnaDao.qnaReplyPre(qna);
+		qnaDao.qnaStateUpdate(qna.getQno());
 		return qnaDao.qnaReply(qna);
 	}
 	//QNA 답변글 뷰(관리자)
@@ -65,26 +66,50 @@ public class QnAServiceImpl implements QnAService {
 	}
 	//QNA 질문글 리스트(희석추가)
 	@Override
-	public List<QnA> qnaQuestList(String pageNum) {
+	public List<QnA> qnaQuestionList(String pageNum) {
 		Paging paging = new Paging(qnaDao.qnaQuestionTotCnt(), pageNum);
 		QnA qna = new QnA();
 		qna.setStartRow(paging.getStartRow());
 		qna.setEndRow(paging.getEndRow());
-		return qnaDao.qnaList(qna);
-	}
-	//QNA 답변글 리스트(희석추가)
-	@Override
-	public List<QnA> qnaAnswerList(String pageNum) {
-		Paging paging = new Paging(qnaDao.qnaQuestionTotCnt(), pageNum);
-		QnA qna = new QnA();
-		qna.setStartRow(paging.getStartRow());
-		qna.setEndRow(paging.getEndRow());
-		return qnaDao.qnaList(qna);
+		return qnaDao.qnaQuestionList(qna);
 	}
 	//QNA 질문글 갯수(희석추가)
 	@Override
 	public int qnaQuestionTotCnt() {
 		return qnaDao.qnaQuestionTotCnt();
+	}
+	//QNA 답변대기 질문 리스트(희석추가)
+	@Override
+	public List<QnA> qnaReplyYetList(String pageNum) {
+		Paging paging = new Paging(qnaDao.qnaReplyYetTotCnt(), pageNum);
+		QnA qna = new QnA();
+		qna.setStartRow(paging.getStartRow());
+		qna.setEndRow(paging.getEndRow());
+		return qnaDao.qnaReplyYetList(qna);
+	}
+	//QNA 답변대기 질문 총 갯수(희석추가)
+	@Override
+	public int qnaReplyYetTotCnt() {
+		return qnaDao.qnaReplyYetTotCnt();
+	}
+	//QNA 답변글 리스트(희석추가)
+	@Override
+	public List<QnA> qnaReplyList(String pageNum) {
+		Paging paging = new Paging(qnaDao.qnaReplyTotCnt(), pageNum);
+		QnA qna = new QnA();
+		qna.setStartRow(paging.getStartRow());
+		qna.setEndRow(paging.getEndRow());
+		return qnaDao.qnaReplyList(qna);
+	}
+	//QNA 답변글 총 갯수(희석추가)
+	@Override
+	public int qnaReplyTotCnt() {
+		return qnaDao.qnaReplyTotCnt();
+	}
+	//QNA 답변 받으면 상태변경(희석추가)
+	@Override
+	public int qnaStateUpdate(int qno) {
+		return qnaDao.qnaStateUpdate(qno);
 	}
 
 }
