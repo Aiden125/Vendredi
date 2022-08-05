@@ -18,4 +18,5 @@ public class QnA {
 	private String qsecret;
 	private int startRow;
 	private int endRow;
+	private int qreplycheck;
 }

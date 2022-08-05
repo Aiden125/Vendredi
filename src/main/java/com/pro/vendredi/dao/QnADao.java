@@ -18,4 +18,13 @@ public interface QnADao {
 	public int qnaReplyPre(QnA qna);
 	public int qnaReply(QnA qna);
 	
+	// 관리자 단에 필요해서 추가
+	public List<QnA> qnaQuestionList(QnA qna);
+	public int qnaQuestionTotCnt();
+	public List<QnA> qnaReplyYetList(QnA qna);
+	public int qnaReplyYetTotCnt();
+	public List<QnA> qnaReplyList(QnA qna);
+	public int qnaReplyTotCnt();
+	public int qnaStateUpdate(int qno);
+	public QnA qnaReplyDetail(int qno);
 }

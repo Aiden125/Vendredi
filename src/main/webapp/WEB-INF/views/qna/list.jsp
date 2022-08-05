@@ -44,7 +44,7 @@
 		<script>alert('답변쓰기 성공');</script>
 	</c:if>
 	<c:if test="${replyResult eq FAIL }">
-		<script>alert('답변쓰기 성공');</script>
+		<script>alert('답변쓰기 실패');</script>
 	</c:if>
 	
 	<jsp:include page="../main/header.jsp"/>
@@ -67,7 +67,7 @@
 	</div> <!-- writeform -->
 	<div id="listform">
 	<table>
-		<tr><th>글번호</th><th>작성자</th><th>글제목</th><th>조회수</th><th>날짜</th></tr>
+		<tr><th>글번호</th><th>작성자</th><th>글제목</th><th>조회수</th><th>날짜</th><th>답변여부</th></tr>
 		<c:if test="${qnaList.size() eq 0 }">
 			<tr><td colspan="6">등록된 글이 없습니다</td></tr>
 		</c:if>
@@ -83,6 +83,10 @@
 			</td>
 			<td>${qna.qhit }</td>
 			<td><fmt:formatDate value="${qna.qrdate }" type="date" dateStyle="short"/></td>
+			<td>
+				<c:if test="${qna.qreplycheck == 0 }">답변대기</c:if>
+				<c:if test="${qna.qreplycheck == 1 }">답변완료</c:if>
+			</td>
 			</tr>
 			</c:forEach>
 		</c:if>
