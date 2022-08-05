@@ -9,6 +9,29 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="${conPath }/css/style.css" rel="stylesheet">
+	<style>
+		#content table{
+			width:800px;
+			margin: 80px auto;
+			border-collapse: collapse;
+			text-align: center;
+		}
+		#content caption{
+			margin : 40px auto;
+		}
+		#content tr{
+			border-bottom: 1px solid;
+			height: 50px;
+			width: 100px;
+		}
+		#content .paging{
+			text-align: center;
+		}
+		#content .btitle{
+			border: none;
+			width: 150px;
+		}
+	</style>
 </head>
 <body>
 	<c:if test="${ oboardDelete > 0 }">
@@ -31,7 +54,7 @@
 			<caption>사장님 게시판</caption>
 			<tr>
 				<td colspan="2">
-					<input type="button" value="글쓰기" onclick="location.href='${conPath}/oboard/WriteForm.do'">
+					<input type="button" class="btn" value="글쓰기" onclick="location.href='${conPath}/oboard/WriteForm.do'">
 				</td>
 			<tr>
 				<th>ID</th>
@@ -53,7 +76,7 @@
 							${owners.bloc }
 						</td>
 						<td>
-							<input type="text" name="btitle" value="${owners.btitle }" 
+							<input type="text" name="btitle" class="btitle" value="${owners.btitle }" 
 							onclick="location.href='Content.do?bno=${owners.bno}&pageNum=${paging.currentPage}'" 
 							 readonly="readonly" style="cursor: pointer">
 				
