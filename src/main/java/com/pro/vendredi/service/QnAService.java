@@ -15,4 +15,14 @@ public interface QnAService {
 	public int qnaModify(QnA qna);
 	public int qnaDelete(int qno);
 	public int qnaReply(QnA qna , HttpServletRequest request);
+	
+	// 관리자 단에 필요해서 추가
+	public List<QnA> qnaQuestionList(String pageNum);
+	public int qnaQuestionTotCnt();
+	public List<QnA> qnaReplyYetList(String pageNum);
+	public int qnaReplyYetTotCnt();
+	public List<QnA> qnaReplyList(String pageNum);
+	public int qnaReplyTotCnt();
+	public int qnaStateUpdate(int qno);
+	public QnA qnaReplyDetail(int qno);
 }
