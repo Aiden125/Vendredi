@@ -24,24 +24,31 @@
 		<result property="sconfirm" column="sconfirm"/>
 		<result property="sreplycnt" column="sreplycnt"/>
 		<result property="sscore" column="sscore"/>
-		<result property="slike" column="slike"/>
+		<result property="slati" column="slati"/>
+		<result property="slongti" column="slongti"/> 
 	</resultMap>
 	
 <insert id="storeRegister" parameterType="Store">
 	insert into store (sNo, oId, sImage, sName, sAddress, sLocation, sTel, sType, sPrice, sTime, sHoliday,
-            sMenu1 , sMenu1cost , sMenu2, sMenu2cost, sMenu3, sMenu3cost, sSearchtag) 
-	values (store_sq.nextval, #{oid}, #{simage}, #{sname}, #{saddress}, #{slocation}, #{stel}, #{stype}, #{sprice} , #{stime},  
-        #{sholiday}, #{smenu1}, #{smenu1cost} , #{smenu2}, #{smenu2cost}, #{smenu3}, #{smenu3cost}, #{ssearchtag})
+            sMenu1 , sMenu1cost , sMenu2, sMenu2cost, sMenu3, sMenu3cost, sSearchtag, sstart, send) 
+	values (store_sq.nextval, #{oid}, #{simage}, #{sname}, #{saddress}, #{slocation}, #{stel}, #{stype}, 
+	        #{sprice} , #{stime}, #{sholiday}, #{smenu1}, #{smenu1cost} , #{smenu2}, #{smenu2cost}, 
+	        #{smenu3}, #{smenu3cost}, #{ssearchtag}, #{sstart}, #{send}, #{slati}, #{slongti})
         
 </insert>
 <update id="storeModify" parameterType="Store">
-	update store set sImage = #{simage},
+	update store set
+				<if test="simage != null and simage != '' ">
+				 sImage = #{simage},
+				 </if>
                  sName = #{sname},
                  sAddress = #{saddress},
                  sTel = #{stel},
                  sType = #{stype}, 
                  sPrice = #{sprice},
-                 sTime = #{stime} ,
+                 sTime = #{stime},
+                 sStart = #{sstart},
+                 sEnd = #{send},
                  sHoliday = #{sholiday},
                  sMenu1 = #{smenu1},
                  sMenu1cost = #{smenu1cost},
@@ -49,7 +56,9 @@
                  sMenu2cost = #{smenu2cost},
                  sMenu3 = #{smenu3},
                  sMenu3cost = #{smenu3cost}, 
-                 sSearchtag = #{ssearchtag}
+                 sSearchtag = #{ssearchtag},
+                 slati = #{slati},
+                 slongti = #{slongti} 
                  where sNo = #{sno} and oId = #{oid}
 
 </update>
@@ -74,6 +83,7 @@
      FROM STORE where sConfirm = 'Y' order by sno desc)A)
      WHERE RN BETWEEN #{startRow} AND #{endRow}
 </select>
+
 <select id="storeListSearch" parameterType="Store" resultMap="storeResult">
 	SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM

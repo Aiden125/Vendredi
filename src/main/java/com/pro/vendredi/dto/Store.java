@@ -31,10 +31,14 @@ public class Store {
     private String smenu5cost;
     private String ssearchtag;
     private String sconfirm;
+    private int sstart;
+    private int send;
     private int sreplycnt;
     private int sscore;
     private int slike;
     private int startRow;
     private int endRow;
     private double stscore;
+    private double slati;
+    private double slongti;
 }

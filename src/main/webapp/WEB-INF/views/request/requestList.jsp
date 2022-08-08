@@ -111,7 +111,11 @@ span {
 	<script>
 		$(document).ready(function(){
 			
-		}); 
+		});
+		function trclicked(sno) {
+			location.href ='${conPath}/store/storeDetail.do?sno='+ sno ;
+			
+		}
 	</script>
 </head>
 <body>
@@ -134,7 +138,7 @@ span {
 					<td> 
 						${request.oid }
 					</td>
-					<td> 
+					<td onclick="trclicked(${request.sno })"> 
 						${request.sname }
 					</td>  
 					<td>

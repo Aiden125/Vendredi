@@ -1,4 +1,5 @@
 -- ryu ddl store / storere /request table create and drop
+drop table store CASCADE CONSTRAINTS; 
 drop table store;
 drop SEQUENCE store_sq;
 create SEQUENCE store_sq MAXVALUE 999999 NOCACHE NOCYCLE;
@@ -22,10 +23,20 @@ create table store (
             sMenu3cost  varchar2(100), 
             sSearchtag  varchar2(100),
             sConfirm    char(1) default 'N',
+<<<<<<< HEAD
             sReplycnt   number(8) default 0,
             sScore      number(8) default 0,
             sLike       number(1) default 0
             );
+=======
+            sReplycnt   number(8) default 1,
+            sScore      number(8) default 5,
+            sStart     number(2) NOT NULL,
+            sEnd       number(2) NOT NULL,
+            sLati number(20, 6) Default 37.57595770501166,
+            sLongti number(20, 6) Default 126.97686668256979
+            );             
+>>>>>>> a61f8d0467108fcc000b0cedaac1b059aaf8ed1f
 
                   
                    
@@ -61,3 +72,4 @@ create table request (
             rDate         date default sysdate -- 요청 등록된 일시
     );     
 SELECT * FROM request;
+ 

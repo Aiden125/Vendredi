@@ -23,8 +23,7 @@
     position: absolute;
 }
 .form-wrap {
-    width: 380px;
-    height: 480px;
+    width: 70%; 
     position: relative;
     margin: 6% auto;
     background: #fff;
@@ -160,6 +159,14 @@ span {
 			<tr>
 				<th>가게 운영시간</th>
 				<td><input type="text" name="stime" required="required"></td>
+			</tr>
+			<tr>
+				<th>가게 시작시간</th>
+				<td><input type="number" name="sstart" required="required"></td>
+			</tr>
+			<tr>
+				<th>가게 닫는시간</th>
+				<td><input type="number" name="send" required="required"></td>
 			</tr>
 			<tr>
 				<th>가게 휴일</th>

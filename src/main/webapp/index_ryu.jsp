@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <jsp:forward page="request/myRequestList.do?oid=aaa"/> 
-
+	220808Ryu
+   <jsp:forward page="store/storeList.do"/> 
+  
 </body>
 </html>

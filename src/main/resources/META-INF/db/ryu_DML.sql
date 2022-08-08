@@ -3,10 +3,11 @@
 -- table store
 -- 1. storeRegister / 가게 등록하기
 insert into store (sNo, oId, sImage, sName, sAddress, sLocation, sTel, sType, sPrice, sTime, sHoliday,
-            sMenu1 , sMenu1cost , sMenu2, sMenu2cost, sMenu3, sMenu3cost, sSearchtag) 
+            sMenu1 , sMenu1cost , sMenu2, sMenu2cost, sMenu3, sMenu3cost, sSearchtag, sstart, sEnd) 
 values (store_sq.nextval, 'aaa', 'noimg.jpg', '군옥각2', '리월시 취헌부', '강남', '070-8888-8888', '중식, 중국요리, 짜장면', '2만원-4만원대',  
-        '11:00-19:00', '금요일', '짜장면', '5000원', '짬뽕', '6000원', '탕수육', '10000원',
-        '#강남#강남역#강남역맛집#중국집#중화요리#중국요리');
+        '11:00-20:00', '금요일', '짜장면', '5000원', '짬뽕', '6000원', '탕수육', '10000원',
+        '#강남#강남역#강남역맛집#중국집#중화요리#중국요리', 11, 20);
+        
 -- 2. storeModify / 가게 정보 수정하기
 update store set sImage = 'modify.jpg',
                  sName = '청진각',
@@ -15,6 +16,8 @@ update store set sImage = 'modify.jpg',
                  sType = '중식', 
                  sPrice = '1만원-2만원대',
                  sTime = '24시간' ,
+                 sStart = 9,
+                 sEnd = 22,
                  sHoliday = '설날, 추석, 공휴일',
                  sMenu1 = '황금새우볼튀김',
                  sMenu1cost = '15000원',

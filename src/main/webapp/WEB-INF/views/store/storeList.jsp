@@ -23,8 +23,7 @@
     position: absolute;
 }
 .form-wrap {
-    width: 380px;
-    height: 480px;
+    width: 70%; 
     position: relative;
     margin: 6% auto;
     background: #fff;
@@ -147,8 +146,7 @@ span {
 				</tr> 
 			</c:forEach>
 		</c:if>
-	</table>
-		
+	</table> 
 		<div id="paging" align="center">
 		<c:if test="${paging.startPage> paging.blockSize }">
 		[<a href="${conPath }/store.do?method=storeList&pageNum=${paging.startPage-1}&schItem=${param.schItem }">이전</a>]
