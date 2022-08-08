@@ -22,9 +22,10 @@ create table store (
             sMenu3cost  varchar2(100), 
             sSearchtag  varchar2(100),
             sConfirm    char(1) default 'N',
-            sReplycnt   number(8) default 0,
-            sScore      number(8) default 0,
-            sLike       number(1) default 0
+            sReplycnt   number(8) default 1,
+            sScore      number(8) default 5,
+            sStart     number(2) NOT NULL,
+            sEnd       number(2) NOT NULL
             );
 
                   
@@ -61,3 +62,4 @@ create table request (
             rDate         date default sysdate -- 요청 등록된 일시
     );     
 SELECT * FROM request;
+ 

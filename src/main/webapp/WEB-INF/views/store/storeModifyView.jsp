@@ -119,19 +119,21 @@ span {
 	<jsp:include page="../main/header.jsp"/>
 	<div class="wrap">
             <div class="form-wrap">
-	<form action="${conPath }/store/storeModify.do" method="POST">
+	<form action="${conPath }/store/storeModify.do" method="post" enctype="multipart/form-data">
+		<input type="hidden" value="${param.sno }" name=sno>
+		<input type="hidden" value="${param.oid }" name=oid>
 		<table>
 			<tr>
 				<th>가게 사진</th>
-				<td><input type="file" name="simage" required="required"></td>
+				<td><input type="file" name="simg" required="required"></td>
 			</tr>
 			<tr>
 				<th>가게 이름</th>
-				<td><input type="text" name="sname" required="required"></td>
+				<td><input type="text" name="sname" required="required" value="${store.sname}"></td>
 			</tr>
 			<tr>
 				<th>가게 주소</th>
-				<td><input type="text" name="saddress" required="required"></td>
+				<td><input type="text" name="saddress" required="required" value="${store.saddress}"></td>
 			</tr>
 			<tr>
 				<th>가게 지역</th>
@@ -145,48 +147,60 @@ span {
 				</td>
 			</tr>
 			<tr>
+				<th>가게 종류</th>
+				<td><input type="text" name="stype" required="required" value="${store.stype}"></td>
+			</tr>
+			<tr>
 				<th>가게 전화번호</th>
-				<td><input type="tel" name="stel" required="required"></td>
+				<td><input type="tel" name="stel" required="required" value="${store.stel}"></td>
 			</tr>
 			<tr>
 				<th>가게 가격대</th>
-				<td><input type="text" name="sprice" required="required"></td>
+				<td><input type="text" name="sprice" required="required" value="${store.sprice}"></td>
 			</tr>
 			<tr>
 				<th>가게 운영시간</th>
-				<td><input type="text" name="stime" required="required"></td>
+				<td><input type="text" name="stime" required="required" value="${store.stime}"></td>
+			</tr>
+			<tr>
+				<th>가게 시작시간</th>
+				<td><input type="number" name="sstart" required="required" value="${store.sstart}"></td>
+			</tr>
+			<tr>
+				<th>가게 닫는시간</th>
+				<td><input type="number" name="send" required="required" value="${store.send}"></td>
 			</tr>
 			<tr>
 				<th>가게 휴일</th>
-				<td><input type="text" name="sholiday" required="required"></td>
+				<td><input type="text" name="sholiday" required="required" value="${store.sholiday}"></td>
 			</tr>
 			<tr>
 				<th>대표 메뉴 1</th>
-				<td><input type="text" name="smenu1" required="required"></td>
+				<td><input type="text" name="smenu1" required="required" value="${store.smenu1}"></td>
 			</tr>
 			<tr>
 				<th>대표 메뉴 1 가격</th>
-				<td><input type="text" name="smenu1cost" required="required"></td>
+				<td><input type="text" name="smenu1cost" required="required" value="${store.smenu1cost}"></td>
 			</tr>
 			<tr>
 				<th>대표 메뉴 2</th>
-				<td><input type="text" name="smenu2" required="required"></td>
+				<td><input type="text" name="smenu2" required="required" value="${store.smenu2}"></td>
 			</tr>
 			<tr>
 				<th>대표 메뉴 2 가격</th>
-				<td><input type="text" name="smenu2cost" required="required"></td>
+				<td><input type="text" name="smenu2cost" required="required" value="${store.smenu2cost}"></td>
 			</tr>
 			<tr>
 				<th>대표 메뉴 3</th>
-				<td><input type="text" name="smenu3" required="required"></td>
+				<td><input type="text" name="smenu3" required="required" value="${store.smenu3}"></td>
 			</tr>
 			<tr>
 				<th>대표 메뉴 3 가격</th>
-				<td><input type="text" name="smenu3cost" required="required"></td>
+				<td><input type="text" name="smenu3cost" required="required" value="${store.smenu3cost}"></td>
 			</tr>
 			<tr>
 				<th>가게 검색 태그</th>
-				<td><input type="text" name="ssearchtag" required="required"></td>
+				<td><input type="text" name="ssearchtag" required="required" value="${store.ssearchtag}"></td>
 			</tr> 
 			<tr>
 				<td colspan="2">
