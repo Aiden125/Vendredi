@@ -23,14 +23,17 @@
 		<result property="ssearchtag" column="ssearchtag"/>
 		<result property="sconfirm" column="sconfirm"/>
 		<result property="sreplycnt" column="sreplycnt"/>
-		<result property="sscore" column="sscore"/> 
+		<result property="sscore" column="sscore"/>
+		<result property="slati" column="slati"/>
+		<result property="slongti" column="slongti"/> 
 	</resultMap>
 	
 <insert id="storeRegister" parameterType="Store">
 	insert into store (sNo, oId, sImage, sName, sAddress, sLocation, sTel, sType, sPrice, sTime, sHoliday,
             sMenu1 , sMenu1cost , sMenu2, sMenu2cost, sMenu3, sMenu3cost, sSearchtag, sstart, send) 
-	values (store_sq.nextval, #{oid}, #{simage}, #{sname}, #{saddress}, #{slocation}, #{stel}, #{stype}, #{sprice} , #{stime},  
-        #{sholiday}, #{smenu1}, #{smenu1cost} , #{smenu2}, #{smenu2cost}, #{smenu3}, #{smenu3cost}, #{ssearchtag}, #{sstart}, #{send})
+	values (store_sq.nextval, #{oid}, #{simage}, #{sname}, #{saddress}, #{slocation}, #{stel}, #{stype}, 
+	        #{sprice} , #{stime}, #{sholiday}, #{smenu1}, #{smenu1cost} , #{smenu2}, #{smenu2cost}, 
+	        #{smenu3}, #{smenu3cost}, #{ssearchtag}, #{sstart}, #{send}, #{slati}, #{slongti})
         
 </insert>
 <update id="storeModify" parameterType="Store">
@@ -53,7 +56,9 @@
                  sMenu2cost = #{smenu2cost},
                  sMenu3 = #{smenu3},
                  sMenu3cost = #{smenu3cost}, 
-                 sSearchtag = #{ssearchtag}
+                 sSearchtag = #{ssearchtag},
+                 slati = #{slati},
+                 slongti = #{slongti} 
                  where sNo = #{sno} and oId = #{oid}
 
 </update>

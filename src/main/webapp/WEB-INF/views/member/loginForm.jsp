@@ -168,7 +168,7 @@ naverLogin.init();
 				<button type="button" class="togglebtn" onclick="login()">User</button>
 				<button type="button" class="togglebtn" onclick="register()">OWNER</button>
 			</div>
-			<div class="social-icons" id="naverIdLogin">
+			<div id="naverIdLogin" class="social-icons">
 				<a href="${url }"><img src="${conPath }/assets/img/naver.png" alt="naver"></a>
 				<a href="https://kauth.kakao.com/oauth/authorize?client_id=9ab3a25c7202d038fb2c93a42fefcc2c&redirect_uri=http://localhost:8081/vendredi/member/kakaoLogin.do&response_type=code">
 				<img src="${conPath }/assets/img/kakao.png" alt="Kakao"></a>
@@ -193,7 +193,17 @@ naverLogin.init();
                     <button class="submit">Login</button>
              </form>
 		</div>
+		<c:choose>
+			<c:when test="${sessionId != null}">
+				<h2>네이버 아이디 로그인 성공하셨습니다!!</h2>
+				<h3>'${sessionId}' 님 환영합니다!</h3>
+				<h3>
+					<a href="${conPath }/member/logout">로그아웃</a>
+				</h3>
+			</c:when>
+		</c:choose>
 	</div>
+		
 	<script>
 		var x = document.getElementById("login");
 		var y = document.getElementById("register");

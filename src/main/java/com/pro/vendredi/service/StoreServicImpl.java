@@ -115,9 +115,9 @@ public class StoreServicImpl implements StoreService {
 			}// if
 		}//while - simg 배열에 파일 이름 저장
 		store.setSimage(simg); // 첫번째 청구할 파일 이름
-		System.out.println("서비스 저장 전 : " + store);
+		System.out.println("서비스 수정 전 : " + store);
 		int result = storeDao.storeModify(store);
-		System.out.println("서비스 저장 후 : " + store);
+		System.out.println("서비스 수정 후 : " + store);
 		return result;
 	}
 
