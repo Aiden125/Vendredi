@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	220808Ryu
    <jsp:forward page="store/storeList.do"/> 
   
 </body>
