@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.vendredi.dao.OboardComDao">
+	<resultMap type="OboardCom" id="ownerResult">
+		<result property="cno" column="cno"/>
+		<result property="bno" column="bno"/>
+		<result property="oid" column="oid"/>
+		<result property="ccontent" column="ccontent"/>
+		<result property="cdate" column="cdate"/>
+	</resultMap>
+
+<!-- 댓글쓰기 -->
+<select id="oboardComWrite" parameterType="OboardCom" resultType="OboardCom">
+	INSERT INTO BOARD_COMMENT (CNO, BNO, OID, CCONTENT, CDATE)
+    VALUES (SEQ_BC.NEXTVAL, #{bno}, #{oid}, #{ccontent}, SYSDATE)
+</select>
+<!-- 댓글 목록 -->
+<select id="oboardComList" parameterType="int" resultMap="ownerResult">
+	SELECT * FROM BOARD_COMMENT WHERE BNO=#{bno} ORDER BY CNO
+</select>
+<!-- 댓글 수정 -->
+<update id="oboardComModify" parameterType="OboardCom">
+	UPDATE BOARD_COMMENT SET CCONTENT = #{ccontent}
+</update>
+<!-- 댓글 삭제 -->
+<delete id="oboardComDelete" parameterType="int">
+	DELETE FROM BOARD_COMMENT WHERE CNO= #{cno}
+</delete>
+</mapper>

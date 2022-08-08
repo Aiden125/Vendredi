@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.vendredi.dao.StoreDao">
+	<resultMap type="Store" id="storeResult">
+		<result property="sno" column="sno"/>
+		<result property="simage" column="simage"/>
+		<result property="sname" column="sname"/>
+		<result property="saddress" column="saddress"/>
+		<result property="slocation" column="slocation"/>
+		<result property="stel" column="stel"/>
+		<result property="stype" column="stype"/>
+		<result property="sprice" column="sprice"/>
+		<result property="stime" column="stime"/>
+		<result property="sholiday" column="sholiday"/> 
+		<result property="smenu1" column="smenu1"/>
+		<result property="smenu2" column="smenu2"/>
+		<result property="smenu3" column="smenu3"/> 
+		<result property="smenu1cost" column="smenu1cost"/>
+		<result property="smenu2cost" column="smenu2cost"/>
+		<result property="smenu3cost" column="smenu3cost"/> 
+		<result property="ssearchtag" column="ssearchtag"/>
+		<result property="sconfirm" column="sconfirm"/>
+		<result property="sreplycnt" column="sreplycnt"/>
+		<result property="sscore" column="sscore"/>
+		<result property="slike" column="slike"/>
+	</resultMap>
+	
+<insert id="storeRegister" parameterType="Store">
+	insert into store (sNo, oId, sImage, sName, sAddress, sLocation, sTel, sType, sPrice, sTime, sHoliday,
+            sMenu1 , sMenu1cost , sMenu2, sMenu2cost, sMenu3, sMenu3cost, sSearchtag) 
+	values (store_sq.nextval, #{oid}, #{simage}, #{sname}, #{saddress}, #{slocation}, #{stel}, #{stype}, #{sprice} , #{stime},  
+        #{sholiday}, #{smenu1}, #{smenu1cost} , #{smenu2}, #{smenu2cost}, #{smenu3}, #{smenu3cost}, #{ssearchtag})
+        
+</insert>
+<update id="storeModify" parameterType="Store">
+	update store set sImage = #{simage},
+                 sName = #{sname},
+                 sAddress = #{saddress},
+                 sTel = #{stel},
+                 sType = #{stype}, 
+                 sPrice = #{sprice},
+                 sTime = #{stime} ,
+                 sHoliday = #{sholiday},
+                 sMenu1 = #{smenu1},
+                 sMenu1cost = #{smenu1cost},
+                 sMenu2 = #{smenu2},
+                 sMenu2cost = #{smenu2cost},
+                 sMenu3 = #{smenu3},
+                 sMenu3cost = #{smenu3cost}, 
+                 sSearchtag = #{ssearchtag}
+                 where sNo = #{sno} and oId = #{oid}
+
+</update>
+
+<select id="storeDetail" parameterType="int" resultType="Store">
+    		SELECT * FROM STORE WHERE SNO = #{sno}
+</select> 
+<select id="storeCnt" resultType="int">
+    		select count(*) cnt from store where sConfirm = 'Y'
+</select>
+<select id="storeCntSearch" parameterType="string" resultType="int">
+    		select count(*) cnt from store where ssearchtag like '%'||#{ssearchtag}||'%' and sConfirm = 'Y'
+</select>
+<select id="storeCntMy" resultType="int">
+    		select count(*) cnt from store where oid = #{oid}
+</select>
+
+<select id="storeList" parameterType="Store" resultMap="storeResult">
+	SELECT * FROM
+    (SELECT ROWNUM RN, A.* FROM
+    (SELECT SNO, SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+     FROM STORE where sConfirm = 'Y' order by sno desc)A)
+     WHERE RN BETWEEN #{startRow} AND #{endRow}
+</select>
+<select id="storeListSearch" parameterType="Store" resultMap="storeResult">
+	SELECT * FROM
+    (SELECT ROWNUM RN, A.* FROM
+    (SELECT SNO, SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+     FROM STORE where sSearchtag like '%'||#{ssearchtag}||'%' and sConfirm = 'Y' order by STSCORE desc)A)
+     WHERE RN BETWEEN #{startRow} AND #{endRow} 
+</select>
+<select id="myStoreList" parameterType="Store" resultMap="storeResult">
+	SELECT * FROM
+    (SELECT ROWNUM RN, A.* FROM
+    (SELECT SNO, SIMAGE, SNAME, SLOCATION, STYPE 
+     FROM STORE where oid = #{oid} order by sno desc)A)
+     WHERE RN BETWEEN #{startRow} AND #{endRow} 
+</select> 
+
+<select id="storeScore" parameterType="int" resultType="Store">
+    SELECT SIMAGE, SNAME, SLOCATION, STYPE, ROUND((sScore/sReplycnt), 1) STSCORE FROM STORE WHERE SNO = #{sno} order by STSCORE		 
+</select>
+
+
+
+
+
+
+
+
+	
+</mapper>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.vendredi.dao.QnADao">
+	<resultMap type="QnA" id="QnAResult">
+		<result property="qno" column="qno"/>
+		<result property="qid" column="qid"/>
+		<result property="qsubject" column="qsubject"/>
+		<result property="qcontent" column="qcontent"/>
+		<result property="qhit" column="qhit"/>
+		<result property="qgroup" column="qgroup"/>
+		<result property="qstep" column="qstep"/>
+		<result property="qrdate" column="qrdate"/>
+		<result property="qsecret" column="qsecret"/>
+		<result property="qreplycheck" column="qreplycheck"/>
+	</resultMap>
+	
+	<!-- 문의글 갯수 -->
+	<select id="qnaTotCnt" resultType="int">
+		SELECT COUNT(*)CNT FROM QNA
+	</select>
+	
+	<!-- 문의글 리스트(답변이 완료되면 답변완료 추가) -->
+	<select id="qnaList" parameterType="QnA" resultMap="QnAResult">
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
+    (select qno, qid, qsubject, qcontent,  qhit, qgroup, qstep, qrdate, qsecret,
+    (select count(*) from qna where qno=q.qno and qstep>0 ) replyok
+    from qna Q order by qgroup)A)
+    WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 문의글 작성 -->
+	<insert id="qnaWrite" parameterType="QnA">
+	<if test="qsecret == 'Y'">
+		INSERT INTO QNA VALUES (QNA_SQ.NEXTVAL, #{qid},#{qsubject},#{qcontent},#{qhit},QNA_SQ.CURRVAL,#{qstep},SYSDATE,#{qsecret})	
+	</if>
+	<if test ="qsecret == null or qsecret != 'Y'">
+		INSERT INTO QNA (qno,qid,qsubject,qcontent,qhit,qgroup,qstep,qrdate)
+		VALUES (QNA_SQ.NEXTVAL, #{qid},#{qsubject},#{qcontent},#{qhit},QNA_SQ.CURRVAL,#{qstep},SYSDATE)	
+	</if>
+	</insert>
+	
+	<!-- 문의글(원글) 상세보기 -->
+	<select id="qnaDetail" parameterType="QnA" resultType="QnA">
+		SELECT * FROM QNA WHERE QGROUP=#{qgroup} AND QSTEP=0
+	</select>
+	
+	<!-- 문의글 수정 -->
+	<update id="qnaModify" parameterType="QnA">
+		update qna set 
+	    qsubject = #{qsubject, jdbcType=VARCHAR},
+	    qcontent = #{qcontent}
+	    where qno = #{qno}
+	</update>
+	
+	<!-- 문의글 조회수 증가 -->
+	<update id="qnaHitup" parameterType="int">
+		update qna set qhit = qhit +1 where qno=#{qno}
+	</update> 
+	
+	<!-- 문의글 삭제 -->
+	<delete id="qnaDelete" parameterType="int">
+		DELETE FROM QNA WHERE QNO= #{qno}
+	</delete>
+	
+	<!-- 답변글 쓰기전 step A(미사용 예정) -->
+	<update id="qnaReplyPre" parameterType="QnA" >
+		UPDATE  QNA SET QSTEP=QSTEP +1 WHERE QGROUP = #{qgroup} AND qSTEP>0
+	</update>
+	
+	<!-- 답변글 쓰기 -->
+	<insert id="qnaReply" parameterType="QnA">
+		INSERT INTO QNA (QNO, QID, QSUBJECT, QCONTENT,QGROUP,QSTEP, QREPLYCHECK)
+    VALUES (QNA_SQ.NEXTVAL,#{qid},#{qsubject},#{qcontent},#{qgroup},1, 1)
+	</insert>
+	
+	
+	<!-- 질문글 리스트(희석 추가) -->
+	<select id="qnaQuestionList" parameterType="QnA" resultMap="QnAResult">
+	SELECT * FROM
+	    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP=0 ORDER BY QRDATE DESC) A)
+	    WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 질문글 총 갯수(희석 추가) -->
+	<select id="qnaQuestionTotCnt" resultType="int">
+		SELECT COUNT(*) FROM QNA WHERE QSTEP=0
+	</select>
+		
+	<!-- 답변 안된 질문글만 보기(희석 추가) -->
+	<select id="qnaReplyYetList" parameterType="QnA" resultMap="QnAResult">
+	SELECT * FROM
+	    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP=0 AND QREPLYCHECK=0 ORDER BY QRDATE DESC) A)
+	    WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 답변글 갯수(희석 추가) -->
+	<select id="qnaReplyYetTotCnt" resultType="int">
+		SELECT COUNT(*) FROM QNA WHERE QSTEP=0 AND QREPLYCHECK=0
+	</select>
+	
+	<!-- 답변글만 보기(희석 추가) -->
+	<select id="qnaReplyList" parameterType="QnA" resultMap="QnAResult">
+	SELECT * FROM
+	    (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP!=0 ORDER BY QRDATE DESC) A)
+	    WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 답변글 갯수(희석 추가) -->
+	<select id="qnaReplyTotCnt" resultType="int">
+		SELECT COUNT(*) FROM QNA WHERE QSTEP!=0
+	</select>
+	
+	<!-- 답변되면 상태변경(희석 추가) -->
+	<update id="qnaStateUpdate" parameterType="int">
+		UPDATE QNA SET QREPLYCHECK=1
+        WHERE QNO=#{qno}
+	</update> 
+	
+	<!-- 답변글 상세보기 -->
+	<select id="qnaReplyDetail" parameterType="QnA" resultType="QnA">
+		SELECT * FROM QNA WHERE QGROUP=#{qgroup} AND QSTEP!=0
+	</select>
+	
+</mapper>

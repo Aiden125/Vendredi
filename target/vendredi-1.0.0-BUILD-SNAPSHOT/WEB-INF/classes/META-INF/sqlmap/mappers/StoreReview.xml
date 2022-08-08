@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.vendredi.dao.StoreReviewDao">
+	<resultMap type="StoreReview" id="storeReviewResult">
+		<result property="srno" column="srno"/>
+		<result property="sno" column="sno"/>
+		<result property="mid" column="mid"/>
+		<result property="mprofile" column="mprofile"/>
+		<result property="srcontent" column="srcontent"/>
+		<result property="srimage1" column="srimage1"/>
+		<result property="srimage2" column="srimage2"/>
+		<result property="srimage3" column="srimage3"/>
+		<result property="srimage4" column="srimage4"/>
+		<result property="srimage5" column="srimage5"/>
+		<result property="srscore" column="srscore"/>
+		<result property="srdate" column="srdate"/> 
+	</resultMap>
+	
+<insert id="reviewWrite" parameterType="StoreReview">
+	insert into storereview (srNo, sNo, mId, mProfile, srContent, 
+    srImage1, srImage2, srImage3,  srImage4, srImage5, srScore, srDate ) 
+	VALUES (storereview_sq.NEXTVAL, #{sno}, #{mid}, #{mprofile}, #{srcontent}, 
+    #{srimage1}, #{srimage2}, #{srimage3}, #{srimage4}, #{srimage5}, #{srscore}, sysdate)
+</insert>
+
+<update id="addScore" parameterType="StoreReview" >
+    		UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
+                   sScore = sScore + #{srscore}
+                   WHERE SNo = #{sno} 
+</update>
+<select id="reviewCnt" parameterType="int" resultType="int">
+    		select count(*) cnt from storereview where sno = #{sno} 
+</select>
+
+<select id="storeReviewList" parameterType="StoreReview" resultMap="storeReviewResult">
+	select * from
+    (select rownum RN, A.* from
+    (select * from storereview where sno = #{sno} 
+    order by srno desc)A)
+    where RN BETWEEN #{startRow} and #{endRow}
+</select>
+
+<update id="reviewModify" parameterType="StoreReview">
+	update storereview set 
+            srcontent = #{srcontent},
+            srimage1 = #{srimage1},
+            srimage2 = #{srimage2},
+            srimage3 = #{srimage3},
+            srimage4 = #{srimage4},
+            srimage5 = #{srimage5}
+            where srno = #{srno}
+</update>
+
+<delete id="reviewDelete"  parameterType="int">
+	delete storereview where srno = #{srno}
+</delete>
+
+<select id="reviewDetail"  parameterType="int" resultType="Store">
+	select * from storereview where srno = #{srno}
+</select>
+ 
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

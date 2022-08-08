@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.vendredi.dao.MemberDao">
+	<resultMap type="Member" id="MemberResult">
+		<result property="mid" column="mid"/>
+		<result property="mname" column="mname"/>
+		<result property="mpw" column="mpw"/>
+		<result property="maddress" column="maddress"/>
+		<result property="memail" column="memail"/>
+		<result property="mtel" column="mtel"/>
+		<result property="mbirth" column="mbirth"/>
+		<result property="mprofile" column="mprofile"/>
+		<result property="mgender" column="mgender"/>
+	</resultMap>
+	
+	<!-- id중복확인 -->
+	<select id="memberIdConfirm" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM MEMBER WHERE MID = #{mid}
+	</select>
+	<!-- 이메일 중복 확인 -->
+	<select id="memberEmailConfirm" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM MEMBER WHERE MEMAIL = #{memail}
+	</select>
+	<!-- 회원가입 -->
+	<insert id="memberJoin" parameterType="Member">
+		INSERT INTO MEMBER  (mid, mname, mpw, mtel, memail, maddress, mgender, mbirth) VALUES
+		(#{mid}, #{mname}, #{mpw}, #{mtel}, #{memail}, #{maddress}, #{mgender}, #{mbirth})
+	</insert>
+	<!-- 아이디 찾기 -->
+	<select id="memberSearchId" parameterType="Member" resultType="Member">
+		SELECT * FROM MEMBER WHERE MNAME = #{mname} AND MEMAIL =#{memail}
+	</select>
+	<!-- 비밀번호 찾기 -->
+	<select id="memberSearchPw" parameterType="Member" resultType="Member">
+		SELECT * FROM MEMBER WHERE MID = #{mid} AND Mname = #{mname}
+	</select>
+	<!-- 회원 로그인 -->
+	<select id="memberLogin" parameterType="Member" resultType="int">
+		select * from member where mid = #{mid} and mpw = #{mpw}
+	</select>
+	<!-- 회원 상세보기 -->
+	<select id="memberGetDetail" parameterType="String" resultType="Member">
+		SELECT * FROM MEMBER WHERE MID=#{mid}
+	</select>
+	<!-- 회원 정보 수정 -->
+	<update id="memberModify" parameterType="Member">
+	<if test="mprofile ==''">
+		UPDATE MEMBER SET MPW = #{mpw},
+                  MNAME = #{mname},
+                  mtel = #{mtel},
+                  memail = #{memail},
+                  maddress = #{maddress}
+                 where mid = #{mid}
+	</if>
+	<if test="mprofile !=''">
+	UPDATE MEMBER SET MPW = #{mpw},
+                  MNAME = #{mname},
+                  mtel = #{mtel},
+                  memail = #{memail},
+                  maddress = #{maddress},
+                  mprofile = #{mprofile}
+                 where mid = #{mid}
+    </if>
+	</update>
+	<!-- 회원 수  -->
+	<select id="memberTotCnt" resultType="int">
+		select count(*)cnt from member
+	</select>
+	<!-- 회원 탈퇴 -->
+	<delete id="memberWithdrawal" parameterType="Member">
+		delete from member where mid = #{mid}
+	</delete>
+</mapper>    
