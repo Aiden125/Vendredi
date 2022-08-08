@@ -23,6 +23,8 @@
 	<!-- 김민우 -->
 		<typeAlias type="com.pro.vendredi.dto.Member" alias="Member"/>
 		<typeAlias type="com.pro.vendredi.dto.QnA" alias="QnA"/>
+		<typeAlias type="com.pro.vendredi.dto.Naver" alias="Naver"/>
+		<typeAlias type="com.pro.vendredi.dto.Kakao" alias="Kakao"/>
 	
 	
 	

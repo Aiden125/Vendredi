@@ -33,6 +33,7 @@
 	<!-- 김민우 -->
 	<resources mapping="/assets/**" location="/assets/" />
 	
+	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -69,4 +70,6 @@
 		<beans:property name="maxUploadSize" value="10485760"/>
 	</beans:bean>
 	
+	<!-- NaverLoginBO Class에 대한 Bean설정 추가 -->	
+	<beans:bean id="naverLoginBO" class="com.pro.vendredi.util.NaverLoginBO" />
 </beans:beans>

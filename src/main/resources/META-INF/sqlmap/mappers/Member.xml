@@ -40,6 +40,18 @@
 	<select id="memberLogin" parameterType="Member" resultType="int">
 		select * from member where mid = #{mid} and mpw = #{mpw}
 	</select>
+	
+	<!-- 네이버 간편 로그인 -->
+	<select id="naverLogin" parameterType="Member" resultType="Naver">
+		select * from member where mid=#{mid} and memail=#{memail}
+	</select>
+	
+	<!-- 네이버 간편 회원가입 -->
+	<insert id="naverJoin" parameterType="Naver">
+		insert into member (n_id, n_name, n_phone, n_email, n_birth)
+			values (#{n_id},#{n_name},#{n_phone},#{n_email},#{n_birth})
+	</insert>
+	
 	<!-- 회원 상세보기 -->
 	<select id="memberGetDetail" parameterType="String" resultType="Member">
 		SELECT * FROM MEMBER WHERE MID=#{mid}
