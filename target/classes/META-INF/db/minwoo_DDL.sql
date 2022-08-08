@@ -16,9 +16,34 @@ CREATE TABLE MEMBER (
     MBIRTH DATE,  --생일   
     mprofile varchar2(50)  DEFAULT 'noImg.png' NOT NULL --프로필
 );
-
 CREATE SEQUENCE MEMBER_SQ MAXVALUE 999999 NOCYCLE NOCACHE;
 
+--로그인 log
+create table MEMBER_LOG (
+    MID VARCHAR2(50) REFERENCES MEMBER(MID),
+    LOGIN_DATE DATE,
+    LOGIN_STATUS VARCHAR2(45)
+);
+--네이버 
+create table sns (
+    mid varchar2(50) references member (mid),
+    sid varchar2(50) primary key, --네이버 아이디
+    sname varchar2(255), 
+    sphone varchar2(50), --전화번호
+    semail varchar2(50),
+    sprofile varchar2(255), --네이버 프로필
+    sdate Date --생일
+);
+ALTER TABLE SNS add (semail varchar2(50));
+CREATE SEQUENCE SNS_SQ MAXVALUE 999999 NOCYCLE NOCACHE;
+
+--사용자 연동 처리 및 로그인 처리
+SELECT M.MNAME,M.MEMAIL, S.sID,S.STYPE,S.SNAME,S.sprofile,S.SDATE 
+    from member m , sns s where m.mname = s.sname and m.memail = s.semail;  --and s.sid = 
+--네이버 간편 회원가입
+insert into sns(mid,sid,sname,sprofile,sdate)
+    values('aaa','asdasdsa','우지호','010-4567-8764','zico.jpg','1992/09-14');
+    
 CREATE TABLE QNA(
     QNO VARCHAR2(50) PRIMARY KEY, --글 번호
     qID VARCHAR2(50) , --글쓴이 사용자 or 관리자
