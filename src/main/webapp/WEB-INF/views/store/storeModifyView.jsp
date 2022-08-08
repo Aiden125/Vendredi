@@ -17,19 +17,19 @@
 .wrap {
     height: 100%;
     width: 100%;
-    background-image: url(assets/img/디저트.jpg);
+    background-image: url('${conPath}/assets/img/한식1.jpg');
     background-position: center;
     background-size: cover;
     position: absolute;
+    margin: 0 auto;
 }
 .form-wrap {
-    width: 380px;
-    height: 480px;
+    width: 70%; 
     position: relative;
     margin: 6% auto;
     background: #fff;
     padding: 5px;
-    overflow: hidden;
+    overflow: hidden; 
 }
 .button-wrap {
     width: 230px;
@@ -121,11 +121,11 @@ span {
             <div class="form-wrap">
 	<form action="${conPath }/store/storeModify.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" value="${param.sno }" name=sno>
-		<input type="hidden" value="${param.oid }" name=oid>
+		<input type="hidden" value="bbb" name=oid>
 		<table>
 			<tr>
 				<th>가게 사진</th>
-				<td><input type="file" name="simg" required="required"></td>
+				<td><input type="file" name="simg"></td>
 			</tr>
 			<tr>
 				<th>가게 이름</th>
@@ -164,11 +164,11 @@ span {
 			</tr>
 			<tr>
 				<th>가게 시작시간</th>
-				<td><input type="number" name="sstart" required="required" value="${store.sstart}"></td>
+				<td><input type="text" name="sstart" required="required" value="${store.sstart}"></td>
 			</tr>
 			<tr>
 				<th>가게 닫는시간</th>
-				<td><input type="number" name="send" required="required" value="${store.send}"></td>
+				<td><input type="text" name="send" required="required" value="${store.send}"></td>
 			</tr>
 			<tr>
 				<th>가게 휴일</th>
@@ -201,6 +201,14 @@ span {
 			<tr>
 				<th>가게 검색 태그</th>
 				<td><input type="text" name="ssearchtag" required="required" value="${store.ssearchtag}"></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+				 이것은 관리자용 건들지 마시오 <br>
+				 가게 위도 <input type="text" name="slati" required="required" value="${store.slati}"><br> 
+				 가게 경도<input type="text" name="slongti" required="required" value="${store.slongti}"><br>
+				 https://apis.map.kakao.com/web/sample/addMapClickEvent/ - 여기서 조리있게 ㄱㄱ
+				 </td>
 			</tr> 
 			<tr>
 				<td colspan="2">

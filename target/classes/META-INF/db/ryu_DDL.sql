@@ -1,4 +1,5 @@
 -- ryu ddl store / storere /request table create and drop
+drop table store CASCADE CONSTRAINTS; 
 drop table store;
 drop SEQUENCE store_sq;
 create SEQUENCE store_sq MAXVALUE 999999 NOCACHE NOCYCLE;
@@ -25,8 +26,10 @@ create table store (
             sReplycnt   number(8) default 1,
             sScore      number(8) default 5,
             sStart     number(2) NOT NULL,
-            sEnd       number(2) NOT NULL
-            );
+            sEnd       number(2) NOT NULL,
+            sLati number(20, 6) Default 37.57595770501166,
+            sLongti number(20, 6) Default 126.97686668256979
+            );             
 
                   
                    
