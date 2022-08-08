@@ -185,16 +185,13 @@ naverLogin.init();
 						ID or PW?</p></a><br>
 				<button class="submit">Login</button>
 			</form>
-			<form id="register" action="${conPath }/owner/ologin.do"
-				method="post" class="input-group">
-				<input type="text" class="input-field" id="oid" name="oid"
-					value="${oid }" placeholder="Owner ID" required> <input
-					type="password" class="input-field" id="opw" name="oid"
-					placeholder="Password" required> <a
-					href="${conPath }/owner/join.do"><input type="checkbox"
-					class="checkbox"> <span>Don't have an account?</span></a>
-				<button class="submit">Login</button>
-			</form>
+			<form id="register" action="${conPath }/owner/Login.do" method="post" class="input-group">
+                   <input type="text" class="input-field"  id="oid" name="oid"  placeholder="Owner ID" required>
+                    <input type="password" class="input-field" id="opw" name="opw" placeholder="Password" required>
+                    <a href="${conPath }/owner/JoinForm.do">Don't have an account?</a><br><br>
+                    <p>Forget <a href="${conPath}/owner/SearchIdForm.do">ID</a> or <a href="${conPath}/owner/SearchIdForm.do">PW?</a></p><br>
+                    <button class="submit">Login</button>
+             </form>
 		</div>
 		<c:choose>
 			<c:when test="${sessionId != null}">
