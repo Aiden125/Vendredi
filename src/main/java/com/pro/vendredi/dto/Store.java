@@ -31,6 +31,8 @@ public class Store {
     private String smenu5cost;
     private String ssearchtag;
     private String sconfirm;
+    private int sstart;
+    private int send;
     private int sreplycnt;
     private int sscore;
     private int slike;

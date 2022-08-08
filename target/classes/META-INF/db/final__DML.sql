@@ -195,10 +195,11 @@ DELETE ADMIN WHERE aID='ddd';
 -- table store
 -- 1. storeRegister / 가게 등록하기
 insert into store (sNo, oId, sImage, sName, sAddress, sLocation, sTel, sType, sPrice, sTime, sHoliday,
-            sMenu1 , sMenu1cost , sMenu2, sMenu2cost, sMenu3, sMenu3cost, sSearchtag) 
+            sMenu1 , sMenu1cost , sMenu2, sMenu2cost, sMenu3, sMenu3cost, sSearchtag, sstart, sEnd) 
 values (store_sq.nextval, 'aaa', 'noimg.jpg', '군옥각2', '리월시 취헌부', '강남', '070-8888-8888', '중식, 중국요리, 짜장면', '2만원-4만원대',  
-        '11:00-19:00', '금요일', '짜장면', '5000원', '짬뽕', '6000원', '탕수육', '10000원',
-        '#강남#강남역#강남역맛집#중국집#중화요리#중국요리');
+        '11:00-20:00', '금요일', '짜장면', '5000원', '짬뽕', '6000원', '탕수육', '10000원',
+        '#강남#강남역#강남역맛집#중국집#중화요리#중국요리', 11, 20);
+        
 -- 2. storeModify / 가게 정보 수정하기
 update store set sImage = 'modify.jpg',
                  sName = '청진각',
@@ -207,6 +208,8 @@ update store set sImage = 'modify.jpg',
                  sType = '중식', 
                  sPrice = '1만원-2만원대',
                  sTime = '24시간' ,
+                 sStart = 9,
+                 sEnd = 22,
                  sHoliday = '설날, 추석, 공휴일',
                  sMenu1 = '황금새우볼튀김',
                  sMenu1cost = '15000원',
@@ -239,14 +242,14 @@ select count(*) cnt from store where ssearchtag like '%'||'강남'||'%'  and sCo
 -- 5 - 1. storeList / 가게 리스트 페이징하기
 SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+    (SELECT SNO, SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE order by STSCORE desc)A)
      WHERE RN BETWEEN 1 AND 50;
      
 -- 5 - 2. storeListSearch / 가게 리스트 페이징하기
 SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+    (SELECT SNO, SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE where sSearchtag like '%'||'강남역'||'%' and sConfirm = 'Y' order by STSCORE desc)A)
      WHERE RN BETWEEN 1 AND 50;
      
@@ -254,16 +257,22 @@ SELECT * FROM
 -- 5 - 3. storeListNew / 가게 리스트 페이징하기
 SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SIMAGE, SNAME, SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+    (SELECT SNO, SIMAGE, SNAME, SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE where sConfirm = 'Y' order by sno desc)A)
      WHERE RN BETWEEN 1 AND 50;
 
+-- 5 - 4. myStoreList / 가게 리스트 페이징하기
+SELECT * FROM
+    (SELECT ROWNUM RN, A.* FROM
+    (SELECT SNO, SIMAGE, SNAME, SLOCATION, STYPE 
+     FROM STORE where oid = 'bbb' order by sno desc)A)
+     WHERE RN BETWEEN 1 AND 50; 
+commit;     
+
 -- 6. 1. storeScoreUp     
 UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
-                   sScore = sScore + srScore
+                   sScore = sScore + 5
                    WHERE SNo = 2;     
-
-
 
 -- table storereview
 
@@ -277,8 +286,8 @@ VALUES (storereview_sq.NEXTVAL, 3, 'aaa', 'noImg.jpg', '여기 너무 맛있어�
          
 -- 1. - 1. addScore / 가게의 평점 등록 (reviewWrite와 동시에 이뤄지며 score + 숫자에는 srScore 가 들어갈 예정)         
 UPDATE STORE SET   sReplycnt = sReplycnt + 1 ,
-                   sScore = sScore + 4
-                   WHERE SNO = 3;
+                   sScore = sScore + 3
+                   WHERE SNO = 6; 
 
 -- 2. 0. reviewCnt / 리뷰 숫자 세기 (페이징용)
 
@@ -305,6 +314,9 @@ update storereview set
 -- 4. reviewDelete / 해당 리뷰 삭제
 delete storereview where srno = 18;  
 commit;
+
+-- 5.reviewDetail (srno로 dto)
+select * from storereview where srno = 1;
  
 -- table request
 
@@ -323,13 +335,16 @@ select * from
     where RN BETWEEN 1 and 5;
     
 -- 2 - 1. myRequestList / 사업자 개인 리퀘스트 조회
-select rno, sno, sname from request where oid = 'aaa' order by rno desc;
+select rno, oid, sno, sname, rdate from request where oid = 'ccc' order by rno desc;
     
 -- 3. requestDone / 확인 후 업체 등록 (관리자용) sno(가게번호)로 두 테이블에 update 진행
-
+ 
 update request set sname = CONCAT( sname, ' - 처리 완료 ') where sno = 1; 
+update request set sname = '카즈하스시' where sno = 9;
 
-update store set sConfirm = 'Y' where sno = 1; 
+update store set sConfirm = 'Y' where sno = 9;
+
+commit; 
 
 ----------------------------------- 지환 끝 ---------------------------------------------
 

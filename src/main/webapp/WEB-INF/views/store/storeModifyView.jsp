@@ -163,6 +163,14 @@ span {
 				<td><input type="text" name="stime" required="required" value="${store.stime}"></td>
 			</tr>
 			<tr>
+				<th>가게 시작시간</th>
+				<td><input type="number" name="sstart" required="required" value="${store.sstart}"></td>
+			</tr>
+			<tr>
+				<th>가게 닫는시간</th>
+				<td><input type="number" name="send" required="required" value="${store.send}"></td>
+			</tr>
+			<tr>
 				<th>가게 휴일</th>
 				<td><input type="text" name="sholiday" required="required" value="${store.sholiday}"></td>
 			</tr>
