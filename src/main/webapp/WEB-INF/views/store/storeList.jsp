@@ -23,8 +23,7 @@
     position: absolute;
 }
 .form-wrap {
-    width: 380px;
-    height: 480px;
+    width: 70%; 
     position: relative;
     margin: 6% auto;
     background: #fff;

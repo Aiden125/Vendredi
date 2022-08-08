@@ -39,4 +39,6 @@ public class Store {
     private int startRow;
     private int endRow;
     private double stscore;
+    private double slati;
+    private double slongti;
 }

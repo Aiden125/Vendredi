@@ -1,5 +1,6 @@
 -- ryu DUMMY
 commit;   
+UPDATE STORE SET SCONFIRM = 'Y';
 SELECT * FROM STORE;
 SELECT * FROM STOREreview;
 select * from store where sno = 6;
@@ -47,8 +48,7 @@ insert into store (sNo, oId, sImage, sName, sAddress, sLocation, sTel, sType, sP
 values (store_sq.nextval, 'bbb', '원신등장인물카에데하라 카즈하 (Kaedehara Kazuha).png', '카즈하스시', '서울시 종로구 평창동 451 - 1', '강북', '010-328-3341', '일식, 회, 초밥', 
 '2만원 - 5만원대', '오후 12시 - 오후 10시', '월요일, 금요일', '모듬초밥', '21000원', '모듬사시미', '35000원', '카즈하 코스 요리', '50000원',
         '#평창동#경복국역#일식#회#스시#초밥#원신', 12, 22);
-        
-        rollback;
+         
 
 insert into store (sNo, oId, sImage, sName, sAddress, sLocation, sTel, sType, sPrice, sTime, sHoliday,
             sMenu1 , sMenu1cost , sMenu2, sMenu2cost, sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
@@ -69,6 +69,8 @@ values (store_sq.nextval, 'bbb', 'bts.jpg', '뷔스파게티', '서울시 강남
         '#강남#강남구청#청담동#청담동파스타#파스타', 11, 21);  
         
     commit;
+
+UPDATE STORE SET slati = 37.60954605745158, slongti = 126.97386634391374, sconfirm = 'Y' where sno = 9 ; 
        
 UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
                    sScore = sScore +3
