@@ -47,8 +47,8 @@ public class StoreController {
 	// 가게 수정 하기 -- 추후 storeDetail 페이지로 이동
 	@RequestMapping(value = "storeModify", method = RequestMethod.POST)
 	public String storeModify(@ModelAttribute("store") Store store , MultipartHttpServletRequest mRequest, Model model) {
-		model.addAttribute("storeRegisterResult", storeService.storeModify(store, mRequest));
-		return "forward:store.do?method=storeDetail";
+		model.addAttribute("storeModifyResult", storeService.storeModify(store, mRequest));
+		return "forward:storeDetail.do";
 	}
 	
 	// 가게 상세 보기

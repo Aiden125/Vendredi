@@ -20,12 +20,6 @@ public class RequestController {
 	@Autowired
 	public RequestService requestService;
 	
-	// 요청 등록 하기 -- 추후 storeRegisterView 기능로 이동
-	@RequestMapping(value = "writeRequest", method = {RequestMethod.POST, RequestMethod.GET})
-	public String writeRequest(@ModelAttribute("request") Request request, Model model) {
-		model.addAttribute("writeRequestResult", requestService.writeRequest(request)); 
-		return "forward:requestList.do";
-	}
 	
 	// 요청 목록 - 관리자용 (전체 목록) 
 	@RequestMapping(value = "requestList", method = {RequestMethod.POST, RequestMethod.GET})
@@ -49,7 +43,14 @@ public class RequestController {
 		System.out.println("테이블에 처리 완료 문구 추가");
 		requestService.requestDoneSto(sno);
 		System.out.println("스토어 테이블에 sconfirm Y 변경");
-		return "forward:requestList.do";
+		return "redirect:requestList.do";
+	}
+
+	// 요청 등록 하기 -- 추후 storeRegisterView 기능로 이동
+	@RequestMapping(value = "writeRequest", method = {RequestMethod.POST, RequestMethod.GET})
+	public String writeRequest(@ModelAttribute("request") Request request, Model model) {
+		model.addAttribute("writeRequestResult", requestService.writeRequest(request)); 
+		return "forward:../store/storeDetail.do";
 	}
 	 
 	

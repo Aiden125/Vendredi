@@ -15,11 +15,11 @@
 
 <!-- 예약하기 -->
 <insert id="reservation" parameterType="Reservation">
-	
+	INSERT INTO RESERVATION (RNO, MID, SNO,SNAME, RDATE, RTIME)
+    VALUES (SEQ_R.NEXTVAL, ?, ?, ?, ?, ?)
 </insert>
-<!-- 예약가능 시간 출력 -->
-<select id="rtimeList" parameterType="String" resultMap="reservationResult">
-	
-</select>
 <!-- 예약 취소 -->
+<delete id="reservationCancel" parameterType="int">
+	DELETE FROM RESERVATION WHERE RNO = ?
+</delete>
 </mapper>
