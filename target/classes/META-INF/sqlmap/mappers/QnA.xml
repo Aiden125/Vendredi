@@ -123,4 +123,5 @@
 		SELECT * FROM QNA WHERE QGROUP=#{qgroup} AND QSTEP!=0
 	</select>
 	
+	
 </mapper>

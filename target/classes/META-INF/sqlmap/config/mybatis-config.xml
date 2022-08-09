@@ -20,9 +20,12 @@
  		<typeAlias type="com.pro.vendredi.dto.Owner" alias="owner"/>
  		<typeAlias type="com.pro.vendredi.dto.OwnerBoard" alias="ownerBoard"/>
  		<typeAlias type="com.pro.vendredi.dto.OboardCom" alias="oboardCom"/> 
+ 		<typeAlias type="com.pro.vendredi.dto.Reservation" alias="reservation"/> 
 	<!-- 김민우 -->
 		<typeAlias type="com.pro.vendredi.dto.Member" alias="Member"/>
 		<typeAlias type="com.pro.vendredi.dto.QnA" alias="QnA"/>
+		<typeAlias type="com.pro.vendredi.dto.Naver" alias="Naver"/>
+		<typeAlias type="com.pro.vendredi.dto.Kakao" alias="Kakao"/>
 	
 	
 	

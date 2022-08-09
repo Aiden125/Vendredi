@@ -11,8 +11,9 @@ public interface QnADao {
 	public List<QnA> qnaList(QnA qna);
 	public int qnaTotCnt();
 	public int qnaWrite(QnA qna);
-	public QnA qnaDetail(int qno);
-	public int qnaModify(QnA qna);
+	public QnA qnaDetail(int qno); // 상세보기(조회수 올릴 것)
+	public QnA qnaModifyReplyView(int qno); // 상세보기(조회수 안올리기)
+	public int qnaModify(QnA qna); // 수정하기
 	public int qnaHitup(int qno);
 	public int qnaDelete(int qno);
 	public int qnaReplyPre(QnA qna);
@@ -26,5 +27,5 @@ public interface QnADao {
 	public List<QnA> qnaReplyList(QnA qna);
 	public int qnaReplyTotCnt();
 	public int qnaStateUpdate(int qno);
-	public QnA qnaReplyDetail(int qno);
+	public QnA qnaReplyDetail(int qgroup); // 답변리스트
 }

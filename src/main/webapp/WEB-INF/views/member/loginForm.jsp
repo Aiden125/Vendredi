@@ -168,7 +168,7 @@ naverLogin.init();
 				<button type="button" class="togglebtn" onclick="login()">User</button>
 				<button type="button" class="togglebtn" onclick="register()">OWNER</button>
 			</div>
-			<div class="social-icons" id="naverIdLogin">
+			<div id="naverIdLogin" class="social-icons">
 				<a href="${url }"><img src="${conPath }/assets/img/naver.png" alt="naver"></a>
 				<a href="https://kauth.kakao.com/oauth/authorize?client_id=9ab3a25c7202d038fb2c93a42fefcc2c&redirect_uri=http://localhost:8081/vendredi/member/kakaoLogin.do&response_type=code">
 				<img src="${conPath }/assets/img/kakao.png" alt="Kakao"></a>
@@ -185,18 +185,25 @@ naverLogin.init();
 						ID or PW?</p></a><br>
 				<button class="submit">Login</button>
 			</form>
-			<form id="register" action="${conPath }/owner/ologin.do"
-				method="post" class="input-group">
-				<input type="text" class="input-field" id="oid" name="oid"
-					value="${oid }" placeholder="Owner ID" required> <input
-					type="password" class="input-field" id="opw" name="oid"
-					placeholder="Password" required> <a
-					href="${conPath }/owner/join.do"><input type="checkbox"
-					class="checkbox"> <span>Don't have an account?</span></a>
-				<button class="submit">Login</button>
-			</form>
+			<form id="register" action="${conPath }/owner/Login.do" method="post" class="input-group">
+                   <input type="text" class="input-field"  id="oid" name="oid"  placeholder="Owner ID" required>
+                    <input type="password" class="input-field" id="opw" name="opw" placeholder="Password" required>
+                    <a href="${conPath }/owner/JoinForm.do">Don't have an account?</a><br><br>
+                    <p>Forget <a href="${conPath}/owner/SearchIdForm.do">ID</a> or <a href="${conPath}/owner/SearchIdForm.do">PW?</a></p><br>
+                    <button class="submit">Login</button>
+             </form>
 		</div>
+		<c:choose>
+			<c:when test="${sessionId != null}">
+				<h2>네이버 아이디 로그인 성공하셨습니다!!</h2>
+				<h3>'${sessionId}' 님 환영합니다!</h3>
+				<h3>
+					<a href="${conPath }/member/logout">로그아웃</a>
+				</h3>
+			</c:when>
+		</c:choose>
 	</div>
+		
 	<script>
 		var x = document.getElementById("login");
 		var y = document.getElementById("register");
