@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.vendredi.dao.ReservationDao">
+	<resultMap type="Reservation" id="reservationResult">
+		<result property="rno" column="rno"/>
+		<result property="mid" column="mid"/>
+		<result property="sno" column="sno"/>
+		<result property="rdate" column="rdate"/>
+		<result property="rtime" column="rtime"/>
+		<result property="rmember" column="rmember"/>
+		<result property="rchk" column="rchk"/>
+	</resultMap>
+
+<!-- 예약하기 -->
+<insert id="reservation" parameterType="Reservation">
+	INSERT INTO RESERVATION (RNO, MID, SNO,SNAME, RDATE, RTIME)
+    VALUES (SEQ_R.NEXTVAL, ?, ?, ?, ?, ?)
+</insert>
+<!-- 예약 취소 -->
+<delete id="reservationCancel" parameterType="int">
+	DELETE FROM RESERVATION WHERE RNO = ?
+</delete>
+</mapper>

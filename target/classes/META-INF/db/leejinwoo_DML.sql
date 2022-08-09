@@ -1,10 +1,12 @@
 -------------OWNER
 -- OWNER 회원가입시 ID 중복체크
 SELECT COUNT(*) FROM OWNER WHERE OID = 'dlwlsdn';
+
 -- OWNER 회원가입
 INSERT INTO OWNER (OID, ONAME, OPW, OPROFILE, OTEL, OEMAIL, OADDRESS, OBIRTH, OGENDER)
     VALUES ('owner1', '김사장', 1, '010-5555-5555', 'owner@naver.com', '서울시', '19880808', '남자');
 SELECT * FROM OWNER;
+
 -- OWNER 로그인
 SELECT * FROM OWNER WHERE OID='owner1' AND OPW='1';
 
@@ -19,12 +21,16 @@ UPDATE OWNER SET ONAME='이사장',
                     OADDRESS='제주도',
                     OBIRTH='19880809'
                 WHERE OID='owner1';
+                
+-- 사장님 본인가게 리스트
+SELECT * FROM OWNERBOARD WHERE OID = 'dlwlsdn';
 
 -- 사장님 회원탈퇴
 DELETE FROM OWNER WHERE OID='owner1';
 
 -- 사장님 ID찾기
 SELECT OID FROM OWNER WHERE ONAME='김사장' AND OEMAIL='owner@naver.com';
+
 -- 사장님 PW찾기
 SELECT OPW FROM OWNER WHERE OID='owner1' AND ONAME='김사장';
 
@@ -36,11 +42,14 @@ SELECT COUNT(*) FROM OWNERBOARD;
 SELECT * FROM 
     (SELECT ROWNUM RN, A.* FROM (SELECT * FROM OWNERBOARD ORDER BY BNO DESC) A)
          WHERE RN BETWEEN 1 AND 3;
+         
 -- 글작성
 INSERT INTO OWNERBOARD (BNO, OID, SNAME, BLOC, BTITLE, BCONTENT, BPHOTO1, BPHOTO2, BPHOTO3, BPHOTO4, BPHOTO5, BHIT, BDATE) 
     VALUES (SEQ_OB.NEXTVAL , 'owner1', '오미라식당', '강남', '장사 안돼요', '장사가 진짜 안됩니다 요즘', 'img1.jpg', NULL, NULL, NULL, NULL, 0, SYSDATE);
+
 -- 글상세보기
 SELECT * FROM OWNERBOARD WHERE BNO = 3;
+
 -- 글수정
 UPDATE OWNERBOARD SET BTITLE = '장사 잘돼요',
                         BCONTENT = '갑자기 장사 잘돼요',
@@ -70,7 +79,7 @@ INSERT INTO BOARD_COMMENT (CNO, BNO, OID, CCONTENT, CDATE)
 
 -- 댓글 삭제
 DELETE FROM BOARD_COMMENT WHERE CNO=1;
-SELECT * FROM BOARD_COMMENT;
+
 -- 댓글 수정
 UPDATE BOARD_COMMENT SET CCONTENT = '요즘 경기좋죠';
 
