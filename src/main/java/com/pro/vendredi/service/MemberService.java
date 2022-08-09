@@ -1,8 +1,11 @@
 package com.pro.vendredi.service;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.parser.ParseException;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.pro.vendredi.dto.Kakao;
@@ -14,6 +17,8 @@ public interface MemberService {
 	public int memberEmailConfirm(String memail);
 	public int memberJoin(Member member, HttpSession httpSession);
 	public String memberLogin(String mid, String mpw, HttpSession httpSession );
+	public String naverLogin(Member member,HttpSession httpSession) ;
+	public int naverJoin(Member member, HttpSession httpSession);
 	public String memberSearchId(Member member);
 	public String memberSearchPw(Member member);
 	public Member memberGetDetail(String mid);

@@ -20,15 +20,19 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -36,15 +40,17 @@ import com.pro.vendredi.dao.MemberDao;
 import com.pro.vendredi.dto.Kakao;
 import com.pro.vendredi.dto.Member;
 import com.pro.vendredi.dto.Naver;
+import com.pro.vendredi.util.NaverLoginBO;
 
 
 @Service
 public class MemberServiceImpl implements MemberService {
-	@Autowired
+	
 	public MemberDao memberDao;
 	String backupPath = "C:\\Carlos_Java\\webPro\\source\\09_TeamProject\\Vendredi\\src\\main\\webapp\\memberImg/";
 	@Autowired
 	private JavaMailSenderImpl mailSender;
+	
 
 	// 아이디 중복 체크
 	@Override
@@ -97,6 +103,28 @@ public class MemberServiceImpl implements MemberService {
 			httpSession.setAttribute("mid", mid);
 		}
 		return result;
+	}
+	//네이버 간편 로그인
+	@Override
+	public String naverLogin(Member member, HttpSession httpSession) {
+		
+		//4.파싱 닉네임 세션으로 저장
+		httpSession.setAttribute("member",member); //세션 생성
+		String result = memberDao.naverLogin(member);
+		
+		if(result.equals(member.getMid())) {
+			return "redirect:../main.do";
+		}else {
+			int join = memberDao.naverJoin(member);
+		}
+	    
+		return memberDao.naverLogin(member);
+	}
+	//네이버 간편 회원가입
+	@Override
+	public int naverJoin(Member member, HttpSession httpSession) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	// 회원 상세보기
