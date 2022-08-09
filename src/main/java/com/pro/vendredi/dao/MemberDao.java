@@ -20,9 +20,9 @@ public interface MemberDao {
 	public int memberTotCnt();
 	public int memberWithdrawal(String mid);
 	//네이버 로그인
-	public Naver naverLogin(Naver naver);
+	public String naverLogin(Member member);
 	//네이버 회원가입
-	public void naverJoin(Naver naver);
+	public int naverJoin(Member member);
 //	//카카오 로그인
 //	public void kakaoJoin(HashMap<String, Object> userInfo);
 //	//카카오 확인
