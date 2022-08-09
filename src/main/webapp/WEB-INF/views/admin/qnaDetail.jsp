@@ -27,9 +27,10 @@
 	<jsp:include page="../admin/header.jsp"/>
 	
 <div id="content">
-	<form action="${conPath}/qna/replyView.do?qno=${qDto.qno }&pageNum=${param.pageNum }&aid=${admin.aid }" method="POST">
+	<form action="${conPath}/qna/replyView.do?qno=${qDto.qno }&pageNum=${param.pageNum }&aid=${admin.aid }&qgroup=${param.qgroup}" method="POST">
+	
 		<table id="qna_detail_table" class="whitebox">
-			<caption>${qDto.qno }번 글 / 작성자${qDto.qid }</caption>
+<%-- 			<caption>${qDto.qno }번 글 / 작성자${qDto.qid }</caption> --%>
 			<tr>
 				<td class="td_20 rborder"><b>제목</b></td>
 				<td class="left"><b>${qDto.qsubject }</b></td>
@@ -38,15 +39,34 @@
 				<td class="td_20 rborder"><b>본문</b></td>
 				<td class="content_box"><b>${qDto.qcontent }</b></td>
 			</tr>
+			<c:if test="${qDto.qreplycheck==0 }">
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="답변" class="blue_btn">
-					<button class="reset_btn" onclick="history.back();">뒤로</button>
+					<input type="submit" value="답변" class="blue_btn floatR">
 				</td>
 			</tr>
+			</c:if>
 		</table>
 	</form>
+	
+	
+	<c:if test="${not empty replyDto }">
+		<table id="qna_detail_table" class="whitebox">
+<%-- 				<caption>운영자 답변</caption> --%>
+			<tr>
+				<td class="td_20 rborder"><b>제목</b></td>
+				<td class="left"><b>${replyDto.qsubject }</b></td>
+			</tr>
+			<tr>
+				<td class="td_20 rborder"><b>본문</b></td>
+				<td class="content_box"><b>${replyDto.qcontent }</b></td>
+			</tr>
+		</table>
+	</c:if>
 </div>
+
+
+
 
 </body>
 </html>

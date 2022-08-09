@@ -21,19 +21,19 @@
 	<input type="hidden" name="qgroup" value=${param.qgroup }>
 		<table id="modify_table">
 			<tr>
-				<th>제목</th>
-				<td><input type="text" name="qsubject" required="required" class="title">
+				<td colspan="2"><p class="left">제목</p>
+				<input type="text" name="qsubject" readonly="readonly" class="readonly box center" value="${param.qno }번 글 답변글">
 				</td>
 			</tr>
 			<tr>
-				<th>본문</th>
-				<td><textarea name="qcontent" rows="15" cols="36" class="qcontent"></textarea></td>
+				<td colspan="2"><p class="left">본문</p>
+				<textarea name="qcontent" rows="15" cols="36" class="text_box"></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="글쓰기" class="btn">
-					<input type="reset" value="취소" class="btn">
-					<input type="button" value="목록" class="btn" onclick="location.href='${conPath }/qna/list.do'">
+					<input type="submit" class="blue_btn" value="등록">
+					<input type="button" class="reset_btn" value="취소"
+					onclick="history.back();">
 				</td>
 			</tr>
 		</table>

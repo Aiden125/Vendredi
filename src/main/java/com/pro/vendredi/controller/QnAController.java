@@ -38,11 +38,11 @@ public class QnAController {
 	}
 	//문의글 상세보기
 	@RequestMapping(value="/detail", method= {RequestMethod.GET,RequestMethod.POST})
-	public String detail(int qno,Model model) {
-		model.addAttribute("qDto",qnaService.qnaDetail(qno));;
+	public String detail(int qno, Model model) {
+		model.addAttribute("qDto",qnaService.qnaDetail(qno));
 		return "qna/detail";
 	}
-	//문의글 수정 뷰단
+	//문의글 수정 뷰단(조회수 안올리는 용도)
 	@RequestMapping(value = "/modifyView",method=RequestMethod.GET)
 	public String modifyView(int qno, Model model) {
 		model.addAttribute("qDto",qnaService.qnaModifyReplyView(qno));
@@ -81,8 +81,9 @@ public class QnAController {
 	
 	//문의글 상세보기 - 관리자
 	@RequestMapping(value="/detailAdminVer", method= {RequestMethod.GET,RequestMethod.POST})
-	public String detailAdminVer(int qno,Model model) {
-		model.addAttribute("qDto",qnaService.qnaDetail(qno));;
+	public String detailAdminVer(int qno, int qgroup, Model model) {
+		model.addAttribute("qDto",qnaService.qnaDetail(qno));
+		model.addAttribute("replyDto", qnaService.qnaReplyDetail(qgroup));
 		return "admin/qnaDetail";
 	}
 	

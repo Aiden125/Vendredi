@@ -84,18 +84,18 @@
 		
 		<div class="center">
 			<c:if test="${paging.startPage > paging.blockSize }">
-				[ <a href="${conPath }/qna/list.do?pageNum=${paging.startPage-1}" class="dis_inline">이전</a> ]
+				[ <a href="${conPath }/qna/replyYetList.do?pageNum=${paging.startPage-1}" class="dis_inline">이전</a> ]
 			</c:if>
 			<c:forEach var="i" begin="${paging.startPage }" end="${paging.endPage }">
 				<c:if test="${i eq paging.currentPage }">
 					[ <b> ${i } </b> ]
 				</c:if>
 				<c:if test="${i != paging.currentPage }">
-					[ <a href="${conPath }/qna/list.do?pageNum=${i}" class="dis_inline">${i }</a> ]
+					[ <a href="${conPath }/qna/replyYetList.do?pageNum=${i}" class="dis_inline">${i }</a> ]
 				</c:if>
 			</c:forEach>
 			<c:if test="${paging.endPage < paging.pageCnt }">
-				[ <a href="${conPath }/qna/list.do?pageNum=${paging.endPage+1}" class="dis_inline">다음</a> ]
+				[ <a href="${conPath }/qna/replyYetList.do?pageNum=${paging.endPage+1}" class="dis_inline">다음</a> ]
 			</c:if>
 		</div>
 	</div>

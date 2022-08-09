@@ -23,12 +23,6 @@ create table store (
             sMenu3cost  varchar2(100), 
             sSearchtag  varchar2(100),
             sConfirm    char(1) default 'N',
-<<<<<<< HEAD
-            sReplycnt   number(8) default 0,
-            sScore      number(8) default 0,
-            sLike       number(1) default 0
-            );
-=======
             sReplycnt   number(8) default 1,
             sScore      number(8) default 5,
             sStart     number(2) NOT NULL,
@@ -36,7 +30,6 @@ create table store (
             sLati number(20, 6) Default 37.57595770501166,
             sLongti number(20, 6) Default 126.97686668256979
             );             
->>>>>>> a61f8d0467108fcc000b0cedaac1b059aaf8ed1f
 
                   
                    
