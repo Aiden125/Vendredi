@@ -3,6 +3,7 @@ package com.pro.vendredi.service;
 import com.pro.vendredi.dto.Reservation;
 
 public interface ReservationService {
-	public Reservation reservation(Reservation res);
+	public int reservation(Reservation res);
+	public int reservationChk(int sno);
 	public int reservationCancel(int rno);
 }

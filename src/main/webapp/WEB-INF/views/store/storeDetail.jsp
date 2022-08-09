@@ -271,7 +271,7 @@ span {
 		<tr>
 			<th colspan="2">
 				추후 owner, admin 적용하게 바꿀예정 <br>
-				<input type="button" value="예약 페이지" onclick="location='${conPath}/request/writeRequest.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'">
+				<input type="button" value="예약 페이지" onclick="location='${conPath}/reservationForm.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'">
 				<input type="button" value="등록 요청" onclick="location='${conPath}/request/writeRequest.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'">
 				<input type="button" value="가게 정보 수정" onclick="location='${conPath}/store/storeModifyView.do?sno=${param.sno }&oid=aaa'">
 			</th>

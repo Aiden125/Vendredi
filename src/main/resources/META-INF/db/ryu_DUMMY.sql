@@ -1,5 +1,6 @@
 -- ryu DUMMY
 commit;   
+UPDATE STORE SET SCONFIRM = 'Y';
 SELECT * FROM STORE;
 SELECT * FROM STOREreview;
 select * from store where sno = 6;

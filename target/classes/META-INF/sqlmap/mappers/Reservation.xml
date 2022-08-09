@@ -7,19 +7,23 @@
 		<result property="rno" column="rno"/>
 		<result property="mid" column="mid"/>
 		<result property="sno" column="sno"/>
+		<result property="sname" column="sname"/>
 		<result property="rdate" column="rdate"/>
 		<result property="rtime" column="rtime"/>
 		<result property="rmember" column="rmember"/>
-		<result property="rchk" column="rchk"/>
 	</resultMap>
 
 <!-- 예약하기 -->
 <insert id="reservation" parameterType="Reservation">
-	INSERT INTO RESERVATION (RNO, MID, SNO,SNAME, RDATE, RTIME)
-    VALUES (SEQ_R.NEXTVAL, ?, ?, ?, ?, ?)
+	INSERT INTO RESERVATION (RNO, MID, SNO, SNAME, RDATE, RTIME, RMEMBER)
+    VALUES (SEQ_R.NEXTVAL, #{mid}, #{sno}, #{sname}, #{rdate}, #{rtime}, #{rmember})
 </insert>
+<!-- 가게의 예약된 날짜, 시간 가져오기 -->
+<select id="reservationChk" parameterType="int" resultMap="reservationResult">
+	SELECT RDATE, RTIME FROM RESERVATION WHERE SNO = #{sno}
+</select>
 <!-- 예약 취소 -->
 <delete id="reservationCancel" parameterType="int">
-	DELETE FROM RESERVATION WHERE RNO = ?
+	DELETE FROM RESERVATION WHERE RNO = #{rno}
 </delete>
 </mapper>

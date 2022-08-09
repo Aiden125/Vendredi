@@ -44,6 +44,7 @@
  		<mapper resource="META-INF/sqlmap/mappers/Owner.xml"/>
  		<mapper resource="META-INF/sqlmap/mappers/OwnerBoard.xml"/>
  		<mapper resource="META-INF/sqlmap/mappers/OboardCom.xml"/>
+ 		<mapper resource="META-INF/sqlmap/mappers/Reservation.xml"/>
 	<!-- 김민우 -->
 		<mapper resource="META-INF/sqlmap/mappers/Member.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/QnA.xml"/>
