@@ -52,6 +52,7 @@
 		</c:if>
 		<br><hr><br>
 		<ul>
+			<li><a href="${conPath }/admin/main.do">관리자 목록</a></li>
 			<li><a href="${conPath }/main.do">사용자 모드</a></li>
 		</ul>
 	</div>
