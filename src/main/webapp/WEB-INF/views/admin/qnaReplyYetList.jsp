@@ -50,17 +50,17 @@
 
 	<div id="content">
 		<table id="main_table">
-			<caption>답변 안된 질문</caption>
+			<caption><b>답변 안된 질문</b></caption>
 			<tr class="tr_top">
-				<th>글번호</th><th>글제목</th><th>작성자</th><th>조회수</th><th>날짜</th><th>답변여부</th>
+				<th>글번호</th><th>글제목</th><th>작성자</th><th>조회수</th><th>날짜</th>
 			</tr>
 			
 			<c:if test="${qnaList.size() != 0 }">
 				<c:forEach items="${qnaList }" var="qna">
 					<tr>
 						<td>${qna.qno }</td>
-							<td>
-							<a href="${conPath}/qna/detailAdminVer.do?qno=${qna.qno }&pageNum=${paging.currentPage}">
+							<td class="td_title">
+							<a href="${conPath}/qna/detailAdminVer.do?qno=${qna.qno }&pageNum=${paging.currentPage}&qgroup=${qna.qgroup}">
 							${qna.qsubject }</a>
 							<c:if test="${qna.qsecret eq 'Y'}">
 								<img src="${conPath }/assets/img/비밀글.jpg" alt="비밀글" width="20px">
@@ -69,14 +69,6 @@
 						<td>${qna.qid }</td>
 						<td>${qna.qhit }</td>
 						<td><fmt:formatDate value="${qna.qrdate }" type="date" dateStyle="short"/></td>
-						<td>
-							<c:if test="${empty admin }">
-								답변대기
-							</c:if>
-							<c:if test="${not empty admin }">
-								<a href="${conPath }/qna/replyView.do?qno=${qna.qno}&qgroup=${qna.qgroup}">답변대기</a>
-							</c:if>
-						</td>
 					</tr>
 				</c:forEach>
 			</c:if>

@@ -28,41 +28,34 @@
 	
 <div id="content">
 	<form action="${conPath}/qna/replyView.do?qno=${qDto.qno }&pageNum=${param.pageNum }&aid=${admin.aid }&qgroup=${param.qgroup}" method="POST">
-	
-		<table id="qna_detail_table" class="whitebox">
-<%-- 			<caption>${qDto.qno }번 글 / 작성자${qDto.qid }</caption> --%>
-			<tr>
-				<td class="td_20 rborder"><b>제목</b></td>
-				<td class="left"><b>${qDto.qsubject }</b></td>
-			</tr>
-			<tr>
-				<td class="td_20 rborder"><b>본문</b></td>
-				<td class="content_box"><b>${qDto.qcontent }</b></td>
-			</tr>
+		
+		<!-- 질문 글 영역 -->
+		<div id="qna_question_box" class="whitebox">
+			<p class="title left font2_0 co" style="color:#4B89DC;">Q
+			</p>
+			<p class="title left font1_5"><b>${qDto.qsubject }</b></p>
+			<hr color="#4B89DC" class="blue"><br>
+			<p class="content_box">${qDto.qcontent }</p>
 			<c:if test="${qDto.qreplycheck==0 }">
-			<tr>
-				<td colspan="2">
-					<input type="submit" value="답변" class="blue_btn floatR">
-				</td>
-			</tr>
+				<p><input type="submit" value="답변" class="blue_btn floatR"></p>
 			</c:if>
-		</table>
+		</div>
+
 	</form>
 	
-	
+		<!-- 답변글 영역 -->
 	<c:if test="${not empty replyDto }">
-		<table id="qna_detail_table" class="whitebox">
-<%-- 				<caption>운영자 답변</caption> --%>
-			<tr>
-				<td class="td_20 rborder"><b>제목</b></td>
-				<td class="left"><b>${replyDto.qsubject }</b></td>
-			</tr>
-			<tr>
-				<td class="td_20 rborder"><b>본문</b></td>
-				<td class="content_box"><b>${replyDto.qcontent }</b></td>
-			</tr>
-		</table>
+		<div id="qna_answer_box" class="whitebox">
+			<p class="title left font2_0">A</p>
+			<hr color="#4B89DC" class="blue"><br>
+			<p class="content_box">${replyDto.qcontent }</p>
+			<c:if test="${not empty admin }">
+				<input type="button" value="삭제" class="reset_btn floatR">
+				<input type="button" value="수정" class="blue_btn floatR">
+			</c:if>
+		</div>
 	</c:if>
+	
 </div>
 
 

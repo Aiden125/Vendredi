@@ -10,9 +10,8 @@
 	height:1000px;
 	float:left;
 	width:10%;
-	border:1px solid red;
 	box-sizing:border-box;
-	background-color:black;
+	background-color:#404040;
 }
 #header a{
 	color:white;
@@ -22,7 +21,6 @@
 	height:100%;
 	margin:0 auto;
 	color:white;
-	border:1px solid yellow;
 	text-align:center;
 	padding:20px 10px;
 	box-sizing:border-box;
@@ -42,16 +40,13 @@ a{
 	width:90%;
 	height:1000px;
 	margin:0 auto;
-	border:1px solid blue;
 	box-sizing:border-box;
-	background-color:#EEEEEE;
 }
 #main_table{
 	margin:50px auto;
 	width:900px;
 	text-align:center;
 	border-collapse:collapse;
-	border:1px solid red;
 }
 td{
 	height:20px;
@@ -66,7 +61,10 @@ th{
 .tr_top{
 	border-top:1px solid gray;
 	border-bottom:1px solid gray;
-	
+	background-color:#404040;
+	color:white;
+	font-size:1.1em;
+	font-weight:normal;
 }
 #footer{
 	float:left;
@@ -138,4 +136,15 @@ td{
 }
 .dis_inline{
 	display:inline;
+}
+.td_title{
+	width:50%;
+    
+}
+.overflow{
+	width:600px;
+	display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

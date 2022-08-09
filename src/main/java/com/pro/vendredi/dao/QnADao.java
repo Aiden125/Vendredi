@@ -27,5 +27,6 @@ public interface QnADao {
 	public List<QnA> qnaReplyList(QnA qna);
 	public int qnaReplyTotCnt();
 	public int qnaStateUpdate(int qno);
-	public QnA qnaReplyDetail(int qgroup); // 답변리스트
+	public QnA qnaReplyDetail(int qgroup); // 답변 글 상세보기(원글이랑 같이보는 페이지 용도)
+	public QnA qnaOnlyReplyDetail(int qno); // 답변 글만 상세보기 할 때
 }

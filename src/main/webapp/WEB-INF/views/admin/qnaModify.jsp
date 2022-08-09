@@ -12,9 +12,7 @@
 </head>
 <body>
 	<jsp:include page="../admin/header.jsp"/>
-	
-	
-<div id="content">
+	<div id="content">
 	<form action="${conPath }/qna/modifyAdminVer.do" method="post">
 	<input type="hidden" name="qno" value="${qDto.qno }">
 		<table id="modify_table">

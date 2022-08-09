@@ -50,7 +50,7 @@
 
 	<div id="content">
 		<table id="main_table">
-			<caption>QnA 관리</caption>
+			<caption><b>QnA 관리</b></caption>
 			<tr class="tr_top">
 				<th>글번호</th><th>글제목</th><th>작성자</th><th>조회수</th><th>날짜</th><th>답변여부</th>
 				<c:if test="${not empty admin }">
@@ -62,7 +62,7 @@
 				<c:forEach items="${qnaList }" var="qna">
 					<tr>
 						<td>${qna.qno }</td>
-							<td>
+							<td class="td_title">
 							<a href="${conPath}/qna/detailAdminVer.do?qno=${qna.qno }&pageNum=${paging.currentPage}&qgroup=${qna.qgroup}">
 							${qna.qsubject }</a>
 							<c:if test="${qna.qsecret eq 'Y'}">
@@ -78,8 +78,8 @@
 						</td>
 						
 						<c:if test="${not empty admin }">
-							<td><a href="${conPath }/qna/modifyViewAdminVer.do?qno=${qna.qno}">수정하기</a></td>
-							<td><a href="${conPath }/qna/deleteAdminVer.do?qno=${qna.qno}">삭제하기</a></td>
+							<td><a href="${conPath }/qna/modifyViewAdminVer.do?qno=${qna.qno}"><img src="${conPath }/adminImg/edit.png" width="25" height="25"></a></td>
+							<td><a href="${conPath }/qna/deleteAdminVer.do?qno=${qna.qno}"><img src="${conPath }/adminImg/recycle-bin.png" width="25" height="25"></a></td>
 						</c:if>
 					</tr>
 				</c:forEach>
