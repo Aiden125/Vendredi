@@ -343,7 +343,7 @@
           <li><a class="nav-link scrollto active" href="${conPath }/main.do">Home</a></li>
           <li><a class="nav-link scrollto" href="${conPath }/member/loginForm.do">Login</a></li>
           <li><a class="nav-link scrollto" href="${conPath }/member/joinForm.do">Join</a></li>
-          <li><a class="nav-link scrollto " href="${conPath }">맛집 리스트</a></li>
+          <li><a class="nav-link scrollto " href="${conPath }/store/storeList.do">맛집 리스트</a></li>
           <li><a class="nav-link scrollto" href="${conPath }/qna/list.do">Q&A</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
          <!--  <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
@@ -358,7 +358,7 @@
           <li><a class="nav-link scrollto active" href="index_minwoo.jsp">${member.mname }님</a></li>
           <li><a class="nav-link scrollto" href="${conPath }/member/modify.do">my Page</a></li>
           <li><a class="nav-link scrollto" href="${conPath }/qna/list.do">QnA</a></li>
-          <li><a class="nav-link scrollto " href="${conPath }">맛집 리스트</a></li>          
+          <li><a class="nav-link scrollto " href="${conPath }/store/storeList.do">맛집 리스트</a></li>          
           <li><a href="blog.html">like</a></li>
           <li class="dropdown"><a href="#"><span>최근에 본 맛집</span> <i class="bi bi-chevron-down"></i></a>
             <ul>

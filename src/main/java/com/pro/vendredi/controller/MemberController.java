@@ -77,40 +77,34 @@ public class MemberController {
 		}
 	}
 	
-		//네이버 로그인 성공시 callback호출 메소드
-			@RequestMapping(value = "/logintest", method = { RequestMethod.GET, RequestMethod.POST })
-			public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session) throws IOException, ParseException {
-				
-				OAuth2AccessToken oauthToken;
-		        oauthToken = naverLoginBO.getAccessToken(session, code, state);
-		       
-		        //1. 로그인 사용자 정보를 읽어온다 
-				apiResult = naverLoginBO.getUserProfile(oauthToken);  //String형식의 json데이터
-				
-				//2. String형식인 apiResult를 json형태로 바꿈
-				JSONParser parser = new JSONParser();
-				Object obj = parser.parse(apiResult);
-				JSONObject jsonObj = (JSONObject) obj;
-				
-				//3. 데이터 파싱 
-				//Top레벨 단계 _response 파싱
-				JSONObject response_obj = (JSONObject)jsonObj.get("response");
-				//response의 nickname값 파싱
-				String email = (String)response_obj.get("email");
-				String name = (String)response_obj.get("name");
-				String id = (String)response_obj.get("id"); // API 호출 결과로 네이버 아이디값은 제공하지 않으며, 대신 'id'라는 애플리케이션당 유니크한 일련번호값을 이용해서 자체적으로 회원정보를 구성하셔야 합니다.
-				
-				//4.파싱 닉네임 세션으로 저장
-				session.setAttribute("sessionId",name+"("+email+" ; "+id+")"); //세션 생성
-				
-				model.addAttribute("result", apiResult);
-				System.out.println("name : " + name);
-			    System.out.println("id : " + id);
-			    System.out.println("E-mail :"+email);
-			    System.out.println("apiResult : " + apiResult);
-			    
-				return "member/logintest";
-			}
+	//네이버 로그인 성공시 callback호출 메소드
+	@RequestMapping(value = "/logintest", method = { RequestMethod.GET, RequestMethod.POST })
+	public String callback(Model model,HttpSession httpSession,@RequestParam String code, @RequestParam String state) throws IOException, ParseException {
+		OAuth2AccessToken oauthToken;
+        oauthToken = naverLoginBO.getAccessToken(httpSession, code, state);
+       
+        //1. 로그인 사용자 정보를 읽어온다 
+		apiResult = naverLoginBO.getUserProfile(oauthToken);  //String형식의 json데이터
+		
+		//2. String형식인 apiResult를 json형태로 바꿈
+		JSONParser parser = new JSONParser();
+		Object obj = parser.parse(apiResult);
+		JSONObject jsonObj = (JSONObject) obj;
+		
+		//3. 데이터 파싱 
+		//Top레벨 단계 _response 파싱
+		JSONObject response_obj = (JSONObject)jsonObj.get("response");
+		//response의 nickname값 파싱
+		String mid = (String)response_obj.get("id"); // API 호출 결과로 네이버 아이디값은 제공하지 않으며, 대신 'id'라는 애플리케이션당 유니크한 일련번호값을 이용해서 자체적으로 회원정보를 구성하셔야 합니다.
+		String mname = (String)response_obj.get("name");
+		String mtel = (String)response_obj.get("email");
+		String memail = (String)response_obj.get("email");
+		String mbirth = (String)response_obj.get("birth");
+		
+		model.addAttribute("member",apiResult);
+		
+		return "member/logintest";
+	 }
 //			//카카오 로그인 
 //			@RequestMapping(value="/kakaoLogin", method = RequestMethod.GET)
 //			public String kakaoLogin(@RequestParam("code") String code, HttpSession session) throws Exception {
