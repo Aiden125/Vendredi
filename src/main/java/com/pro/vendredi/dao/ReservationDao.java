@@ -6,6 +6,7 @@ import com.pro.vendredi.dto.Reservation;
 
 @Mapper
 public interface ReservationDao {
-	public Reservation reservation(Reservation res);
+	public int reservation(Reservation res);
+	public int reservationChk(int sno);
 	public int reservationCancel(int rno);
 }

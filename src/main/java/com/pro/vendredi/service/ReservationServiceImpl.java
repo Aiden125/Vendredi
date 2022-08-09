@@ -11,13 +11,18 @@ public class ReservationServiceImpl implements ReservationService {
 	@Autowired
 	private ReservationDao reDao;
 	@Override
-	public Reservation reservation(Reservation res) {
+	public int reservation(Reservation res) {
 		return reDao.reservation(res);
 	}
 
 	@Override
 	public int reservationCancel(int rno) {
 		return reDao.reservationCancel(rno);
+	}
+
+	@Override
+	public int reservationChk(int sno) {
+		return reDao.reservationChk(sno);
 	}
 
 }
