@@ -59,7 +59,7 @@ public class QnAServiceImpl implements QnAService {
 		qnaDao.qnaStateUpdate(qna.getQno());
 		return qnaDao.qnaReply(qna);
 	}
-	//QNA 답변글 뷰(관리자)
+	//QNA 답변, 수정 용 상세보기(희석추가)
 	@Override
 	public QnA qnaModifyReplyView(int qno) {
 		return qnaDao.qnaDetail(qno);
@@ -113,8 +113,8 @@ public class QnAServiceImpl implements QnAService {
 	}
 	//QNA 답변 상세보기
 	@Override
-	public QnA qnaReplyDetail(int qno) {
-		return qnaDao.qnaReplyDetail(qno);
+	public QnA qnaReplyDetail(int qgroup) {
+		return qnaDao.qnaReplyDetail(qgroup);
 	}
 
 }
