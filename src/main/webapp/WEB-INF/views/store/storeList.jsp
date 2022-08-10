@@ -23,7 +23,8 @@
     position: absolute;
 }
 .form-wrap {
-    width: 70%; 
+    width: 720px;
+    height: 770px;
     position: relative;
     margin: 6% auto;
     background: #fff;
@@ -130,37 +131,36 @@ span {
 			<c:forEach items="${storeList }" var="store">
 				<tr onclick="trclicked(${store.sno })"> 
 					<td>
-						${store.sno }
-						<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage}" width = "100px">
+						<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage}" width = "100px" height="150px">
 					</td>
 					<td>${store.sname }</td>
+					<td style="color : orange; font-weight: bold">${store.stscore }</td>
+				</tr> 
+				<tr>	
 					<td> 
 						${store.slocation }
 					</td>
-					<td> 
+					<td colspan="2"> 
 						${store.stype }
-					</td>
-					<td> 
-						${store.stscore }
-					</td>    
-				</tr> 
+					</td>   
+				</tr>
 			</c:forEach>
 		</c:if>
 	</table> 
 		<div id="paging" align="center">
 		<c:if test="${paging.startPage> paging.blockSize }">
-		[<a href="${conPath }/store.do?method=storeList&pageNum=${paging.startPage-1}&schItem=${param.schItem }">이전</a>]
+		[<a href="${conPath }/store/storeList.do?pageNum=${paging.startPage-1}">이전</a>]
 		</c:if>
 		<c:forEach var="i" begin="${paging.startPage }" end="${paging.endPage}">
 			<c:if test="${i eq paging.currentPage }">
 			[<b style="color : red;">${i}</b>]
 			</c:if>
 			<c:if test="${i != paging.currentPage }">
-			[<a href="${conPath }/store.do?method=storeList&pageNum=${i}&schItem=${param.schItem }">${i}</a>]
+			[<a href="${conPath }/store/storeList.do?pageNum=${i}">${i}</a>]
 			</c:if>
 		</c:forEach>
 		<c:if test="${paging.endPage < paging.pageCnt }">
-		[<a href="${conPath }/store.do?method=storeList&pageNum=${paging.endPage +1}&schItem=${param.schItem }">다음</a>]
+		[<a href="${conPath }/store/storeList.do?pageNum=${paging.endPage +1}">다음</a>]
 		</c:if>
 		</div>
 	</div>

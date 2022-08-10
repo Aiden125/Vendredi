@@ -134,7 +134,7 @@ span {
 		<table style="margin : 0 auto;" >
 		<tr>
 			<td colspan="2">  
-				<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage }" width = "75px">
+				<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage }" width = "500px" height="400px" >
 			</td>
 		</tr>
 		<tr> 	  
@@ -265,23 +265,43 @@ span {
 				${store.smenu3}
 			</th>	
 			<td> 
-				${store.smenu3cost }
+				${store.smenu3cost } 
+				${storeLike.mid }
 			</td>
 		</tr>
+		
 		<tr>
 			<th colspan="2">
 				추후 owner, admin 적용하게 바꿀예정 <br>
 				<input type="button" value="예약 페이지" onclick="location='${conPath}/reservationForm.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'">
-				<input type="button" value="등록 요청" onclick="location='${conPath}/request/writeRequest.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'">
-				<input type="button" value="가게 정보 수정" onclick="location='${conPath}/store/storeModifyView.do?sno=${param.sno }&oid=aaa'">
+				<c:if test="${owner.oid == store.oid || admin != null }">
+					<input type="button" value="등록 요청" onclick="location='${conPath}/request/writeRequest.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'">
+					<input type="button" value="가게 정보 수정" onclick="location='${conPath}/store/storeModifyView.do?sno=${param.sno }&oid=aaa'">
+				</c:if>
 			</th>
 		</tr>
+		<tr>
+			<th colspan="2" style="text-align: center;">
+				<c:if test="${storeLike.mid eq 'aaa' }">
+				<a href="${conPath }/storeLike/deleteLike1.do?mid=aaa&sno=${store.sno}">
+					<img alt="찜하기 캔슬 이미지" src="${conPath }/storeImgFileUpload/cancel.png">
+				</a>
+				</c:if> 
+				<c:if test="${storeLike.mid == null }"> 
+				<a href="${conPath }/storeLike/insertLike.do?mid=aaa&sno=${store.sno}&sname=${store.sname}">
+					<img alt="찜하기 캔슬 이미지" src="${conPath }/storeImgFileUpload/like.png">
+				</a>
+				</c:if> 
+			</th>
+		</tr>
+		
 		</table>		
-		<br> 
+		<br>
+	<c:if test="${member != null }"> 
 	<form action="${conPath }/storeReview/writeReview.do" method="POST" enctype="multipart/form-data"> 
 	<input type="hidden" value="${store.sno}" name="sno">
-	<input type="hidden" value="aaa" name="mid">
-	<input type="hidden" value="noimg.png" name="mprofile">
+	<input type="hidden" value="${member.mid }" name="mid">
+	<input type="hidden" value="${member.mprofile }" name="mprofile">
 	<table>
 		<tr>
 			<td colspan="2"><textarea rows="5" cols="57" name="srcontent"></textarea>
@@ -311,7 +331,7 @@ span {
 		</tr>
 	</table>
 	</form>
-	
+	</c:if>
 	<table style="margin : 0 auto;"> 
 		<c:if test="${paging.totCnt eq 0 }">
 			<tr> <th colspan="5">등록된 리뷰가 없습니다.</th> </tr>

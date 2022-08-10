@@ -114,12 +114,16 @@
 									Vendrei를 통해 솔직한 리뷰와 믿을 수 있는 가게를 알아보세요!
 									
 									</p>
-									    <div class="container h-100">
+      <div class="container h-100"> 					    
       <div class="d-flex justify-content-center h-100">
-        <div class="searchbar">
-          <input class="search_input" type="text" name="" placeholder="Search...">
-          <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+        <form action="${conPath}/store/storeListSearch.do?ssearchtag=${param.ssearchtag}">
+        <div class="searchBox">
+        <input class="searchInput" type="text" name="ssearchtag"value="${param.ssearchtag}" placeholder="찾길 원하시는 지역, 음식, 가게명을 입력하세요" width="150px">
+        	<button class="searchButton">
+             	<i class="material-icons"> Search </i>
+            </button>
         </div>
+        </form>
       </div>
     </div>
 							</div>
