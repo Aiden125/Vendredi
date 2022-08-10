@@ -31,18 +31,20 @@
 		
 		<!-- 질문 글 영역 -->
 		<div id="qna_question_box" class="whitebox">
-			<p class="title left font2_0 co" style="color:#4B89DC;">Q
+			<p class="title left font2_0 co">Q
 			</p>
+			<p class="floatR">작성자 : ${qDto.qid } &nbsp; ${qDto.qrdate }</p>
 			<p class="title left font1_5"><b>${qDto.qsubject }</b></p>
 			<hr color="#4B89DC" class="blue"><br>
 			<p class="content_box">${qDto.qcontent }</p>
+			
 			<c:if test="${qDto.qreplycheck==0 }">
 				<p><input type="submit" value="답변" class="blue_btn floatR"></p>
 			</c:if>
 		</div>
 
 	</form>
-	
+	s
 		<!-- 답변글 영역 -->
 	<c:if test="${not empty replyDto }">
 		<div id="qna_answer_box" class="whitebox">

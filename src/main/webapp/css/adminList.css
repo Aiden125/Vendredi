@@ -43,8 +43,8 @@ a{
 	box-sizing:border-box;
 }
 #main_table{
-	margin:50px auto;
-	width:900px;
+	margin:30px auto;
+	width:600px;
 	text-align:center;
 	border-collapse:collapse;
 }
@@ -53,10 +53,10 @@ td{
 	border-bottom:1px solid #d3d3d3; 
 }
 tr{
-	height:20px;	
+	height:15px;	
 }
 th{
-	height:40px;
+	height:30px;
 }
 .tr_top{
 	border-top:1px solid gray;

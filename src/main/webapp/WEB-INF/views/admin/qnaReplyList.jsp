@@ -67,7 +67,7 @@
 								<img src="${conPath }/assets/img/비밀글.jpg" alt="비밀글" width="20px">
 							</c:if>
 						</td>
-						<td class="td_title"><a href="${conPath}/qna/detailAdminVer.do?qno=${qna.qno }&pageNum=${paging.currentPage}&qgroup=${qna.qgroup}"
+						<td class="td_title"><a href="${conPath}/qna/detailAdminVer.do?qno=${qna.qgroup }&pageNum=${paging.currentPage}&qgroup=${qna.qgroup}"
 						class="overflow">
 						${qna.qcontent }</a></td>
 						<td>${qna.qid }</td>

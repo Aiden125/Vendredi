@@ -77,4 +77,4 @@ INSERT INTO MEMBER VALUES('aaa', '지코','1', '010-1234-1234','zico@naver.com',
 INSERT INTO MEMBER VALUES('kang', '강동원','1', '010-4321-4321','kang@naver.com','서울시 강남구 역삼동','남자','1992/09/14','kang.jpg');
 
 select * from member;
-select * from qna;
+select * from qna where qno=272;
