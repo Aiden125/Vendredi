@@ -31,6 +31,7 @@
   transition: all 0.5s;
   z-index: 997;
   height: 80px;
+  width:100%;
 }
 
 #header .logo {
@@ -326,7 +327,15 @@
 .navbar-mobile .dropdown>.dropdown-active {
   display: block;
 }
-
+.align-items-center {
+  align-items: center !important;
+}
+.justify-content-sm-between {
+    justify-content: space-between !important;
+}
+.d-flex {
+  display: flex !important;
+}
   </style>
 </head>
 <body>
