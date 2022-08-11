@@ -83,11 +83,18 @@ public class OwnerController {
 		session.setAttribute("owner", owner);
 		return "forward:Info.do";
 	}
-	// 오너 내 가게(미구현)
-	@RequestMapping(value="/myStoreList", method = RequestMethod.GET)
-	public String ownermyStoreList(String oid, Model model) {
-		
-		return "owner/ownerMyStoreList";
+	// 오너 회원탈퇴 폼
+	@RequestMapping(value="/DeleteForm", method = RequestMethod.GET)
+	public String ownerDeleteForm(String oid, Model model) {
+		model.addAttribute("owner", ownerService.ownerInfo(oid));
+		return "owner/ownerDelete";
+	}
+	// 오너 회원탈퇴
+	@RequestMapping(value="/Delete", method = RequestMethod.POST)
+	public String ownerDelete(String oid, Model model, HttpSession session) {
+		model.addAttribute("Delete", ownerService.ownerDelete(oid));
+		session.invalidate();
+		return "forward:../main.do";
 	}
 	// 오너 ID찾기 폼
 	@RequestMapping(value="/SearchIdForm", method = RequestMethod.GET)
@@ -112,6 +119,24 @@ public class OwnerController {
 	public String ownerSearchPw(Owner owner, Model model) {
 		model.addAttribute("searchPw", ownerService.ownerSearchPw(owner));
 		return "forward:LoginForm.do";
+	}
+	// 내 가게 리스트
+	@RequestMapping(value="/StoreList", method = RequestMethod.GET)
+	public String ownerStoreList(String oid, Model model) {
+		model.addAttribute("storeList", ownerService.ownerStoreList(oid));
+		return "owner/ownerStoreList";
+	}
+	// 내 가게 상세보기
+	@RequestMapping(value="/StoreDetail", method = RequestMethod.GET)
+	public String ownerStoreDetail(int sno, Model model) {
+		model.addAttribute("storeDetail", ownerService.ownerStoreDetail(sno));
+		return "store/storeDetail";
+	}
+	// 예약현황
+	@RequestMapping(value="/ReState", method = RequestMethod.GET)
+	public String ownerReState(String oid, Model model) {
+		model.addAttribute("reState", ownerService.ownerReState(oid));
+		return "owner/ownerReState";
 	}
 	
 }

@@ -66,6 +66,11 @@
 			alert("가게 정보 수정에 실패하였습니다.");
 		</script>
 	</c:if>
+	<c:if test="${not empty reservation}">
+		<script>
+			alert("예약이 완료되었습니다");
+		</script>
+	</c:if>
 
 	<body data-spy="scroll" data-target=".navbar-collapse">
 	<jsp:include page="../main/header.jsp" />
@@ -122,7 +127,7 @@
 									<ul class="list-inline">
 											<li><a href="#" class="text-black"><input
 												type="button" value="예약 페이지"
-												onclick="location='${conPath}/reservationForm.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'"></a></li>
+												onclick="location='${conPath}/reservationForm.do?sno=${param.sno }&mid=${member.mid }&sname=${store.sname }'"></a></li>
 											<c:if test="${owner.oid == store.oid || admin != null }">
 											<li><a href="#" class="text-black"><input
 													type="button" value="등록 요청"
