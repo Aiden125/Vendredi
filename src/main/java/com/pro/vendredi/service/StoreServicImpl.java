@@ -125,7 +125,7 @@ public class StoreServicImpl implements StoreService {
 
 	@Override
 	public List<Store> storeListSearch(String pageNum, String ssearchtag, Store store) {
-		Paging paging = new Paging(storeDao.storeCntSearch(ssearchtag), pageNum, 10, 3);
+		Paging paging = new Paging(storeDao.storeCntSearch(ssearchtag), pageNum, 4, 1);
 		store.setStartRow(paging.getStartRow());
 		store.setEndRow(paging.getEndRow());
 		return storeDao.storeListSearch(store);
@@ -148,7 +148,7 @@ public class StoreServicImpl implements StoreService {
 
 	@Override
 	public List<Store> storeList(String pageNum, Store store) {
-		Paging paging = new Paging(storeDao.storeCnt(store), pageNum, 10, 3);
+		Paging paging = new Paging(storeDao.storeCnt(store), pageNum, 4, 1);
 		store.setStartRow(paging.getStartRow());
 		store.setEndRow(paging.getEndRow());
 		return storeDao.storeList(store);
@@ -161,7 +161,7 @@ public class StoreServicImpl implements StoreService {
 
 	@Override 
 	public List<Store> myStoreList(String pageNum, Store store, String oid) {
-		Paging paging = new Paging(storeDao.storeCntMy(oid), pageNum, 10, 3);
+		Paging paging = new Paging(storeDao.storeCntMy(oid), pageNum, 4, 1);
 		store.setStartRow(paging.getStartRow());
 		store.setEndRow(paging.getEndRow());
 		return storeDao.myStoreList(store);

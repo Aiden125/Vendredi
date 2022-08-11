@@ -1,5 +1,7 @@
 package com.pro.vendredi.controller;
  
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
  
 import com.pro.vendredi.util.Paging;
-import com.pro.vendredi.dto.Store;
+import com.pro.vendredi.dto.Store; 
 import com.pro.vendredi.dto.StoreReview;
+import com.pro.vendredi.service.StoreLikeService;
 import com.pro.vendredi.service.StoreReviewService;
 import com.pro.vendredi.service.StoreService;
 
@@ -22,7 +25,9 @@ public class StoreController {
 	@Autowired
 	private StoreService storeService; 
 	@Autowired
-	private StoreReviewService storeReviewService;
+	private StoreReviewService storeReviewService; 
+	@Autowired
+	private StoreLikeService storeLikeService;
 
 	// 가게 등록 화면 보기
 	@RequestMapping(value="/storeRegisterView", method = {RequestMethod.GET, RequestMethod.POST}  )
@@ -55,6 +60,7 @@ public class StoreController {
 	@RequestMapping(value = "storeDetail", method = { RequestMethod.GET, RequestMethod.POST })
 	public String storeDetail(int sno, Model model, String pageNum, StoreReview storeReview) {
 		model.addAttribute("store", storeService.storeDetail(sno));
+		model.addAttribute("storeLike", storeLikeService.likeDetail(sno));
 		model.addAttribute("storeReviewList", storeReviewService.storeReviewList(storeReview, pageNum, sno) );
 		model.addAttribute("paging", new Paging(storeReviewService.reviewCnt(sno), pageNum, 3, 1));
 		return "store/storeDetail";
@@ -64,7 +70,7 @@ public class StoreController {
 	@RequestMapping(value = "storeListSearch", method = {RequestMethod.POST, RequestMethod.GET})
 	public String storeListSearch(String pageNum, Model model, Store store, String ssearchtag ) {
 		model.addAttribute("storeList", storeService.storeListSearch(pageNum, ssearchtag, store) );
-		model.addAttribute("paging", new Paging(storeService.storeCntSearch(ssearchtag), pageNum, 8, 3));
+		model.addAttribute("paging", new Paging(storeService.storeCntSearch(ssearchtag), pageNum, 4, 1));
 		return "store/storeListSearch";
 	}
 	
@@ -72,7 +78,7 @@ public class StoreController {
 		@RequestMapping(value = "storeList", method = {RequestMethod.POST, RequestMethod.GET})
 		public String storeList(String pageNum, Model model, Store store ) {
 			model.addAttribute("storeList", storeService.storeList(pageNum, store));
-			model.addAttribute("paging", new Paging(storeService.storeCnt(store), pageNum, 8, 3));
+			model.addAttribute("paging", new Paging(storeService.storeCnt(store), pageNum, 4, 1));
 			return "store/storeList";
 	}
 	// 가게 목록 보기 - 등록된 가게들 중 최신순

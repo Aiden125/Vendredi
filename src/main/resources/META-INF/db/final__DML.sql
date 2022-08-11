@@ -254,6 +254,7 @@ update store set sImage = 'modify.jpg',
 SELECT * FROM STORE WHERE SNO = 1;
 
 
+
 -- 4. storeDelete / 가게 정보 삭제 (해당 가게 사장님 아이디 / 관리자 사용 가능)
 DELETE Store where sNo = 5 and oId = 'aaa';
 commit;
@@ -375,6 +376,32 @@ update request set sname = '카즈하스시' where sno = 9;
 update store set sConfirm = 'Y' where sno = 9;
 
 commit; 
+
+-- STORELIKE TABLE
+
+-- 1. 0. 내 찜한 목록 갯수 세기 myLikeCnt
+
+select count(*)cnt from storelike where mid = 'aaa'; 
+
+-- 1. 1. 내 찜한 목록 출력하기 myLikeList
+select * from
+    (select rownum RN, A.* from
+    (select * from storelike
+    where mid = 'aaa'
+    order by storelike.slno desc)A)
+    where RN BETWEEN 1 and 5;
+    
+-- 2. 해당 가게 찜하기 insertLike
+
+insert INTO storelike values (STORELIKE_SQ.nextval, 'aaa', 7, '카즈하스시');
+                 
+-- 3. 해당 가게 찜 삭제하기 deleteLike
+
+delete storelike where mid = 'aaa' and sno = 7;
+
+-- 4. 해당 가게 찜 여부 likeCnt
+                 
+select count(*)cnt from storelike where mid = 'aaa' and sno = 7;    
 
 ----------------------------------- 지환 끝 ---------------------------------------------
 

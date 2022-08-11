@@ -23,6 +23,7 @@
  	<!-- 류지환 -->
 	<resources mapping="/request/**" location="/request/" />
 	<resources mapping="/store/**" location="/store/" />
+	<resources mapping="/storeLike/**" location="/storeLike/" />
 	<resources mapping="/storeReview/**" location="/storeReview/" /> 
  	
  	<!-- 이진우 -->
