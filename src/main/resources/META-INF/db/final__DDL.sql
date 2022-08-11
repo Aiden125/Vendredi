@@ -125,7 +125,7 @@ INSERT INTO ADMIN_L VALUES(2, 'MASTER');
 -- ryu ddl store / storere /request table create and drop
 
 -- STORE TABLE
-drop table store;
+drop table store cascade constraints;
 drop SEQUENCE store_sq;
 create SEQUENCE store_sq MAXVALUE 999999 NOCACHE NOCYCLE;
 create table store (
@@ -203,7 +203,7 @@ create Table StoreLike (
             sNo  number(8) REFERENCES store(sNo), -- 요청한 가게 번호
             sName varchar2(100) not null -- 요청한 가게 이름 
             );
-
+commit;
 
 
 

@@ -15,7 +15,8 @@
 			$('tr').click(function(){
 				var qno = Number($(this).children().eq(0).text());
 				if(!isNaN(qno)){
-					location.href='${conPath}/qna/detail.do?qno='+qno+'&pageNum=${paging.currentPage}';
+					location.href='${conPath}/qna/detail.do?qno='+qno+'&qgroup='+qno+'&pageNum=${paging.currentPage}';
+					
 				}
 				
 			});

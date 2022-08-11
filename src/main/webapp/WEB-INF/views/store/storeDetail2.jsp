@@ -341,7 +341,7 @@ span {
 				<tr>  
 					<td>
 						${storeReview.mid } <br>
-						<img alt="프로필 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.mprofile }" width = "75px">
+						<img alt="프로필 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.mprofile }" style ="width:75px">
 				    </td>
 					<td> 
 						평가 점수 : ${storeReview.srscore }

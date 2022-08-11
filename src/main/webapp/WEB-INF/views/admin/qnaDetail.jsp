@@ -44,7 +44,7 @@
 		</div>
 
 	</form>
-	s
+	
 		<!-- 답변글 영역 -->
 	<c:if test="${not empty replyDto }">
 		<div id="qna_answer_box" class="whitebox">
