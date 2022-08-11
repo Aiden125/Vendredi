@@ -44,10 +44,19 @@
                     OBIRTH=#{obirth}
                 WHERE OID=#{oid}
 </update>
+
 <!-- 오너 회원탈퇴 -->
+
+<delete id="ownerDeleteC" parameterType="String">
+	DELETE FROM BOARD_COMMENT WHERE CNO = (SELECT CNO FROM BOARD_COMMENT WHERE OID=#{oid})
+</delete>
+<delete id="ownerDeleteB" parameterType="String">
+	DELETE FROM OWNERBOARD WHERE OID=#{oid}
+</delete>
 <delete id="ownerDelete" parameterType="String">
 	DELETE FROM OWNER WHERE OID=#{oid}
 </delete>
+
 <!-- 오너 ID찾기 -->
 <select id="ownerSearchId" parameterType="Owner" resultType="Owner">
 	SELECT * FROM OWNER WHERE ONAME=#{oname} AND OEMAIL=#{oemail}
@@ -55,5 +64,21 @@
 <!-- 오너 PW찾기 -->
 <select id="ownerSearchPw" parameterType="Owner" resultType="Owner">
 	SELECT * FROM OWNER WHERE OID=#{oid} AND ONAME=#{oname}
+</select>
+<!-- 내 가게 list -->
+<select id="ownerStoreList" parameterType="String" resultType="Store">
+	SELECT * FROM STORE WHERE OID = #{oid}
+</select>
+<!-- 내 가게 상세보기 -->
+<select id="ownerStoreDetail" parameterType="int" resultType="Store">
+	SELECT * FROM STORE WHERE SNO = #{sno}
+</select>
+<!-- 예약현황 -->
+<select id="ownerReState" parameterType="String" resultType="Reservation">
+	SELECT R.SNO, R.SNAME, R.MID, MTEL, RDATE, RTIME, RMEMBER
+    FROM RESERVATION R, MEMBER M, STORE S, OWNER O 
+    WHERE R.MID = M.MID AND S.OID = O.OID AND S.SNO = R.SNO 
+    AND O.OID =(SELECT OID FROM OWNER WHERE OID =#{oid})
+    ORDER BY RDATE DESC, RTIME DESC
 </select>
 </mapper>

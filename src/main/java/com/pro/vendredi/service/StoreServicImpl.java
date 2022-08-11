@@ -58,14 +58,15 @@ public class StoreServicImpl implements StoreService {
 	public int storeRegister(Store store, MultipartHttpServletRequest mRequest) {
 		String uploadPath = mRequest.getRealPath("storeImgFileUpload/");
 		Iterator<String> params = mRequest.getFileNames(); // tempsimg1, temptsimg2
-		String simg = ""; 
+		String[] simg = new String[3];
+		int idx = 0;
 		while (params.hasNext()) {
 			String param = params.next(); // 마라미터의 다음 객체
 			MultipartFile mFile = mRequest.getFile(param);// 파라미터에 첨부된 파일 객체
-			simg = mFile.getOriginalFilename();
-			if(simg!=null && !simg.equals("")) {
-				if(new File(uploadPath + simg).exists()) {
-					simg = System.currentTimeMillis() + "_" + simg;
+			simg[idx] = mFile.getOriginalFilename();
+			if(simg[idx]!=null && !simg[idx].equals("")) {
+				if(new File(uploadPath + simg[idx]).exists()) {
+					simg[idx] = System.currentTimeMillis() + "_" + simg[idx];
 					
 				}// if
 				try {
@@ -80,8 +81,11 @@ public class StoreServicImpl implements StoreService {
 			} else {
 				
 			}// if
+			idx++; 
 		}//while - simg 배열에 파일 이름 저장
-		store.setSimage(simg); // 첫번째 청구할 파일 이름
+		store.setSimage1(simg[0]); // 첫번째 청구할 파일 이름
+		store.setSimage2(simg[1]); // 두번째 청구할 파일 이름
+		store.setSimage3(simg[2]); // 세번째 청구할 파일 이름
 		System.out.println("서비스 저장 전 : " + store);
 		int result = storeDao.storeRegister(store);
 		System.out.println("서비스 저장 후 : " + store);
@@ -92,14 +96,16 @@ public class StoreServicImpl implements StoreService {
 	public int storeModify(Store store, MultipartHttpServletRequest mRequest) {
 		String uploadPath = mRequest.getRealPath("storeImgFileUpload/");
 		Iterator<String> params = mRequest.getFileNames(); // tempsimg1, temptsimg2
-		String simg = ""; 
+		String[] simg = new String[3];
+		int idx = 0;
 		while (params.hasNext()) {
 			String param = params.next(); // 마라미터의 다음 객체
 			MultipartFile mFile = mRequest.getFile(param);// 파라미터에 첨부된 파일 객체
-			simg = mFile.getOriginalFilename();
-			if(simg!=null && !simg.equals("")) {
-				if(new File(uploadPath + simg).exists()) {
-					simg = System.currentTimeMillis() + "_" + simg; 
+			simg[idx] = mFile.getOriginalFilename();
+			if(simg[idx]!=null && !simg[idx].equals("")) {
+				if(new File(uploadPath + simg[idx]).exists()) {
+					simg[idx] = System.currentTimeMillis() + "_" + simg[idx];
+					
 				}// if
 				try {
 					mFile.transferTo(new File(uploadPath + simg));
@@ -113,9 +119,12 @@ public class StoreServicImpl implements StoreService {
 			} else {
 				
 			}// if
+			idx++; 
 		}//while - simg 배열에 파일 이름 저장
-		store.setSimage(simg); // 첫번째 청구할 파일 이름
-		System.out.println("서비스 수정 전 : " + store);
+		store.setSimage1(simg[0]); // 첫번째 청구할 파일 이름
+		store.setSimage2(simg[1]); // 두번째 청구할 파일 이름
+		store.setSimage3(simg[2]); // 세번째 청구할 파일 이름
+		System.out.println("서비스 저장 전 : " + store);
 		int result = storeDao.storeModify(store);
 		System.out.println("서비스 수정 후 : " + store);
 		return result;

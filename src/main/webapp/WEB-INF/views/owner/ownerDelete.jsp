@@ -8,8 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/style.css" rel="stylesheet">
-<style>
+		<style>
 #content {
             width: 600px;
             height : 400px;
@@ -54,7 +53,7 @@
 	color:white;
 	border:none;
 	}
-	#content input[type="text"]{
+	#content input[type="text", type="password"]{
 	height:25px;
 	width:230px;
 	border:1px solid lightgray;
@@ -68,59 +67,60 @@
 	border-radius: 3px;
 	padding-left:10px;
 	}
-	
+	b{
+		color: green;
+	}
+	b1{
+		color: red;
+	}
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script>
+	$(document).ready(function(){
+		$('input[name="opw"], input[name="opwChk"]').keyup(function(){
+			var opw = $('input[name="opw"]').val();
+			var opwChk = $('input[name="opwChk"]').val();
+			if(opw==opwChk){
+				$('#pwChkResult').html('<b>비밀번호 일치</b>');
+			}else{
+				$('#pwChkResult').html('<b1>비밀번호 불일치</b1>');
+			}
+		});
+	$('form').submit(function(){
+			var pwChkResult = $('#pwChkResult').text().trim();
+			if(pwChkResult != '비밀번호 일치'){
+				alert('비밀번호를 확인해주세요');
+				$('input[name="opw"]').focus();
+				return false;
+			}
+		});
+	});
+</script>
 </head>
 <body>
-<c:if test="${not empty modifyResult }">
-	<script>
-		alert('정보수정 완료');
-	</script>
-</c:if>
 	<jsp:include page="../main/header.jsp"/>
+	<input type="hidden" name="oid" value="${owner.oid }">
+	<input type="hidden" name="opw" value="${owner.opw }">
 	<div id="content">
-	<form action="${conPath }/owner/ModifyForm.do" id="content_form" method="post">
+	<form action="${conPath }/owner/Delete.do?oid=${oid}" id="content_form" method="post">
 		<table>
+		<caption>계정삭제</caption>
 			<tr>
-				<th>아이디</th>
+				<th>비밀번호 확인</th>
 				<td>
-					<input type="text" name="oid" value="${owner.oid }" readonly="readonly">
+					<input type="password" name="opwChk" placeholder="PW 확인" >
 				</td>
 			</tr>
 			<tr>
-				<th>이름</th>
+				<td></td>
 				<td>
-					<input type="text" name="oname" value="${owner.oname }" readonly="readonly">
-				</td>
-			</tr>
-			<tr>
-				<th>E-MAIL</th>
-				<td>
-					<input type="text" name="oemail" value="${owner.oemail }" readonly="readonly">
-				</td>
-			</tr>
-			<tr>
-				<th>전화번호</th>
-				<td>
-					<input type="text" name="otel" value="${owner.otel }" readonly="readonly">
-				</td>
-			</tr>
-			<tr>
-				<th>주소</th>
-				<td>
-					<input type="text" name="oaddress" value="${owner.oaddress }" readonly="readonly">
-				</td>
-			</tr>
-			<tr>
-				<th>생년월일</th>
-				<td>
-					<input type="text" name="obirth" value="${owner.obirth }" readonly="readonly">
+					<div id="pwChkResult">&nbsp;</div>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="정보 수정">
-					<input type="button" value="회원탈퇴" onclick="location.href='DeleteForm.do?oid=${oid}'">
+					<input type="submit" value="탈퇴하기">
 				</td>
 			</tr>
 		</table>

@@ -1,5 +1,7 @@
 package com.pro.vendredi.service;
 
+import java.util.List;
+
 import javax.mail.Message;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -13,6 +15,8 @@ import org.springframework.stereotype.Service;
 
 import com.pro.vendredi.dao.OwnerDao;
 import com.pro.vendredi.dto.Owner;
+import com.pro.vendredi.dto.Reservation;
+import com.pro.vendredi.dto.Store;
 import com.sun.mail.handlers.message_rfc822;
 
 @Service
@@ -121,6 +125,28 @@ public class OwnerSerivceImpl implements OwnerService {
 	@Override
 	public int ownerModify(Owner owner) {
 		return ownerDao.ownerModify(owner);
+	}
+	// 내 가게 리스트
+	@Override
+	public List<Store> ownerStoreList(String oid) {
+		return ownerDao.ownerStoreList(oid);
+	}
+	// 내 가게 상세보기
+	@Override
+	public Store ownerStoreDetail(int sno) {
+		return ownerDao.ownerStoreDetail(sno);
+	}
+	// 예약현황
+	@Override
+	public List<Reservation> ownerReState(String oid) {
+		return ownerDao.ownerReState(oid);
+	}
+	// 오너 회원탈퇴
+	@Override
+	public int ownerDelete(String oid) {
+		ownerDao.ownerDeleteC(oid);
+		ownerDao.ownerDeleteB(oid);
+		return ownerDao.ownerDelete(oid);
 	}
 
 }

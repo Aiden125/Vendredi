@@ -11,6 +11,12 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 	<style>
+		#content{
+			margin: 100px auto;
+			width:800opx;
+			height:500px;
+			background-color: yellow;
+		}
 		input[type='text']{
 			border:none;
 		}
@@ -22,8 +28,8 @@
 	<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 	<script>
 	$(function() {
-		   $("#selectDate").datepicker(
-		         {
+			 var resList = ${resList}; 
+		   $("#selectDate").datepicker({
 		            dateFormat : 'yy-mm-dd',
 		            changeMonth : true, // 월을 바꿀 수 있는 셀렉트 박스 표시
 		            monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월',
@@ -52,17 +58,28 @@
 		        		}
 		        		temp = year + '-' + month + '-' + day;
 		        		if(dateText == temp){
-		        			for(var i = 9; i <=today.getHours()+1; i++){
+		        			for(var i = 0; i <=today.getHours()+1; i++){
 		        				$('#' + i).attr('disabled', true);
 		        				$('#' + i).css('color', '#cccccc');
 		        			}
 		        		}
+		         $(resList).each(function(idx, item){
+		        	 if(item.rdate == dateText){
+		        		 for(var i=0; i<=24; i++){
+		        			 if(item.rtime == i){
+		        				 $('#' + i).attr('disabled', true);
+		        				 $('#' + i).css('color', '#cccccc');
+		        			 }
+		        		 }
+		        	 }
+		         })
 		        	}
 		         });
 		});
 	function func(i) {
-		var i = i+':00'
-		$('.time').val(i);
+		var i1 = i+':00'
+		$('.time').val(i1);
+		$('.rtime').val(i);
 	}
 	function dis() {
 		if ($('#selectDate').css('display') == 'none') {
@@ -81,11 +98,13 @@
 	</script>
 </head>
 <body>
+<jsp:include page="../main/header.jsp"/>
 	<div id="content">
 		<form action="reservation.do">
-		<input type="hidden" name="mid" value="aaa">
+		<input type="hidden" name="mid" value="${member.mid }">
 		<input type="hidden" name="sno" value="${param.sno }">
-		<input type="text" name="sname" value="${store.sname }">
+		<input type="hidden" name="rtime" class="rtime">
+		<input type="text" name="sname" value="${store.sname }">예약하기
 		<h3 onclick="dis()">날짜선택</h3>
 		<div id="selectDate" style="display: none">
 			<p><b>선택한 날짜: </b>
@@ -97,8 +116,7 @@
 			<p><b>선택한 시간: </b>
 				<input type="text" name="time"
 					class="time"></p>
-			<c:forEach var="i" begin="9" end="24" >  <!-- 오픈, 마감시간으로 대체 -->
-					<input type="hidden" name="rtime" value="${i }">
+			<c:forEach var="i" begin="${store.sstart }" end="${store.send }" >  <!-- 오픈, 마감시간으로 대체 -->
 					<input type="button" id="${i }" value="${i }:00" onclick="func(${i})"/> 
 			</c:forEach>
 		</div>
@@ -107,7 +125,9 @@
 		</h3>
 		<br>
 		<input type="submit" value="예약">
+		<input type="button" value="뒤로" onclick=history.back()>
 		</form>
 	</div>
+	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

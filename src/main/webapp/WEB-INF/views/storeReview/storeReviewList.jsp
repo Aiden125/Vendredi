@@ -121,11 +121,7 @@ span {
 		<tr>
 		<tr>
 			<td colspan="2">
-				<p>리뷰사진 1 <input type="file" name="srimg1"> </p> <br>
-				<p>리뷰사진 2 <input type="file" name="srimg2"> </p> <br>
-				<p>리뷰사진 3 <input type="file" name="srimg3"> </p> <br>
-				<p>리뷰사진 4 <input type="file" name="srimg4"> </p> <br>
-				<p>리뷰사진 5 <input type="file" name="srimg5"> </p> <br> 	
+				<p>리뷰사진 1 <input type="file" name="srimg"> </p> <br>
 			</td>
 		</tr>
 		<tr>
@@ -169,18 +165,6 @@ span {
 				<tr>	
 					<td>
 						<img alt="리뷰 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage1}" width = "75px">
-						<c:if test="${storeReview.srimage2 != null} ">
-						<img alt="리뷰 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage2}" width = "75px">
-						</c:if>
-						<c:if test="${storeReview.srimage3 != null} ">
-						<img alt="리뷰 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage3}" width = "75px">
-						</c:if>
-						<c:if test="${storeReview.srimage4 != null} ">
-						<img alt="리뷰 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage4}" width = "75px">
-						</c:if>
-						<c:if test="${storeReview.srimage5 != null} ">
-						<img alt="리뷰 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage5}" width = "75px"> 
-						</c:if>
 					</td>    
 				</tr> 
 			</c:forEach>

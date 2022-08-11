@@ -10,6 +10,10 @@
 	<title>Insert title here</title>
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 	<style>
+		#cotent{
+			width:1000px;
+			height:1000px;
+		}
 		#content table{
 			width:800px;
 			margin: 80px auto;
@@ -25,15 +29,32 @@
 			width: 100px;
 		}
 		#content .paging{
+			margin-bottom : 80px;
 			text-align: center;
 		}
 		#content .btitle{
 			border: none;
 			width: 150px;
 		}
+		#content h1{
+			margin-top: 120px;
+			text-align: center;
+		}
+		#content .btn{
+			margin:  50px 0 0 120px;
+            background: #fff;
+            border-color: black;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+		}
 	</style>
 </head>
 <body>
+	<jsp:include page="../main/header.jsp"/>
 	<c:if test="${ oboardDelete > 0 }">
 		<script>
 			alert('해당글이 삭제되었습니다');
@@ -50,12 +71,9 @@
 		</script>
 	</c:if>
 	<div id="content">
+	<h1>사장님게시판</h1>
+	<input type="button" class="btn" value="글쓰기" onclick="location.href='${conPath}/oboard/WriteForm.do'">
 		<table>
-			<caption>사장님 게시판</caption>
-			<tr>
-				<td colspan="2">
-					<input type="button" class="btn" value="글쓰기" onclick="location.href='${conPath}/oboard/WriteForm.do'">
-				</td>
 			<tr>
 				<th>ID</th>
 				<th>가게명</th>
@@ -107,5 +125,6 @@
 			</c:if>
 		</div>
 	</div>
+	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

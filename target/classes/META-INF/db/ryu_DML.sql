@@ -2,14 +2,16 @@
 
 -- table store
 -- 1. storeRegister / 가게 등록하기
-insert into store (sNo, oId, sImage, sName, sAddress, sLocation, sTel, sType, sPrice, sTime, sHoliday,
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, sTime, sHoliday,
             sMenu1 , sMenu1cost , sMenu2, sMenu2cost, sMenu3, sMenu3cost, sSearchtag, sstart, sEnd) 
-values (store_sq.nextval, 'aaa', 'noimg.jpg', '군옥각2', '리월시 취헌부', '강남', '070-8888-8888', '중식, 중국요리, 짜장면', '2만원-4만원대',  
+values (store_sq.nextval, 'aaa', 'noimg.jpg', 'noimg.jpg', 'noimg.jpg', '군옥각2', '리월시 취헌부', '강남', '070-8888-8888', '중식, 중국요리, 짜장면', '2만원-4만원대',  
         '11:00-20:00', '금요일', '짜장면', '5000원', '짬뽕', '6000원', '탕수육', '10000원',
         '#강남#강남역#강남역맛집#중국집#중화요리#중국요리', 11, 20);
         
 -- 2. storeModify / 가게 정보 수정하기
-update store set sImage = 'modify.jpg',
+update store set sImage1 = 'modify.jpg',
+                 sImage2 = 'modify.jpg',
+                 sImage3 = 'modify.jpg',
                  sName = '청진각',
                  sAddress = '리월시 칠성부 옥형성면',
                  sTel = '010-9998-8888',
@@ -88,8 +90,7 @@ UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
 insert into storereview (srNo, sNo, mId, mProfile, srContent, 
     srImage1, srImage2, srImage3, srImage4, srImage5, srScore, srDate ) 
 VALUES (storereview_sq.NEXTVAL, 3, 'aaa', 'noImg.jpg', '여기 너무 맛있어요',
-        'noImg.png', 'noImg.png', 'noImg.png', 'noImg.png', 'noImg.png',
-         4 , sysdate); 
+        'noImg.png', 4 , sysdate); 
                
          
 -- 1. - 1. addScore / 가게의 평점 등록 (reviewWrite와 동시에 이뤄지며 score + 숫자에는 srScore 가 들어갈 예정)         
@@ -112,11 +113,7 @@ select * from
 -- 3. reviewModify / 특정 리뷰 수정
 update storereview set 
             srcontent = '이거 진짜 맛있어요!',
-            srimage1 ='review1.png',
-            srimage2 ='review2.png',
-            srimage3 ='review3.png',
-            srimage4 ='review4.png',
-            srimage5 ='review5.png'
+            srimage1 ='review1.png'
             where srno = 18;
 
 -- 4. reviewDelete / 해당 리뷰 삭제

@@ -15,11 +15,7 @@ public class StoreReview {
 	 public String mid;
 	 public String mprofile;
 	 public String srcontent;
-	 public String srimage1;
-	 public String srimage2;
-	 public String srimage3;
-	 public String srimage4;
-	 public String srimage5;
+	 public String srimage1; 
      public int srscore;
      public Date srdate;
      public int startRow;
