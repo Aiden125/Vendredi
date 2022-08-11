@@ -8,8 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/style.css" rel="stylesheet">
-	<style>
+		<style>
 #content {
             width: 600px;
             height : 400px;
@@ -74,7 +73,6 @@
 	b1{
 		color: red;
 	}
-	
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
@@ -102,24 +100,12 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
+	<input type="hidden" name="oid" value="${owner.oid }">
+	<input type="hidden" name="opw" value="${owner.opw }">
 	<div id="content">
-	<form action="${conPath }/owner/Modify.do" id="content_form" method="post">
-		<input type="hidden" name="obirth" value="${owner.obirth }">
-		<input type="hidden" name="ogender" value="${owner.ogender }">
-		
+	<form action="${conPath }/owner/Delete.do?oid=${oid}" id="content_form" method="post">
 		<table>
-			<tr>
-				<th>아이디</th>
-				<td>
-					<input type="text" name="oid" value="${owner.oid }" readonly="readonly">
-				</td>
-			</tr>
-			<tr>
-				<th>비밀번호</th>
-				<td>
-					<input type="password" name="opw" >
-				</td>
-			</tr>
+		<caption>계정삭제</caption>
 			<tr>
 				<th>비밀번호 확인</th>
 				<td>
@@ -133,32 +119,8 @@
 				</td>
 			</tr>
 			<tr>
-				<th>이름</th>
-				<td>
-					<input type="text" name="oname" value="${owner.oname }" >
-				</td>
-			</tr>
-			<tr>
-				<th>E-MAIL</th>
-				<td>
-					<input type="text" name="oemail" value="${owner.oemail }" >
-				</td>
-			</tr>
-			<tr>
-				<th>전화번호</th>
-				<td>
-					<input type="text" name="otel" value="${owner.otel }" >
-				</td>
-			</tr>
-			<tr>
-				<th>주소</th>
-				<td>
-					<input type="text" name="oaddress" value="${owner.oaddress }">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="3">
-					<input type="submit" value="수정하기">
+				<td colspan="2">
+					<input type="submit" value="탈퇴하기">
 				</td>
 			</tr>
 		</table>

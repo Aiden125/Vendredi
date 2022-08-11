@@ -185,6 +185,7 @@ $(function() {
                   <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="회원가입">
                		
                 </form>
+                <p class="ownerJoin">Owner Join &nbsp;<a href="${conPath }/owner/JoinForm.do">사장님 회원가입</a></p>
                 <p class="login-card-footer-text">Already have an account? <a href="${conPath}/member/loginForm.do" class="text-reset">Login</a></p>
             </div>
           </div>

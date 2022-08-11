@@ -28,4 +28,9 @@ INSERT INTO BOARD_COMMENT (CNO, BNO, OID, CCONTENT, CDATE)
 INSERT INTO BOARD_COMMENT (CNO, BNO, OID, CCONTENT, CDATE)
     VALUES (SEQ_BC.NEXTVAL, 5, 'owner4', '볶음밥도 짱', SYSDATE);
 
+insert into store (sNo, oId, sImage, sName, sAddress, sLocation, sTel, sType, sPrice, sTime, sHoliday,
+            sMenu1 , sMenu1cost , sMenu2, sMenu2cost, sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values (store_sq.nextval, 'aaa', 'noimg.jpg', '군옥각', '리월시 취헌부', '강남', '070-8888-8888', '중식, 중국요리, 짜장면', '2만원-4만원대',  
+        '11:00-19:00', '금요일', '짜장면', '5000원', '짬뽕', '6000원', '탕수육', '10000원', '#강남#강남역#강남역맛집#중국집#중화요리#중국요리',
+        11, 19);
 commit;

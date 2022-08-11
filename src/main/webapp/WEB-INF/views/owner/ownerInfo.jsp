@@ -113,8 +113,9 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="3">
-					<input type="submit" value="내 정보 수정">
+				<td colspan="2">
+					<input type="submit" value="정보 수정">
+					<input type="button" value="회원탈퇴" onclick="location.href='DeleteForm.do?oid=${oid}'">
 				</td>
 			</tr>
 		</table>

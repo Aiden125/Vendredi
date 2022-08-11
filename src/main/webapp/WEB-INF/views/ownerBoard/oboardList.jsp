@@ -34,6 +34,7 @@
 	</style>
 </head>
 <body>
+	<jsp:include page="../main/header.jsp"/>
 	<c:if test="${ oboardDelete > 0 }">
 		<script>
 			alert('해당글이 삭제되었습니다');
@@ -107,5 +108,6 @@
 			</c:if>
 		</div>
 	</div>
+	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

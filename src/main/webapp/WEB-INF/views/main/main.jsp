@@ -93,6 +93,11 @@
 </head>
 
 <body>
+<c:if test="${not empty Delete }">
+	<script>
+		alert('이용해주셔서 감사합니다');
+	</script>
+</c:if>
 	<jsp:include page="header.jsp" />
 	<!-- ======= Hero Section ======= -->
 	<section id="hero">
