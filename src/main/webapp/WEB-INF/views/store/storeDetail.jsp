@@ -1,374 +1,401 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<c:set var="conPath" value="${pageContext.request.contextPath }"/>
+<c:set var="conPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-	* {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-}
-.wrap {
-    height: 100%;
-    width: 100%;
-    background-image: url('${conPath}/assets/img/디저트.jpg');
-    background-position: center;
-    background-size: cover;
-    position: absolute;
-}
-.form-wrap {
-    width: 600px; 
-    height : 2000px;
-    position: relative;
-    margin: 6% auto;
-    background: #fff;
-    padding: 5px;
-    overflow: hidden;
-}
-.button-wrap {
-    width: 230px;
-    margin: 35px auto;
-    position: relative;
-    box-shadow: 0 0 600px 9px #fcae8f;
-    border-radius: 30px;
-}
-.togglebtn {
-    padding: 10px 30px;
-    cursor: pointer;
-    background: transparent;
-    border: 0;
-    outline: none;
-    position: relative;
-}
-#btn {
-    top: 0;
-    left: 0;
-    position: absolute;
-    width: 110px;
-    height: 100%;
-    background: linear-gradient(to right, #ff105f, #ffad06);
-    border-radius: 30px;
-    transition: .5s;
-}
-.social-icons {
-    margin: 30px auto;
-    text-align: center;
-}
-.social-icons img {
-    width: 30px ;
-    cursor: pointer;
-}
-.input-group {
-    top: 180px;
-    position: absolute;
-    width: 280px;
-    transition: .5s;
-}
-.input-field {
-    width: 100%;
-    padding: 10px 0;
-    margin: 5px 0;
-    border: none;
-    border-bottom: 1px solid #999;
-    outline: none;
-    background: transparent;
-}
-.submit {
-    width: 85%;
-    padding: 10px 30px;
-    cursor: pointer;
-    display: block;
-    margin: auto;
-    background: linear-gradient(to right, #ff105f, #ffad06);
-    border: 0;
-    outline: none;
-    border-radius: 30px;
-}
-.checkbox {
-    margin: 30px 10px 30px 0;
-}
-span {
-    color: #777;
-    font-size: 12px;
-    bottom: 68px;
-    position: absolute;
-}
-#login {
-    left: 50px;
-}
-#register {
-    left: 450px;
-}
-</style>
-	<link href="${conPath }/assets/css/style.css" rel="stylesheet"> 
-	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	
+<meta charset="utf-8">
+<title>Store Page</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="favicon.ico">
 
+<!--Google Fonts link-->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet">
+
+<link
+	href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i"
+	rel="stylesheet">
+
+
+<link rel="stylesheet" href="${conPath}/store/css/slick.css">
+<link rel="stylesheet" href="${conPath}/store/css/slick-theme.css">
+<link rel="stylesheet" href="${conPath}/store/css/animate.css">
+<link rel="stylesheet" href="${conPath}/store/css/fonticons.css">
+<link rel="stylesheet" href="${conPath}/store/css/font-awesome.min.css">
+<link rel="stylesheet" href="${conPath}/store/css/bootstrap.css">
+<link rel="stylesheet" href="${conPath}/store/css/magnific-popup.css">
+<link rel="stylesheet" href="${conPath}/store/css/bootsnav.css">
+
+
+<!--For Plugins external css-->
+<!--<link rel="stylesheet" href="assets/css/plugins.css" />-->
+
+<!--Theme custom css -->
+<link rel="stylesheet" href="${conPath}/store/css/style.css">
+<!--<link rel="stylesheet" href="assets/css/colors/maron.css">-->
+
+<!--Theme Responsive css-->
+<link rel="stylesheet" href="${conPath}/store/css/responsive.css" />
+
+<script
+	src="${conPath}/store/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
-<body>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6e603db168d967f3b35b2916c4eaf88a"></script>
-	<c:if test="${writeRequestResult != null }">
-		<script type="text/javascript">
-		alert("가게 등록이 완료되었습니다.");
-		</script> 
-	</c:if>
-	<c:if test="${storeModifyResult == 1 }">
-		<script type="text/javascript">
-		alert("가게 정보 수정이 완료되었습니다.");
-		</script> 
-	</c:if>
-	<c:if test="${storeModifyResult == 0 }">
-		<script type="text/javascript">
-		alert("가게 정보 수정에 실패하였습니다.");
-		</script> 
-	</c:if>
-	<jsp:include page="../main/header.jsp"/>
-	<div class="wrap">
-	<div class="form-wrap">
-		<table style="margin : 0 auto;" >
-		<tr>
-			<td colspan="2">  
-				<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage }" width = "75px">
-			</td>
-		</tr>
-		<tr> 	  
-			<td>
-				<h1>${store.sname }</h1>
-			</td>
-			<td style="color:orange;">
-				<fmt:formatNumber value="${store.sscore/store.sreplycnt }" pattern=".0"/>
-			 </td>
-		</tr> 
-		<tr>
-			<td colspan="2"> 
-				
-		<div id="map" style="width:500px;height:400px; margin:0 auto;"></div> 
-		<script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	    mapOption = { 
-	        center: new kakao.maps.LatLng(${store.slati}, ${store.slongti}), // 지도의 중심좌표
-	        level: 3 // 지도의 확대 레벨
-	    };
 
-		var map = new kakao.maps.Map(mapContainer, mapOption);
+<body data-spy="scroll" data-target=".navbar-collapse">
+<jsp:include page="../main/header.jsp"/>
+	<!--Blog Features Section-->
+	<section id="blog_details" class="blog_details roomy-100">
+		<div class="container">
+			<div class="row">
 
-		// 마커가 표시될 위치입니다 
-		var markerPosition  = new kakao.maps.LatLng(${store.slati}, ${store.slongti}); 
+				<div class="col-md-8">
+					<div class="main_blog_details">
 
-		// 마커를 생성합니다
-		var marker = new kakao.maps.Marker({
-	    	position: markerPosition
-		});
+						<div class="blog_details_left">
+							<div class="blog_details_img">
+								<img src="${conPath }/storeImgFileUpload/${store.simage }"
+									alt="가게 이미지" />
+							</div>
+							<div class="blog_details_content">
+								<div class="blog_details_head m-top-40">
+									<div class="head_text">
+										<h2>${store.sname }</h2>
+										<ul class="list-inline">
+											<li><a href="#" class="text-black">운영시간 : </a></li>
+											<li><a href="#" class="text-black">${store.stime }</a></li>
+											<li><a href="#" class="text-black">휴무 : </a></li>
+											<li><a href="#" class="text-black">${store.sholiday }
+											</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="blog_details_figure m-top-40">
+									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing
+										elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+										dolore magna aliquam erat volutpat. Ut wisi enim ad minim
+										veniam, quis nostrud exerci tation ullamcorper suscipit
+										lobortis nisl ut aliquip ex ea commodo consequat. Duis autem
+										vel eum iriure dolor in hendrerit in vulputate velit esse
+										molestie consequat, vel illum dolore eu feugiat nulla
+										facilisis blandit praesent luptatum.</p>
 
-		// 마커가 지도 위에 표시되도록 설정합니다
-	marker.setMap(map);
+									<blockquote class="m-top-30 m-l-30">
+										<h5>
+											<em>Duis autem vel eum iriure dolor in hendrerit in
+												vulputate velit esse molestie consequat, vel illum dolore eu
+												feugiat nulla facilisis at vero eros demonstraverunt</em>
+										</h5>
+									</blockquote>
 
-	var iwContent = '<div style="padding:5px;">${store.sname} <br><a href="https://map.kakao.com/link/map/${store.sname},${store.slati},${store.slongti}" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/${store.sname},${store.slati},${store.slongti}" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-	    iwPosition = new kakao.maps.LatLng(${store.slati}, ${store.slongti}); //인포윈도우 표시 위치입니다
+									<p class="m-top-30">Claritas est etiam processus dynamicus,
+										qui sequitur mutationem consuetudium lectorum. Mirum est
+										notare quam littera gothica, quam nunc putamus parum claram,
+										anteposuerit litterarum formas humanitatis per seacula quarta
+										decima et quinta decima. Eodem modo typi, qui nobisin futurum</p>
+									<p>
+									<ul class="list-inline">
+											<li><a href="#" class="text-black"><input type="button" value="예약 페이지" onclick="location='${conPath}/reservationForm.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'"></a></li>
+											<c:if test="${owner.oid == store.oid || admin != null }">
+											<li><a href="#" class="text-black"><input type="button" value="등록 요청" onclick="location='${conPath}/request/writeRequest.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'"></a></li>
+											<li><a href="#" class="text-black"><input type="button" value="가게 정보 수정" onclick="location='${conPath}/store/storeModifyView.do?sno=${param.sno }&oid=aaa'"></a></li>
+											<li><a href="#" class="text-black">${store.sholiday }
+											</a></li>
+											</c:if>
+										</ul>
+									</p>
+								</div>
 
-	// 인포윈도우를 생성합니다
-	var infowindow = new kakao.maps.InfoWindow({
-	    position : iwPosition, 
-	    content : iwContent 
-	});
-	  
-	// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-	infowindow.open(map, marker);   
-</script>
-			</td>
-		</tr>
-		<tr>
-			<th>
-				주소
-			</th>	
-			<td> 
-				${store.saddress }
-			</td>
-		</tr>
-		<tr>
-			<th>
-				가게 지역
-			</th>	
-			<td> 
-				${store.slocation }
-			</td>
-		</tr>
-		<tr>
-			<th>
-				가게 종류
-			</th>	
-			<td> 
-				${store.stype }
-			</td>
-		</tr>
-		<tr>
-			<th>
-				전화번호
-			</th>	
-			<td> 
-				${store.stel }
-			</td>
-		</tr>
-		<tr>
-			<th>
-				가격대
-			</th>	
-			<td> 
-				${store.sprice }
-			</td>
-		</tr>
-		<tr>
-			<th>
-				운영시간
-			</th>	
-			<td> 
-				${store.stime }
-			</td>
-		</tr>
-		<tr>
-			<th>
-				휴무
-			</th>	
-			<td> 
-				${store.sholiday }
-			</td>
-		</tr> 
-		<tr>	
-			<th colspan="2" align="center">
-				대표 메뉴 
-			</th>
-		</tr>  
-		<tr>
-			<th>
-				${store.smenu1}
-			</th>	
-			<td> 
-				${store.smenu1cost }
-			</td>
-		</tr>
-		<tr>
-			<th>
-				${store.smenu2}
-			</th>	
-			<td> 
-				${store.smenu2cost }
-			</td>
-		</tr>
-		<tr>
-			<th>
-				${store.smenu3}
-			</th>	
-			<td> 
-				${store.smenu3cost }
-			</td>
-		</tr>
-		<tr>
-			<th colspan="2">
-				추후 owner, admin 적용하게 바꿀예정 <br>
-				<input type="button" value="예약 페이지" onclick="location='${conPath}/reservationForm.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'">
-				<input type="button" value="등록 요청" onclick="location='${conPath}/request/writeRequest.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'">
-				<input type="button" value="가게 정보 수정" onclick="location='${conPath}/store/storeModifyView.do?sno=${param.sno }&oid=aaa'">
-			</th>
-		</tr>
-		</table>		
-		<br> 
-	<form action="${conPath }/storeReview/writeReview.do" method="POST" enctype="multipart/form-data"> 
-	<input type="hidden" value="${store.sno}" name="sno">
-	<input type="hidden" value="aaa" name="mid">
-	<input type="hidden" value="noimg.png" name="mprofile">
-	<table>
-		<tr>
-			<td colspan="2"><textarea rows="5" cols="57" name="srcontent"></textarea>
-		<tr>
-		<tr>
-			<td colspan="2">
-				<p>리뷰사진 1 <input type="file" name="srimg1"> </p> <br>
-				<p>리뷰사진 2 <input type="file" name="srimg2"> </p> <br>
-				<p>리뷰사진 3 <input type="file" name="srimg3"> </p> <br>
-				<p>리뷰사진 4 <input type="file" name="srimg4"> </p> <br>
-				<p>리뷰사진 5 <input type="file" name="srimg5"> </p> <br> 	
-			</td>
-		</tr>
-		<tr>
-			<td> 
-				<select name="srscore"> 
-    					<option value="1">★☆☆☆☆</option>
-    					<option value="2">★★☆☆☆</option>
-    					<option value="3">★★★☆☆</option>
-    					<option value="4">★★★★☆</option>
-  						<option value="5" selected>★★★★★</option>
-  				</select>
-			</td>
-			<td align="right">
-				<input type="submit" value="리뷰등록" >
-			</td>
-		</tr>
-	</table>
-	</form>
-	
-	<table style="margin : 0 auto;"> 
-		<c:if test="${paging.totCnt eq 0 }">
-			<tr> <th colspan="5">등록된 리뷰가 없습니다.</th> </tr>
-		</c:if>
-		<c:if test="${paging.totCnt != 0 }">
-				<c:forEach items="${storeReviewList }" var="storeReview">
-				<tr>  
-					<td>
-						${storeReview.mid } <br>
-						<img alt="프로필 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.mprofile }" width = "75px">
-				    </td>
-					<td> 
-						평가 점수 : ${storeReview.srscore }
-					</td>
-				</tr>
-				<tr>	
-					<td> 
-						${storeReview.srcontent }
-					</td> 
-				</tr>
-				<tr>	
-					<td>
-						<img alt="리뷰 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage1}" width = "75px">
-						<c:if test="${storeReview.srimage2 != null} ">
-						<img alt="리뷰 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage2}" width = "75px">
-						</c:if>
-						<c:if test="${storeReview.srimage3 != null} ">
-						<img alt="리뷰 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage3}" width = "75px">
-						</c:if>
-						<c:if test="${storeReview.srimage4 != null} ">
-						<img alt="리뷰 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage4}" width = "75px">
-						</c:if>
-						<c:if test="${storeReview.srimage5 != null} ">
-						<img alt="리뷰 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage5}" width = "75px"> 
-						</c:if>
-					</td>    
-				</tr> 
-			</c:forEach>
-		</c:if>
-	</table> 
-	<div id="paging" align="center">
-		<c:if test="${paging.startPage> paging.blockSize }">
-		[<a href="${conPath }/store/storeDetail.do?sno=${param.sno}&pageNum=${paging.startPage-1}">이전</a>]
-		</c:if>
-		<c:forEach var="i" begin="${paging.startPage }" end="${paging.endPage}">
-			<c:if test="${i eq paging.currentPage }">
-			[<b style="color : red;">${i}</b>]
-			</c:if>
-			<c:if test="${i != paging.currentPage }">
-			[<a href="${conPath }/store/storeDetail.do?sno=${param.sno}&pageNum=${i}">${i}</a>]
-			</c:if>
-		</c:forEach>
-		<c:if test="${paging.endPage < paging.pageCnt }">
-		[<a href="${conPath }/store/storeDetail.do?sno=${param.sno}&pageNum=${paging.endPage +1}">다음</a>]
-		</c:if>
-	</div>
-	</div>	 
-	</div> 
+
+
+							</div>
+						</div>
+
+
+						<hr />
+
+						<div class="blog_comments">
+							<form action="${conPath }/storeReview/writeReview.do"
+								method="POST" enctype="multipart/form-data">
+								<h4 class="m-bottom-30">Comment</h4>
+								<input type="hidden" value="${store.sno}" name="sno"> <input
+									type="hidden" value="aaa" name="mid"> <input
+									type="hidden" value="noimg.png" name="mprofile">
+								<div class="row">
+									<div class="comment_item">
+										<div class="col-sm-2">
+											<div class="blog_comments_img">
+												<img class="img-circle" src="${member.mprofile }" alt="">
+											</div>
+										</div>
+										<div class="col-sm-8">
+											<div class="comments_top_tex">
+												<div class="row">
+													<div class="col-sm-8 pull-left">
+														<h5 class="text-uppercase">${member.mid}</h5>
+													</div>
+												</div>
+											</div>
+
+											<article class="comments_bottom_text m-top-10">
+												<p>Claritas est etiam processus dynamicus, qui sequitur
+													mutationem consuetudium lectorum. Mirum est notare quam
+													littera gothica, quam nunc putamus parum claram,
+													anteposuerit litterarum formas</p>
+												<p>
+													리뷰사진 1 <input type="file" name="srimg1">
+												</p>
+												<br>
+												<p>
+													리뷰사진 2 <input type="file" name="srimg2">
+												</p>
+												<br>
+												<p>
+													리뷰사진 3 <input type="file" name="srimg3">
+												</p>
+												<br>
+												<p>
+													리뷰사진 4 <input type="file" name="srimg4">
+												</p>
+												<br>
+												<p>
+													리뷰사진 5 <input type="file" name="srimg5">
+												</p>
+												<br>
+											</article>
+
+										</div>
+									</div>
+								</div>
+							</form>
+							<hr />
+
+							<div class="row">
+								<div class="comment_item m-l-40">
+									<div class="col-sm-2">
+										<div class="blog_comments_img">
+											<img class="img-circle" src="assets/images/comment-img2.jpg"
+												alt="">
+										</div>
+									</div>
+									<div class="col-sm-8">
+										<div class="comments_top_tex">
+											<div class="row">
+												<div class="col-sm-8 pull-left">
+													<h5 class="text-uppercase">kevin lee</h5>
+													<small><em>Posted in Feb 29th 2016 at 16:50</em></small>
+												</div>
+												<div class="col-sm-2 pull-right">
+													<a href="#"><i class="fa fa-mail-reply-all"></i> Reply</a>
+												</div>
+											</div>
+										</div>
+										<article class="comments_bottom_text m-top-10">
+											<p>Claritas est etiam processus dynamicus, qui sequitur
+												mutationem consuetudium lectorum. Mirum est notare quam
+												littera gothica, quam nunc putamus parum claram,
+												anteposuerit litterarum formas</p>
+										</article>
+									</div>
+								</div>
+							</div>
+
+							<hr />
+
+							<div class="row">
+								<div class="comment_item">
+									<div class="col-sm-2">
+										<div class="blog_comments_img">
+											<img class="img-circle" src="assets/images/comment-img1.jpg"
+												alt="">
+										</div>
+									</div>
+									<div class="col-sm-8">
+										<div class="comments_top_tex">
+											<div class="row">
+												<div class="col-sm-8 pull-left">
+													<h5 class="text-uppercase">laingockien</h5>
+													<small><em>Posted in Feb 29th 2016 at 16:50</em></small>
+												</div>
+												<div class="col-sm-2 pull-right">
+													<a href="#"><i class="fa fa-mail-reply-all"></i> Reply</a>
+												</div>
+											</div>
+										</div>
+										<article class="comments_bottom_text margin-top-10">
+											<p>Claritas est etiam processus dynamicus, qui sequitur
+												mutationem consuetudium lectorum. Mirum est notare quam
+												littera gothica, quam nunc putamus parum claram,
+												anteposuerit litterarum formas</p>
+										</article>
+									</div>
+								</div>
+							</div>
+
+							<hr />
+
+						</div>
+						<!-- End off Blog comments -->
+
+
+
+						<div class="live_chate">
+							<h4>leave a comment</h4>
+							<div class="row">
+								<form>
+									<div class="col-sm-4">
+										<div class="form-group">
+											<label for="exampleInputEmail1">Your Name *</label> <input
+												type="email" class="form-control">
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="form-group">
+											<label>Your Email *</label> <input type="text"
+												class="form-control">
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="form-group">
+											<label>Your Website *</label> <input type="text"
+												class="form-control">
+										</div>
+									</div>
+
+									<div class="col-sm-12">
+										<div class="form-group">
+											<label>Your Message *</label>
+											<textarea class="form-control" rows="6"></textarea>
+										</div>
+										<button type="submit" class="btn btn-default m-top-30">
+											send message <i class="fa fa-long-arrow-right"></i>
+										</button>
+									</div>
+
+								</form>
+
+							</div>
+
+						</div>
+
+
+					</div>
+				</div>
+				<!-- End off col-md-8 -->
+
+				<div class="col-md-4">
+					<div class="blog_saidbar sm-m-top-70">
+						<div class="said_ctg fix">
+							<h6 class="text-uppercase">${store.sname }</h6>
+							<ul class="text-uppercase m-top-40">
+								<li><a href="">주소 <span class="pull-right">${store.saddress }</span></a></li>
+								<li><a href="">가게 지역 <span class="pull-right">${store.slocation }</span></a></li>
+								<li><a href="">가게 종류 <span class="pull-right">${store.stype }</span></a></li>
+								<li><a href="">전화번호 <span class="pull-right">${store.stel }</span></a></li>
+								<li><a href="">가격대 <span class="pull-right">${store.sprice }</span></a></li>
+							</ul>
+						</div>
+
+						<div class="said_post fix m-top-70">
+							<h6 class="m-bottom-40 text-uppercase">대표 메뉴</h6>
+							<div class="post_item">
+								<div class="item_img">
+									<img src="assets/images/s-post-img1.jpg" alt="" />
+								</div>
+								<div class="item_text">
+									<h6>${store.smenu1}</h6>
+									<p>
+										<i class="fa fa-clock-o"></i>${store.smenu1cost }</p>
+								</div>
+							</div>
+							<div class="post_item">
+								<div class="item_img">
+									<img src="assets/images/s-post-img2.jpg" alt="" />
+								</div>
+								<div class="item_text">
+									<h6>${store.smenu2}</h6>
+									<p>
+										<i class="fa fa-clock-o"></i>${store.smenu2cost }</p>
+								</div>
+							</div>
+							<div class="post_item">
+								<div class="item_img">
+									<img src="assets/images/s-post-img3.jpg" alt="" />
+								</div>
+								<div class="item_text">
+									<h6>${store.smenu3}</h6>
+									<p>
+										<i class="fa fa-clock-o"></i>${store.smenu3cost }</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="said_socail fix m-top-70">
+							<h6 class="text-uppercase">instagram</h6>
+							<div class="socail_items m-top-40">
+								<div class="socail_item">
+									<img src="assets/images/gram-img1.jpg" alt="" />
+								</div>
+								<div class="socail_item">
+									<img src="assets/images/gram-img2.jpg" alt="" />
+								</div>
+								<div class="socail_item">
+									<img src="assets/images/gram-img3.jpg" alt="" />
+								</div>
+								<div class="socail_item">
+									<img src="assets/images/gram-img4.jpg" alt="" />
+								</div>
+								<div class="socail_item">
+									<img src="assets/images/gram-img5.jpg" alt="" />
+								</div>
+								<div class="socail_item">
+									<img src="assets/images/gram-img6.jpg" alt="" />
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- End off col-md-4 -->
+
+
+			</div>
+			<!-- End off row -->
+
+
+
+
+		</div>
+		<!-- End off container -->
+	</section>
+	<!-- End off blog Fashion -->
+
+
+	<!-- JS includes -->
+
+	<script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+	<script src="assets/js/vendor/bootstrap.min.js"></script>
+
+	<script src="assets/js/isotope.min.js"></script>
+	<script src="assets/js/jquery.magnific-popup.js"></script>
+	<script src="assets/js/jquery.easing.1.3.js"></script>
+	<script src="assets/js/slick.min.js"></script>
+	<script src="assets/js/jquery.collapse.js"></script>
+	<script src="assets/js/bootsnav.js"></script>
+	<script src="assets/js/masonry.min.js"></script>
+
+	<script type="text/javascript">
+		var msnry = new Masonry('.blog_area');
+	</script>
+
+	<script src="assets/js/plugins.js"></script>
+	<script src="assets/js/main.js"></script>
+
 </body>
 </html>

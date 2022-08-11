@@ -101,7 +101,7 @@ public class MemberController {
 		String memail = (String)response_obj.get("email");
 		String mbirth = (String)response_obj.get("birth");
 		
-		model.addAttribute("member",apiResult);
+		model.addAttribute("member",apiResult); //2번의 결과를 member에 담는걸 못하겠음 ..
 		
 		return "member/logintest";
 	 }

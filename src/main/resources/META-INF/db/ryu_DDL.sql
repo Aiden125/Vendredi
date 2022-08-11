@@ -65,4 +65,4 @@ create table request (
             rDate         date default sysdate -- 요청 등록된 일시
     );     
 SELECT * FROM request;
- 
+select * from store; 
