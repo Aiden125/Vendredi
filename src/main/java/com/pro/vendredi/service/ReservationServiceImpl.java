@@ -1,5 +1,8 @@
 package com.pro.vendredi.service;
 
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +24,9 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public int reservationChk(int sno) {
+	public List<Reservation> reservationChk(int sno) {
 		return reDao.reservationChk(sno);
 	}
+
 
 }

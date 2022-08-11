@@ -124,7 +124,7 @@
                   </div>
                    <div class="form-group mb-4">
                     <label for="password" class="sr-only">비밀번호확인</label>
-                    <input type="password" name="opwChk" id="password" required="required"  class="form-control" placeholder="비밀번호확인">
+                    <input type="password" name="opwChk" id="passwordChk" required="required"  class="form-control" placeholder="비밀번호확인">
                   </div>
                    <div id="pwChkResult">&nbsp;</div>
                    <div class="form-group">

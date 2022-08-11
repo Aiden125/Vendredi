@@ -45,8 +45,9 @@ import com.pro.vendredi.util.NaverLoginBO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
+	@Autowired
+	private MemberDao memberDao;
 	
-	public MemberDao memberDao;
 	String backupPath = "C:\\Carlos_Java\\webPro\\source\\09_TeamProject\\Vendredi\\src\\main\\webapp\\memberImg/";
 	@Autowired
 	private JavaMailSenderImpl mailSender;
@@ -111,6 +112,7 @@ public class MemberServiceImpl implements MemberService {
 		//4.파싱 닉네임 세션으로 저장
 		httpSession.setAttribute("member",member); //세션 생성
 		String result = memberDao.naverLogin(member);
+		//dao 하나 호출  이미 회원정보를 가지고있는거 호출
 		
 		if(result.equals(member.getMid())) {
 			return "redirect:../main.do";

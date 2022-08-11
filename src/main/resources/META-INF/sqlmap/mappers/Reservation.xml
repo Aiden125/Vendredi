@@ -20,7 +20,7 @@
 </insert>
 <!-- 가게의 예약된 날짜, 시간 가져오기 -->
 <select id="reservationChk" parameterType="int" resultMap="reservationResult">
-	SELECT RDATE, RTIME FROM RESERVATION WHERE SNO = #{sno}
+	SELECT RDATE, RTIME FROM RESERVATION WHERE SNO = #{sno} AND RDATE > SYSDATE -1
 </select>
 <!-- 예약 취소 -->
 <delete id="reservationCancel" parameterType="int">

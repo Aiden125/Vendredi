@@ -211,7 +211,7 @@ span {
 			<tr>
 				<td colspan="2">
 					<input type="submit" value="등록">
-					<input type="button" value="뒤로 가기" onclick="location.back()">
+					<input type="button" value="뒤로 가기" onclick="history.back()">
 				</td>
 			</tr>
 		</table>

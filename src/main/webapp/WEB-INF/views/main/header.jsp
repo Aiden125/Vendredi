@@ -31,6 +31,7 @@
   transition: all 0.5s;
   z-index: 997;
   height: 80px;
+  width:100%;
 }
 
 #header .logo {
@@ -326,7 +327,15 @@
 .navbar-mobile .dropdown>.dropdown-active {
   display: block;
 }
-
+.align-items-center {
+  align-items: center !important;
+}
+.justify-content-sm-between {
+    justify-content: space-between !important;
+}
+.d-flex {
+  display: flex !important;
+}
   </style>
 </head>
 <body>
@@ -389,12 +398,12 @@
   <c:if test="${empty member and  not empty owner and empty admin}">
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="index_minwoo.jsp">${owner.oname }님</a></li>
+          <li><a class="nav-link scrollto active">${owner.oname }님</a></li>
           <li><a class="nav-link scrollto" href="${conPath }/owner/Info.do?oid=${oid}">my Page</a></li>
-          <li><a class="nav-link scrollto" href="${conPath }/owner/myStoreList.do?oid=${oid}">my Store</a></li>
-          <li><a class="nav-link scrollto" href="${conPath }/owner/Logout.do">로그아웃</a></li>
-          <li><a class="nav-link scrollto " href="${conPath }">예약 현황 </a></li>
+          <li><a class="nav-link scrollto" href="${conPath }/owner/StoreList.do?oid=${oid}">my Store</a></li>
+          <li><a class="nav-link scrollto " href="${conPath }/owner/ReState.do?oid=${oid}">예약 현황 </a></li>
           <li><a href="${conPath }/oboard/List.do">커뮤니티</a></li>
+          <li><a class="nav-link scrollto" href="${conPath }/owner/Logout.do">로그아웃</a></li>
          <!--  <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

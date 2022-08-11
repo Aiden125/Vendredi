@@ -68,20 +68,36 @@
 	border-radius: 3px;
 	padding-left:10px;
 	}
+	b{
+		color: green;
+	}
+	b1{
+		color: red;
+	}
 	
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <script>
-	${document}.ready(function(){
+	$(document).ready(function(){
 		$('input[name="opw"], input[name="opwChk"]').keyup(function(){
 			var opw = $('input[name="opw"]').val();
 			var opwChk = $('input[name="opwChk"]').val();
 			if(opw==opwChk){
 				$('#pwChkResult').html('<b>비밀번호 일치</b>');
 			}else{
-				$('#pwChkResult').html('<b>비밀번호 불일치</b>');
+				$('#pwChkResult').html('<b1>비밀번호 불일치</b1>');
 			}
 		});
-	}
+	$('form').submit(function(){
+			var pwChkResult = $('#pwChkResult').text().trim();
+			if(pwChkResult != '비밀번호 일치'){
+				alert('비밀번호를 확인해주세요');
+				$('input[name="opw"]').focus();
+				return false;
+			}
+		});
+	});
 </script>
 </head>
 <body>
@@ -101,7 +117,7 @@
 			<tr>
 				<th>비밀번호</th>
 				<td>
-					<input type="password" name="opw" value="${owner.opw }" >
+					<input type="password" name="opw" >
 				</td>
 			</tr>
 			<tr>
@@ -111,6 +127,7 @@
 				</td>
 			</tr>
 			<tr>
+				<td></td>
 				<td>
 					<div id="pwChkResult">&nbsp;</div>
 				</td>

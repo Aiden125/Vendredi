@@ -72,6 +72,11 @@
 </style>
 </head>
 <body>
+<c:if test="${not empty modifyResult }">
+	<script>
+		alert('정보수정 완료');
+	</script>
+</c:if>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="content">
 	<form action="${conPath }/owner/ModifyForm.do" id="content_form" method="post">
@@ -113,8 +118,9 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="3">
-					<input type="submit" value="내 정보 수정">
+				<td colspan="2">
+					<input type="submit" value="정보 수정">
+					<input type="button" value="회원탈퇴" onclick="location.href='DeleteForm.do?oid=${oid}'">
 				</td>
 			</tr>
 		</table>

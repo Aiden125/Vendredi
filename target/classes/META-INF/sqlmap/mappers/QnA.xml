@@ -118,10 +118,14 @@
         WHERE QNO=#{qno}
 	</update> 
 	
-	<!-- 답변글 상세보기 -->
+	<!-- 답변글 상세보기(원글이랑 답변 글 같이보는 페이지 용도) -->
 	<select id="qnaReplyDetail" parameterType="QnA" resultType="QnA">
 		SELECT * FROM QNA WHERE QGROUP=#{qgroup} AND QSTEP!=0
 	</select>
 	
+	<!-- 답변글만 상세보기 -->
+	<select id="qnaOnlyReplyDetail" parameterType="QnA" resultType="QnA">
+		SELECT * FROM QNA WHERE Qno=#{qno}
+	</select>
 	
 </mapper>
