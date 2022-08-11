@@ -156,14 +156,36 @@ commit;
 
 select * from owner;
                  
+-- STORELIKE TABLE
+
+-- 1. 0. 내 찜한 목록 갯수 세기 myLikeCnt
+
+select count(*)cnt from storelike where mid = 'aaa'; 
+
+-- 1. 1. 내 찜한 목록 출력하기 myLikeList
+select * from
+    (select rownum RN, A.* from
+    (select * from storelike
+    where mid = 'aaa'
+    order by storelike.slno desc)A)
+    where RN BETWEEN 1 and 5;
+    
+-- 2. 해당 가게 찜하기 insertLike
+
+insert INTO storelike values (STORELIKE_SQ.nextval, 'aaa', 7, '카즈하스시');
                  
+-- 3. 해당 가게 찜 삭제하기 deleteLike
+
+delete storelike where mid = 'aaa' and sno = 7;
+
+-- 4. 해당 가게 찜 여부 likeCnt
                  
+select count(*) cnt from storelike where mid = 'aaa' and sno = 7;                 
                  
-                 
-                 
-                 
-                 
-                 
+ -- 5. likeDetail
+
+select * from storelike where sno= 7;
+
                  
                  
                  

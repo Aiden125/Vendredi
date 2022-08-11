@@ -14,6 +14,7 @@
  	
  	<typeAlias type="com.pro.vendredi.dto.Request" alias="request"/>
  	<typeAlias type="com.pro.vendredi.dto.Store" alias="store"/>
+ 	<typeAlias type="com.pro.vendredi.dto.StoreLike" alias="storeLike"/>
  	<typeAlias type="com.pro.vendredi.dto.StoreReview" alias="storeReview"/>
  	 
  	<!-- 이진우 -->
@@ -35,6 +36,7 @@
  		<mapper resource="META-INF/sqlmap/mappers/Request.xml"/>
  		<mapper resource="META-INF/sqlmap/mappers/Store.xml"/>
  		<mapper resource="META-INF/sqlmap/mappers/StoreReview.xml"/>
+ 		<mapper resource="META-INF/sqlmap/mappers/StoreLike.xml"/>
  	 
  	<!-- 문희석 -->
  		<mapper resource="META-INF/sqlmap/mappers/Admin.xml"/>

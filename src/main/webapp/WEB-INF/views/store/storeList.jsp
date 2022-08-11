@@ -21,23 +21,20 @@ body, html {
 .login-card{
 	width: 600px;
 	height : 350px;
-}
 
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
 	$(document).ready(function() {
-
 	});
 	function trclicked(sno) {
 		location.href = '${conPath}/store/storeDetail.do?sno=' + sno;
-
 	}
 </script>
 </head>
 <body>
-	<jsp:include page="../main/header.jsp" />
+<jsp:include page="../main/header.jsp" />
 	<main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
 		<div class="container">
 			<div class="card login-card">

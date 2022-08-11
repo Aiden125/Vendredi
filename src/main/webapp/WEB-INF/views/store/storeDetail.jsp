@@ -48,8 +48,27 @@
 	src="${conPath}/store/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 
-<body data-spy="scroll" data-target=".navbar-collapse">
-<jsp:include page="../main/header.jsp"/>
+<body>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6e603db168d967f3b35b2916c4eaf88a"></script>
+	<c:if test="${writeRequestResult != null }">
+		<script type="text/javascript">
+			alert("가게 등록이 완료되었습니다.");
+		</script>
+	</c:if>
+	<c:if test="${storeModifyResult == 1 }">
+		<script type="text/javascript">
+			alert("가게 정보 수정이 완료되었습니다.");
+		</script>
+	</c:if>
+	<c:if test="${storeModifyResult == 0 }">
+		<script type="text/javascript">
+			alert("가게 정보 수정에 실패하였습니다.");
+		</script>
+	</c:if>
+
+	<body data-spy="scroll" data-target=".navbar-collapse">
+	<jsp:include page="../main/header.jsp" />
 	<!--Blog Features Section-->
 	<section id="blog_details" class="blog_details roomy-100">
 		<div class="container">
@@ -101,10 +120,16 @@
 										decima et quinta decima. Eodem modo typi, qui nobisin futurum</p>
 									<p>
 									<ul class="list-inline">
-											<li><a href="#" class="text-black"><input type="button" value="예약 페이지" onclick="location='${conPath}/reservationForm.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'"></a></li>
+											<li><a href="#" class="text-black"><input
+												type="button" value="예약 페이지"
+												onclick="location='${conPath}/reservationForm.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'"></a></li>
 											<c:if test="${owner.oid == store.oid || admin != null }">
-											<li><a href="#" class="text-black"><input type="button" value="등록 요청" onclick="location='${conPath}/request/writeRequest.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'"></a></li>
-											<li><a href="#" class="text-black"><input type="button" value="가게 정보 수정" onclick="location='${conPath}/store/storeModifyView.do?sno=${param.sno }&oid=aaa'"></a></li>
+											<li><a href="#" class="text-black"><input
+													type="button" value="등록 요청"
+													onclick="location='${conPath}/request/writeRequest.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'"></a></li>
+											<li><a href="#" class="text-black"><input
+													type="button" value="가게 정보 수정"
+													onclick="location='${conPath}/store/storeModifyView.do?sno=${param.sno }&oid=aaa'"></a></li>
 											<li><a href="#" class="text-black">${store.sholiday }
 											</a></li>
 											</c:if>
@@ -397,5 +422,7 @@
 	<script src="assets/js/plugins.js"></script>
 	<script src="assets/js/main.js"></script>
 
+
 </body>
+
 </html>

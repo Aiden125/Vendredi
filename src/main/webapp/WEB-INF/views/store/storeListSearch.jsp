@@ -17,14 +17,14 @@
 .wrap {
     height: 100%;
     width: 100%;
-    background-image: url(assets/img/디저트.jpg);
+    background-image: url('${conPath}/assets/img/디저트.jpg');
     background-position: center;
     background-size: cover;
     position: absolute;
 }
 .form-wrap {
-    width: 380px;
-    height: 480px;
+    width: 720px;
+    height: 770px;
     position: relative;
     margin: 6% auto;
     background: #fff;
@@ -131,36 +131,36 @@ span {
 				<c:forEach items="${storeList }" var="store">
 				<tr onclick="trclicked(${store.sno })"> 
 					<td>
-						<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage}" width = "100px">
+						<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage}" width = "100px" height="150px">
 					</td>
 					<td>${store.sname }</td>
+					<td style="color : orange; font-weight: bold">${store.stscore }</td>
+				</tr> 
+				<tr>	
 					<td> 
 						${store.slocation }
 					</td>
-					<td> 
+					<td colspan="2"> 
 						${store.stype }
-					</td>
-					<td> 
-						${store.stscore }
-					</td>    
-				</tr> 
+					</td>   
+				</tr>
 			</c:forEach>
 		</c:if>
 	</table>
 		<div id="paging" align="center">
 		<c:if test="${paging.startPage> paging.blockSize }">
-		[<a href="${conPath }/store.do?method=storeListSearch&pageNum=${paging.startPage-1}&ssearchtag=${param.ssearchtag }">이전</a>]
+		[<a href="${conPath }/store/storeListSearch.do?pageNum=${paging.startPage-1}&ssearchtag=${param.ssearchtag }">이전</a>]
 		</c:if>
 		<c:forEach var="i" begin="${paging.startPage }" end="${paging.endPage}">
 			<c:if test="${i eq paging.currentPage }">
 			[<b style="color : red;">${i}</b>]
 			</c:if>
 			<c:if test="${i != paging.currentPage }">
-			[<a href="${conPath }/store.do?method=storeListSearch&pageNum=${i}&ssearchtag=${param.ssearchtag }">${i}</a>]
+			[<a href="${conPath }/store/storeListSearch.do?pageNum=${i}&ssearchtag=${param.ssearchtag }">${i}</a>]
 			</c:if>
 		</c:forEach>
 		<c:if test="${paging.endPage < paging.pageCnt }">
-		[<a href="${conPath }/store.do?method=storeListSearch&pageNum=${paging.endPage +1}&ssearchtag=${param.ssearchtag }">다음</a>]
+		[<a href="${conPath }/store/storeListSearch.do?pageNum=${paging.endPage +1}&ssearchtag=${param.ssearchtag }">다음</a>]
 		</c:if>
 		</div>
 	</div>

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -111,6 +112,7 @@ public class QnAController {
 	//문의글 수정 뷰단 - 관리자
 	@RequestMapping(value = "/modifyViewAdminVer",method=RequestMethod.GET)
 	public String modifyViewAdminVer(int qno, Model model) {
+		System.out.println(qnaService.qnaModifyReplyView(qno));
 		model.addAttribute("qDto",qnaService.qnaModifyReplyView(qno));
 		return "admin/qnaModify";
 	}
@@ -138,4 +140,17 @@ public class QnAController {
 		return "admin/qnaReplyList";
 	}
 	
+	//답변글 상세보기(원글이랑 같이 볼 때 용도)
+	@RequestMapping(value= "replyDetail", method=RequestMethod.GET)
+	public String replyDetail(int qgroup, Model model) {
+		model.addAttribute("qDto", qnaService.qnaReplyDetail(qgroup));
+		return "admin/qnaModify";
+	}
+	
+	//답변글만 상세보기
+	@RequestMapping(value= "qnaOnlyReplyDetail", method=RequestMethod.GET)
+	public String qnaOnlyReplyDetail(int qno, Model model) {
+		model.addAttribute("qDto", qnaService.qnaOnlyReplyDetail(qno));
+		return "admin/qnaModify";
+	}
 }

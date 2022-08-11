@@ -39,7 +39,8 @@
 
 <!-- Template Main CSS File -->
 <link href="assets/css/style.css" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style>
 .searchInput {
 	outline: none;
@@ -50,21 +51,20 @@
 	width: 300px;
 	border-radius: 50px;
 	background: white;
-	
 }
 
 .searchButton {
 	color: white;
-    float: right;
-    width: 50px;
-    height: 50px;
-    padding: 10px;
-    border-radius: 50%;
-    background: #2f3640;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.4s;
+	float: right;
+	width: 50px;
+	height: 50px;
+	padding: 10px;
+	border-radius: 50%;
+	background: #2f3640;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 0.4s;
 }
 </style>
 </head>
@@ -90,84 +90,82 @@
 								<p class="animate__animated animate__fadeInUp">당신의 금요일을 도와줄
 									Vendrei를 통해 솔직한 리뷰와 믿을 수 있는 가게를 알아보세요!</p>
 								<div class="container h-100">
-
-									<div class="d-flex justify-content-center h-100">
-										<form
-											action="${conPath}/store/storeListSearch.do?ssearchtag=${param.ssearchtag}">
-											<div class="searchBox">
-												<input class="searchInput" type="text" name="ssearchtag"
-													value="${param.ssearchtag}" >
-												<button class="searchButton">
-													<i class="material-icons">Search</i>
-												</button>
-											</div>
-										</form>
+										<div class="d-flex justify-content-center h-100">
+											<form
+												action="${conPath}/store/storeListSearch.do?ssearchtag=${param.ssearchtag}">
+												<div class="searchBox">
+													<input class="searchInput" type="text" name="ssearchtag"
+														value="${param.ssearchtag}"
+														placeholder="찾길 원하시는 지역, 음식, 가게명을 입력하세요">
+													<button class="searchButton">
+														<i class="material-icons"> Search </i>
+													</button>
+												</div>
+											</form>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-
-
-						<!-- Slide 2 -->
-						<div class="carousel-item"
-							style="background-image: url(assets/img/slide/slide-2.jpg);">
-							<div class="carousel-container">
-								<div class="carousel-content">
-									<h2 class="animate__animated animate__fadeInDown">Lorem
-										Ipsum Dolor</h2>
-									<p class="animate__animated animate__fadeInUp">Ut velit est
-										quam dolor ad a aliquid qui aliquid. Sequi ea ut et est
-										quaerat sequi nihil ut aliquam. Occaecati alias dolorem
-										mollitia ut. Similique ea voluptatem. Esse doloremque
-										accusamus repellendus deleniti vel. Minus et tempore modi
-										architecto.</p>
-									<div>
-										<a href="#about"
-											class="btn-get-started animate__animated animate__fadeInUp scrollto">Read
-											More</a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Slide 3 -->
-						<div class="carousel-item"
-							style="background-image: url(assets/img/slide/slide-3.jpg);">
-							<div class="carousel-container">
-								<div class="carousel-content">
-									<h2 class="animate__animated animate__fadeInDown">Sequi ea
-										ut et est quaerat</h2>
-									<p class="animate__animated animate__fadeInUp">Ut velit est
-										quam dolor ad a aliquid qui aliquid. Sequi ea ut et est
-										quaerat sequi nihil ut aliquam. Occaecati alias dolorem
-										mollitia ut. Similique ea voluptatem. Esse doloremque
-										accusamus repellendus deleniti vel. Minus et tempore modi
-										architecto.</p>
-									<div>
-										<a href="#about"
-											class="btn-get-started animate__animated animate__fadeInUp scrollto">Read
-											More</a>
-									</div>
-								</div>
-							</div>
-						</div>
-
 					</div>
+				</div>
 
-					<a class="carousel-control-prev" href="#heroCarousel" role="button"
-						data-bs-slide="prev"> <span
-						class="carousel-control-prev-icon bi bi-chevron-left"
-						aria-hidden="true"></span>
-					</a> <a class="carousel-control-next" href="#heroCarousel"
-						role="button" data-bs-slide="next"> <span
-						class="carousel-control-next-icon bi bi-chevron-right"
-						aria-hidden="true"></span>
-					</a>
+
+				<!-- Slide 2 -->
+				<div class="carousel-item"
+					style="background-image: url(assets/img/slide/slide-2.jpg);">
+					<div class="carousel-container">
+						<div class="carousel-content">
+							<h2 class="animate__animated animate__fadeInDown">Lorem
+								Ipsum Dolor</h2>
+							<p class="animate__animated animate__fadeInUp">Ut velit est
+								quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat
+								sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut.
+								Similique ea voluptatem. Esse doloremque accusamus repellendus
+								deleniti vel. Minus et tempore modi architecto.</p>
+							<div>
+								<a href="#about"
+									class="btn-get-started animate__animated animate__fadeInUp scrollto">Read
+									More</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Slide 3 -->
+				<div class="carousel-item"
+					style="background-image: url(assets/img/slide/slide-3.jpg);">
+					<div class="carousel-container">
+						<div class="carousel-content">
+							<h2 class="animate__animated animate__fadeInDown">Sequi ea
+								ut et est quaerat</h2>
+							<p class="animate__animated animate__fadeInUp">Ut velit est
+								quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat
+								sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut.
+								Similique ea voluptatem. Esse doloremque accusamus repellendus
+								deleniti vel. Minus et tempore modi architecto.</p>
+							<div>
+								<a href="#about"
+									class="btn-get-started animate__animated animate__fadeInUp scrollto">Read
+									More</a>
+							</div>
+						</div>
+					</div>
 				</div>
 
 			</div>
 
-		</div>
+			<a class="carousel-control-prev" href="#heroCarousel" role="button"
+				data-bs-slide="prev"> <span
+				class="carousel-control-prev-icon bi bi-chevron-left"
+				aria-hidden="true"></span>
+			</a> <a class="carousel-control-next" href="#heroCarousel" role="button"
+				data-bs-slide="next"> <span
+				class="carousel-control-next-icon bi bi-chevron-right"
+				aria-hidden="true"></span>
+			</a>
+
+
 
 	</section>
 	<!-- End Hero -->
@@ -377,13 +375,14 @@
 						suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem
 						hic quas.</p>
 				</div>
-                               
+
 				<div class="row">
-							 
+
 					<div class="col-xl-3 col-lg-4 col-md-6">
 						<div class="member">
 							<img src="assets/img/한식.jpg" class="img-fluid" alt="">
-							<div class="member-info" onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=신사'">
+							<div class="member-info"
+								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=신사'">
 								<div class="member-info-content">
 									<h4>신사/가로수길</h4>
 									<span>소개글</span>
@@ -395,7 +394,8 @@
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s">
 						<div class="member">
 							<a><img src="assets/img/중식1.jpg" class="img-fluid" alt=""></a>
-							<div class="member-info" onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=강남'">
+							<div class="member-info"
+								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=강남'">
 								<div class="member-info-content">
 									<h4>강남역</h4>
 									<span>소개글</span>
@@ -407,7 +407,8 @@
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
 						<div class="member">
 							<img src="assets/img/일식1.jpg" class="img-fluid" alt="">
-							<div class="member-info" onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=로데오'">
+							<div class="member-info"
+								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=로데오'">
 								<div class="member-info-content">
 									<h4>도산공원/로데오</h4>
 									<span>소개란</span>
@@ -419,7 +420,8 @@
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
 						<div class="member">
 							<img src="assets/img/스파게티.jpg" class="img-fluid" alt="">
-							<div class="member-info" onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=청담'">
+							<div class="member-info"
+								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=청담'">
 								<div class="member-info-content">
 									<h4>청담</h4>
 									<span>소개란</span>
@@ -431,7 +433,8 @@
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
 						<div class="member">
 							<img src="assets/img/디저트.jpg" class="img-fluid" alt="">
-							<div class="member-info" onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=청담'">
+							<div class="member-info"
+								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=청담'">
 								<div class="member-info-content">
 									<h4>성수</h4>
 									<span>소개란</span>
@@ -443,7 +446,8 @@
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
 						<div class="member">
 							<img src="assets/img/쌀국수.jpg" class="img-fluid" alt="">
-							<div class="member-info" onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=이태원'">
+							<div class="member-info"
+								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=이태원'">
 								<div class="member-info-content">
 									<h4>이태원</h4>
 									<span>소개란</span>
@@ -455,7 +459,8 @@
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
 						<div class="member">
 							<img src="assets/img/쌀국수.jpg" class="img-fluid" alt="">
-							<div class="member-info" onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=한남동'">
+							<div class="member-info"
+								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=한남동'">
 								<div class="member-info-content">
 									<h4>한남동</h4>
 									<span>소개란</span>
@@ -467,7 +472,8 @@
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
 						<div class="member">
 							<img src="assets/img/쌀국수.jpg" class="img-fluid" alt="">
-							<div class="member-info" onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=홍대'">
+							<div class="member-info"
+								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=홍대'">
 								<div class="member-info-content">
 									<h4>홍대</h4>
 									<span>소개란</span>
@@ -478,7 +484,8 @@
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
 						<div class="member">
 							<img src="assets/img/쌀국수.jpg" class="img-fluid" alt="">
-							<div class="member-info" onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=건대'">
+							<div class="member-info"
+								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=건대'">
 								<div class="member-info-content">
 									<h4>건대</h4>
 									<span>소개란</span>
@@ -489,7 +496,8 @@
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
 						<div class="member">
 							<img src="assets/img/쌀국수.jpg" class="img-fluid" alt="">
-							<div class="member-info" onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=신촌'">
+							<div class="member-info"
+								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=신촌'">
 								<div class="member-info-content">
 									<h4>신촌</h4>
 									<span>소개란</span>
@@ -522,7 +530,8 @@
 						<div class="member">
 							<img src="assets/img/한식.jpg" class="img-fluid" alt="">
 							<div class="member-info">
-								<div class="member-info-content" onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=한식'">
+								<div class="member-info-content"
+									onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=한식'">
 									<h4>2022 한식 맛집 TOP 30</h4>
 									<span>소개글</span>
 								</div>
@@ -534,7 +543,8 @@
 						<div class="member">
 							<img src="assets/img/중식1.jpg" class="img-fluid" alt="">
 							<div class="member-info">
-								<div class="member-info-content" onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=중식'">
+								<div class="member-info-content"
+									onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=중식'">
 									<h4>2022 중식 맛집 TOP 30</h4>
 									<span>소개글</span>
 								</div>
@@ -545,7 +555,8 @@
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
 						<div class="member">
 							<img src="assets/img/일식1.jpg" class="img-fluid" alt="">
-							<div class="member-info" onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=일식'">
+							<div class="member-info"
+								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=일식'">
 								<div class="member-info-content">
 									<h4>2022 일식 맛집 TOP 30</h4>
 									<span>소개란</span>
@@ -557,7 +568,8 @@
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
 						<div class="member">
 							<img src="assets/img/스파게티.jpg" class="img-fluid" alt="">
-							<div class="member-info" onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=양식'">
+							<div class="member-info"
+								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=양식'">
 								<div class="member-info-content">
 									<h4>2022 양식 맛집 TOP 30</h4>
 									<span>소개란</span>
@@ -569,7 +581,8 @@
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
 						<div class="member">
 							<img src="assets/img/디저트.jpg" class="img-fluid" alt="">
-							<div class="member-info" onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=디저트'">
+							<div class="member-info"
+								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=디저트'">
 								<div class="member-info-content">
 									<h4>2022 디저트 맛집 TOP 30</h4>
 									<span>소개란</span>
@@ -581,7 +594,8 @@
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
 						<div class="member">
 							<img src="assets/img/쌀국수.jpg" class="img-fluid" alt="">
-							<div class="member-info" onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=그외'">
+							<div class="member-info"
+								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=그외'">
 								<div class="member-info-content">
 									<h4>2022 그 외 맛집 TOP 30</h4>
 									<span>소개란</span>

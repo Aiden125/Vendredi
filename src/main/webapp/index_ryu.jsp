@@ -8,7 +8,7 @@
 </head>
 <body>
 	220809Ryu After Lunch 
-   <jsp:forward page="store/storeDetail.do?sno=10"/> 
+   <jsp:forward page="storeLike/myLikeList.do?mid=aaa"/> 
   
 </body>
 </html>
