@@ -27,4 +27,5 @@ public interface QnAService {
 	public int qnaReplyTotCnt();
 	public int qnaStateUpdate(int qno);
 	public QnA qnaReplyDetail(int qgroup);
+	public QnA qnaOnlyReplyDetail(int qno); // 답변글만 관리하기용도
 }

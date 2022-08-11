@@ -59,7 +59,7 @@ public class QnAServiceImpl implements QnAService {
 		qnaDao.qnaStateUpdate(qna.getQno());
 		return qnaDao.qnaReply(qna);
 	}
-	//QNA 답변, 수정 용 상세보기(희석추가)
+	//QNA 답변, 수정용 상세보기(희석추가)
 	@Override
 	public QnA qnaModifyReplyView(int qno) {
 		return qnaDao.qnaDetail(qno);
@@ -115,6 +115,10 @@ public class QnAServiceImpl implements QnAService {
 	@Override
 	public QnA qnaReplyDetail(int qgroup) {
 		return qnaDao.qnaReplyDetail(qgroup);
+	}
+	@Override
+	public QnA qnaOnlyReplyDetail(int qno) {
+		return qnaDao.qnaOnlyReplyDetail(qno);
 	}
 
 }

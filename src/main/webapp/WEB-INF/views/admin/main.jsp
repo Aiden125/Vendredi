@@ -42,7 +42,7 @@
 
 <div id="content">
 	<table id="main_table">
-		<caption>관리자 목록</caption>
+		<caption><b>관리자 목록</b></caption>
 		<tr class="tr_top">
 			<th>이름</th><th>번호</th><th>이메일</th><th>등급</th>
 			<c:if test="${admin.alevel == 2 }">
