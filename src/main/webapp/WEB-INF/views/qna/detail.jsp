@@ -30,17 +30,16 @@
 	</div>
 	<div id="border">
 		<table>
-			<caption>${qDto.qno }번 글</caption>
 			<tr>
-				<td><b>작성자</b></td>
+				<td><b>작성자 : </b></td>
 				<td><b>${qDto.qid }님</b></td>
 			</tr>
 			<tr>
-				<td><b>제목</b></td>
+				<td><b>제목 : </b></td>
 				<td><b>${qDto.qsubject }</b></td>
 			</tr>
 			<tr>
-				<td><b>본문</b></td>
+				<td><b>본문 : </b></td>
 				<td><b>${qDto.qcontent }</b></td>
 			</tr>
 			<tr>
@@ -61,6 +60,14 @@
 				</td>
 			</tr>
 		</table>
+	<!-- 답변글 영역 -->
+	<c:if test="${not empty replyDto }">
+		<div id="border" class="whitebox">
+			<p class="title left font2_0">관리자 답변</p>
+			<hr color="#4B89DC" class="blue"><br>
+			<p class="content_box">${replyDto.qcontent }</p>
+		</div>
+	</c:if>
 	</div>
 	<jsp:include page="../main/footer.jsp" />
 </body>

@@ -66,10 +66,10 @@ create table request (
             sName         varchar2(100) not null, -- 요청한 가게 이름
             rDate         date default sysdate -- 요청 등록된 일시
     );     
-<<<<<<< HEAD
+
 SELECT * FROM request;
 select * from store; 
-=======
+
 SELECT * FROM request; 
 
 -- STORELIKE TABLE 
@@ -106,4 +106,4 @@ create Table StoreLike (
 
 
  
->>>>>>> 5bcc09c422a2d0e970c5bdc15849db709ccf5b75
+

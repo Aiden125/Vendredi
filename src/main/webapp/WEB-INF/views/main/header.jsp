@@ -51,11 +51,11 @@
 #header .logo img {
   max-height: 40px;
 }
-.navbar {
+#header .navbar {
   padding: 0;
 }
 
-.navbar ul {
+#header .navbar ul {
   margin: 0;
   padding: 0;
   display: flex;

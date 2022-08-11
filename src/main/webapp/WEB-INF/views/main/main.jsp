@@ -95,8 +95,7 @@
 												action="${conPath}/store/storeListSearch.do?ssearchtag=${param.ssearchtag}">
 												<div class="searchBox">
 													<input class="searchInput" type="text" name="ssearchtag"
-														value="${param.ssearchtag}"
-														placeholder="찾길 원하시는 지역, 음식, 가게명을 입력하세요">
+														value="${param.ssearchtag}">
 													<button class="searchButton">
 														<i class="material-icons"> Search </i>
 													</button>
