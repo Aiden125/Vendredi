@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	220811Ryu Start
-   <jsp:forward page="storeLike/myLikeList.do?mid=aaa"/> 
+	220811Ryu END
+   <jsp:forward page="main.do"/> 
   
 </body>
 </html>

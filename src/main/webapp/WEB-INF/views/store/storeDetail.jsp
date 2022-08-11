@@ -112,7 +112,6 @@ span {
 
 </head>
 <body>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6e603db168d967f3b35b2916c4eaf88a"></script>
 	<c:if test="${writeRequestResult != null }">
 		<script type="text/javascript">
 		alert("가게 등록이 완료되었습니다.");
@@ -147,7 +146,7 @@ span {
 		</tr> 
 		<tr>
 			<td colspan="2"> 
-				
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6e603db168d967f3b35b2916c4eaf88a"></script>
 		<div id="map" style="width:500px;height:400px; margin:0 auto;"></div> 
 		<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -265,8 +264,7 @@ span {
 				${store.smenu3}
 			</th>	
 			<td> 
-				${store.smenu3cost } 
-				${storeLike.mid }
+				${store.smenu3cost }  
 			</td>
 		</tr>
 		
@@ -282,7 +280,7 @@ span {
 		</tr>
 		<tr>
 			<th colspan="2" style="text-align: center;">
-				<c:if test="${storeLike.mid eq 'aaa' }">
+				<c:if test="${storeLike.mid == member.mid }">
 				<a href="${conPath }/storeLike/deleteLike1.do?mid=aaa&sno=${store.sno}">
 					<img alt="찜하기 캔슬 이미지" src="${conPath }/storeImgFileUpload/cancel.png">
 				</a>

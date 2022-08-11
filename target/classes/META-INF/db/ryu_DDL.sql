@@ -1,5 +1,5 @@
 -- ryu ddl store / storere /request table create and drop
-
+commit;
 -- STORE TABLE
 drop table store;
 drop SEQUENCE store_sq;
@@ -7,7 +7,9 @@ create SEQUENCE store_sq MAXVALUE 999999 NOCACHE NOCYCLE;
 create table store (
             sNo        number(8) PRIMARY KEY, -- 가게 고유 번호
             oId         varchar2(50) REFERENCES OWNER(oid), -- 사업자 아이디
-            sImage      varchar2(250) not null, -- 가게 사진
+            sImage1      varchar2(250) not null, -- 가게 사진
+            sImage2      varchar2(250) not null, -- 가게 사진
+            sImage3      varchar2(250) not null, -- 가게 사진
             sName       varchar2(100) not null, -- 가게 이름
             sAddress    varchar2(250) not null, -- 가게 주소
             sLocation   varchar2(50) not null, -- 가게 위치
@@ -44,10 +46,6 @@ create table storereview (
             mProfile      varchar2(1000) not null, -- 사용자 프로필 사진
             srContent     varchar2(2000) not null, -- 리뷰 내용
             srImage1      varchar2(500), -- 리뷰 이미지 1
-            srImage2      varchar2(500), -- 리뷰 이미지 2
-            srImage3      varchar2(500), -- 리뷰 이미지 3
-            srImage4      varchar2(500), -- 리뷰 이미지 4
-            srImage5      varchar2(500), -- 리뷰 이미지 5
             srScore       number(3) default 0, -- 리뷰 별점
             srDate        date default sysdate -- 리뷰 등록 일시
     );  
