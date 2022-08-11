@@ -10,19 +10,15 @@
 		<result property="mprofile" column="mprofile"/>
 		<result property="srcontent" column="srcontent"/>
 		<result property="srimage1" column="srimage1"/>
-		<result property="srimage2" column="srimage2"/>
-		<result property="srimage3" column="srimage3"/>
-		<result property="srimage4" column="srimage4"/>
-		<result property="srimage5" column="srimage5"/>
 		<result property="srscore" column="srscore"/>
 		<result property="srdate" column="srdate"/> 
 	</resultMap>
 	
 <insert id="reviewWrite" parameterType="StoreReview">
 	insert into storereview (srNo, sNo, mId, mProfile, srContent, 
-    srImage1, srImage2, srImage3,  srImage4, srImage5, srScore, srDate ) 
+    srImage1, srScore, srDate ) 
 	VALUES (storereview_sq.NEXTVAL, #{sno}, #{mid}, #{mprofile}, #{srcontent}, 
-    #{srimage1}, #{srimage2}, #{srimage3}, #{srimage4}, #{srimage5}, #{srscore}, sysdate)
+    #{srimage1}, #{srscore}, sysdate)
 </insert>
 
 <update id="addScore" parameterType="StoreReview" >
@@ -45,11 +41,7 @@
 <update id="reviewModify" parameterType="StoreReview">
 	update storereview set 
             srcontent = #{srcontent},
-            srimage1 = #{srimage1},
-            srimage2 = #{srimage2},
-            srimage3 = #{srimage3},
-            srimage4 = #{srimage4},
-            srimage5 = #{srimage5}
+            srimage1 = #{srimage1} 
             where srno = #{srno}
 </update>
 
