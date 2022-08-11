@@ -50,9 +50,9 @@
 
 	<div id="content">
 		<table id="main_table">
-			<caption>관리자 답변 관리</caption>
+			<caption><b>관리자 답변 관리</b></caption>
 			<tr class="tr_top">
-				<th>글번호</th><th>글제목</th><th>작성자</th><th>날짜</th>
+				<th>글제목</th><th>글내용</th><th>작성자</th><th>작성일</th>
 				<c:if test="${not empty admin }">
 					<th>수정</th><th>삭제</th>
 				</c:if>
@@ -61,20 +61,21 @@
 			<c:if test="${qnaList.size() != 0 }">
 				<c:forEach items="${qnaList }" var="qna">
 					<tr>
-						<td>${qna.qno }</td>
-							<td>
-							<a href="${conPath}/qna/qnaReplyDetail.do?qno=${qna.qno }&pageNum=${paging.currentPage}&qgroup=${qna.qgroup}">
-							${qna.qsubject }</a>
+						<td>
+							${qna.qsubject }
 							<c:if test="${qna.qsecret eq 'Y'}">
 								<img src="${conPath }/assets/img/비밀글.jpg" alt="비밀글" width="20px">
 							</c:if>
 						</td>
+						<td class="td_title"><a href="${conPath}/qna/detailAdminVer.do?qno=${qna.qgroup }&pageNum=${paging.currentPage}&qgroup=${qna.qgroup}"
+						class="overflow">
+						${qna.qcontent }</a></td>
 						<td>${qna.qid }</td>
 						<td><fmt:formatDate value="${qna.qrdate }" type="date" dateStyle="short"/></td>
 						
 						<c:if test="${not empty admin }">
-							<td><a href="${conPath }/qna/modifyViewAdminVer.do?qno=${qna.qno}">수정하기</a></td>
-							<td><a href="${conPath }/qna/deleteAdminVer.do?qno=${qna.qno}">삭제하기</a></td>
+							<td><a href="${conPath }/qna/qnaOnlyReplyDetail.do?qno=${qna.qno}"><img src="${conPath }/adminImg/edit.png" width="25" height="25" alt="수정하기"></a></td>
+							<td><a href="${conPath }/qna/deleteAdminVer.do?qno=${qna.qno}"><img src="${conPath }/adminImg/recycle-bin.png" width="25" height="25" alt="삭제하기"></a></td>
 						</c:if>
 					</tr>
 				</c:forEach>

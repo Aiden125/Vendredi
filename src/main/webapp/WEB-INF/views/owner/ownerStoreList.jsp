@@ -18,13 +18,24 @@
 		#content table{
 			margin:100px auto;
 		}
+		#content .btn{
+			margin:  50px 0 0 120px;
+            background: #fff;
+            border-color: black;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+		}
 	</style>
 </head>
 <body>
 <jsp:include page="../main/header.jsp"/>
 	<div id="content">
 		<table>
-			<caption>My Store</caption>
+			<caption>MyStore</caption>
 			<c:forEach var="sList" items="${storeList }">
 					<tr>
 						<td>
@@ -47,6 +58,7 @@
 					</tr>
 			</c:forEach>
 		</table>
+	<input type="button" class="btn" value="가게등록" onclick="location.href='${conPath}/store/storeRegisterView.do'">
 	</div>
 <jsp:include page="../main/footer.jsp"/>
 </body>

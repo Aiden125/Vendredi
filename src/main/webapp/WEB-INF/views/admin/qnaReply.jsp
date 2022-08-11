@@ -20,6 +20,7 @@
 	<input type="hidden" name="qno" value=${param.qno }>
 	<input type="hidden" name="qgroup" value=${param.qgroup }>
 		<table id="modify_table">
+			<caption>${param.qno }번 글 답변하기</caption>
 			<tr>
 				<td colspan="2"><p class="left">제목</p>
 				<input type="text" name="qsubject" readonly="readonly" class="readonly box center" value="${param.qno }번 글 답변글">

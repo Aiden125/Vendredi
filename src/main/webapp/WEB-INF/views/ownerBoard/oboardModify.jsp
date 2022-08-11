@@ -11,6 +11,7 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 </head>
 <body>
+	<jsp:include page="../main/header.jsp"/>
 	<c:if test="${empty owner }">
 			<script>
 				alert('글수정은 로그인 후 가능합니다');
@@ -75,5 +76,6 @@
 			</table>
 		</form>
 	</div>
+	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

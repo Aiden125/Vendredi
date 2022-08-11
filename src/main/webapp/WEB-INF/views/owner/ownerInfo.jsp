@@ -72,6 +72,11 @@
 </style>
 </head>
 <body>
+<c:if test="${not empty modifyResult }">
+	<script>
+		alert('정보수정 완료');
+	</script>
+</c:if>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="content">
 	<form action="${conPath }/owner/ModifyForm.do" id="content_form" method="post">

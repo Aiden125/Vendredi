@@ -101,7 +101,7 @@
 <jsp:include page="../main/header.jsp"/>
 	<div id="content">
 		<form action="reservation.do">
-		<input type="hidden" name="mid" value="aaa">
+		<input type="hidden" name="mid" value="${member.mid }">
 		<input type="hidden" name="sno" value="${param.sno }">
 		<input type="hidden" name="rtime" class="rtime">
 		<input type="text" name="sname" value="${store.sname }">예약하기

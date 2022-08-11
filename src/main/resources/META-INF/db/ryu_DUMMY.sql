@@ -1,6 +1,8 @@
 -- ryu DUMMY
-commit;   
-UPDATE STORE SET SCONFIRM = 'Y';
+commit;
+select * from storelike;
+UPDATE STORE SET oid = 'owner2' where sno =7 ;
+UPDATE STORE SET SCONFIRM = 'Y' ;
 SELECT * FROM STORE;
 SELECT * FROM STOREreview;
 select * from store where sno = 6;
