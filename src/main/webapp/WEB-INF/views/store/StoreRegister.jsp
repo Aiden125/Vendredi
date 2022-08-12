@@ -119,11 +119,19 @@ span {
 	<div class="wrap">
             <div class="form-wrap">
 	<form action="${conPath }/store/storeRegister.do" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="oid" value="bbb">
+		<input type="hidden" name="oid" value="${owner.oid }">
 		<table>
 			<tr>
-				<th>가게 사진</th>
-				<td><input type="file" name="simg" required="required"></td>
+				<th>가게 사진 1</th>
+				<td><input type="file" name="simg1" required="required"></td>
+			</tr>
+			<tr>
+				<th>가게 사진 2</th>
+				<td><input type="file" name="simg2" required="required"></td>
+			</tr>
+			<tr>
+				<th>가게 사진 3</th>
+				<td><input type="file" name="simg3" required="required"></td>
 			</tr>
 			<tr>
 				<th>가게 이름</th>

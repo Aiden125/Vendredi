@@ -7,17 +7,14 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title> 
-	<link href="conPath/assets/css/style.css" rel="stylesheet">
-	
-	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	<script>
-		$(document).ready(function(){
-			
-		});
-	</script>
-	<style type="text/css">
-		.wrap {
+	<title>Insert title here</title>
+	<style>
+	* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.wrap {
     height: 100%;
     width: 100%;
     background-image: url('${conPath}/assets/img/디저트.jpg');
@@ -26,8 +23,8 @@
     position: absolute;
 }
 .form-wrap {
-    width: 600px; 
-    height : 2000px;
+    width: 720px;
+    height: 770px;
     position: relative;
     margin: 6% auto;
     background: #fff;
@@ -108,83 +105,90 @@ span {
 #register {
     left: 450px;
 }
-	</style>
+</style>
+	<link href="conPath/assets/css/style.css" rel="stylesheet">
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script>
+		$(document).ready(function(){
+			
+		});
+		function trclicked(sno) {
+			location.href = '${conPath}/store/storeDetail.do?sno='+ sno ;
+			
+		}
+	</script>
 </head>
 <body>
-	<form action="${conPath }/storeReview/writeReview.do" method="POST" enctype="multipart/form-data"> 
-	<input type="hidden" value="${store.sno}" name="sno">
-	<input type="hidden" value="aaa" name="mid">
-	<input type="hidden" value="noimg.png" name="mprofile">
-	<table>
-		<tr>
-			<td colspan="2"><textarea rows="5" cols="57" name="srcontent"></textarea>
-		<tr>
-		<tr>
-			<td colspan="2">
-				<p>리뷰사진 1 <input type="file" name="srimg"> </p> <br>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				가게 점수
-				<select name="srscore"> 
-    					<option value="1">★☆☆☆☆</option>
-    					<option value="2">★★☆☆☆</option>
-    					<option value="3">★★★☆☆</option>
-    					<option value="4">★★★★☆</option>
-  						<option value="5" selected>★★★★★</option>
-  				</select>
-			</td>
-			<td align="right">
-				<input type="submit" value="리뷰등록" >
-			</td>
-		</tr>
-	</table>
-	</form>
-	
+	<jsp:include page="../main/header.jsp"/>
+	<div class="wrap">
+	<div class="form-wrap">
 	<table style="margin : 0 auto;"> 
 		<c:if test="${paging.totCnt eq 0 }">
-			<tr> <th colspan="5">등록된 리뷰가 없습니다.</th> </tr>
+			<tr> <th colspan="5">등록된 가게가 없습니다.</th> </tr>
 		</c:if>
 		<c:if test="${paging.totCnt != 0 }">
-				<c:forEach items="${storeReviewList }" var="storeReview">
-				<tr>  
+				<c:forEach items="${storeList }" var="store">
+				<tr onclick="trclicked(${store.sno })"> 
 					<td>
-						${storeReview.mid } <br>
-						<img alt="프로필 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.mprofile }" width = "75px">
-				    </td>
-					<td> 
-						평가 점수 : ${storeReview.srscore }
+						<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage}" width = "100px" height="150px">
 					</td>
-				</tr>
+					<td>${store.sname }</td>
+					<td style="color : orange; font-weight: bold">${store.stscore }</td>
+				</tr> 
 				<tr>	
 					<td> 
-						${storeReview.srcontent }
-					</td> 
+						${store.slocation }
+					</td>
+					<td colspan="2"> 
+						${store.stype }
+					</td>   
 				</tr>
-				<tr>	
-					<td>
-						<img alt="리뷰 이미지" src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage1}" width = "75px">
-					</td>    
-				</tr> 
 			</c:forEach>
 		</c:if>
-	</table> 
-	<div id="paging" align="center">
+	</table>
+		<div id="paging" align="center">
 		<c:if test="${paging.startPage> paging.blockSize }">
-		[<a href="${conPath }/storeReview/storeReviewList.do?pageNum=${paging.startPage-1}">이전</a>]
+		[<a href="${conPath }/store/storeListSearch.do?pageNum=${paging.startPage-1}&ssearchtag=${param.ssearchtag }">이전</a>]
 		</c:if>
 		<c:forEach var="i" begin="${paging.startPage }" end="${paging.endPage}">
 			<c:if test="${i eq paging.currentPage }">
 			[<b style="color : red;">${i}</b>]
 			</c:if>
 			<c:if test="${i != paging.currentPage }">
-			[<a href="${conPath }/storeReview/storeReviewList.do?pageNum=${i}">${i}</a>]
+			[<a href="${conPath }/store/storeListSearch.do?pageNum=${i}&ssearchtag=${param.ssearchtag }">${i}</a>]
 			</c:if>
 		</c:forEach>
 		<c:if test="${paging.endPage < paging.pageCnt }">
-		[<a href="${conPath }/storeReview/storeReviewList.do?pageNum=${paging.endPage +1}">다음</a>]
+		[<a href="${conPath }/store/storeListSearch.do?pageNum=${paging.endPage +1}&ssearchtag=${param.ssearchtag }">다음</a>]
 		</c:if>
+		</div>
 	</div>
+	</div>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

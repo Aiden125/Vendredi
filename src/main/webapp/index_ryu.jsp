@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-	220809Ryu After Lunch 
-   <jsp:forward page="storeLike/myLikeList.do?mid=aaa"/> 
+<body> 
+	220811Ryu END Test
+   <jsp:forward page="main.do"/>  
   
 </body>
 </html>

@@ -10,7 +10,9 @@ import lombok.NoArgsConstructor;
 public class Store {
 	private int sno;         
 	private String oid;          
-	private String simage;       
+	private String simage1;
+	private String simage2;
+	private String simage3;
 	private String sname;        
 	private String saddress;     
 	private String slocation;   

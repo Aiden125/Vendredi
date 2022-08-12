@@ -121,11 +121,19 @@ span {
             <div class="form-wrap">
 	<form action="${conPath }/store/storeModify.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" value="${param.sno }" name=sno>
-		<input type="hidden" value="bbb" name=oid>
+		<input type="hidden" value="${owner.oid }" name=oid>
 		<table>
 			<tr>
 				<th>가게 사진</th>
-				<td><input type="file" name="simg"></td>
+				<td><input type="file" name="simg1"></td>
+			</tr>
+			<tr>
+				<th>가게 사진</th>
+				<td><input type="file" name="simg2"></td>
+			</tr>
+			<tr>
+				<th>가게 사진</th>
+				<td><input type="file" name="simg3"></td>
 			</tr>
 			<tr>
 				<th>가게 이름</th>
