@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body> 
-	220812Ryu after Pull
+	220812Ryu END
    <jsp:forward page="main.do"/>  
   
 </body>

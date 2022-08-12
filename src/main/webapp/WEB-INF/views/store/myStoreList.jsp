@@ -142,6 +142,11 @@ span {
 					</td> 
 				</tr> 
 			</c:forEach>
+			<tr>
+				<td>
+				<input type="button" class="btn" value="가게등록" onclick="location.href='${conPath}/store/storeRegisterView.do'">
+				</td>
+			</tr>
 		</c:if>
 	</table>
 		<div id="paging" align="center">

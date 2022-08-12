@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.vendredi.dao.StoreReviewDao">
+	<resultMap type="StoreReview" id="storeReviewResult">
+		<result property="srno" column="srno"/>
+		<result property="sno" column="sno"/>
+		<result property="mid" column="mid"/>
+		<result property="mprofile" column="mprofile"/>
+		<result property="srcontent" column="srcontent"/>
+		<result property="srimage1" column="srimage1"/>
+		<result property="srscore" column="srscore"/>
+		<result property="srdate" column="srdate"/> 
+	</resultMap>
+	
+<insert id="reviewWrite" parameterType="StoreReview">
+	INSERT INTO STOREREVIEW (srno, sno, mid, mprofile, srcontent, 
+    srimage1, srscore) 
+	VALUES ((SELECT get_storereview_seq('srno')), #{sno}, #{mid}, #{mprofile}, #{srcontent},
+        'noImg.png', 4);
+</insert>
+
+<update id="addScore" parameterType="StoreReview" >
+    		UPDATE STORE SET   sreplycnt = sreplycnt +1 ,
+                   sscore = sscore + #{srscore}
+                   WHERE sno = #{sno} 
+</update>
+<select id="reviewCnt" parameterType="int" resultType="int">
+    		SELECT COUNT(*) cnt FROM STOREREVIEW WHERE sno = #{sno} 
+</select>
+
+<select id="storeReviewList" parameterType="StoreReview" resultMap="storeReviewResult">
+	SELECT * FROM STOREREVIEW WHERE sno = #{sno} ORDER BY srno DESC LIMIT #{startRow}, #{endRow}
+</select>
+
+<update id="reviewModify" parameterType="StoreReview">
+	UPDATE STOREREVIEW SET 
+            srcontent = #{srcontent},
+            srimage1 = #{srimage1} 
+            WHERE srno = #{srno}
+</update>
+
+<delete id="reviewDelete"  parameterType="int">
+	DELETE STOREREVIEW WHERE srno = #{srno}
+</delete>
+
+<select id="reviewDetail"  parameterType="int" resultType="Store">
+	SELECT * FROM STOREREVIEW WHERE srno = #{srno}
+</select>
+ 
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

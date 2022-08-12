@@ -399,9 +399,9 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active">${owner.oname }님</a></li>
-          <li><a class="nav-link scrollto" href="${conPath }/owner/Info.do?oid=${oid}">my Page</a></li>
-          <li><a class="nav-link scrollto" href="${conPath }/owner/StoreList.do?oid=${oid}">my Store</a></li>
-          <li><a class="nav-link scrollto " href="${conPath }/owner/ReState.do?oid=${oid}">예약 현황 </a></li>
+          <li><a class="nav-link scrollto" href="${conPath }/owner/Info.do?oid=${owner.oid}">my Page</a></li>
+          <li><a class="nav-link scrollto" href="${conPath }/store/myStoreList.do?oid=${owner.oid}">my Store</a></li>
+          <li><a class="nav-link scrollto " href="${conPath }/owner/ReState.do?oid=${owner.oid}">예약 현황 </a></li>
           <li><a href="${conPath }/oboard/List.do">커뮤니티</a></li>
           <li><a class="nav-link scrollto" href="${conPath }/owner/Logout.do">로그아웃</a></li>
          <!--  <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->

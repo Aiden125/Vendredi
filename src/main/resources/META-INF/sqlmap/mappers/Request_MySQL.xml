@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.vendredi.dao.RequestDao">
+	<resultMap type="Request" id="RequestResult">
+		<result property="rno" column="rno"/>
+		<result property="sno" column="sno"/>
+		<result property="oid" column="oid"/>
+		<result property="aid" column="aid"/> 
+		<result property="sname" column="sname"/>
+		<result property="rdate" column="rdate"/> 
+	</resultMap>
+	
+	
+<insert id="writeRequest" parameterType="Request" >
+	INSERT INTO REQUEST (rno, sno, oid, sname)
+		VALUES ((SELECT get_request_seq('rno')), #{sno}, #{oid}, #{sname})
+</insert>
+
+<select id="requestCnt" resultType="int">
+    		SELECT COUNT(*) cnt FROM REQUEST  
+</select>
+
+<select id="requestList" parameterType="Request" resultMap="RequestResult">
+	SELECT * FROM REQUEST ORDER BY rno DESC LIMIT #{startRow}, #{endRow} 
+</select>
+
+<select id="myRequestList" parameterType="Request" resultMap="RequestResult">
+	
+	SELECT rno, oid, sno, sname, rdate FROM REQUEST WHERE oid = #{oid} ORDER BY rno DESC
+    
+</select>
+
+<update id="requestDoneReq" parameterType="int" >
+    		UPDATE REQUEST SET SNAME = CONCAT( sname, ' - 처리 완료 ') WHERE sno = #{sno} 
+</update>
+
+<update id="requestDoneSto" parameterType="int" >
+    		UPDATE STORE SET sconfirm = 'Y' WHERE sno = #{sno} 
+</update>
+	
+</mapper>

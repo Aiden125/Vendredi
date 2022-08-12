@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.vendredi.dao.StoreDao">
+	<resultMap type="Store" id="storeResult">
+		<result property="sno" column="sno"/>
+		<result property="simage1" column="simage1"/>
+		<result property="simage2" column="simage2"/>
+		<result property="simage3" column="simage3"/>
+		<result property="sname" column="sname"/>
+		<result property="saddress" column="saddress"/>
+		<result property="slocation" column="slocation"/>
+		<result property="stel" column="stel"/>
+		<result property="stype" column="stype"/>
+		<result property="sprice" column="sprice"/>
+		<result property="stime" column="stime"/>
+		<result property="sholiday" column="sholiday"/> 
+		<result property="smenu1" column="smenu1"/>
+		<result property="smenu2" column="smenu2"/>
+		<result property="smenu3" column="smenu3"/> 
+		<result property="smenu1cost" column="smenu1cost"/>
+		<result property="smenu2cost" column="smenu2cost"/>
+		<result property="smenu3cost" column="smenu3cost"/> 
+		<result property="ssearchtag" column="ssearchtag"/>
+		<result property="sconfirm" column="sconfirm"/>
+		<result property="sreplycnt" column="sreplycnt"/>
+		<result property="sscore" column="sscore"/>
+		<result property="slati" column="slati"/>
+		<result property="slongti" column="slongti"/> 
+	</resultMap>
+	
+<insert id="storeRegister" parameterType="Store">
+	INSERT INTO STORE (sno, oid, simage1, simage2, simage3, sname, saddress, slocation, stel, stype, sprice, stime, sholiday,
+            smenu1 , smenu1cost , smenu2, smenu2cost, smenu3, smenu3cost, ssearchtag, sstart, send) 
+     VALUES ((SELECT GET_STORE_SEQ('sno')), #{oid}, #{simage1}, #{simage2}, #{simage3}, #{sname}, #{saddress}, #{slocation}, #{stel}, #{stype}, 
+	        #{sprice} , #{stime}, #{sholiday}, #{smenu1}, #{smenu1cost} , #{smenu2}, #{smenu2cost}, 
+	        #{smenu3}, #{smenu3cost}, #{ssearchtag}, #{sstart}, #{send})
+        
+</insert>
+<update id="storeModify" parameterType="Store">
+	UPDATE STORE SET
+				<if test="simage1 != null and simage != '' ">
+				 simage1 = #{simage1},
+				 </if>
+				 <if test="simage2 != null and simage != '' ">
+				 simage2 = #{simage2},
+				 </if>
+				 <if test="simage3 != null and simage != '' ">
+				 simage2 = #{simage3},
+				 </if>
+                 sname = #{sname},
+                 saddress = #{saddress},
+                 stel = #{stel},
+                 stype = #{stype}, 
+                 sprice = #{sprice},
+                 stime = #{stime},
+                 sstart = #{sstart},
+                 send = #{send},
+                 sholiday = #{sholiday},
+                 smenu1 = #{smenu1},
+                 smenu1cost = #{smenu1cost},
+                 smenu2 = #{smenu2},
+                 smenu2cost = #{smenu2cost},
+                 smenu3 = #{smenu3},
+                 smenu3cost = #{smenu3cost}, 
+                 ssearchtag = #{ssearchtag},
+                 slati = #{slati},
+                 slongti = #{slongti} 
+                 WHERE sno = #{sno} AND oid = #{oid}
+
+</update>
+
+<select id="storeDetail" parameterType="int" resultType="Store">
+    		SELECT * FROM STORE WHERE sno = #{sno}
+</select> 
+<select id="storeCnt" resultType="int">
+    		SELECT COUNT(*) cnt FROM STORE WHERE sconfirm = 'Y'
+</select>
+<select id="storeCntSearch" parameterType="string" resultType="int">
+    		SELECT COUNT(*) cnt FROM STORE WHERE ssearchtag like '%'||#{ssearchtag}||'%' and sconfirm = 'Y'
+</select>
+<select id="storeCntMy" resultType="int">
+    		SELECT COUNT(*) cnt FROM STORE WHERE oid = #{oid}
+</select>
+
+<select id="storeList" parameterType="Store" resultMap="storeResult">
+	SELECT sno, simage1, sname,  slocation, stype, ROUND((sScore/sReplycnt), 1) stscore 
+     FROM STORE ORDER BY stscore DESC LIMIT #{startRow}, #{endRow}
+</select>
+
+<select id="storeListSearch" parameterType="Store" resultMap="storeResult">
+	SELECT sno, simage1, sname,  slocation, stype, Round((sScore/sReplycnt), 1) stscore 
+     FROM store where sSearchtag like '%'||#{ssearchtag}||'%' and sConfirm = 'Y' 
+     order by STSCORE desc limit #{startRow}, #{endRow} 
+</select>
+<select id="myStoreList" parameterType="Store" resultMap="storeResult">
+	SELECT sno, simage1, sname, slocation, stype 
+     FROM STORE WHERE oid = #{oid} ORDER BY sno DESC LIMIT #{startRow}, #{endRow} 
+</select> 
+
+<select id="storeScore" parameterType="int" resultType="Store">
+    SELECT simage1, sname, slocation, stype, ROUND((sScore/sReplycnt), 1) stscore FROM STORE WHERE sno = #{sno} ORDER BY stscore		 
+</select>
+
+
+
+
+
+
+
+
+	
+</mapper>
