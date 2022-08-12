@@ -131,7 +131,7 @@ span {
 				<c:forEach items="${storeList }" var="store">
 				<tr onclick="trclicked(${store.sno })"> 
 					<td>
-						<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage}" width = "100px" height="150px">
+						<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage1}" width = "100px" height="150px">
 					</td>
 					<td>${store.sname }</td>
 					<td style="color : orange; font-weight: bold">${store.stscore }</td>

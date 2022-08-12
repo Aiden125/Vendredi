@@ -87,7 +87,7 @@
 <select id="storeList" parameterType="Store" resultMap="storeResult">
 	SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SNO, SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+    (SELECT SNO, SIMAGE1, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE where sConfirm = 'Y' order by sno desc)A)
      WHERE RN BETWEEN #{startRow} AND #{endRow}
 </select>

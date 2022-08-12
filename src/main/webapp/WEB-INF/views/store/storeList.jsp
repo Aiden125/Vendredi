@@ -47,7 +47,7 @@ body, html {
 <					<c:forEach items="${storeList }" var="store"> 
 						<div class="row no-gutters" onclick="location.href='${conPath }/store/storeDetail.do?sno=${store.sno }'">
 							<div class="col-md-5" onclick="location.href='${conPath }/store/storeDetail.do?sno=${store.sno }'">
-								<img src="${conPath }/storeImgFileUpload/${store.simage}"
+								<img src="${conPath }/storeImgFileUpload/${store.simage1}"
 									alt="가게이미지" class="login-card-img"
 									style="height: 350px; width: 250px;">
 							</div>
