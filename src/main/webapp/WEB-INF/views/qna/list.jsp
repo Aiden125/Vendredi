@@ -8,31 +8,39 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="icon" type="image/png" href="favicon.ico">
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-	rel="stylesheet">
-
-<link
-	href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i"
-	rel="stylesheet">
-
-
-<link rel="stylesheet" href="${conPath}/store/css/slick.css">
-<link rel="stylesheet" href="${conPath}/store/css/slick-theme.css">
-<link rel="stylesheet" href="${conPath}/store/css/animate.css">
-<link rel="stylesheet" href="${conPath}/store/css/fonticons.css">
-<link rel="stylesheet" href="${conPath}/store/css/font-awesome.min.css">
-<link rel="stylesheet" href="${conPath}/store/css/bootstrap.css">
-<link rel="stylesheet" href="${conPath}/store/css/magnific-popup.css">
-<link rel="stylesheet" href="${conPath}/store/css/bootsnav.css">
-<link rel="stylesheet" href="${conPath}/store/css/responsive.css" />
-
-<script
-	src="${conPath}/store/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-<link rel="stylesheet" href="${conPath }/assets/css/qnalist.css">
+<link href="${conPath }/css/style.css" rel="stylesheet">
+	<style>
+		#content{
+			width:100%;
+			height:100%;
+		}
+		#content table{
+			width:800px;
+			margin: 80px auto;
+			border-collapse: collapse;
+			text-align: center;
+		}
+		#content caption{
+			margin : 40px auto;
+		}
+		#content tr{
+			border-bottom: 1px solid;
+			height: 50px;
+			width: 100px;
+		}
+		#content .paging{
+			margin-bottom : 80px;
+			text-align: center;
+		}
+		#content .btitle{
+			border: none;
+			width: 150px;
+		}
+		#content h1{
+			margin-top: 120px;
+			text-align: center;
+		}
+		</style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		$(document).ready(function(){
@@ -72,12 +80,9 @@
 	<c:if test="${replyResult eq FAIL }">
 		<script>alert('답변쓰기 실패');</script>
 	</c:if>
-	<jsp:include page="../main/header2.jsp"/>
-	  <div id="logos">
-			<p>FAQ</p>
-         </div>
-	<div id="wrap">
-	<div id="writeform">
+	<jsp:include page="../main/header.jsp"/>
+	<div id="content">
+	<h1>FAQ</h1>
 	<table>
 		<tr><td>
 			<c:if test="${not empty member }">
@@ -89,8 +94,7 @@
 			</c:if>
 		</td></tr>
 	</table>
-	</div> <!-- writeform -->
-	<div id="listform">
+	
 	<table>
 		<tr><th>글번호</th><th>작성자</th><th>글제목</th><th>조회수</th><th>날짜</th><th>답변여부</th></tr>
 		<c:if test="${qnaList.size() eq 0 }">
@@ -116,7 +120,7 @@
 			</c:forEach>
 		</c:if>
 	</table>
-	</div> <!-- listform -->
+	
 	<div class="paging">
 		<c:if test="${paging.startPage > paging.blockSize }">
 			[ <a href="${conPath }/qna/list.do?pageNum=${paging.startPage-1}">이전</a> ]
@@ -133,23 +137,7 @@
 			[ <a href="${conPath }/qna/list.do?pageNum=${paging.endPage+1}">다음</a> ]
 		</c:if>
 	</div>
-	</div> <!-- wrap -->
-	<script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
-	<script src="assets/js/vendor/bootstrap.min.js"></script>
-
-	<script src="assets/js/isotope.min.js"></script>
-	<script src="assets/js/jquery.magnific-popup.js"></script>
-	<script src="assets/js/jquery.easing.1.3.js"></script>
-	<script src="assets/js/slick.min.js"></script>
-	<script src="assets/js/jquery.collapse.js"></script>
-	<script src="assets/js/bootsnav.js"></script>
-	<script src="assets/js/masonry.min.js"></script>
-
-	<script type="text/javascript">
-		var msnry = new Masonry('.blog_area');
-	</script>
-
-	<script src="assets/js/plugins.js"></script>
-	<script src="assets/js/main.js"></script>
+	</div> 
+<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

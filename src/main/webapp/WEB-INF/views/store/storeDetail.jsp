@@ -75,7 +75,6 @@
 			alert("가게 정보 수정에 실패하였습니다.");
 		</script>
 	</c:if>
-<<<<<<< HEAD
 	<c:if test="${not empty reservation }">
 		<script>
 			alert("예약이 완료되었습니다");
@@ -96,9 +95,6 @@
 	    
 	}
 	</script>
-=======
-	
->>>>>>> 35835bf93fd576dc19d94d75e99b0f1a038d434d
 <body data-spy="scroll" data-target=".navbar-collapse">
 	<jsp:include page="../main/header2.jsp" />
 	<!--Blog Features Section-->
@@ -266,7 +262,7 @@
 										</div>
 										<div class="col-sm-4">
 											<div class="form-group">
-												<label for="input-file">리뷰 사진 *</label>  <input type="file"
+												<label for="input-file">리뷰 사진 *</label><input type="file"
 													name="srimg1" id="input-file">
 											</div>
 										</div>
@@ -287,7 +283,7 @@
 												</p>
 											</div>
 											<button type="submit" class="btn btn-default m-top-30">
-												send message <i class="fa fa-long-arrow-right"></i>
+												리뷰 달기 <i class="fa fa-long-arrow-right"></i>
 											</button>
 										</div>
 									</form>
