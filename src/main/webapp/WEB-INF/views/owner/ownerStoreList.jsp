@@ -11,15 +11,37 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 	<style>
 		#content{
-			width:1000px;
-			height:500px;
-			margin:0 auto;
+			width:100%;
+			height:100%;
 		}
 		#content table{
-			margin:100px auto;
+			width:800px;
+			margin: 80px auto;
+			border-collapse: collapse;
+			text-align: center;
+		}
+		#content caption{
+			margin : 40px auto;
+		}
+		#content tr{
+			border-bottom: 1px solid;
+			height: 50px;
+			width: 100px;
+		}
+		#content .paging{
+			margin-bottom : 80px;
+			text-align: center;
+		}
+		#content .btitle{
+			border: none;
+			width: 150px;
+		}
+		#content h2{
+			margin-top: 120px;
+			text-align: center;
 		}
 		#content .btn{
-			margin:  50px 0 0 120px;
+			margin:  30px 0;
             background: #fff;
             border-color: black;
             -webkit-border-radius: 10px;
@@ -39,7 +61,7 @@
 			<c:forEach var="sList" items="${storeList }">
 					<tr>
 						<td>
-							${sList.simage }
+							${sList.simage1 }
 						</td>
 						<td>
 							<input type="text" name="sname" class="sname" value="${sList.sname }" 

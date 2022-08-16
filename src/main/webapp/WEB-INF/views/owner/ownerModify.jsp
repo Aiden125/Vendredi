@@ -158,7 +158,8 @@
 			</tr>
 			<tr>
 				<td colspan="3">
-					<input type="submit" value="수정하기">
+					<input type="submit" value="수정하기" class="btn">
+					<input type="button" value="취소" class="btn" onclick="history.back()">
 				</td>
 			</tr>
 		</table>

@@ -134,7 +134,7 @@ span {
 		<table style="margin : 0 auto;" >
 		<tr>
 			<td colspan="2">  
-				<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage }" width = "500px" height="400px" >
+				<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage1 }" width = "500px" height="400px" >
 			</td>
 		</tr>
 		<tr> 	  

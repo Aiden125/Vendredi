@@ -106,7 +106,7 @@ public class OwnerController {
 	@RequestMapping(value="/SearchId", method = RequestMethod.GET)
 	public String ownerSearchId(Owner owner, Model model) {
 		model.addAttribute("searchId", ownerService.ownerSearchId(owner));
-		return "forward:LoginForm.do";
+		return "owner/ownerLoginForm";
 	}
 	
 	// 오너 PW찾기 폼
@@ -118,7 +118,7 @@ public class OwnerController {
 	@RequestMapping(value="/SearchPw", method = RequestMethod.GET)
 	public String ownerSearchPw(Owner owner, Model model) {
 		model.addAttribute("searchPw", ownerService.ownerSearchPw(owner));
-		return "forward:LoginForm.do";
+		return "owner/ownerLoginForm";
 	}
 	// 내 가게 리스트
 	@RequestMapping(value="/StoreList", method = RequestMethod.GET)

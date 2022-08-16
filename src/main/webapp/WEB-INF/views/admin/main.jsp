@@ -67,10 +67,6 @@
 	</table>
 </div>
 
-<div id="footer">
-	푸터 영역(필요할 경우)
-</div>
-
 
 </body>
 </html>

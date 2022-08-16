@@ -75,7 +75,30 @@
 			alert("가게 정보 수정에 실패하였습니다.");
 		</script>
 	</c:if>
+<<<<<<< HEAD
+	<c:if test="${not empty reservation }">
+		<script>
+			alert("예약이 완료되었습니다");
+		</script>
+	</c:if>
+	<script>
+	// 업로드할 파일이 선택되어 추가될 경우 발생하는 이벤트
+	function uploadFileAdded() {
+	    var uploadFiles = document.getElementById("uploadFiles")
+	    for (var i = 0; i < uploadFiles.files.length; i++) {
+	        var file = uploadFiles.files[i];
+	        // 비동기 파일 업로드를 시작한다.
+	        var uploader = new Uploader(file);
+	        uploader.startUpload();
+	    }
+	    // 폼을 리셋해서 uploadFiles에 출력된 선택 파일을 초기화시킨다.
+	    document.getElementById("uploadForm").reset();
+	    
+	}
+	</script>
+=======
 	
+>>>>>>> 35835bf93fd576dc19d94d75e99b0f1a038d434d
 <body data-spy="scroll" data-target=".navbar-collapse">
 	<jsp:include page="../main/header2.jsp" />
 	<!--Blog Features Section-->
