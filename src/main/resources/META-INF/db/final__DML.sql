@@ -32,6 +32,7 @@ select * from qna;
 --                           QnA.xml                              --
 ----------------------------------------------------------------------
 -- id = qnaTotCnt (글 갯수)   
+select * from qna;
 SELECT COUNT(*)CNT FROM QNA;
 --(1) id= qnaList (문의글 목록 paiging처리, 최신글 순  )
 SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
@@ -70,7 +71,7 @@ SELECT COUNT(*) FROM QNA WHERE QSTEP!=0;
 SELECT * FROM QNA WHERE QGROUP=1 AND QSTEP=0;
 -- 답글 상세보기
 SELECT * FROM QNA WHERE QGROUP=1 AND QSTEP!=0;
-
+SELECT mid, qid FROM QNA WHERE QGROUP=1 AND QSTEP=0;
     
 --(2) id = qnaWrite (문의글 작성)
 INSERT INTO QNA (qno,qid,qsubject,qcontent,qhit,qgroup,qstep,qrdate)VALUES(QNA_SQ.NEXTVAL, 'son','질문이 있습니다1','광고 가능한가요3?',0,QNA_SQ.CURRVAL,0,SYSDATE);

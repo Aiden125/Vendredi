@@ -87,7 +87,7 @@
 <select id="storeList" parameterType="Store" resultMap="storeResult">
 	SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SNO, SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+    (SELECT SNO, SIMAGE1, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE where sConfirm = 'Y' order by sno desc)A)
      WHERE RN BETWEEN #{startRow} AND #{endRow}
 </select>
@@ -95,14 +95,14 @@
 <select id="storeListSearch" parameterType="Store" resultMap="storeResult">
 	SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SNO, SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+    (SELECT SNO, SIMAGE1, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE where sSearchtag like '%'||#{ssearchtag}||'%' and sConfirm = 'Y' order by STSCORE desc)A)
      WHERE RN BETWEEN #{startRow} AND #{endRow} 
 </select>
 <select id="myStoreList" parameterType="Store" resultMap="storeResult">
 	SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SNO, SIMAGE, SNAME, SLOCATION, STYPE 
+    (SELECT SNO, SIMAGE1, SNAME, SLOCATION, STYPE 
      FROM STORE where oid = #{oid} order by sno desc)A)
      WHERE RN BETWEEN #{startRow} AND #{endRow} 
 </select> 

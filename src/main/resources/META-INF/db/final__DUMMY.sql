@@ -97,6 +97,7 @@ commit;
 INSERT INTO QNA (qno,qid,qsubject,qcontent,qhit,qgroup,qstep,qrdate)VALUES(QNA_SQ.NEXTVAL, 'son','가게 사장님과 컨택질문','광고 가능한가요3?',0,QNA_SQ.CURRVAL,0,SYSDATE);
 INSERT INTO QNA VALUES(QNA_SQ.NEXTVAL, 'kang','질문이 있습니다1','광고 가능한가요1?',0,QNA_SQ.CURRVAL,0,SYSDATE,'N');
 INSERT INTO QNA VALUES(QNA_SQ.NEXTVAL, 'son','질문!!','예약 가능한가요?',0,QNA_SQ.CURRVAL,0,SYSDATE,'N');
+select * from qna;
 
 ----------------------------------- 민우 끝 ---------------------------------------------
 
