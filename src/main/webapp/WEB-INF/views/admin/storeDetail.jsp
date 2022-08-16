@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="conPath" value="${pageContext.request.contextPath }" />
@@ -14,14 +14,14 @@
 
 <!--Google Fonts link-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-   rel="stylesheet">
+	rel="stylesheet">
 
 <link
-   href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i"
-   rel="stylesheet">
+	href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i"
+	rel="stylesheet">
 <link
-   href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i"
-   rel="stylesheet">
+	href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i"
+	rel="stylesheet">
 
 
 <link rel="stylesheet" href="${conPath}/store/css/slick.css">
@@ -45,14 +45,29 @@
 <link rel="stylesheet" href="${conPath}/store/css/responsive.css" />
 
 <script
-   src="${conPath}/store/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+	src="${conPath}/store/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+	<script>
+	// 업로드할 파일이 선택되어 추가될 경우 발생하는 이벤트
+	function uploadFileAdded() {
+	    var uploadFiles = document.getElementById("uploadFiles")
+	    for (var i = 0; i < uploadFiles.files.length; i++) {
+	        var file = uploadFiles.files[i];
+	        // 비동기 파일 업로드를 시작한다.
+	        var uploader = new Uploader(file);
+	        uploader.startUpload();
+	    }
+	    // 폼을 리셋해서 uploadFiles에 출력된 선택 파일을 초기화시킨다.
+	    document.getElementById("uploadForm").reset();
+	    
+	}
+	</script>
 <style>
 .input-file-button {
-   padding: 6px 25px;
-   background-color: #FF6600;
-   border-radius: 4px;
-   color: white;
-   cursor: pointer;
+	padding: 6px 25px;
+	background-color: #FF6600;
+	border-radius: 4px;
+	color: white;
+	cursor: pointer;
 }
 </style>
 </head>
@@ -75,26 +90,14 @@
 			alert("가게 정보 수정에 실패하였습니다.");
 		</script>
 	</c:if>
+
 	<c:if test="${not empty reservation }">
 		<script>
 			alert("예약이 완료되었습니다");
 		</script>
 	</c:if>
-	<script>
-	// 업로드할 파일이 선택되어 추가될 경우 발생하는 이벤트
-	function uploadFileAdded() {
-	    var uploadFiles = document.getElementById("uploadFiles")
-	    for (var i = 0; i < uploadFiles.files.length; i++) {
-	        var file = uploadFiles.files[i];
-	        // 비동기 파일 업로드를 시작한다.
-	        var uploader = new Uploader(file);
-	        uploader.startUpload();
-	    }
-	    // 폼을 리셋해서 uploadFiles에 출력된 선택 파일을 초기화시킨다.
-	    document.getElementById("uploadForm").reset();
-	    
-	}
-	</script>
+
+
 <body data-spy="scroll" data-target=".navbar-collapse">
 	<jsp:include page="../main/header2.jsp" />
 	<!--Blog Features Section-->
@@ -262,7 +265,7 @@
 										</div>
 										<div class="col-sm-4">
 											<div class="form-group">
-												<label for="input-file">리뷰 사진 *</label><input type="file"
+												<label for="input-file">리뷰 사진 *</label>  <input type="file"
 													name="srimg1" id="input-file">
 											</div>
 										</div>
@@ -283,7 +286,7 @@
 												</p>
 											</div>
 											<button type="submit" class="btn btn-default m-top-30">
-												리뷰 달기 <i class="fa fa-long-arrow-right"></i>
+												send message <i class="fa fa-long-arrow-right"></i>
 											</button>
 										</div>
 									</form>
@@ -379,66 +382,66 @@
 	// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
 	infowindow.open(map, marker);   
 </script>
-                  <div class="said_socail fix m-top-70">
-                     <h6 class="text-uppercase">instagram</h6>
-                     <div class="socail_items m-top-40">
-                        <div class="socail_item">
-                           <img src="assets/images/gram-img1.jpg" alt="" />
-                        </div>
-                        <div class="socail_item">
-                           <img src="assets/images/gram-img2.jpg" alt="" />
-                        </div>
-                        <div class="socail_item">
-                           <img src="assets/images/gram-img3.jpg" alt="" />
-                        </div>
-                        <div class="socail_item">
-                           <img src="assets/images/gram-img4.jpg" alt="" />
-                        </div>
-                        <div class="socail_item">
-                           <img src="assets/images/gram-img5.jpg" alt="" />
-                        </div>
-                        <div class="socail_item">
-                           <img src="assets/images/gram-img6.jpg" alt="" />
-                        </div>
-                     </div>
-                  </div>
+						<div class="said_socail fix m-top-70">
+							<h6 class="text-uppercase">instagram</h6>
+							<div class="socail_items m-top-40">
+								<div class="socail_item">
+									<img src="assets/images/gram-img1.jpg" alt="" />
+								</div>
+								<div class="socail_item">
+									<img src="assets/images/gram-img2.jpg" alt="" />
+								</div>
+								<div class="socail_item">
+									<img src="assets/images/gram-img3.jpg" alt="" />
+								</div>
+								<div class="socail_item">
+									<img src="assets/images/gram-img4.jpg" alt="" />
+								</div>
+								<div class="socail_item">
+									<img src="assets/images/gram-img5.jpg" alt="" />
+								</div>
+								<div class="socail_item">
+									<img src="assets/images/gram-img6.jpg" alt="" />
+								</div>
+							</div>
+						</div>
 
-               </div>
-            </div>
-            <!-- End off col-md-4 -->
-
-
-         </div>
-         <!-- End off row -->
+					</div>
+				</div>
+				<!-- End off col-md-4 -->
 
 
+			</div>
+			<!-- End off row -->
 
 
-      </div>
-      <!-- End off container -->
-   </section>
-   <!-- End off blog Fashion -->
 
 
-   <!-- JS includes -->
+		</div>
+		<!-- End off container -->
+	</section>
+	<!-- End off blog Fashion -->
 
-   <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
-   <script src="assets/js/vendor/bootstrap.min.js"></script>
 
-   <script src="assets/js/isotope.min.js"></script>
-   <script src="assets/js/jquery.magnific-popup.js"></script>
-   <script src="assets/js/jquery.easing.1.3.js"></script>
-   <script src="assets/js/slick.min.js"></script>
-   <script src="assets/js/jquery.collapse.js"></script>
-   <script src="assets/js/bootsnav.js"></script>
-   <script src="assets/js/masonry.min.js"></script>
+	<!-- JS includes -->
 
-   <script type="text/javascript">
-      var msnry = new Masonry('.blog_area');
-   </script>
+	<script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+	<script src="assets/js/vendor/bootstrap.min.js"></script>
 
-   <script src="assets/js/plugins.js"></script>
-   <script src="assets/js/main.js"></script>
+	<script src="assets/js/isotope.min.js"></script>
+	<script src="assets/js/jquery.magnific-popup.js"></script>
+	<script src="assets/js/jquery.easing.1.3.js"></script>
+	<script src="assets/js/slick.min.js"></script>
+	<script src="assets/js/jquery.collapse.js"></script>
+	<script src="assets/js/bootsnav.js"></script>
+	<script src="assets/js/masonry.min.js"></script>
+
+	<script type="text/javascript">
+		var msnry = new Masonry('.blog_area');
+	</script>
+
+	<script src="assets/js/plugins.js"></script>
+	<script src="assets/js/main.js"></script>
 
 
 </body>
