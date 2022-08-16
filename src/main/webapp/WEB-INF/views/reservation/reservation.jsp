@@ -12,16 +12,57 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 	<style>
 		#content{
-			margin: 100px auto;
-			width:800opx;
-			height:500px;
-			background-color: yellow;
+			width: 600px;
+	        height : 100%;
+	        margin: 0 auto;
+	        max-width: 500px;
+	        margin-top: 100px;
+	        margin-bottom: 100px;
+	        padding: 20px;
+	        background: #fff;
+	        -webkit-border-radius: 10px;
+	        -moz-border-radius: 10px;
+	        border-radius: 10px;
+	        -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	        -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
 		}
-		input[type='text']{
-			border:none;
+		#content input:not(.btn) {
+			border-left:none;
+			border-right:none;
+			border-top:none;
+			margin:20px;
 		}
-		h3{
-			cursor: pointer;
+		#content input[type='number']{
+			width:80px;
+		}
+		#content input[type='text']:not(.sname){
+			width:100px;
+		}
+		#content input[type='button']:not(.btn){
+			border: none;
+			background-color: #80ff00;
+		}
+		#content .btn{
+			margin:30px 10px;
+            background: #fff;
+            border-color: black;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+		}
+		#content .sname{
+			font-size: 1.5em;
+			border: none;
+		}
+		#content .rdate{
+			margin-bottom: 50px;
+		}
+		#content h3{
+			margin:20px;
 		}
 	</style>
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -75,23 +116,23 @@
 		         })
 		        	}
 		         });
-		   $('form').submit(function(){
-				var rdate = $('.rdate').text().trim();
-				var rtime = $('.time').text().trim();
-				var rmember = $('.rmember').text().trim();
+		    $('form').submit(function(){
+				var rdate = $('.rdate').val().trim();
+				var rtime = $('.time').val().trim();
+				var rmember = $('.rmember').val().trim();
 				if(rdate == ''){
-					alert('예약날짜를 입력하세요');
+					alert('예약날짜를 선택해주세요');
 					return false;
 				}
 				if(rtime == ''){
-					alert('예약시간을 입력하세요');
+					alert('예약시간을 선택해주세요');
 					return false;
 				}
 				if(rmember == ''){
-					alert('예약인원을 입력하세요');
+					alert('예약인원을 입력해주세요');
 					return false;
 				}
-			 });
+			 }); 
 		});
 	function func(i) {
 		var i1 = i+':00'
@@ -120,31 +161,32 @@
 <jsp:include page="../main/header.jsp"/>
 	<div id="content">
 		<form action="reservation.do">
-		<input type="hidden" name="mid" value="${member.mid }">
-		<input type="hidden" name="sno" value="${param.sno }">
-		<input type="hidden" name="rtime" class="rtime">
-		<input type="text" name="sname" value="${store.sname }">예약하기
-		<h3 onclick="dis()">날짜선택</h3>
-		<div id="selectDate" style="display: none">
-			<p><b>선택한 날짜: </b>
+			<h1>Reservation</h1>
+			<input type="hidden" name="mid" value="${member.mid }">
+			<input type="hidden" name="sno" value="${param.sno }">
+			<input type="hidden" name="rtime" class="rtime">
+			가게명 : <input type="text" name="sname" class="sname" value="${store.sname }" readonly="readonly">
+			<h3 onclick="dis()" style="cursor: pointer">날짜선택</h3>
+			<div id="selectDate" style="display: none">
+				<p><b>선택한 날짜: </b>
 				<input type="text" name="rdate"
-					class="rdate" readonly="readonly"></p>
-		</div>
-		<h3 onclick="dis1()">시간선택</h3>
-		<div id="selectTime" style="display: none">
-			<p><b>선택한 시간: </b>
-				<input type="text" name="time"
-					class="time" readonly="readonly"></p>
-			<c:forEach var="i" begin="${store.sstart }" end="${store.send }" >  <!-- 오픈, 마감시간으로 대체 -->
-					<input type="button" id="${i }" value="${i }:00" onclick="func(${i})"/> 
-			</c:forEach>
-		</div>
-		<h3>
-			예약인원<input type="number" name="rmember" class="rmember">
-		</h3>
-		<br>
-		<input type="submit" value="예약">
-		<input type="button" value="뒤로" onclick=history.back()>
+					class="rdate" readonly="readonly" ></p>
+			</div>
+			<h3 onclick="dis1()" style="cursor: pointer">시간선택</h3>
+				<div id="selectTime" style="display: none">
+					<p><b>선택한 시간: </b>
+					<input type="text" name="time"
+						class="time" readonly="readonly"></p>
+				<c:forEach var="i" begin="${store.sstart }" end="${store.send }" >  <!-- 오픈, 마감시간으로 대체 -->
+						<input type="button" id="${i }" value="${i }:00" onclick="func(${i})"/> 
+				</c:forEach>
+			</div>
+			<h3>
+				예약인원<input type="number" name="rmember" class="rmember">명
+			</h3>
+			<br>
+			<input type="submit" value="예약" class="btn">
+			<input type="button" value="뒤로" class="btn" onclick=history.back()>
 		</form>
 	</div>
 	<jsp:include page="../main/footer.jsp"/>

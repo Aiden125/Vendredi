@@ -24,7 +24,7 @@
 }
 .form-wrap {
     width: 380px;
-    height: 480px;
+    height: 100%;
     position: relative;
     margin: 6% auto;
     background: #fff;

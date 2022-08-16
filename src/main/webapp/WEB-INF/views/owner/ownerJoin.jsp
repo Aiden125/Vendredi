@@ -137,8 +137,15 @@
                   </div>
                    <div id="emailConfirmResult">&nbsp;</div>
                   <div class="form-group">
+                    <label for="oaddress" class="sr-only">우편번호</label>
+                    <input type="text" id="sample4_postcode" name="mpost" class="text_box"  placeholder="우편번호">
+					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+                  </div>
+                  <div class="form-group">
                     <label for="oaddress" class="sr-only">주소</label>
-                    <input type="text" name="oaddress" id="oaddress"  class="form-control" placeholder="주소">
+                    <input type="text" name="oaddress" id="sample4_roadAddress"  class="form-control" placeholder="주소">
+                 	<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소">
+					<span id="guide"></span>
                   </div>
                   <div class="form-group">
                     <label for="obirth" class="sr-only">생년월일</label>

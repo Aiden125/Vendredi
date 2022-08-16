@@ -48,10 +48,9 @@
 	}
 </script>
 </head>
-<body>
+<body> 
 	<jsp:include page="../main/header2.jsp" />
-	<section id="hello" class="img">
-<<<<<<< HEAD
+	<section id="hello" class="img"> 
 		<div class="overlay">
 		<img src="${conPath }/assets/img/디저트.jpg" alt="" style="width: 100%; height: 15%" >
 		</div>
@@ -65,7 +64,13 @@
 				</div>
 			</div>
 			<!--End off row-->
-		</div> 
+		</div>  
+<jsp:include page="../main/header.jsp"/>
+				<c:if test="${paging.totCnt eq 0 }">
+					<tr>
+						<th colspan="5">등록된 가게가 없습니다.</th>
+					</tr>
+				</c:if> 
 		<div class="container">
 			<div class="row">
 				<div class="main_home text-center">
@@ -150,12 +155,10 @@
 	<script src="assets/js/slick.min.js"></script>
 	<script src="assets/js/jquery.collapse.js"></script>
 	<script src="assets/js/bootsnav.js"></script>
-	<script src="assets/js/masonry.min.js"></script>
-
+	<script src="assets/js/masonry.min.js"></script> 
 	<script type="text/javascript">
 		var msnry = new Masonry('.blog_area');
-	</script>
-
+	</script> 
 	<script src="assets/js/plugins.js"></script>
 	<script src="assets/js/main.js"></script>
 </body>

@@ -46,12 +46,15 @@
 	font-size:1.3em;
 	}
 	#content .btn{
-	width:100px;
-	height:30px;
-	margin-left:25px;
-	background-color: #757169;
-	color:white;
-	border:none;
+			margin:  80px 0;
+            background: #fff;
+            border-color: black;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
 	}
 	#content input[type="text", type="password"]{
 	height:25px;
@@ -105,7 +108,10 @@
 	<div id="content">
 	<form action="${conPath }/owner/Delete.do?oid=${oid}" id="content_form" method="post">
 		<table>
-		<caption>계정삭제</caption>
+			<tr>
+				<b>회원탈퇴 하시면 사이트에 있는<br>회원님의 모든 기록들이 사라집니다.<br>
+					탈퇴를 원하신다면 비밀번호를 입력해주세요.<br><br><br><br></b>
+			</tr>
 			<tr>
 				<th>비밀번호 확인</th>
 				<td>
@@ -120,7 +126,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="탈퇴하기">
+					<input type="submit" value="탈퇴하기" class="btn">
 				</td>
 			</tr>
 		</table>

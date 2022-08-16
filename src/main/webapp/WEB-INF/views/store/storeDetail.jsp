@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="conPath" value="${pageContext.request.contextPath }" />
@@ -14,14 +14,14 @@
 
 <!--Google Fonts link-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-	rel="stylesheet">
+   rel="stylesheet">
 
 <link
-	href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i"
+   rel="stylesheet">
 <link
-	href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i"
+   rel="stylesheet">
 
 
 <link rel="stylesheet" href="${conPath}/store/css/slick.css">
@@ -45,14 +45,14 @@
 <link rel="stylesheet" href="${conPath}/store/css/responsive.css" />
 
 <script
-	src="${conPath}/store/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+   src="${conPath}/store/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 <style>
 .input-file-button {
-	padding: 6px 25px;
-	background-color: #FF6600;
-	border-radius: 4px;
-	color: white;
-	cursor: pointer;
+   padding: 6px 25px;
+   background-color: #FF6600;
+   border-radius: 4px;
+   color: white;
+   cursor: pointer;
 }
 </style>
 </head>
@@ -377,66 +377,66 @@
 	// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
 	infowindow.open(map, marker);   
 </script>
-						<div class="said_socail fix m-top-70">
-							<h6 class="text-uppercase">instagram</h6>
-							<div class="socail_items m-top-40">
-								<div class="socail_item">
-									<img src="assets/images/gram-img1.jpg" alt="" />
-								</div>
-								<div class="socail_item">
-									<img src="assets/images/gram-img2.jpg" alt="" />
-								</div>
-								<div class="socail_item">
-									<img src="assets/images/gram-img3.jpg" alt="" />
-								</div>
-								<div class="socail_item">
-									<img src="assets/images/gram-img4.jpg" alt="" />
-								</div>
-								<div class="socail_item">
-									<img src="assets/images/gram-img5.jpg" alt="" />
-								</div>
-								<div class="socail_item">
-									<img src="assets/images/gram-img6.jpg" alt="" />
-								</div>
-							</div>
-						</div>
+                  <div class="said_socail fix m-top-70">
+                     <h6 class="text-uppercase">instagram</h6>
+                     <div class="socail_items m-top-40">
+                        <div class="socail_item">
+                           <img src="assets/images/gram-img1.jpg" alt="" />
+                        </div>
+                        <div class="socail_item">
+                           <img src="assets/images/gram-img2.jpg" alt="" />
+                        </div>
+                        <div class="socail_item">
+                           <img src="assets/images/gram-img3.jpg" alt="" />
+                        </div>
+                        <div class="socail_item">
+                           <img src="assets/images/gram-img4.jpg" alt="" />
+                        </div>
+                        <div class="socail_item">
+                           <img src="assets/images/gram-img5.jpg" alt="" />
+                        </div>
+                        <div class="socail_item">
+                           <img src="assets/images/gram-img6.jpg" alt="" />
+                        </div>
+                     </div>
+                  </div>
 
-					</div>
-				</div>
-				<!-- End off col-md-4 -->
-
-
-			</div>
-			<!-- End off row -->
+               </div>
+            </div>
+            <!-- End off col-md-4 -->
 
 
+         </div>
+         <!-- End off row -->
 
 
-		</div>
-		<!-- End off container -->
-	</section>
-	<!-- End off blog Fashion -->
 
 
-	<!-- JS includes -->
+      </div>
+      <!-- End off container -->
+   </section>
+   <!-- End off blog Fashion -->
 
-	<script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
-	<script src="assets/js/vendor/bootstrap.min.js"></script>
 
-	<script src="assets/js/isotope.min.js"></script>
-	<script src="assets/js/jquery.magnific-popup.js"></script>
-	<script src="assets/js/jquery.easing.1.3.js"></script>
-	<script src="assets/js/slick.min.js"></script>
-	<script src="assets/js/jquery.collapse.js"></script>
-	<script src="assets/js/bootsnav.js"></script>
-	<script src="assets/js/masonry.min.js"></script>
+   <!-- JS includes -->
 
-	<script type="text/javascript">
-		var msnry = new Masonry('.blog_area');
-	</script>
+   <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+   <script src="assets/js/vendor/bootstrap.min.js"></script>
 
-	<script src="assets/js/plugins.js"></script>
-	<script src="assets/js/main.js"></script>
+   <script src="assets/js/isotope.min.js"></script>
+   <script src="assets/js/jquery.magnific-popup.js"></script>
+   <script src="assets/js/jquery.easing.1.3.js"></script>
+   <script src="assets/js/slick.min.js"></script>
+   <script src="assets/js/jquery.collapse.js"></script>
+   <script src="assets/js/bootsnav.js"></script>
+   <script src="assets/js/masonry.min.js"></script>
+
+   <script type="text/javascript">
+      var msnry = new Masonry('.blog_area');
+   </script>
+
+   <script src="assets/js/plugins.js"></script>
+   <script src="assets/js/main.js"></script>
 
 
 </body>
