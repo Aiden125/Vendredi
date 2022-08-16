@@ -362,4 +362,153 @@ values ((SELECT get_STORE_seq('sno')), 'owner2', 'itaewon001_1.jpg', 'itaewon001
         '화요일, 수요일', '바리아 타코', '43000원', '돼지고기 타코', '30000원', '소고기 타코', '35000원',
         '#그외#남미요리#타코#한강진역#이태원', 17, 21);
 
+-- ---------- 한남동 TOP 5 -------------------------------
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
+                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
+                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values ((SELECT get_STORE_seq('sno')), 'owner2', 'hannamdong001_1.jpg', 'hannamdong001_2.jpg', 'hannamdong001_3.jpg', 
+        '카밀로한남', '서울특별시 용산구 한남대로20길 61-5 3F' ,'강북', '0507-1389-8622', 
+        '양식 / 이탈리안 퀴진', '2만원-3만원', '오후 12시 - 오후 11시', 
+        '일요일, 월요일', '런치 한상 차림', '26000원', '또르떼리&라구소스', '28000원', '소고기스테이크', '35000원',
+        '#양식#이탈리안#라자냐#한강진역#한남동', 12, 23); 
+        
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
+                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
+                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values ((SELECT get_STORE_seq('sno')), 'owner2', 'hannamdong002_1.jpg', 'hannamdong002_2.jpg', 'hannamdong002_3.jpg', 
+        '조이스팔라펠', '서울특별시 용산구 한남대로20길 61-5 3F' ,'강북', '0507-1389-8622', 
+        '그외 / 중동 요리', '2만원대', '오후 12시 - 오후 6시', 
+        '월요일, 화요일, 수요일', '팔라펠', '16000원', '코샤리', '15000원', '민트 홍차', '5000원',
+        '#그외#이집트#팔라펠#해방촌#한남동', 12, 18);
+        
+        
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
+                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
+                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values ((SELECT get_STORE_seq('sno')), 'owner2', 'hannamdong003_1.jpg', 'hannamdong003_2.jpg', 'hannamdong003_3.jpg', 
+        '세스타', '	서울특별시 용산구 한남대로20길 21-18 1F' ,'강북', '	02-793-9400', 
+        '양식 / 스테이크, 바베큐', '2만원 - 5만원', '오후 5시 - 오후 11시', 
+        '월요일', '그린랍스타 반마리', '45000원', '양갈비스테이크', '25000원', '소이라임 소뼈갈비', '15000원',
+        '#양식#스테이크#바베큐#한남역#한남동', 17, 23);
+        
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
+                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
+                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values ((SELECT get_STORE_seq('sno')), 'owner2', 'hannamdong004_1.jpg', 'hannamdong004_2.jpg', 'hannamdong004_3.jpg', 
+        '조이스팔라펠', '서울특별시 용산구 독서당로 124-7' ,'강북', '	02-798-9700', 
+        '중식 / 일반 중식', '10만원대', '오전 11시 - 오후 8시', 
+        '공휴일', '점심 코스', '110000원', '저녁 코스', '135000원', '북경 오리구이 반마리', '35000원',
+        '#중식#딤섬#소룡포#옥수#한남동', 11, 20);
+        
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
+                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
+                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values ((SELECT get_STORE_seq('sno')), 'owner2', 'hannamdong005_1.jpg', 'hannamdong005_2.jpg', 'hannamdong005_3.jpg', 
+        '레에스티우', '서울특별시 용산구 대사관로20길 5' ,'강북', '0507-1389-8622', 
+        '양식 / 스페인 요리', '5만원대', '오후 12시 - 오후 10시', 
+        '월요일', '카빙 이베리코 베요타 하몽', '45000원', '이베리코 설렉션', '35000원', '서촌식 문어구이', '52000원',
+        '#양식#스페인#하몽#한강진역#한남동', 12, 22);        
+             
 
+
+-- ---------- 홍대 TOP 5 -------------------------------
+   
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
+                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
+                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values ((SELECT get_STORE_seq('sno')), 'owner2', 'hongdae001_1.jpg', 'hongdae001_2.jpg', 'hongdae001_3.jpg', 
+        '전주상회', '서울특별시 마포구 성미산로 195' ,'강북', '070-4046-1486', 
+        '한식 / 한식 주점', '3만원대', '오후 5시 - 오전 12시', 
+        '월요일', '제주 흑돼지 수육', '35000원', '한우 육회', '27000원', '조개술찜', '32000원',
+        '#한식#수육#술찜#홍대입구역#홍대역#홍대', 17, 24); 
+
+       
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
+                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
+                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values ((SELECT get_STORE_seq('sno')), 'owner2', 'hongdae002_1.jpg', 'hongdae002_2.jpg', 'hongdae002_3.jpg', 
+        '파델라', '서울특별시 마포구 성미산로 195' ,'강북', '070-4046-1486', 
+        '양식 / 화덕피자', '3만원대', '오전 11시 - 오후 9시', 
+        '월요일', '가지루꼴라피자', '15000원', '단호박 채끝스테이크피자', '17000원', '살라미미트피자', '16500원',
+        '#양식#화덕피자#파스타#홍대입구역#홍대역#홍대', 11, 21); 
+        
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
+                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
+                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values ((SELECT get_STORE_seq('sno')), 'owner2', 'hongdae003_1.jpg', 'hongdae003_2.jpg', 'hongdae003_3.jpg', 
+        '파이리퍼블릭', '서울특별시 마포구 양화로23길 10-10 B1' ,'강북', '02-446-1486', 
+        '양식 / 미트파이, 소세지롤', '2만원대', '오전 11시 - 오후 10시', 
+        '연중무휴', '소시지롤 두개', '15000원', '파이&소시지롤', '17000원', '램촙&파이', '24000원',
+        '#양식#영국요리#미트파이#홍대입구역#홍대역#홍대', 11, 22); 
+        
+  
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
+                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
+                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values ((SELECT get_STORE_seq('sno')), 'owner2', 'hongdae004_1.jpg', 'hongdae004_2.jpg', 'hongdae004_3.jpg', 
+        '윤서울', '서울특별시 마포구 성미산로 195' ,'강북', '070-4046-1486', 
+        '한식 / 퓨전 한정식  ', '10만원대', '오후 5시 - 오전 12시', 
+        '월요일', '런치코스', '75000원', '디너 코스', '115000원', '한우 구이', '55000원',
+        '#한식#퓨전한정식#소고기구이#홍대입구역#홍대역#홍대', 17, 24); 
+        
+        
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
+                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
+                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values ((SELECT get_STORE_seq('sno')), 'owner2', 'hongdae005_1.jpg', 'hongdae005_2.jpg', 'hongdae005_3.jpg', 
+        '젤라떼리아 에따', '서울특별시 마포구 성미산로 195' ,'강북', '070-4046-1486', 
+        '디저트 / 젤라또', '1만원대', '오전 11시 - 오후 8시', 
+        '월요일', '1스쿱', '5000원', '2스쿱', '8000원', '1갤런', '25000원',
+        '#디저트#젤라또#아이스크림#홍대입구역#홍대역#홍대', 11, 20);         
+
+
+
+-- ---------- 경기 북부 TOP 10 -------------------------------
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
+                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
+                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values ((SELECT get_STORE_seq('sno')), 'owner2', 'ggnorth001_1.jpg', 'ggnorth001_2.jpg', 'ggnorth001_3.jpg', 
+        '포폴로피자', '경기도 고양시 일산동구 정발산로 43-20 센트럴플라자 1F 102호,103호' ,'경기 북부', '070-4046-1486', 
+        '양식 / 피자', '1만원 - 2만원', '오전 11시 - 오후 8시', 
+        '토요일, 일요일', '라자냐 알라 볼로네제', '15000원', '비스마르크', '13000원', '꽈트로풍기', '15000원',
+        '#양식#피자#파스타#경기북부#정발산역', 11, 20);
+        
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
+                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
+                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values ((SELECT get_STORE_seq('sno')), 'owner2', 'ggnorth002_1.jpg', 'ggnorth002_2.jpg', 'ggnorth002_3.jpg', 
+        '만돈', '경기도 고양시 일산동구 정발산로 43-20 센트럴플라자 1F 102호,103호' ,'경기 북부', '070-4046-1486', 
+        '일식 / 돈까스, 돈부리', '1만원 - 2만원', '오전 11시 - 오후 8시', 
+        '일요일', '가츠동', '9500원', '히레카츠', '13000원', '모둠카츠', '15000원',
+        '#일식#돈까스#가츠동#경기북부#정발산역', 11, 20);    
+        
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
+                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
+                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values ((SELECT get_STORE_seq('sno')), 'owner2', 'ggnorth003_1.jpg', 'ggnorth003_2.jpg', 'ggnorth003_3.jpg', 
+        '옥류담', '경기도 고양시 일산동구 정발산로 43-20 센트럴플라자 1F 102호,103호' ,'경기 북부', '070-4046-1486', 
+        '한식 / 냉면, 수육', '1만원 - 2만원', '오전 11시 - 오후 8시', 
+        '화요일', '평양냉면', '12000원', '비빔냉면', '13000원', '녹두지짐', '15000원',
+        '#한식#냉면#경기북부#정발산역', 11, 20);
+        
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
+                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
+                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values ((SELECT get_STORE_seq('sno')), 'owner2', 'ggnorth004_1.jpg', 'ggnorth004_2.jpg', 'ggnorth004_3.jpg', 
+        '청킹에쏘', '경기도 고양시 일산동구 정발산로 43-20 센트럴플라자 1F 102호,103호' ,'경기 북부', '070-4046-1486', 
+        '디저트 / 밀크티, 토스트', '1만원 - 2만원', '오전 11시 - 오후 8시', 
+        '일요일', '버터토스트', '9500원', '토스트 + 밀크티 1잔', '14500원', '토스트 + 밀크티 2잔', '19000원',
+        '#디저트#토스트#경기북부#정발산역', 11, 20);
+        
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
+                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
+                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values ((SELECT get_STORE_seq('sno')), 'owner2', 'ggnorth005_1.jpg', 'ggnorth005_2.jpg', 'ggnorth005_3.jpg', 
+        '아트스뉴욕', '경기도 고양시 일산동구 정발산로 43-20 센트럴플라자 1F 102호,103호' ,'경기 북부', '070-4046-1486', 
+        '디저트 / 커피, 토스트', '1만원 - 2만원', '오전 11시 - 오후 8시', 
+        '일요일', '아메리카노', '4500원', '토스트 + 아메리카노 1잔', '9500원', '케이크세트', '15000원',
+        '#일식#돈까스#가츠동#경기북부#정발산역', 11, 20);        
+
+
+
+-- ---------- 경기 남부 TOP 10 -------------------------------

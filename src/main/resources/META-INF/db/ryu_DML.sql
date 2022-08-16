@@ -63,7 +63,7 @@ SELECT * FROM
 SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
     (SELECT SNO, SIMAGE1, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
-     FROM STORE where sSearchtag like '%'||'강남역'||'%' and sConfirm = 'Y' order by STSCORE desc)A)
+     FROM STORE where sSearchtag like '%'||'이태원'||'%' and sConfirm = 'Y' order by STSCORE desc)A)
      WHERE RN BETWEEN 1 AND 50;
      
      
