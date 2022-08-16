@@ -142,7 +142,7 @@
 				<tr onclick="trclicked(${store.sno })"> 
 					<td>
 						${store.sno }
-						<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage}" width = "100px">
+						<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage1}" width = "100px">
 					</td>
 					<td>${store.sname }</td>
 					<td> 

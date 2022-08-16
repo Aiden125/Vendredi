@@ -65,7 +65,7 @@ margin-left: 30px;
 							onclick="location.href='${conPath }/store/storeDetail.do?sno=${store.sno }'">
 							<div class="col-md-3"
 								onclick="location.href='${conPath }/store/storeDetail.do?sno=${store.sno }'">
-								<img src="${conPath }/storeImgFileUpload/${store.simage}" 
+								<img src="${conPath }/storeImgFileUpload/${store.simage1}" 
 									alt="가게이미지" class="login-card-img"
 									style="height: 350px; width: 200px;">
 							</div>
@@ -100,7 +100,7 @@ margin-left: 30px;
 	<div id="paging" align="center">
 		<c:if test="${paging.startPage> paging.blockSize }">
 		[<a
-				href="${conPath }/store.do?method=storeList&pageNum=${paging.startPage-1}&schItem=${param.schItem }">이전</a>]
+				href="${conPath }/store.do?method=storeList&pageNum=${paging.startPage-1}">이전</a>]
 		</c:if>
 		<c:forEach var="i" begin="${paging.startPage }"
 			end="${paging.endPage}">
@@ -109,12 +109,12 @@ margin-left: 30px;
 			</c:if>
 			<c:if test="${i != paging.currentPage }">
 			[<a
-					href="${conPath }/store.do?method=storeList&pageNum=${i}&schItem=${param.schItem }">${i}</a>]
+					href="${conPath }/store.do?method=storeList&pageNum=${i}">${i}</a>]
 			</c:if>
 		</c:forEach>
 		<c:if test="${paging.endPage < paging.pageCnt }">
 		[<a
-				href="${conPath }/store.do?method=storeList&pageNum=${paging.endPage +1}&schItem=${param.schItem }">다음</a>]
+				href="${conPath }/store.do?method=storeList&pageNum=${paging.endPage +1}">다음</a>]
 		</c:if>
 	</div>
 </main>	

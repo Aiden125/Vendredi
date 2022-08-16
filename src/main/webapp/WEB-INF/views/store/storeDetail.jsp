@@ -102,11 +102,11 @@
 
 						<div class="blog_details_left">
 							<div class="blog_details_img">
-								<img src="${conPath }/storeImgFileUpload/${store.simage }"
+								<img src="${conPath }/storeImgFileUpload/${store.simage1 }"
 									alt="가게 이미지" style="width: 200px; height: 200px;" />
-									<img src="${conPath }/storeImgFileUpload/${store.simage }"
+									<img src="${conPath }/storeImgFileUpload/${store.simage2 }"
 									alt="가게 이미지" style="width: 200px; height: 200px;" />
-									<img src="${conPath }/storeImgFileUpload/${store.simage }"
+									<img src="${conPath }/storeImgFileUpload/${store.simage3 }"
 									alt="가게 이미지" style="width: 200px; height: 200px;" />
 							</div>
 							

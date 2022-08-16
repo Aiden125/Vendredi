@@ -32,38 +32,10 @@ body, html {
 		}
 	</script>
 </head>
-<body>
-<<<<<<< HEAD
-	<jsp:include page="../main/header.jsp"/>
-	<div class="wrap">
-	<div class="form-wrap">
-	<table style="margin : 0 auto;"> 
-		<c:if test="${paging.totCnt eq 0 }">
-			<tr> <th colspan="5">등록된 가게가 없습니다.</th> </tr>
-		</c:if>
-		<c:if test="${paging.totCnt != 0 }">
-				<c:forEach items="${storeList }" var="store">
-				<tr onclick="trclicked(${store.sno })"> 
-					<td>
-						<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage1}" width = "100px" height="150px">
-					</td>
-					<td>${store.sname }</td>
-					<td style="color : orange; font-weight: bold">${store.stscore }</td>
-				</tr> 
-				<tr>	
-					<td> 
-						${store.slocation }
-					</td>
-					<td colspan="2"> 
-						${store.stype }
-					</td>   
-				</tr>
-			</c:forEach>
-		</c:if>
-	</table>
-		<div id="paging" align="center">
-=======
+<body>  
+		<div id="paging" align="center"> 
 	<jsp:include page="../main/header.jsp" />
+	</div>
 				<c:if test="${paging.totCnt eq 0 }">
 					<tr>
 						<th colspan="5">등록된 가게가 없습니다.</th>
@@ -78,7 +50,7 @@ body, html {
 							onclick="location.href='${conPath }/store/storeDetail.do?sno=${store.sno }'">
 							<div class="col-md-3"
 								onclick="location.href='${conPath }/store/storeDetail.do?sno=${store.sno }'">
-								<img src="${conPath }/storeImgFileUpload/${store.simage}"
+								<img src="${conPath }/storeImgFileUpload/${store.simage1}"
 									alt="가게이미지" class="login-card-img"
 									style="height: 350px; width: 200px;">
 							</div>
@@ -108,11 +80,10 @@ body, html {
 		</div>
 	</c:forEach>
 
-	<div id="paging" align="center">
->>>>>>> 0ab1e084068fff7d6fb70518ba7f617caedc602c
+	<div id="paging" align="center"> 
 		<c:if test="${paging.startPage> paging.blockSize }">
 		[<a
-				href="${conPath }/store.do?method=storeList&pageNum=${paging.startPage-1}&schItem=${param.schItem }">이전</a>]
+				href="${conPath }/store/storeListSearch.do?pageNum=${paging.startPage-1}&ssearchtag=${param.ssearchtag}">이전</a>]
 		</c:if>
 		<c:forEach var="i" begin="${paging.startPage }"
 			end="${paging.endPage}">
@@ -121,12 +92,12 @@ body, html {
 			</c:if>
 			<c:if test="${i != paging.currentPage }">
 			[<a
-					href="${conPath }/store.do?method=storeList&pageNum=${i}&schItem=${param.schItem }">${i}</a>]
+					href="${conPath }/store.do?method=storeList&pageNum=${i}">${i}</a>]
 			</c:if>
 		</c:forEach>
 		<c:if test="${paging.endPage < paging.pageCnt }">
 		[<a
-				href="${conPath }/store.do?method=storeList&pageNum=${paging.endPage +1}&schItem=${param.schItem }">다음</a>]
+				href="${conPath }/store/storeListSearch.do?pageNum=${paging.endPage +1}&ssearchtag=${param.ssearchtag}">다음</a>]
 		</c:if>
 	</div>
 </main>	

@@ -1,6 +1,7 @@
 -- Store Dummy Sql
 ------------ 여기부터는 새로운 더미 --------------------------
-commit;
+commit; 
+SELECT * FROM STORE;
 ------------ 가로수길 TOP 5 -------------------------------
 
 insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
@@ -185,15 +186,6 @@ insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocati
                    sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
                    sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
 values (store_sq.nextval, 'owner2', 'cheongdam003_1.jpg', 'cheongdam003_2.jpg', 'cheongdam003_3.jpg', 
-        '권숙수', '서울특별시 강남구 언주로170길 27 4F' ,'강남', '02-542-6268', 
-        '한식 / 한정식', '10만원 이상', '오후 12시 - 오후 10시', 
-        '일요일', '런치 정식', '135000원', '디너 숙수 정식', '179000원', '디너 수라 정식', '215000원',
-        '#일식#스시#오마카세#청담역#청담', 12, 22);
-        
-insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
-                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
-                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
-values (store_sq.nextval, 'owner2', 'cheongdam003_1.jpg', 'cheongdam003_2.jpg', 'cheongdam003_3.jpg', 
         '밍글스', '서울특별시 강남구 선릉로 757 힐탑빌딩 2F' ,'강남', '02-515-7306', 
         '한식 / 퓨전한식', '10만원 이상', '오후 12시 - 오후 10시', 
         '일요일', '런치 코스', '125000원', '디너 코스', '239000원', '디너 셰프 코스', '315000원',
@@ -202,11 +194,11 @@ values (store_sq.nextval, 'owner2', 'cheongdam003_1.jpg', 'cheongdam003_2.jpg', 
 insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
                    sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
                    sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
-values (store_sq.nextval, 'owner2', 'cheongdam003_1.jpg', 'cheongdam003_2.jpg', 'cheongdam003_3.jpg', 
-        '밍글스', '서울특별시 강남구 선릉로 757 힐탑빌딩 2F' ,'강남', '02-515-7306', 
-        '한식 / 퓨전한식', '10만원 이상', '오후 12시 - 오후 10시', 
-        '일요일', '런치 코스', '125000원', '디너 코스', '239000원', '디너 셰프 코스', '315000원',
-        '#한식#퓨전한식#청담역#청담', 12, 22);
+values (store_sq.nextval, 'owner2', 'cheongdam004_1.jpg', 'cheongdam004_2.jpg', 'cheongdam004_3.jpg', 
+        '리사르커피', '서울특별시 강남구 선릉로 757 힐탑빌딩 1F' ,'강남', '02-515-7306', 
+        '디저트 / 커피', '1만원 - 3만원', '오전 11시 - 오후 10시', 
+        '월요일', '생크림딸기쇼트케이크', '11500원', '얼그레이 팬케이크', '19000원', '로얄 티', '10000원',
+        '#한식#퓨전한식#청담역#청담', 11, 22);
         
 insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
                    sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
@@ -214,7 +206,7 @@ insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocati
 values (store_sq.nextval, 'owner2', 'cheongdam005_1.jpg', 'cheongdam005_2.jpg', 'cheongdam005_3.jpg', 
         '라 티지', '서울특별시 강남구 선릉로134길 5 1F' ,'강남', '070-8828-0101', 
         '디저트 / 크림 브륄레, 타르트', '1만원대', '오전 10시 - 오후 7시', 
-        '일요일', '까눌레', '3500원', '크림 브륄레', '11000원', '바닐라 타라트', '10500원',
+        '일요일', '까눌레', '3500원', '크림 브륄레', '11000원', '바닐라 타르트', '10500원',
         '#디저트#까눌레#타르트#크림브륄레#강남구청역#청담', 10, 19);          
 
 
@@ -350,7 +342,7 @@ values (store_sq.nextval, 'owner2', 'itaewon003_1.jpg', 'itaewon003_2.jpg', 'ita
 insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
                    sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
                    sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
-values (store_sq.nextval, 'owner2', 'itaewon001_1.jpg', 'itaewon001_2.jpg', 'itaewon001_3.jpg', 
+values (store_sq.nextval, 'owner2', 'itaewon004_1.jpg', 'itaewon004_2.jpg', 'itaewon004_3.jpg', 
         '박소린두깜풍', '서울특별시 용산구 보광로59길 9' ,'강북', '0507-1411-2514', 
         '그외 / 아시안 에스닉 푸드', '1만원 3만원', '오전 11시 - 오후 10시', 
         '일요일, 월요일', '나시고랭 갈비 구이', '15000원', '나시고랭 오리 구이', '15000원', '컴플리트 플레이트', '35000원',
@@ -360,12 +352,13 @@ values (store_sq.nextval, 'owner2', 'itaewon001_1.jpg', 'itaewon001_2.jpg', 'ita
 insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
                    sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
                    sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
-values (store_sq.nextval, 'owner2', 'itaewon001_1.jpg', 'itaewon001_2.jpg', 'itaewon001_3.jpg', 
+values (store_sq.nextval, 'owner2', 'itaewon005_1.jpg', 'itaewon005_2.jpg', 'itaewon005_3.jpg', 
         '주파카', '서울특별시 용산구 이태원로54길 68-5 1F' ,'강북', '0507-1346-4264', 
         '그외 / 남미요리', '3만원 이상', '오후 5시 - 오후 9시', 
         '화요일, 수요일', '바리아 타코', '43000원', '돼지고기 타코', '30000원', '소고기 타코', '35000원',
         '#그외#남미요리#타코#한강진역#이태원', 17, 21);
         
+-- -- 여기부터 삽입 --        
 ------------ 한남동 TOP 5 -------------------------------
 
 ------------ 홍대 TOP 5 -------------------------------
