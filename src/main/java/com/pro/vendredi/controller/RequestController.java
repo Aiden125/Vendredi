@@ -26,7 +26,7 @@ public class RequestController {
 	public String requestList(String pageNum, Model model, Request request ) {
 		model.addAttribute("requestList", requestService.requestList(request, pageNum));
 		model.addAttribute("paging", new Paging(requestService.requestCnt(request), pageNum, 5, 3));
-		return "request/requestList";
+		return "admin/requestList";
 	}
 	
 	// 요청 목록 - 사업자용 (개인 목록) 

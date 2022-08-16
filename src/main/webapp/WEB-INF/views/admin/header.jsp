@@ -29,8 +29,12 @@
 			<li><a href="${conPath }/qna/replyYetList.do">답변 안된 질문</a></li>
 			<li><a href="${conPath }/qna/replyList.do">답변 관리</a></li>
 		</ul>
-		
 		<br><hr><br>
+		<ul>
+			<li><a href="${conPath }/request/requestList.do">업체 관리</a></li>
+		</ul>
+		<br><hr><br>
+		
 		<ul>
 		<c:if test="${empty admin }">
 			<li><a href="${conPath }/admin/loginView.do">로그인</a></li>

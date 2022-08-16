@@ -20,7 +20,7 @@ public class StoreController {
 	// 해당 컨트롤러에서는 Store table StoreReview table의 기능을 다룹니다. 
 	
 	@Autowired
-	private StoreService storeService; 
+	private StoreService storeService;
 	@Autowired
 	private StoreReviewService storeReviewService; 
 	@Autowired

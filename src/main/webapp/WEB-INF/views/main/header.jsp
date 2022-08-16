@@ -16,15 +16,15 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <!-- <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Template Main CSS File 
-  <link href="assets/css/style.css" rel="stylesheet">-->
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet"> 
   <style>
   #header {
   background: rgba(0, 0, 0, 0.75);
@@ -346,7 +346,7 @@
       <h1 class="logo"><a href="${conPath }/main.do">Vendredi</a></h1>
       
 	<!--로그인 전 화면  -->
-	<c:if test="${empty member and empty owner }">
+	<c:if test="${empty member && empty owner }">
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="${conPath }/main.do">Home</a></li>
@@ -361,7 +361,7 @@
       </nav><!-- .navbar -->
   </c:if>
 	<!-- 고객 로그인 후  -->
-	<c:if test="${not empty member and  empty owner and empty admin}">
+	<c:if test="${not empty member}">
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="index_minwoo.jsp">${member.mname }님</a></li>
@@ -395,7 +395,7 @@
   </c:if>
   
   <!--사장님 로그인 후  -->
-  <c:if test="${empty member and  not empty owner and empty admin}">
+  <c:if test="${not empty owner}">
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active">${owner.oname }님</a></li>
@@ -404,21 +404,6 @@
           <li><a class="nav-link scrollto " href="${conPath }/owner/ReState.do?oid=${owner.oid}">예약 현황 </a></li>
           <li><a href="${conPath }/oboard/List.do">커뮤니티</a></li>
           <li><a class="nav-link scrollto" href="${conPath }/owner/Logout.do">로그아웃</a></li>
-         <!--  <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-  </c:if>
-  
-  <!-- 관리자 로그인 후  -->
-   <c:if test="${not empty admin and empty member and empty owner}">
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="index_minwoo.jsp">${owner.oname }님</a></li>
-          <li><a class="nav-link scrollto" href="${conPath }/member/login.jsp">내 가게</a></li>
-          <li><a class="nav-link scrollto " href="${conPath }">예약 현황 </a></li>
-          <li><a href="${conPath }">커뮤니티</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
          <!--  <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

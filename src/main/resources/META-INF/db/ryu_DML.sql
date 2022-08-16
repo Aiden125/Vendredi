@@ -52,14 +52,14 @@ select count(*) cnt from store where ssearchtag like '%'||'강남'||'%'  and sCo
 -- 5 - 1. storeList / 가게 리스트 페이징하기
 SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SNO, SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+    (SELECT SNO, SIMAGE1, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE order by STSCORE desc)A)
      WHERE RN BETWEEN 1 AND 50;
      
 -- 5 - 2. storeListSearch / 가게 리스트 페이징하기
 SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SNO, SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+    (SELECT SNO, SIMAGE1, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE where sSearchtag like '%'||'강남역'||'%' and sConfirm = 'Y' order by STSCORE desc)A)
      WHERE RN BETWEEN 1 AND 50;
      
@@ -67,14 +67,14 @@ SELECT * FROM
 -- 5 - 3. storeListNew / 가게 리스트 페이징하기
 SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SNO, SIMAGE, SNAME, SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+    (SELECT SNO, SIMAGE1, SNAME, SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE where sConfirm = 'Y' order by sno desc)A)
      WHERE RN BETWEEN 1 AND 50;
 
 -- 5 - 4. myStoreList / 가게 리스트 페이징하기
 SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SNO, SIMAGE, SNAME, SLOCATION, STYPE 
+    (SELECT SNO, SIMAGE1, SNAME, SLOCATION, STYPE 
      FROM STORE where oid = 'bbb' order by sno desc)A)
      WHERE RN BETWEEN 1 AND 50; 
 commit;     
