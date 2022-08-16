@@ -1,0 +1,241 @@
+-- 드랍
+DROP TABLE MEMBER CASCADE CONSTRAINTS;
+DROP TABLE QNA CASCADE CONSTRAINTS;
+DROP SEQUENCE MEMBER_SQ;
+DROP SEQUENCE QNA_SQ;
+
+DROP SEQUENCE SEQ_OB;
+DROP SEQUENCE SEQ_BC;
+DROP TABLE BOARD_COMMENT;
+DROP TABLE OWNERBOARD;
+
+DROP SEQUENCE ADMIN_SQ;
+DROP TABLE ADMIN;
+DROP TABLE ADMIN_L;
+
+DROP TABLE STORE CASCADE CONSTRAINTS;
+DROP SEQUENCE STORE_SQ;
+DROP SEQUENCE STOREREVIEW_SQ;
+DROP TABLE STOREREVIEW;
+DROP TABLE REQUEST;
+DROP SEQUENCE REQUEST_SQ;
+DROP TABLE STORELIKE;
+DROP SEQUENCE STORELIKE_SQ;
+
+DROP TABLE OWNER;
+---------------------------------- 민우 ---------------------------------------------
+--SEQUENCE & TABLE  DROP/CREATE
+
+CREATE TABLE MEMBER (
+    MID VARCHAR2(50) PRIMARY KEY, --고객 ID
+    MNAME VARCHAR2(50) NOT NULL,  -- 고객 이름
+    MPW VARCHAR2(50) NOT NULL,  --비밀번호
+    MTEL VARCHAR2(50) NOT NULL, -- 전화번호
+    MEMAIL VARCHAR2(50) NOT NULL, --고객 이메일
+    MADDRESS VARCHAR2(250), -- 고객 주소 
+    MGENDER VARCHAR2(10), -- 고객 성별
+    MBIRTH DATE,  --생일   
+    MPROFILE VARCHAR2(50)  DEFAULT 'NOIMG.PNG' NOT NULL --프로필
+);
+
+CREATE SEQUENCE MEMBER_SQ MAXVALUE 999999 NOCYCLE NOCACHE;
+
+CREATE TABLE QNA(
+    QNO VARCHAR2(50) PRIMARY KEY, --글 번호
+    QID VARCHAR2(50) , --글쓴이 사용자 OR 관리자
+    QSUBJECT VARCHAR2(250) NOT NULL, --글 제목
+    QCONTENT VARCHAR2(4000) NOT NULL, --글 내용
+    QHIT NUMBER(8), -- 조회수
+    QGROUP NUMBER(8), --글 그룹
+    QSTEP NUMBER(8), -- 그룹내 출력 순서
+    QRDATE DATE DEFAULT SYSDATE, -- 등록 시점
+    QSECRET VARCHAR2(10) DEFAULT 'N',-- 비밀글 여부
+    QREPLYCHECK NUMBER(2) DEFAULT 0
+);
+CREATE SEQUENCE QNA_SQ MAXVALUE 999999 NOCYCLE NOCACHE;
+
+----------------------------------- 민우 ---------------------------------------------
+
+
+
+---------------------------------- 진우 ---------------------------------------------
+
+-- OWNERBOARD 시퀀스
+CREATE SEQUENCE SEQ_OB
+    MAXVALUE 99999999
+    NOCACHE
+    NOCYCLE;
+-- BOARD_COMMENT 시퀀스
+CREATE SEQUENCE SEQ_BC
+    MAXVALUE 99999999
+    NOCACHE
+    NOCYCLE;
+    
+-- OWNER 테이블 생성
+CREATE TABLE OWNER(
+    OID VARCHAR2(50) PRIMARY KEY,
+    ONAME VARCHAR2(50),
+    OPW VARCHAR2(50),
+    OTEL VARCHAR2(50),
+    OEMAIL VARCHAR2(50),
+    OADDRESS VARCHAR2(250),
+    OBIRTH DATE,
+    OGENDER VARCHAR2(10)
+);
+
+-- OWNERBOARD 테이블 생성
+CREATE TABLE OWNERBOARD(
+    BNO NUMBER(8) PRIMARY KEY,
+    OID VARCHAR2(50) REFERENCES OWNER(OID),
+    SNAME VARCHAR2(50),
+    BLOC VARCHAR2(50),
+    BTITLE VARCHAR2(50),
+    BCONTENT VARCHAR2(4000),
+    BPHOTO1 VARCHAR2(250),
+    BPHOTO2 VARCHAR2(250),
+    BPHOTO3 VARCHAR2(250),
+    BPHOTO4 VARCHAR2(250),
+    BPHOTO5 VARCHAR2(250),
+    BHIT NUMBER(8),
+    BDATE DATE DEFAULT SYSDATE
+);
+-- BOARD_COMMENT 테이블 생성
+CREATE TABLE BOARD_COMMENT(
+    CNO NUMBER(8) PRIMARY KEY,
+    BNO NUMBER(8) REFERENCES OWNERBOARD(BNO),
+    OID VARCHAR2(50) REFERENCES OWNER(OID),
+    CCONTENT VARCHAR2(2000),
+    CDATE DATE
+);
+
+----------------------------------- 진우 ---------------------------------------------
+
+
+
+
+----------------------------------- 희석 ---------------------------------------------
+-- ADMIN
+
+
+
+-- ADMIN LEVEL
+CREATE TABLE ADMIN_L(
+    ALEVEL VARCHAR2(10) PRIMARY KEY,
+    ALEVEL_NAME VARCHAR2(50)
+);
+
+CREATE SEQUENCE ADMIN_SQ MAXVALUE 99 NOCACHE NOCYCLE;
+
+
+CREATE TABLE ADMIN(
+    ANO NUMBER(2) PRIMARY KEY,
+    AID VARCHAR2(50) UNIQUE NOT NULL,
+    APW VARCHAR2(50) NOT NULL,
+    AEMAIL VARCHAR2(50) NOT NULL,
+    ANAME VARCHAR2(50) NOT NULL,
+    ATEL VARCHAR2(50) NOT NULL,
+    ALEVEL VARCHAR2(50) DEFAULT 0 REFERENCES ADMIN_L(ALEVEL),
+    ARDATE DATE DEFAULT SYSDATE
+);
+
+
+
+-- ADMIN LELVE DATA
+INSERT INTO ADMIN_L VALUES(0, 'MANAGER');
+INSERT INTO ADMIN_L VALUES(1, 'HEAD_MANAGER');
+INSERT INTO ADMIN_L VALUES(2, 'MASTER');
+
+SELECT * FROM ADMIN;
+SELECT * FROM ADMIN_L;
+----------------------------------- 희석 ---------------------------------------------
+
+
+
+---------------------------------- 지환 ---------------------------------------------
+-- RYU DDL STORE / STORERE /REQUEST TABLE CREATE AND DROP
+
+-- STORE TABLE
+
+
+CREATE SEQUENCE STORE_SQ MAXVALUE 999999 NOCACHE NOCYCLE;
+CREATE TABLE STORE (
+            SNO        NUMBER(8) PRIMARY KEY, -- 가게 고유 번호
+            OID         VARCHAR2(50) REFERENCES OWNER(OID), -- 사업자 아이디
+            SIMAGE      VARCHAR2(250) NOT NULL, -- 가게 사진
+            SNAME       VARCHAR2(100) NOT NULL, -- 가게 이름
+            SADDRESS    VARCHAR2(250) NOT NULL, -- 가게 주소
+            SLOCATION   VARCHAR2(50) NOT NULL, -- 가게 위치
+            STEL        VARCHAR2(100) NOT NULL, -- 가게 전화번호
+            STYPE       VARCHAR2(100) NOT NULL, -- 가게 종류
+            SPRICE      VARCHAR2(100) NOT NULL, -- 가게 가격대
+            STIME       VARCHAR2(100) NOT NULL, -- 가게 시간대
+            SHOLIDAY    VARCHAR2(100) NOT NULL, -- 가게 휴일
+            SMENU1      VARCHAR2(100) NOT NULL, -- 가게 대표메뉴 1
+            SMENU1COST  VARCHAR2(100) NOT NULL, -- 가게 대표메뉴 1 가격
+            SMENU2      VARCHAR2(100), -- 가게 대표메뉴 2
+            SMENU2COST  VARCHAR2(100), -- 가게 대표메뉴 2 가격
+            SMENU3      VARCHAR2(100), -- 가게 대표메뉴 3
+            SMENU3COST  VARCHAR2(100),  -- 가게 대표메뉴 3 가격
+            SSEARCHTAG  VARCHAR2(100), -- 가게 검색용 태그
+            SCONFIRM    CHAR(1) DEFAULT 'N', -- 가게 등록 여부
+            SREPLYCNT   NUMBER(8) DEFAULT 1, -- 가게 리뷰 갯수
+            SSCORE      NUMBER(8) DEFAULT 5, -- 가게 평점
+            SSTART     NUMBER(2) NOT NULL, -- 가게 여는 시간 (예약용)
+            SEND       NUMBER(2) NOT NULL, -- 가게 닫는 시간 (예약용)
+            SLATI NUMBER(20, 6) DEFAULT 37.57595770501166, -- 가게 위도 (지도용)
+            SLONGTI NUMBER(20, 6) DEFAULT 126.97686668256979 -- 가게 경도 (지도용)
+            );
+
+                  
+-- STOREREVIEW TABLE                   
+
+CREATE SEQUENCE STOREREVIEW_SQ MAXVALUE 999999 NOCACHE NOCYCLE;
+CREATE TABLE STOREREVIEW (
+            SRNO         NUMBER(8) PRIMARY KEY, -- 댓글 고유 번호
+            SNO          NUMBER(8) REFERENCES STORE(SNO), -- 가게 번호
+            MID            VARCHAR2(100) REFERENCES MEMBER (MID), -- 사용자 아이디
+            MPROFILE      VARCHAR2(1000) NOT NULL, -- 사용자 프로필 사진
+            SRCONTENT     VARCHAR2(2000) NOT NULL, -- 리뷰 내용
+            SRIMAGE1      VARCHAR2(500), -- 리뷰 이미지 1
+            SRIMAGE2      VARCHAR2(500), -- 리뷰 이미지 2
+            SRIMAGE3      VARCHAR2(500), -- 리뷰 이미지 3
+            SRIMAGE4      VARCHAR2(500), -- 리뷰 이미지 4
+            SRIMAGE5      VARCHAR2(500), -- 리뷰 이미지 5
+            SRSCORE       NUMBER(3) DEFAULT 0, -- 리뷰 별점
+            SRDATE        DATE DEFAULT SYSDATE -- 리뷰 등록 일시
+    );  
+
+SELECT * FROM STOREREVIEW;
+    
+-- REQUEST TABLE    
+
+CREATE SEQUENCE REQUEST_SQ MAXVALUE 999999 NOCACHE NOCYCLE;
+CREATE TABLE REQUEST (
+            RNO           NUMBER(8) PRIMARY KEY,--  요청 글 번호
+            SNO           NUMBER(8) REFERENCES STORE(SNO), -- 요청한 가게 번호
+            OID           VARCHAR2(50) REFERENCES OWNER(OID), -- 요청한 사장님 아이디
+            AID           VARCHAR2(50), -- 관리자 아이디
+            SNAME         VARCHAR2(100) NOT NULL, -- 요청한 가게 이름
+            RDATE         DATE DEFAULT SYSDATE -- 요청 등록된 일시
+    );     
+SELECT * FROM REQUEST;
+
+-- STORELIKE TABLE 
+
+CREATE SEQUENCE STORELIKE_SQ MAXVALUE 999999 NOCACHE NOCYCLE;
+CREATE TABLE STORELIKE (
+            SLNO NUMBER(8) PRIMARY KEY, -- 좋아요 번호
+            MID  VARCHAR2(50) REFERENCES MEMBER(MID), -- 사용자 아이디
+            SNO  NUMBER(8) REFERENCES STORE(SNO), -- 요청한 가게 번호
+            SNAME VARCHAR2(100) NOT NULL -- 요청한 가게 이름 
+            );
+COMMIT;
+
+
+
+----------------------------------- 지환 ---------------------------------------------
+
+
+
+
+
