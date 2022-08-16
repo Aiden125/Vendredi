@@ -6,21 +6,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Insert title here</title>
-	<link href="${conPath }/css/adminList.css" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	<script>
-		$(document).ready(function(){
-			
-		});
-	</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="${conPath }/css/adminList.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-
 <jsp:include page="../admin/header.jsp"/>
-	요청 리스트 보는 페이지
-	
+
 <div class="content">
 	<table id="main_table"> 
 		<tr>
@@ -38,8 +31,9 @@
 					<td> 
 						${request.oid }
 					</td>
-					<td onclick="trclicked(${request.sno })"> 
-						${request.sname }
+					<td>
+						<a href="${conPath }/store/storeDetailAdminVer.do?sno=${request.sno }">
+						${request.sname }</a>
 					</td>  
 					<td>
 						<fmt:formatDate value="${request.rdate }" pattern="yy년MM월dd일"/>
@@ -52,20 +46,20 @@
 		</c:if>
 	</table>
 </div>
-	<div id="paging" align="center">
+	<div class="center">
 		<c:if test="${paging.startPage> paging.blockSize }">
-		[<a href="${conPath }/request.do?method=requestList&pageNum=${paging.startPage-1}">이전</a>]
+		[<a href="${conPath }/request/requestList.do?pageNum=${paging.startPage-1}" class="dis_inline">이전</a>]
 		</c:if>
 		<c:forEach var="i" begin="${paging.startPage }" end="${paging.endPage}">
 			<c:if test="${i eq paging.currentPage }">
 			[<b style="color : red;">${i}</b>]
 			</c:if>
 			<c:if test="${i != paging.currentPage }">
-			[<a href="${conPath }/request.do?method=requestList&pageNum=${i}">${i}</a>]
+			[<a href="${conPath }/request/requestList.do?pageNum=${i}" class="dis_inline">${i}</a>]
 			</c:if>
 		</c:forEach>
 		<c:if test="${paging.endPage < paging.pageCnt }">
-		[<a href="${conPath }/request.do?method=requestList&pageNum=${paging.endPage +1}">다음</a>]
+		[<a href="${conPath }/request/requestList.do?pageNum=${paging.endPage +1}" class="dis_inline">다음</a>]
 		</c:if>
 	</div>
 </body>
