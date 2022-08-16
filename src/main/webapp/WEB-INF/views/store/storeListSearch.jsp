@@ -52,7 +52,57 @@
 			
 		}
 	</script>
-</head>
+</head> 
+<body>  
+		<div id="paging" align="center"> 
+	<jsp:include page="../main/header.jsp" />
+	</div>
+				<c:if test="${paging.totCnt eq 0 }">
+					<tr>
+						<th colspan="5">등록된 가게가 없습니다.</th>
+					</tr>
+				</c:if>
+	<main>
+	<c:forEach items="${storeList }" var="store">
+		<div class="container">
+			<div class="card login-card">
+				<c:if test="${paging.totCnt != 0 }">
+						<div class="row no-gutters"
+							onclick="location.href='${conPath }/store/storeDetail.do?sno=${store.sno }'">
+							<div class="col-md-3"
+								onclick="location.href='${conPath }/store/storeDetail.do?sno=${store.sno }'">
+								<img src="${conPath }/storeImgFileUpload/${store.simage1}"
+									alt="가게이미지" class="login-card-img"
+									style="height: 350px; width: 200px;">
+							</div>
+							<div class="col-md-5">
+								<div class="card-body" style="width:200px; height:200px;"
+									onclick="location.href='${conPath }/store/storeDetail.do?sno=${store.sno }'">
+									<p class="login-card-description">${store.sname }</p>
+									<div class="person_details m-top-40">
+										<div class="row">
+											<div class="col-md-5 text-left" style="text-align:center;">
+												<p>가게 위치:</p>
+												<p>가게 종류:</p>
+												<p>평점:</p>
+											</div>
+											<div class="col-md-7 text-left" style="text-align:center;">
+												<p>${store.slocation }</p>
+												<p>${store.stype }</p>
+												<p style="color : orange; font-weight: bold">${store.stscore }</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+				</c:if>
+			</div>
+		</div>
+	</c:forEach>
+ 
+		[<a href="${conPath }/store/storeListSearch.do?pageNum=${paging.startPage-1}&ssearchtag=${param.ssearchtag}">이전</a>]
+ 
 <body>
 <jsp:include page="../main/header.jsp" />
 	<section id="hello" class="img">
@@ -76,7 +126,7 @@
 		<c:if test="${paging.totCnt eq 0 }">
 			<tr>
 				<th colspan="5">등록된 가게가 없습니다.</th>
-			</tr>
+			</tr> 
 		</c:if>
 		<div id="storeList">
 			<c:forEach items="${storeList }" var="store">
@@ -126,13 +176,12 @@
 			[<b style="color: red;">${i}</b>]
 			</c:if>
 				<c:if test="${i != paging.currentPage }">
-			[<a
-						href="${conPath }/store.do?method=storeList&pageNum=${i}&schItem=${param.schItem }">${i}</a>]
+			[<a href="${conPath }/store.do?method=storeList&pageNum=${i}">${i}</a>] 
 			</c:if>
 			</c:forEach>
 			<c:if test="${paging.endPage < paging.pageCnt }">
-		[<a
-					href="${conPath }/store.do?method=storeList&pageNum=${paging.endPage +1}&schItem=${param.schItem }">다음</a>]
+		   [<a href="${conPath }/store/storeListSearch.do?pageNum=${paging.endPage +1}&ssearchtag=${param.ssearchtag}">다음</a>]
+ 
 		</c:if>
 		</div>
 	</div>

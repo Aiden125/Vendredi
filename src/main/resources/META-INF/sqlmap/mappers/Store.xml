@@ -44,10 +44,10 @@
 				 sImage1 = #{simage1},
 				 </if>
 				 <if test="simage2 != null and simage != '' ">
-				 sImage1 = #{simage2},
+				 sImage2 = #{simage2},
 				 </if>
 				 <if test="simage3 != null and simage != '' ">
-				 sImage1 = #{simage3},
+				 sImage3 = #{simage3},
 				 </if>
                  sName = #{sname},
                  sAddress = #{saddress},
@@ -108,7 +108,7 @@
 </select> 
 
 <select id="storeScore" parameterType="int" resultType="Store">
-    SELECT SIMAGE, SNAME, SLOCATION, STYPE, ROUND((sScore/sReplycnt), 1) STSCORE FROM STORE WHERE SNO = #{sno} order by STSCORE		 
+    SELECT SIMAGE1, SNAME, SLOCATION, STYPE, ROUND((sScore/sReplycnt), 1) STSCORE FROM STORE WHERE SNO = #{sno} order by STSCORE		 
 </select>
 
 
