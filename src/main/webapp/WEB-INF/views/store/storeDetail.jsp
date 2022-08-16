@@ -77,7 +77,7 @@
 	</c:if>
 	
 <body data-spy="scroll" data-target=".navbar-collapse">
-	<jsp:include page="../main/header.jsp" />
+	<jsp:include page="../main/header2.jsp" />
 	<!--Blog Features Section-->
 	<section id="blog_details" class="blog_details roomy-100">
 		<div class="container">
@@ -149,16 +149,18 @@
 										decima et quinta decima. Eodem modo typi, qui nobisin futurum</p>
 									<p>
 									<ul class="list-inline">
+									<c:if test="${member != null }">
 										<li><a href="#" class="text-black"><input
 												type="button" value="예약 페이지"
-												onclick="location='${conPath}/reservationForm.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'"></a></li>
+												onclick="location='${conPath}/reservationForm.do?sno=${param.sno }&sname=${store.sname }'"></a></li>
+										</c:if>
 										<c:if test="${owner.oid == store.oid || admin != null }">
 											<li><a href="#" class="text-black"><input
 													type="button" value="등록 요청"
-													onclick="location='${conPath}/request/writeRequest.do?sno=${param.sno }&oid=aaa&sname=${store.sname }'"></a></li>
+													onclick="location='${conPath}/request/writeRequest.do?sno=${param.sno }&oid=${owner.oid }&sname=${store.sname }'"></a></li>
 											<li><a href="#" class="text-black"><input
 													type="button" value="가게 정보 수정"
-													onclick="location='${conPath}/store/storeModifyView.do?sno=${param.sno }&oid=aaa'"></a></li>
+													onclick="location='${conPath}/store/storeModifyView.do?sno=${param.sno }&oid=${owner.oid }'"></a></li>
 											<li><a href="#" class="text-black">${store.sholiday }
 											</a></li>
 										</c:if>
@@ -241,13 +243,8 @@
 										</div>
 										<div class="col-sm-4">
 											<div class="form-group">
-												<label for="input-file">리뷰 사진 *</label> <input type="file"
-													name="srimg1" id="input-file" multiple
-													onchange="uploadFileAdded()"> <input type="file"
-													name="srimg2" id="input-file" multiple
-													onchange="uploadFileAdded()"> <input type="file"
-													name="srimg3" id="input-file" multiple
-													onchange="uploadFileAdded()">
+												<label for="input-file">리뷰 사진 *</label>  <input type="file"
+													name="srimg1" id="input-file">
 											</div>
 										</div>
 										<div class="col-sm-12">

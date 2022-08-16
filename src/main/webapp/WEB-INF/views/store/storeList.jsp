@@ -32,7 +32,6 @@
 
 <script
 	src="${conPath}/store/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-
 <link rel="stylesheet" href="${conPath }/store/css/list.css">
 <style>
 </style>
@@ -139,7 +138,7 @@
 	<script src="assets/js/jquery.collapse.js"></script>
 	<script src="assets/js/bootsnav.js"></script>
 	<script src="assets/js/masonry.min.js"></script>
-	
+
 	<script type="text/javascript">
 		var msnry = new Masonry('.blog_area');
 	</script>

@@ -13,7 +13,7 @@
 <script src="${conPath }/js/address.js"></script>
 </head>
 <body>
-	<jsp:include page="../main/header.jsp" />
+	<jsp:include page="../main/header2.jsp" />
 	<div id="middle">
 		<div id="logos">
 			<p>MODIFY</p>

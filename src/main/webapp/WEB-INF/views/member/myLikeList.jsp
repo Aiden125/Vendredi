@@ -120,7 +120,7 @@ span {
 	</script>
 </head>
 <body>
-	<jsp:include page="../main/header.jsp"/>
+	<jsp:include page="../main/header2.jsp"/>
 	<div class="wrap">
 	<div class="form-wrap">
 	<table style="margin : 0 auto;"> 
@@ -154,7 +154,6 @@ span {
 		</div>
 	</div>
 	</div>
-	</div> 
 
 </body>
 </html>

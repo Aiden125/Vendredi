@@ -65,7 +65,7 @@ nav.navbar.bootsnav ul.nav li.active > a{
 }
 
 nav.navbar.bootsnav .navbar-toggle{
-    background-color: #fff !important;
+    background-color: black; !important;
     border: none;
     padding: 0;
     font-size: 18px;
@@ -459,6 +459,7 @@ nav.navbar.bootsnav.navbar-fixed{
     position: fixed;
     display: block;
     width: 100%;
+    background-color: black;
 }
 
 nav.navbar.bootsnav.no-background{
@@ -638,10 +639,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     
     /* Navbar Transparent
     =================================*/  
-    nav.navbar.bootsnav.no-background{
-        background-color: transparent;
-        border: none;
-    }
+   
     
     nav.navbar.bootsnav.navbar-transparent .attr-nav{
         padding-left: 15px;
@@ -999,7 +997,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     }
     
     nav.navbar.bootsnav .navbar-header {
-        float: none;
+        float: left;
         display: block;
         text-align: center;
         padding-left: 30px;
@@ -1008,7 +1006,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     
     nav.navbar.bootsnav .navbar-toggle {
         display: inline-block;
-        float: left;
+        float: none;
         margin-right: -200px;
         margin-top: 10px;
     }

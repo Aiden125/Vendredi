@@ -366,25 +366,10 @@
         <ul>
           <li><a class="nav-link scrollto active" href="index_minwoo.jsp">${member.mname }님</a></li>
           <li><a class="nav-link scrollto" href="${conPath }/member/modify.do">my Page</a></li>
-          <li><a class="nav-link scrollto" href="${conPath }/qna/list.do">QnA</a></li>
           <li><a class="nav-link scrollto " href="${conPath }/store/storeList.do">맛집 리스트</a></li>          
-          <li><a href="blog.html">like</a></li>
+          <li><a class="nav-link scrollto" href="${conPath }/qna/list.do">QnA</a></li>
+          <li><a href="${conPath }/member/myLikeList.do?mid=${mid}">like</a></li>
           <li class="dropdown"><a href="#"><span>최근에 본 맛집</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <li><a class="nav-link scrollto" href="${conPath }/member/logout.do">Logout</a></li>
@@ -401,7 +386,7 @@
           <li><a class="nav-link scrollto active">${owner.oname }님</a></li>
           <li><a class="nav-link scrollto" href="${conPath }/owner/Info.do?oid=${oid}">my Page</a></li>
           <li><a class="nav-link scrollto" href="${conPath }/owner/StoreList.do?oid=${oid}">my Store</a></li>
-          <li><a class="nav-link scrollto " href="${conPath }/owner/ReState.do?oid=${oid}">예약 현황 </a></li>
+          <li><a class="nav-link scrollto " href="${conPath }/owner/ReState.do?oid=${oid}">예약 현황</a></li>
           <li><a href="${conPath }/oboard/List.do">커뮤니티</a></li>
           <li><a class="nav-link scrollto" href="${conPath }/owner/Logout.do">로그아웃</a></li>
          <!--  <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->

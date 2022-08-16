@@ -9,8 +9,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="icon" type="image/png" href="favicon.ico">
-
-<!--Google Fonts link-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet">
 
@@ -22,27 +20,18 @@
 	rel="stylesheet">
 
 
-<link rel="stylesheet" href="assets/css/slick.css">
-<link rel="stylesheet" href="assets/css/slick-theme.css">
-<link rel="stylesheet" href="assets/css/animate.css">
-<link rel="stylesheet" href="assets/css/fonticons.css">
-<link rel="stylesheet" href="assets/css/font-awesome.min.css">
-<link rel="stylesheet" href="assets/css/bootstrap.css">
-<link rel="stylesheet" href="assets/css/magnific-popup.css">
-<link rel="stylesheet" href="assets/css/bootsnav.css">
+<link rel="stylesheet" href="${conPath}/store/css/slick.css">
+<link rel="stylesheet" href="${conPath}/store/css/slick-theme.css">
+<link rel="stylesheet" href="${conPath}/store/css/animate.css">
+<link rel="stylesheet" href="${conPath}/store/css/fonticons.css">
+<link rel="stylesheet" href="${conPath}/store/css/font-awesome.min.css">
+<link rel="stylesheet" href="${conPath}/store/css/bootstrap.css">
+<link rel="stylesheet" href="${conPath}/store/css/magnific-popup.css">
+<link rel="stylesheet" href="${conPath}/store/css/bootsnav.css">
+<link rel="stylesheet" href="${conPath}/store/css/responsive.css" />
 
-
-<!--For Plugins external css-->
-<!--<link rel="stylesheet" href="assets/css/plugins.css" />-->
-
-<!--Theme custom css -->
-<link rel="stylesheet" href="assets/css/style.css">
-<!--<link rel="stylesheet" href="assets/css/colors/maron.css">-->
-
-<!--Theme Responsive css-->
-<link rel="stylesheet" href="assets/css/responsive.css" />
-
-<script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<script
+	src="${conPath}/store/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 <body>
 	<div class="culmn">
@@ -51,13 +40,14 @@
 			<!-- Start Top Search -->
 			<div class="top-search">
 				<div class="container">
-						<form action="${conPath}/store/storeListSearch.do?ssearchtag=${param.ssearchtag}">
-					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-search"></i></span>
-						<input type="text" class="form-control" placeholder="Search">
-						<span class="input-group-addon close-search"><i
-							class="fa fa-times"></i></span>
-					</div>
+					<form
+						action="${conPath}/store/storeListSearch.do?ssearchtag=${param.ssearchtag}">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-search"></i></span>
+							<input type="text" class="form-control" placeholder="Search">
+							<span class="input-group-addon close-search"><i
+								class="fa fa-times"></i></span>
+						</div>
 					</form>
 				</div>
 			</div>
@@ -78,22 +68,54 @@
 						data-target="#navbar-menu">
 						<i class="fa fa-bars"></i>
 					</button>
-					<a class="navbar-brand" href="${conPath }/main.do">Vendredi
-					</a>
+					<a class="navbar-brand" style="font-size: 2em; font-style: bold; line-height: 50px;"
+						href="${conPath }/main.do">Vendredi </a>
 				</div>
 				<!-- End Header Navigation -->
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="navbar-menu">
-					<ul class="nav navbar-nav navbar-right" data-in="fadeInDown"
-						data-out="fadeOutUp">
-						<li><a href="index.html">home</a></li>
-						<li><a href="aboutus.html">about</a></li>
-						<li><a href="model.html">our models</a></li>
-						<li><a href="blog.html">blog</a></li>
-						<li><a href="contactus.html">contact</a></li>
-					</ul>
-				</div>
+				<!--로그인 전 화면  -->
+				<c:if test="${empty member && empty owner }">
+					<div class="collapse navbar-collapse" id="navbar-menu">
+						<ul class="nav navbar-nav navbar-right" data-in="fadeInDown"
+							data-out="fadeOutUp">
+							<li><a href="${conPath }/main.do">Home</a></li>
+							<li><a href="${conPath }/member/loginForm.do">Login</a></li>
+							<li><a href="${conPath }/member/joinForm.do">Join</a></li>
+							<li><a href="${conPath }/store/storeList.do">맛집 리스트</a></li>
+							<li><a href="${conPath }/qna/list.do">Q&A</a></li>
+							<li><a href="contactus.html">contact</a></li>
+						</ul>
+					</div>
+				</c:if>
+				<!-- 고객 로그인 후  -->
+				<c:if test="${not empty member }">
+					<div class="collapse navbar-collapse" id="navbar-menu">
+						<ul class="nav navbar-nav navbar-right" data-in="fadeInDown"
+							data-out="fadeOutUp">
+							<li><a href="${conPath }/main.do">${member.mname }님</a></li>
+							<li><a href="${conPath }/member/modify.do">my
+									Page</a></li>
+							<li><a href="${conPath }/store/storeList.do">맛집 리스트</a></li>
+							<li><a href="${conPath }/qna/list.do">QnA</a></li>
+							<li><a href="${conPath }/member/myLikeList.do?mid=${mid}">Like</a></li>
+							<li><a href="${conPath }/member/logout.do">Logout</a></li>
+						</ul>
+					</div>
+				</c:if>
+				<!--사장님 로그인 후  -->
+				<c:if test="${not empty owner}">
+					<div class="collapse navbar-collapse" id="navbar-menu">
+						<ul class="nav navbar-nav navbar-right" data-in="fadeInDown"
+							data-out="fadeOutUp">
+							<li><a href="${conPath }/main.do">${owner.oname }님</a></li>
+							<li><a href="${conPath }/owner/Info.do?oid=${oid}">my Page</a></li>
+							<li><a href="${conPath }/owner/StoreList.do?oid=${oid}">my Store</a></li>
+							<li><a href="${conPath }/owner/ReState.do?oid=${oid}">예약 현황</a></li>
+							<li><a href="${conPath }/oboard/List.do">커뮤니티</a></li>
+							<li><a href="${conPath }/owner/Logout.do">Logout</a></li>
+						</ul>
+					</div>
+				</c:if>
 				<!-- /.navbar-collapse -->
 			</div>
 
@@ -111,8 +133,6 @@
 	<script src="${conPath}/store/js/slick.min.js"></script>
 	<script src="${conPath}/store/js/jquery.collapse.js"></script>
 	<script src="${conPath}/store/js/bootsnav.js"></script>
-
-
 
 	<script src="assets/js/plugins.js"></script>
 	<script src="assets/js/main.js"></script>
