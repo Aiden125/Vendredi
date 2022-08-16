@@ -62,7 +62,6 @@
 						<th colspan="5">등록된 가게가 없습니다.</th>
 					</tr>
 				</c:if>
-	<main>
 	<c:forEach items="${storeList }" var="store">
 		<div class="container">
 			<div class="card login-card">
