@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style>
 * {
 	margin: 0;
@@ -203,7 +204,7 @@ naverLogin.init();
 			</c:when>
 		</c:choose>
 	</div>
-		
+	
 	<script>
 		var x = document.getElementById("login");
 		var y = document.getElementById("register");
@@ -221,6 +222,5 @@ naverLogin.init();
 			z.style.left = "110px";
 		}
 	</script>
-
 </body>
 </html>

@@ -24,7 +24,7 @@
 			history.back();
 		</script>
 	</c:if>
-	<jsp:include page="../main/header.jsp" />
+	<jsp:include page="../main/header2.jsp" />
 	<div id="logos">
 		<p>QNA상세보기</p>
 	</div>
@@ -47,11 +47,11 @@
 						<button class="btn"
 							onclick="location='${conPath}/qna/modifyView.do?qno=${qDto.qno }&pageNum=${param.pageNum }'">수정</button>
 					</c:if> 
-					<c:if test="${member.mid eq qDto.qid or not empty admin}">
+					<c:if test="${member.mid eq qDto.qid || not empty admin}">
 						<button class="btn"
 							onclick="location='${conPath}/qna/delete.do?qno=${qDto.qno }&pageNum=${param.pageNum }'">삭제</button>
 					</c:if> 
-					<c:if test="${not empty admin and empty member.mid }">
+					<c:if test="${not empty admin && empty member.mid }">
 						<button class="btn"
 							onclick="location='${conPath}/qna/reply.do?qno=${qDto.qno }&pageNum=${param.pageNum }&aid=${admin.aid }'">답변</button>
 					</c:if> 
@@ -62,13 +62,27 @@
 		</table>
 	<!-- 답변글 영역 -->
 	<c:if test="${not empty replyDto }">
-		<div id="border" class="whitebox">
+		<div id="border">
 			<p class="title left font2_0">관리자 답변</p>
 			<hr color="#4B89DC" class="blue"><br>
 			<p class="content_box">${replyDto.qcontent }</p>
 		</div>
 	</c:if>
 	</div>
-	<jsp:include page="../main/footer.jsp" />
+
+	<script src="${conPath}/store/js/vendor/jquery-1.11.2.min.js"></script>
+	<script src="${conPath}/store/js/vendor/bootstrap.min.js"></script>
+
+	<script src="${conPath}/store/js/isotope.min.js"></script>
+	<script src="${conPath}/store/js/jquery.magnific-popup.js"></script>
+	<script src="${conPath}/store/js/jquery.easing.1.3.js"></script>
+	<script src="${conPath}/store/js/slick.min.js"></script>
+	<script src="${conPath}/store/js/jquery.collapse.js"></script>
+	<script src="${conPath}/store/js/bootsnav.js"></script>
+
+
+
+	<script src="assets/js/plugins.js"></script>
+	<script src="assets/js/main.js"></script>
 </body>
 </html>

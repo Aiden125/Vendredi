@@ -8,6 +8,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="icon" type="image/png" href="favicon.ico">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet">
+
+<link
+	href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i"
+	rel="stylesheet">
+
+
+<link rel="stylesheet" href="${conPath}/store/css/slick.css">
+<link rel="stylesheet" href="${conPath}/store/css/slick-theme.css">
+<link rel="stylesheet" href="${conPath}/store/css/animate.css">
+<link rel="stylesheet" href="${conPath}/store/css/fonticons.css">
+<link rel="stylesheet" href="${conPath}/store/css/font-awesome.min.css">
+<link rel="stylesheet" href="${conPath}/store/css/bootstrap.css">
+<link rel="stylesheet" href="${conPath}/store/css/magnific-popup.css">
+<link rel="stylesheet" href="${conPath}/store/css/bootsnav.css">
+<link rel="stylesheet" href="${conPath}/store/css/responsive.css" />
+
+<script
+	src="${conPath}/store/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 <link rel="stylesheet" href="${conPath }/assets/css/qnalist.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
@@ -48,8 +72,7 @@
 	<c:if test="${replyResult eq FAIL }">
 		<script>alert('답변쓰기 실패');</script>
 	</c:if>
-	
-	<jsp:include page="../main/header.jsp"/>
+	<jsp:include page="../main/header2.jsp"/>
 	  <div id="logos">
 			<p>FAQ</p>
          </div>
@@ -111,5 +134,22 @@
 		</c:if>
 	</div>
 	</div> <!-- wrap -->
+	<script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+	<script src="assets/js/vendor/bootstrap.min.js"></script>
+
+	<script src="assets/js/isotope.min.js"></script>
+	<script src="assets/js/jquery.magnific-popup.js"></script>
+	<script src="assets/js/jquery.easing.1.3.js"></script>
+	<script src="assets/js/slick.min.js"></script>
+	<script src="assets/js/jquery.collapse.js"></script>
+	<script src="assets/js/bootsnav.js"></script>
+	<script src="assets/js/masonry.min.js"></script>
+
+	<script type="text/javascript">
+		var msnry = new Masonry('.blog_area');
+	</script>
+
+	<script src="assets/js/plugins.js"></script>
+	<script src="assets/js/main.js"></script>
 </body>
 </html>
