@@ -10,6 +10,6 @@
 	<title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="store/storeList.do"/>
+	<jsp:forward page="main.do"/>
 </body>
 </html>

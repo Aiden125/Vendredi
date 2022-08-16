@@ -47,12 +47,15 @@
 	font-size:1.3em;
 	}
 	#content .btn{
-	width:100px;
-	height:30px;
-	margin-left:25px;
-	background-color: #757169;
-	color:white;
-	border:none;
+			margin:  80px 0;
+            background: #fff;
+            border-color: black;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
 	}
 	#content input[type="text"]{
 	height:25px;
@@ -119,8 +122,8 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="정보 수정">
-					<input type="button" value="회원탈퇴" onclick="location.href='DeleteForm.do?oid=${oid}'">
+					<input type="submit" value="정보 수정" class="btn">
+					<input type="button" value="회원탈퇴" class="btn" onclick="location.href='DeleteForm.do?oid=${oid}'">
 				</td>
 			</tr>
 		</table>

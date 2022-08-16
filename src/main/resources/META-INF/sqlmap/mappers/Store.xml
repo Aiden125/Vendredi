@@ -44,10 +44,10 @@
 				 sImage1 = #{simage1},
 				 </if>
 				 <if test="simage2 != null and simage != '' ">
-				 sImage1 = #{simage2},
+				 sImage2 = #{simage2},
 				 </if>
 				 <if test="simage3 != null and simage != '' ">
-				 sImage1 = #{simage3},
+				 sImage3 = #{simage3},
 				 </if>
                  sName = #{sname},
                  sAddress = #{saddress},
@@ -87,7 +87,7 @@
 <select id="storeList" parameterType="Store" resultMap="storeResult">
 	SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SNO, SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+    (SELECT SNO, SIMAGE1, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE where sConfirm = 'Y' order by sno desc)A)
      WHERE RN BETWEEN #{startRow} AND #{endRow}
 </select>
@@ -95,20 +95,20 @@
 <select id="storeListSearch" parameterType="Store" resultMap="storeResult">
 	SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SNO, SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
+    (SELECT SNO, SIMAGE1, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE 
      FROM STORE where sSearchtag like '%'||#{ssearchtag}||'%' and sConfirm = 'Y' order by STSCORE desc)A)
      WHERE RN BETWEEN #{startRow} AND #{endRow} 
 </select>
 <select id="myStoreList" parameterType="Store" resultMap="storeResult">
 	SELECT * FROM
     (SELECT ROWNUM RN, A.* FROM
-    (SELECT SNO, SIMAGE, SNAME, SLOCATION, STYPE 
+    (SELECT SNO, SIMAGE1, SNAME, SLOCATION, STYPE 
      FROM STORE where oid = #{oid} order by sno desc)A)
      WHERE RN BETWEEN #{startRow} AND #{endRow} 
 </select> 
 
 <select id="storeScore" parameterType="int" resultType="Store">
-    SELECT SIMAGE, SNAME, SLOCATION, STYPE, ROUND((sScore/sReplycnt), 1) STSCORE FROM STORE WHERE SNO = #{sno} order by STSCORE		 
+    SELECT SIMAGE1, SNAME, SLOCATION, STYPE, ROUND((sScore/sReplycnt), 1) STSCORE FROM STORE WHERE SNO = #{sno} order by STSCORE		 
 </select>
 
 

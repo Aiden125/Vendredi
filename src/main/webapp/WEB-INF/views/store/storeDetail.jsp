@@ -75,6 +75,12 @@
 			alert("가게 정보 수정에 실패하였습니다.");
 		</script>
 	</c:if>
+<<<<<<< HEAD
+	<c:if test="${not empty reservation }">
+		<script>
+			alert("예약이 완료되었습니다");
+		</script>
+	</c:if>
 	<script>
 	// 업로드할 파일이 선택되어 추가될 경우 발생하는 이벤트
 	function uploadFileAdded() {
@@ -90,6 +96,9 @@
 	    
 	}
 	</script>
+=======
+	
+>>>>>>> 35835bf93fd576dc19d94d75e99b0f1a038d434d
 <body data-spy="scroll" data-target=".navbar-collapse">
 	<jsp:include page="../main/header.jsp" />
 	<!--Blog Features Section-->
@@ -102,11 +111,11 @@
 
 						<div class="blog_details_left">
 							<div class="blog_details_img">
-								<img src="${conPath }/storeImgFileUpload/${store.simage }"
+								<img src="${conPath }/storeImgFileUpload/${store.simage1 }"
 									alt="가게 이미지" style="width: 200px; height: 200px;" />
-									<img src="${conPath }/storeImgFileUpload/${store.simage }"
+									<img src="${conPath }/storeImgFileUpload/${store.simage2 }"
 									alt="가게 이미지" style="width: 200px; height: 200px;" />
-									<img src="${conPath }/storeImgFileUpload/${store.simage }"
+									<img src="${conPath }/storeImgFileUpload/${store.simage3 }"
 									alt="가게 이미지" style="width: 200px; height: 200px;" />
 							</div>
 							
@@ -225,26 +234,7 @@
 														<img alt="리뷰 이미지"
 															src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage1}"
 															width="75px">
-														<c:if test="${storeReview.srimage2 != null} ">
-															<img alt="리뷰 이미지"
-																src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage2}"
-																width="75px">
-														</c:if>
-														<c:if test="${storeReview.srimage3 != null} ">
-															<img alt="리뷰 이미지"
-																src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage3}"
-																width="75px">
-														</c:if>
-														<c:if test="${storeReview.srimage4 != null} ">
-															<img alt="리뷰 이미지"
-																src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage4}"
-																width="75px">
-														</c:if>
-														<c:if test="${storeReview.srimage5 != null} ">
-															<img alt="리뷰 이미지"
-																src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage5}"
-																width="75px">
-														</c:if>
+														
 													</p>
 												</article>
 

@@ -33,3 +33,9 @@ INSERT INTO ADMIN_L VALUES(2, 'MASTER');
 
 SELECT * FROM ADMIN;
 SELECT * FROM ADMIN_L;
+<<<<<<< HEAD
+=======
+
+commit;
+
+>>>>>>> 03415d39ff700aefde3d3bc3a2da45619824d157

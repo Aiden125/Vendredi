@@ -11,20 +11,52 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 	<style>
 		#content{
-			width:1000px;
-			height:800px;
-			padding:0;
-			margin:0 auto;
+			width: 600px;
+	        height : 300px;
+	        margin: 0 auto;
+	        max-width: 500px;
+	        margin-top: 200px;
+	        margin-bottom:80px;
+	        padding: 20px;
+	        background: #fff;
+	        -webkit-border-radius: 10px;
+	        -moz-border-radius: 10px;
+	        border-radius: 10px;
+	        -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	        -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
 		}
 		#content table{
-			width: 400px;
-			height: 300px;
-			margin: 100px auto;
-			padding: 50px 50px;
 		}
-		#content caption{
+		#content table tr td{
+			width:300px;
 			text-align: center;
-			font-size: 1.5em;
+			padding-top:10px;
+		}
+		#content textarea{
+			width:230px;
+			padding-top:10px;
+			margin-left: 30px;
+			border:none;
+		}
+		#content input{
+			border-left:none;
+			border-right:none;
+			border-top:none;
+		}
+		#content .btn{
+			margin:  80px 0;
+            background: #fff;
+            border-color: black;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+		}
+		h2{
+			text-align: center;
 		}
 	</style>
 </head>
@@ -32,21 +64,21 @@
 <jsp:include page="../main/header.jsp"/>
 <div id="content">
 	<form action="${conPath }/owner/SearchId.do" method="get">
+		<h2>Search Your ID</h2>
 		<table>
-		<caption>ID 찾기</caption>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" name="oname"></td>
+				<td><input type="text" name="oname" placeholder="name"></td>
 			</tr>
 			<tr>
 				<td>E-MAIL</td>
-				<td><input type="email" name="oemail"></td>
+				<td><input type="email" name="oemail" placeholder="e-mail"></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="ID찾기">
-					<input type="button" value="PW찾기" onclick="location.href='SearchPwForm.do'">
-					<input type="button" value="로그인하기" onclick="location.href='LoginForm.do'">
+					<input type="submit" value="ID찾기" class="btn">
+					<input type="button" value="PW찾기" class="btn" onclick="location.href='SearchPwForm.do'">
+					<input type="button" value="로그인하기" class="btn" onclick="location.href='LoginForm.do'">
 				</td>
 			</tr>
 		</table>

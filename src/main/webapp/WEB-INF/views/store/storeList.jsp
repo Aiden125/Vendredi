@@ -62,7 +62,7 @@ margin-left: 30px;
 							onclick="location.href='${conPath }/store/storeDetail.do?sno=${store.sno }'">
 							<div class="col-md-3"
 								onclick="location.href='${conPath }/store/storeDetail.do?sno=${store.sno }'">
-								<img src="${conPath }/storeImgFileUpload/${store.simage}"
+								<img src="${conPath }/storeImgFileUpload/${store.simage1}"
 									alt="가게이미지" class="login-card-img"
 									style="height: 350px; width: 200px;">
 							</div>

@@ -20,10 +20,6 @@
 <select id="oboardComList" parameterType="int" resultMap="ownerResult">
 	SELECT * FROM BOARD_COMMENT WHERE BNO=#{bno} ORDER BY CNO
 </select>
-<!-- 댓글 수정 -->
-<update id="oboardComModify" parameterType="OboardCom">
-	UPDATE BOARD_COMMENT SET CCONTENT = #{ccontent}
-</update>
 <!-- 댓글 삭제 -->
 <delete id="oboardComDelete" parameterType="int">
 	DELETE FROM BOARD_COMMENT WHERE CNO= #{cno}
