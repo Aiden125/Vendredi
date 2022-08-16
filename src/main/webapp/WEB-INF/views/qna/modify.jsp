@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="${conPath }/assets/css/boardwrite.css">
 </head>
 <body>
-	<jsp:include page="../main/header.jsp"/>
+	<jsp:include page="../main/header2.jsp"/>
 	<div id="logos">
 		<p>QNA_MODIFY</p>
 	</div>
