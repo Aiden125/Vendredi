@@ -10,9 +10,9 @@
 	<title>Insert title here</title>
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 	<style>
-		#cotent{
-			width:1000px;
-			height:1000px;
+		#content{
+			width:100%;
+			height:100%;
 		}
 		#content table{
 			width:800px;
@@ -41,7 +41,7 @@
 			text-align: center;
 		}
 		#content .btn{
-			margin:  50px 0 0 120px;
+			margin:  30px 0;
             background: #fff;
             border-color: black;
             -webkit-border-radius: 10px;
@@ -71,9 +71,13 @@
 		</script>
 	</c:if>
 	<div id="content">
-	<h1>사장님게시판</h1>
-	<input type="button" class="btn" value="글쓰기" onclick="location.href='${conPath}/oboard/WriteForm.do'">
+	<h1>OWNER VOICE</h1>
 		<table>
+		<tr>
+			<td>
+				<input type="button" class="btn" value="글쓰기" onclick="location.href='${conPath}/oboard/WriteForm.do'">
+			</td>
+		</tr>
 			<tr>
 				<th>ID</th>
 				<th>가게명</th>

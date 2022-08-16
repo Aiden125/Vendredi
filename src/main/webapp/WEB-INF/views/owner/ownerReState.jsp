@@ -11,24 +11,53 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 	<style>
 		#content{
-			width:1000px;
-			height:500px;
-			margin:0 auto;
+			width:100%;
+			height:100%;
 		}
 		#content table{
-			margin:100px auto;
+			width:800px;
+			margin: 80px auto;
+			border-collapse: collapse;
 			text-align: center;
 		}
-		#content th{
-			margin:50px;
+		#content caption{
+			margin : 40px auto;
+		}
+		#content tr{
+			border-bottom: 1px solid;
+			height: 50px;
+			width: 100px;
+		}
+		#content .paging{
+			margin-bottom : 80px;
+			text-align: center;
+		}
+		#content .btitle{
+			border: none;
+			width: 150px;
+		}
+		#content h2{
+			margin-top: 120px;
+			text-align: center;
+		}
+		#content .btn{
+			margin:  30px 0;
+            background: #fff;
+            border-color: black;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
 		}
 	</style>
 </head>
 <body>
 <jsp:include page="../main/header.jsp"/>
 	<div id="content">
+		<h2>Reservation</h2>
 		<table>
-			<caption>Reservation</caption>
 			<tr>
 				<th>가게명</th>
 				<th>예약자 ID</th>
@@ -51,7 +80,7 @@
 							${res.rdate}
 						</td>
 						<td>
-							${res.rtime}
+							${res.rtime}:00
 						</td>
 						<td>
 							${res.rmember}

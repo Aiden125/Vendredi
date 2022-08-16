@@ -75,6 +75,11 @@
 			alert("가게 정보 수정에 실패하였습니다.");
 		</script>
 	</c:if>
+	<c:if test="${not empty reservation }">
+		<script>
+			alert("예약이 완료되었습니다");
+		</script>
+	</c:if>
 	<script>
 	// 업로드할 파일이 선택되어 추가될 경우 발생하는 이벤트
 	function uploadFileAdded() {
@@ -102,11 +107,11 @@
 
 						<div class="blog_details_left">
 							<div class="blog_details_img">
-								<img src="${conPath }/storeImgFileUpload/${store.simage }"
+								<img src="${conPath }/storeImgFileUpload/${store.simage1 }"
 									alt="가게 이미지" style="width: 200px; height: 200px;" />
-									<img src="${conPath }/storeImgFileUpload/${store.simage }"
+									<img src="${conPath }/storeImgFileUpload/${store.simage2 }"
 									alt="가게 이미지" style="width: 200px; height: 200px;" />
-									<img src="${conPath }/storeImgFileUpload/${store.simage }"
+									<img src="${conPath }/storeImgFileUpload/${store.simage3 }"
 									alt="가게 이미지" style="width: 200px; height: 200px;" />
 							</div>
 							
