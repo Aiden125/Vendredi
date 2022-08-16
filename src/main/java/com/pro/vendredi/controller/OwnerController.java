@@ -124,7 +124,7 @@ public class OwnerController {
 	@RequestMapping(value="/StoreList", method = RequestMethod.GET)
 	public String ownerStoreList(String oid, Model model) {
 		model.addAttribute("storeList", ownerService.ownerStoreList(oid));
-		return "owner/ownerStoreList";
+		return "store/myStoreList";
 	}
 	// 내 가게 상세보기
 	@RequestMapping(value="/StoreDetail", method = RequestMethod.GET)

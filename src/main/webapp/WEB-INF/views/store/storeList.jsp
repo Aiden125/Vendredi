@@ -49,8 +49,14 @@
 </script>
 </head>
 <body>
-	<jsp:include page="../main/header2.jsp" />
-	<section id="hello" class="img">
+<jsp:include page="../main/header.jsp"/>
+				<c:if test="${paging.totCnt eq 0 }">
+					<tr>
+						<th colspan="5">등록된 가게가 없습니다.</th>
+					</tr>
+				</c:if>
+	<c:forEach items="${storeList }" var="store">
+
 		<div class="container">
 			<div class="row">
 				<div class="main_home text-center">

@@ -99,6 +99,8 @@
 		});
 	});
 </script>
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	<script src="${conPath }/js/address.js"></script>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -151,9 +153,18 @@
 				</td>
 			</tr>
 			<tr>
-				<th>주소</th>
+				<td>우편번호</td>
 				<td>
-					<input type="text" name="oaddress" value="${owner.oaddress }">
+					<input type="text" id="sample4_postcode" name="mpost" class="text_box"  placeholder="우편번호">
+					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+				</td>
+			</tr>
+			<tr>
+				<td>주소</td>
+				<td>
+					<input type="text" id="sample4_roadAddress" name="oaddress"  placeholder="도로명주소">
+					<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소">
+					<span id="guide"></span>
 				</td>
 			</tr>
 			<tr>
