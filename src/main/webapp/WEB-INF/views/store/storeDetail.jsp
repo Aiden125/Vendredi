@@ -75,6 +75,7 @@
 			alert("가게 정보 수정에 실패하였습니다.");
 		</script>
 	</c:if>
+<<<<<<< HEAD
 	<c:if test="${not empty reservation }">
 		<script>
 			alert("예약이 완료되었습니다");
@@ -95,6 +96,9 @@
 	    
 	}
 	</script>
+=======
+	
+>>>>>>> 35835bf93fd576dc19d94d75e99b0f1a038d434d
 <body data-spy="scroll" data-target=".navbar-collapse">
 	<jsp:include page="../main/header.jsp" />
 	<!--Blog Features Section-->
@@ -230,26 +234,7 @@
 														<img alt="리뷰 이미지"
 															src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage1}"
 															width="75px">
-														<c:if test="${storeReview.srimage2 != null} ">
-															<img alt="리뷰 이미지"
-																src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage2}"
-																width="75px">
-														</c:if>
-														<c:if test="${storeReview.srimage3 != null} ">
-															<img alt="리뷰 이미지"
-																src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage3}"
-																width="75px">
-														</c:if>
-														<c:if test="${storeReview.srimage4 != null} ">
-															<img alt="리뷰 이미지"
-																src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage4}"
-																width="75px">
-														</c:if>
-														<c:if test="${storeReview.srimage5 != null} ">
-															<img alt="리뷰 이미지"
-																src="${conPath }/storeReviewImgFileUpload/${storeReview.srimage5}"
-																width="75px">
-														</c:if>
+														
 													</p>
 												</article>
 

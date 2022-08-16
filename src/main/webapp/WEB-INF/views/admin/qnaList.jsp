@@ -10,6 +10,9 @@
 <title>Insert title here</title>
 <link href="${conPath }/css/adminList.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	
+</script>
 </head>
 <body>
 	<c:set var="SUCCESS" value="1"/>
