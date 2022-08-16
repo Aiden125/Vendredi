@@ -86,6 +86,19 @@ public class StoreController {
 			return "store/myStoreList";
 		}
 	
+		
+		
+	
+		
+	// 희석 추가
+	@RequestMapping(value = "storeDetailAdminVer", method = { RequestMethod.GET, RequestMethod.POST })
+	public String storeDetailAdminVer(int sno, Model model, String pageNum, StoreReview storeReview) {
+		model.addAttribute("store", storeService.storeDetail(sno));
+		model.addAttribute("storeLike", storeLikeService.likeDetail(sno));
+		model.addAttribute("storeReviewList", storeReviewService.storeReviewList(storeReview, pageNum, sno) );
+		model.addAttribute("paging", new Paging(storeReviewService.reviewCnt(sno), pageNum, 3, 1));
+		return "admin/storeDetail";
+	} 
 	
 //	// --------------------------------storeReview----------------------------------------------------
 //	
