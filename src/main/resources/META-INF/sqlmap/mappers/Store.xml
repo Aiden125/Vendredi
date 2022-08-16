@@ -110,13 +110,7 @@
 <select id="storeScore" parameterType="int" resultType="Store">
     SELECT SIMAGE1, SNAME, SLOCATION, STYPE, ROUND((sScore/sReplycnt), 1) STSCORE FROM STORE WHERE SNO = #{sno} order by STSCORE		 
 </select>
-
-
-
-
-
-
-
+ 
 
 	
 </mapper>

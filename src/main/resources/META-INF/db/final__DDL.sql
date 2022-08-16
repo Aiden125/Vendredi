@@ -161,7 +161,9 @@ CREATE SEQUENCE STORE_SQ MAXVALUE 999999 NOCACHE NOCYCLE;
 CREATE TABLE STORE (
             SNO        NUMBER(8) PRIMARY KEY, -- 가게 고유 번호
             OID         VARCHAR2(50) REFERENCES OWNER(OID), -- 사업자 아이디
-            SIMAGE      VARCHAR2(250) NOT NULL, -- 가게 사진
+            SIMAGE1     VARCHAR2(250) NOT NULL, -- 가게 사진
+            SIMAGE2     VARCHAR2(250) NOT NULL, -- 가게 사진
+            SIMAGE3     VARCHAR2(250) NOT NULL, -- 가게 사진
             SNAME       VARCHAR2(100) NOT NULL, -- 가게 이름
             SADDRESS    VARCHAR2(250) NOT NULL, -- 가게 주소
             SLOCATION   VARCHAR2(50) NOT NULL, -- 가게 위치
@@ -197,10 +199,6 @@ CREATE TABLE STOREREVIEW (
             MPROFILE      VARCHAR2(1000) NOT NULL, -- 사용자 프로필 사진
             SRCONTENT     VARCHAR2(2000) NOT NULL, -- 리뷰 내용
             SRIMAGE1      VARCHAR2(500), -- 리뷰 이미지 1
-            SRIMAGE2      VARCHAR2(500), -- 리뷰 이미지 2
-            SRIMAGE3      VARCHAR2(500), -- 리뷰 이미지 3
-            SRIMAGE4      VARCHAR2(500), -- 리뷰 이미지 4
-            SRIMAGE5      VARCHAR2(500), -- 리뷰 이미지 5
             SRSCORE       NUMBER(3) DEFAULT 0, -- 리뷰 별점
             SRDATE        DATE DEFAULT SYSDATE -- 리뷰 등록 일시
     );  

@@ -2,11 +2,14 @@
 
 -- table store
 -- 1. storeRegister / 가게 등록하기
-insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, sTime, sHoliday,
-            sMenu1 , sMenu1cost , sMenu2, sMenu2cost, sMenu3, sMenu3cost, sSearchtag, sstart, sEnd) 
-values (store_sq.nextval, 'aaa', 'noimg.jpg', 'noimg.jpg', 'noimg.jpg', '군옥각2', '리월시 취헌부', '강남', '070-8888-8888', '중식, 중국요리, 짜장면', '2만원-4만원대',  
-        '11:00-20:00', '금요일', '짜장면', '5000원', '짬뽕', '6000원', '탕수육', '10000원',
-        '#강남#강남역#강남역맛집#중국집#중화요리#중국요리', 11, 20);
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
+                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
+                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values (store_sq.nextval, 'owner2', 'dosanpark005_1.jpg', 'dosanpark005_2.jpg', 'dosanpark005_3.jpg', 
+        '세시셀라', '서울특별시 강남구 도산대로45길 10-4 삼경빌딩 1F' ,'강남', '02-3448-7100', 
+        '디저트 / 케익, 밀크티', '1만원 대', '오전 11시 - 오후 11시', 
+        '월요일', '오늘의 밀크티', '7500원', '당근케이크', '8000원', '아이스크림', '8500원',
+        '#디저트#케이크#밀크티#압구정로데오역#도산공원', 11, 23);
         
 -- 2. storeModify / 가게 정보 수정하기
 update store set sImage1 = 'modify.jpg',
@@ -40,7 +43,7 @@ commit;
 
 -- 5. storeScore 해당 가게 평점 출력하기 (메인 페이지에 이와 같이 출력)
                  
-SELECT SIMAGE, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE FROM STORE where sNo = 1 order by stscore;
+SELECT SIMAGE1, SNAME,  SLOCATION, STYPE, Round((sScore/sReplycnt), 1) STSCORE FROM STORE where sNo = 1 order by stscore;
 
 -- 5. 0. storeCnt 등록 완료된 가게 숫자세기
 
@@ -88,9 +91,9 @@ UPDATE STORE SET   sReplycnt = sReplycnt +1 ,
 
 -- 1. reviewWrite / 가게의 리뷰 쓰기
 insert into storereview (srNo, sNo, mId, mProfile, srContent, 
-    srImage1, srImage2, srImage3, srImage4, srImage5, srScore, srDate ) 
+    srImage1, srScore ) 
 VALUES (storereview_sq.NEXTVAL, 3, 'aaa', 'noImg.jpg', '여기 너무 맛있어요',
-        'noImg.png', 4 , sysdate); 
+        'noImg.png', 4 ); 
                
          
 -- 1. - 1. addScore / 가게의 평점 등록 (reviewWrite와 동시에 이뤄지며 score + 숫자에는 srScore 가 들어갈 예정)         
