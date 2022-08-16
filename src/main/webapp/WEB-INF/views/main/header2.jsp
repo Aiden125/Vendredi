@@ -44,7 +44,7 @@
 						action="${conPath}/store/storeListSearch.do?ssearchtag=${param.ssearchtag}">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-search"></i></span>
-							<input type="text" class="form-control" placeholder="Search">
+							<input type="text" class="form-control" placeholder="Search" name="ssearchtag" value="${param.ssearchtag}">
 							<span class="input-group-addon close-search"><i
 								class="fa fa-times"></i></span>
 						</div>
@@ -97,7 +97,7 @@
 									Page</a></li>
 							<li><a href="${conPath }/store/storeList.do">맛집 리스트</a></li>
 							<li><a href="${conPath }/qna/list.do">QnA</a></li>
-							<li><a href="${conPath }/member/myLikeList.do?mid=${mid}">Like</a></li>
+							<li><a href="${conPath }/storeLike/myLikeList.do?mid=${member.mid}">Like</a></li>
 							<li><a href="${conPath }/member/logout.do">Logout</a></li>
 						</ul>
 					</div>
