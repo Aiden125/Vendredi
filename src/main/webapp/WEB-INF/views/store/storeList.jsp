@@ -51,6 +51,7 @@
 <body>
 	<jsp:include page="../main/header2.jsp" />
 	<section id="hello" class="img">
+<<<<<<< HEAD
 		<div class="overlay">
 		<img src="${conPath }/assets/img/디저트.jpg" alt="" style="width: 100%; height: 15%" >
 		</div>
@@ -64,7 +65,18 @@
 				</div>
 			</div>
 			<!--End off row-->
-		</div>
+		</div> 
+		<div class="container">
+			<div class="row">
+				<div class="main_home text-center">
+					<div class="home_text">
+						<br /> <br />
+						<h1 class="text-uppercase">맛집 리스트</h1>
+					</div>
+				</div>
+			</div>
+			<!--End off row-->
+		</div> 
 		<!--End off container -->
 	</section>
 	<div id="section">
@@ -112,8 +124,7 @@
 
 		<div id="paging" align="center">
 		<c:if test="${paging.startPage> paging.blockSize }">
-		[<a
-				href="${conPath }/store.do?method=storeList&pageNum=${paging.startPage-1}">이전</a>]
+		[<a href="${conPath }/store.do?method=storeList&pageNum=${paging.startPage-1}">이전</a>]
 		</c:if>
 		<c:forEach var="i" begin="${paging.startPage }"
 			end="${paging.endPage}">
@@ -121,8 +132,7 @@
 			[<b style="color: red;">${i}</b>]
 			</c:if>
 			<c:if test="${i != paging.currentPage }">
-			[<a
-					href="${conPath }/store.do?method=storeList&pageNum=${i}">${i}</a>]
+			[<a href="${conPath }/store.do?method=storeList&pageNum=${i}">${i}</a>]
 			</c:if>
 		</c:forEach>
 		<c:if test="${paging.endPage < paging.pageCnt }">

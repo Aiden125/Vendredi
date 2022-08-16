@@ -41,7 +41,7 @@ public class QnAController {
 	@RequestMapping(value="/detail", method= {RequestMethod.GET,RequestMethod.POST})
 	public String detail(int qno, int qgroup, Model model) {
 		model.addAttribute("qDto",qnaService.qnaDetail(qno));
-		model.addAttribute("qDto", qnaService.qnaReplyDetail(qgroup));
+		model.addAttribute("replyDto", qnaService.qnaReplyDetail(qgroup));
 		return "qna/detail";
 	}
 	//문의글 수정 뷰단(조회수 안올리는 용도)

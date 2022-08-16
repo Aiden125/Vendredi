@@ -1,33 +1,6 @@
 @charset "UTF-8";
 @charset "UTF-8";
-	#lnb {
-                margin: 5px auto;
-                width: 80%;
-                border-top:1px dashed gray;
-                border-bottom: 1px dashed gray;
-                height: 50px;
-            }
-
-                 #lnb ul {
-                    overflow: hidden;
-                    height: 50px;
-                }
-
-                     #lnb ul li {
-                        list-style: none;
-                        float: left;
-                        line-height: 50px;
-                        width: 25%;
-                        text-align: center;
-                    }
-
-                         #lnb ul li a {
-                            font-family: 'IBM Plex Sans KR', sans-serif;
-                            text-decoration: none;
-                            color: black;
-                            font-size:1.0em;
-                            
-                        }
+	
 #logos{
 	width:500px;
 	margin:20px auto;
@@ -44,11 +17,15 @@
 }
 
 #wrap{
-	width:1000px;
-	margin: 10px auto;
-	margin-top:30px;
+	width:100%;
+	height:100%;
 	
 }
+#wrap h1{
+	margin-top: 120px;
+	text-align: center;
+}
+
 #writeform{
 	width:700px;
 	height:50px;

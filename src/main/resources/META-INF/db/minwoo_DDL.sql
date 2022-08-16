@@ -78,3 +78,4 @@ INSERT INTO MEMBER VALUES('kang', '강동원','1', '010-4321-4321','kang@naver.c
 
 select * from member;
 select * from qna ;
+commit;

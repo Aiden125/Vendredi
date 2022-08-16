@@ -46,6 +46,21 @@
 
 <script
 	src="${conPath}/store/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+	<script>
+	// 업로드할 파일이 선택되어 추가될 경우 발생하는 이벤트
+	function uploadFileAdded() {
+	    var uploadFiles = document.getElementById("uploadFiles")
+	    for (var i = 0; i < uploadFiles.files.length; i++) {
+	        var file = uploadFiles.files[i];
+	        // 비동기 파일 업로드를 시작한다.
+	        var uploader = new Uploader(file);
+	        uploader.startUpload();
+	    }
+	    // 폼을 리셋해서 uploadFiles에 출력된 선택 파일을 초기화시킨다.
+	    document.getElementById("uploadForm").reset();
+	    
+	}
+	</script>
 <style>
 .input-file-button {
 	padding: 6px 25px;
@@ -75,25 +90,14 @@
 			alert("가게 정보 수정에 실패하였습니다.");
 		</script>
 	</c:if>
+
 	<c:if test="${not empty reservation }">
 		<script>
 			alert("예약이 완료되었습니다");
 		</script>
 	</c:if>
-	<script>
-	// 업로드할 파일이 선택되어 추가될 경우 발생하는 이벤트
-	function uploadFileAdded() {
-	    var uploadFiles = document.getElementById("uploadFiles")
-	    for (var i = 0; i < uploadFiles.files.length; i++) {
-	        var file = uploadFiles.files[i];
-	        // 비동기 파일 업로드를 시작한다.
-	        var uploader = new Uploader(file);
-	        uploader.startUpload();
-	    }
-	    // 폼을 리셋해서 uploadFiles에 출력된 선택 파일을 초기화시킨다.
-	    document.getElementById("uploadForm").reset();
-	    
-	} 
+
+
 <body data-spy="scroll" data-target=".navbar-collapse">
 	<jsp:include page="../main/header2.jsp" />
 	<!--Blog Features Section-->
@@ -261,7 +265,8 @@
 										</div>
 										<div class="col-sm-4">
 											<div class="form-group">
-												<label for="input-file">리뷰 사진 *</label><input type="file" name="srimg1" id="input-file">
+												<label for="input-file">리뷰 사진 *</label>  <input type="file"
+													name="srimg1" id="input-file">
 											</div>
 										</div>
 										<div class="col-sm-12">
@@ -281,7 +286,7 @@
 												</p>
 											</div>
 											<button type="submit" class="btn btn-default m-top-30">
-												리뷰 달기 <i class="fa fa-long-arrow-right"></i>
+												send message <i class="fa fa-long-arrow-right"></i>
 											</button>
 										</div>
 									</form>

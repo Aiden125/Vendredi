@@ -8,7 +8,39 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${conPath }/assets/css/qnalist.css">
+<link href="${conPath }/css/style.css" rel="stylesheet">
+	<style>
+		#content{
+			width:100%;
+			height:100%;
+		}
+		#content table{
+			width:800px;
+			margin: 80px auto;
+			border-collapse: collapse;
+			text-align: center;
+		}
+		#content caption{
+			margin : 40px auto;
+		}
+		#content tr{
+			border-bottom: 1px solid;
+			height: 50px;
+			width: 100px;
+		}
+		#content .paging{
+			margin-bottom : 80px;
+			text-align: center;
+		}
+		#content .btitle{
+			border: none;
+			width: 150px;
+		}
+		#content h1{
+			margin-top: 120px;
+			text-align: center;
+		}
+		</style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		$(document).ready(function(){
@@ -48,13 +80,9 @@
 	<c:if test="${replyResult eq FAIL }">
 		<script>alert('답변쓰기 실패');</script>
 	</c:if>
-	
 	<jsp:include page="../main/header.jsp"/>
-	  <div id="logos">
-			<p>FAQ</p>
-         </div>
-	<div id="wrap">
-	<div id="writeform">
+	<div id="content">
+	<h1>FAQ</h1>
 	<table>
 		<tr><td>
 			<c:if test="${not empty member }">
@@ -66,8 +94,7 @@
 			</c:if>
 		</td></tr>
 	</table>
-	</div> <!-- writeform -->
-	<div id="listform">
+	
 	<table>
 		<tr><th>글번호</th><th>작성자</th><th>글제목</th><th>조회수</th><th>날짜</th><th>답변여부</th></tr>
 		<c:if test="${qnaList.size() eq 0 }">
@@ -93,7 +120,7 @@
 			</c:forEach>
 		</c:if>
 	</table>
-	</div> <!-- listform -->
+	
 	<div class="paging">
 		<c:if test="${paging.startPage > paging.blockSize }">
 			[ <a href="${conPath }/qna/list.do?pageNum=${paging.startPage-1}">이전</a> ]
@@ -110,6 +137,7 @@
 			[ <a href="${conPath }/qna/list.do?pageNum=${paging.endPage+1}">다음</a> ]
 		</c:if>
 	</div>
-	</div> <!-- wrap -->
+	</div> 
+<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>
