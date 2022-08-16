@@ -48,6 +48,12 @@ a{
 	text-align:center;
 	border-collapse:collapse;
 }
+#main_table2{
+	margin:30px auto;
+	width:1400px;
+	text-align:center;
+	border-collapse:collapse;
+}
 td{
 	height:20px;
 	border-bottom:1px solid #d3d3d3; 
