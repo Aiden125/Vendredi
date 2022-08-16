@@ -93,8 +93,7 @@
 	    // 폼을 리셋해서 uploadFiles에 출력된 선택 파일을 초기화시킨다.
 	    document.getElementById("uploadForm").reset();
 	    
-	}
-	</script>
+	} 
 <body data-spy="scroll" data-target=".navbar-collapse">
 	<jsp:include page="../main/header2.jsp" />
 	<!--Blog Features Section-->
@@ -262,8 +261,7 @@
 										</div>
 										<div class="col-sm-4">
 											<div class="form-group">
-												<label for="input-file">리뷰 사진 *</label><input type="file"
-													name="srimg1" id="input-file">
+												<label for="input-file">리뷰 사진 *</label><input type="file" name="srimg1" id="input-file">
 											</div>
 										</div>
 										<div class="col-sm-12">

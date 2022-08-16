@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body> 
-	220813Ryu After Admit
-   <jsp:forward page="main.do"/>  
+	220816RyuEnd44
+   <jsp:forward page="store/storeList.do"/>  
   
 </body>
 </html>

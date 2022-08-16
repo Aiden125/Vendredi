@@ -75,7 +75,7 @@
 		alert('이용해주셔서 감사합니다');
 	</script>
 </c:if>
-	<jsp:include page="header.jsp" />
+	<jsp:include page="header2.jsp" />
 	<!-- ======= Hero Section ======= -->
 	<section id="hero">
 		<div class="hero-container">
