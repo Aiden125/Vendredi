@@ -11,7 +11,7 @@
 <style>
 		#content{
 			width: 600px;
-	        height : 450px;
+	        height : 500px;
 	        margin: 0 auto;
 	        max-width: 500px;
 	        margin-top: 100px;
@@ -46,6 +46,7 @@
 			margin-left: 60px;
 		}
 		#content .btn{
+			margin-top:30px;
             background: #fff;
             border-color: black;
             -webkit-border-radius: 10px;
@@ -80,12 +81,19 @@
 		#comment .btn{
             background: #fff;
             border-color: black;
+            padding:2px 5px;
             -webkit-border-radius: 10px;
             -moz-border-radius: 10px;
             border-radius: 10px;
             -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
             -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
             box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+		}
+		#comment .ccontent{
+			width:200px;
+		}
+		#comment .td{
+			margin:20px;
 		}
 	</style>
 <link href="${conPath }/css/style.css" rel="stylesheet">
@@ -185,17 +193,15 @@
 				</c:if>
 				<c:if test="${not empty commentList}">
 					<c:forEach var="comments" items="${commentList }">
-
 						<tr>
-							<td>${comments.oid }</td>
-							<td>${comments.ccontent }</td>
-							<td>${comments.cdate }</td>
+							<td class="td">${comments.oid }</td>
+							<td class="ccontent"><pre>${comments.ccontent }</pre></td>
+							<td class="td">${comments.cdate }</td>
 							<c:if test="${comments.oid eq owner.oid }">
-								<td colspan="2"><input type="button" value="삭제"
+								<td colspan="2"><input type="button" value="삭제" class="btn"
 									onclick="func1('${comments.cno}')">
 							</c:if>
 						</tr>
-						
 					</c:forEach>
 				</c:if>
 			</table>

@@ -75,6 +75,23 @@
 		         })
 		        	}
 		         });
+		   $('form').submit(function(){
+				var rdate = $('.rdate').text().trim();
+				var rtime = $('.time').text().trim();
+				var rmember = $('.rmember').text().trim();
+				if(rdate == ''){
+					alert('예약날짜를 입력하세요');
+					return false;
+				}
+				if(rtime == ''){
+					alert('예약시간을 입력하세요');
+					return false;
+				}
+				if(rmember == ''){
+					alert('예약인원을 입력하세요');
+					return false;
+				}
+			 });
 		});
 	function func(i) {
 		var i1 = i+':00'
@@ -95,6 +112,8 @@
 			$('#selectTime').hide();
 		}
 	}
+	
+	
 	</script>
 </head>
 <body>
@@ -109,19 +128,19 @@
 		<div id="selectDate" style="display: none">
 			<p><b>선택한 날짜: </b>
 				<input type="text" name="rdate"
-					class="rdate"></p>
+					class="rdate" readonly="readonly"></p>
 		</div>
 		<h3 onclick="dis1()">시간선택</h3>
 		<div id="selectTime" style="display: none">
 			<p><b>선택한 시간: </b>
 				<input type="text" name="time"
-					class="time"></p>
+					class="time" readonly="readonly"></p>
 			<c:forEach var="i" begin="${store.sstart }" end="${store.send }" >  <!-- 오픈, 마감시간으로 대체 -->
 					<input type="button" id="${i }" value="${i }:00" onclick="func(${i})"/> 
 			</c:forEach>
 		</div>
 		<h3>
-			예약인원<input type="number" name="rmember">
+			예약인원<input type="number" name="rmember" class="rmember">
 		</h3>
 		<br>
 		<input type="submit" value="예약">
