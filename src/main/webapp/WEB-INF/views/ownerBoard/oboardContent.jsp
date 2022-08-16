@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 <style>
 		#content{
-			width: 600px;
+			width: 1000px;
 	        height : 500px;
 	        margin: 0 auto;
 	        max-width: 500px;
@@ -64,7 +64,7 @@
 			margin-bottom: 5px;
 		}
 		#comment{
-			width: 600px;
+			width: 1000px;
 	        height : 100%;
 	        margin: 0 auto;
 	        max-width: 500px;
@@ -91,9 +91,10 @@
 		}
 		#comment .ccontent{
 			width:200px;
+			height:100%;
 		}
-		#comment .td{
-			margin:20px;
+		#comment td{
+			width:100px;
 		}
 	</style>
 <link href="${conPath }/css/style.css" rel="stylesheet">
@@ -195,7 +196,7 @@
 					<c:forEach var="comments" items="${commentList }">
 						<tr>
 							<td class="td">${comments.oid }</td>
-							<td class="ccontent"><pre>${comments.ccontent }</pre></td>
+							<td ><div class="ccontent"><pre>${comments.ccontent }</pre></div></td>
 							<td class="td">${comments.cdate }</td>
 							<c:if test="${comments.oid eq owner.oid }">
 								<td colspan="2"><input type="button" value="삭제" class="btn"

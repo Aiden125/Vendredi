@@ -70,3 +70,4 @@ CREATE TABLE RESERVATION(
     RMEMBER NUMBER(5) NOT NULL
 );
 -----------------
+commit;
