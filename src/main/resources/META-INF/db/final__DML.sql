@@ -404,7 +404,7 @@ select count(*)cnt from storelike where mid = 'aaa' and sno = 7;
 ----------------------------------- 지환 끝 ---------------------------------------------
 
 
-
+COMMIT;
 
 
 
