@@ -12,6 +12,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		$(document).ready(function(){
+			var aid = '${aid}';
 			$('tr').click(function(){
 				var qno = Number($(this).children().eq(0).text());
 				if(!isNaN(qno)){

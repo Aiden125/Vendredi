@@ -318,14 +318,15 @@ ul{
 
 /*all overlay*/
 .overlay{
-    background-color: rgba(51,51,51,0.50);
+   
     position: absolute;
     left:0;
     top:0;
     width:100%;
     height: 100%;
+    background-image: url(assets/img/디저트.jpg);
 }
-
+img
 .no-padding {
     padding: 0 !important;
     margin:0 !important;

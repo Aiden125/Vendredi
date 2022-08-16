@@ -81,6 +81,7 @@ create Table StoreLike (
             sNo  number(8) REFERENCES store(sNo), -- 요청한 가게 번호
             sName varchar2(100) not null -- 요청한 가게 이름 
             );
+            commit;
 
 
 
