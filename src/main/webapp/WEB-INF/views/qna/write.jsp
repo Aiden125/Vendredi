@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="${conPath }/assets/css/qnawrite.css">
 </head>
 <body>
-	<jsp:include page="../main/header2.jsp"/>
+	<jsp:include page="../main/header.jsp"/>
 <div id="logos">
 		<p>QNA</p>
     </div>
@@ -21,7 +21,7 @@
 		<table id="writeqboard">
 			<tr>
 				<th>제목</th>
-				<td><input type="text" name="qsubject" required="required" class="title">
+				<td><input type="text" name="qsubject" required="required" class="title" placeholder="비밀글을 원하시면 박스를 체크해주세요!">
 				<input type="checkbox" name="qsecret" id="qsecret"  value="Y">
 				</td>
 			</tr>

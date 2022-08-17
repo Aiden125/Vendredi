@@ -401,23 +401,6 @@
                      </div>
                   </div>
 
-               </div>
-            </div>
-            <!-- End off col-md-4 -->
-
-
-         </div>
-         <!-- End off row -->
-
-
-
-
-      </div>
-      <!-- End off container -->
-   </section>
-   <!-- End off blog Fashion -->
-
-
    <!-- JS includes -->
 
    <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>

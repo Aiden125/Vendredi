@@ -2,6 +2,7 @@
 ----------------------------------------------------------------------
 --                          MEMBER.Xml                              --
 ----------------------------------------------------------------------
+select * from qna;
 --(1)  id = memberLogin (로그인)
 SELECT * FROM MEMBER WHERE MID ='aaa' and mpw='1';
 --(2)  id = memberJoin (회원가입) 
@@ -74,6 +75,10 @@ SELECT * FROM QNA WHERE QGROUP=1 AND QSTEP!=0;
     
 --(2) id = qnaWrite (문의글 작성)
 INSERT INTO QNA (qno,qid,qsubject,qcontent,qhit,qgroup,qstep,qrdate)VALUES(QNA_SQ.NEXTVAL, 'son','질문이 있습니다1','광고 가능한가요3?',0,QNA_SQ.CURRVAL,0,SYSDATE);
+INSERT INTO QNA (qno,qid,qsubject,qcontent,qhit,qgroup,qstep,qreplycheck,
+			qsecret)
+			VALUES
+			(QNA_SQ.NEXTVAL ,'aaa','비밀','비밀글 테스트',0,QNA_SQ.CURRVAL ,0,0,'Y');             
 SELECT * FROM QNA;
 --(3) id = qnaModify (문의글 수정) 제목, 내용 
 update qna set 
@@ -403,7 +408,7 @@ select count(*)cnt from storelike where mid = 'aaa' and sno = 7;
 
 ----------------------------------- 지환 끝 ---------------------------------------------
 
-
+select * from store;
 COMMIT;
 
 

@@ -56,15 +56,15 @@
 <body>
 <jsp:include page="../main/header2.jsp" />
 		<section id="hello" class="img">
-		<div class="overlay">
-		<img src="${conPath }/assets/img/디저트.jpg" alt="" style="width: 100%; height: 15%" >
-		</div>
+<!-- 		<div class="overlay"> -->
+<%-- 		<img src="${conPath }/assets/img/디저트.jpg" alt="" style="width: 100%; height: 15%" > --%>
+<!-- 		</div> -->
 		<div class="container">
 			<div class="row">
 				<div class="main_home text-center">
 					<div class="home_text">
 						<br /> <br />
-						<h1 class="text-white text-uppercase">맛집 리스트</h1>
+						<h1 class="text-uppercase">맛집 리스트</h1>
 					</div>
 				</div>
 			</div>
