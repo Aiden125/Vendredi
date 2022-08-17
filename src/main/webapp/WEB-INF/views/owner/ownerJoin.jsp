@@ -12,6 +12,14 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="${conPath }/assets/css/bootstrap1.css">
 	<link rel="stylesheet" href="${conPath }/assets/css/join.css">
+	<style>
+		b{
+		color: green;
+	}
+	b1{
+		color: red;
+	}
+	</style>
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 	<script>
@@ -72,7 +80,7 @@
 				if(opw==opwChk){
 					$('#pwChkResult').html('<b>비밀번호 일치</b>');
 				}else{
-					$('#pwChkResult').html('<b>비밀번호 불일치</b>');
+					$('#pwChkResult').html('<b1>비밀번호 불일치</b1>');
 				}
 			});
 			$('form').submit(function(){

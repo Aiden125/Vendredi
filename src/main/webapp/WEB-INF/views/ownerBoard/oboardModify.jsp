@@ -9,6 +9,49 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="${conPath }/css/style.css" rel="stylesheet">
+	<style>
+		#content{
+			width: 600px;
+	        height : 600px;
+	        margin: 0 auto;
+	        max-width: 500px;
+	        margin-top: 200px;
+	        margin-bottom:80px;
+	        padding: 20px;
+	        background: #fff;
+	        -webkit-border-radius: 10px;
+	        -moz-border-radius: 10px;
+	        border-radius: 10px;
+	        -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	        -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+		}
+		#content table{
+		}
+		#content table tr td{
+			width:300px;
+			text-align: center;
+			padding-top:10px;
+		}
+		#content textarea{
+			width:230px;
+			padding-top:10px;
+			margin-left: 30px;
+			border:none;
+		}
+		#content input{
+			border-left:none;
+			border-right:none;
+			border-top:none;
+		}
+		#content input[type='file']{
+			margin-left: 60px;
+		}
+		#content .btn{
+			margin: 10px;
+			border: 1px solid;
+		}
+	</style>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
