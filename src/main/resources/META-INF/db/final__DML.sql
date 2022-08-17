@@ -84,7 +84,9 @@ SELECT * FROM QNA;
 update qna set 
     qsubject = '질문',
     qcontent = '업체문의는 어디서 해야하나요'   
-    where qno = 1;
+    where qno = 8;
+select * from qna;   
+commit;
 --(4) id = qnaDetail (문의글 상세보기) 
 select * from qna where qno=1;
 --() id = qnaHitup(조회수 증가)

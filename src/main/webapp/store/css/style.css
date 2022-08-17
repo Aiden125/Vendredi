@@ -1833,7 +1833,8 @@ Blog Details Page
 
 .socail_item{
     float: left;
-    width: 30.5%;
+    width: 100px;
+    height: 100px;
     margin: 5px;
 }
 .socail_item img{

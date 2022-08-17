@@ -354,8 +354,6 @@
           <li><a class="nav-link scrollto" href="${conPath }/member/joinForm.do">Join</a></li>
           <li><a class="nav-link scrollto " href="${conPath }/store/storeList.do">맛집 리스트</a></li>
           <li><a class="nav-link scrollto" href="${conPath }/qna/list.do">Q&A</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-         <!--  <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -370,7 +368,6 @@
           <li><a class="nav-link scrollto" href="${conPath }/qna/list.do">QnA</a></li>
           <li><a href="${conPath }/storeLike/myLikeList.do?mid=${member.mid}">Like</a></li>
           <li><a class="nav-link scrollto" href="${conPath }/member/logout.do">Logout</a></li>
-         <!--  <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
