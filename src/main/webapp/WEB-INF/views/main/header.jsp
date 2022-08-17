@@ -368,10 +368,7 @@
           <li><a class="nav-link scrollto" href="${conPath }/member/modify.do">my Page</a></li>
           <li><a class="nav-link scrollto " href="${conPath }/store/storeList.do">맛집 리스트</a></li>          
           <li><a class="nav-link scrollto" href="${conPath }/qna/list.do">QnA</a></li>
-          <li><a href="${conPath }/member/myLikeList.do?mid=${mid}">like</a></li>
-          <li class="dropdown"><a href="#"><span>최근에 본 맛집</span> <i class="bi bi-chevron-down"></i></a>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a href="${conPath }/storeLike/myLikeList.do?mid=${member.mid}">Like</a></li>
           <li><a class="nav-link scrollto" href="${conPath }/member/logout.do">Logout</a></li>
          <!--  <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
         </ul>

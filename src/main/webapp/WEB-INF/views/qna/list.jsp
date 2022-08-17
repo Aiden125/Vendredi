@@ -86,8 +86,7 @@
 	<table>
 		<tr><td>
 			<c:if test="${not empty member }">
-				<a href="${conPath }/qna/writeView.do">&nbsp;&nbsp;&nbsp;
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;글쓰기</a>
+				<a href="${conPath }/qna/writeView.do">글쓰기</a>
 			</c:if>
 			<c:if test="${empty member }">
 				<a href="${conPath }/member/loginForm.do">글쓰기는 사용자 로그인 후에 이용 가능합니다</a>

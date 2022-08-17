@@ -45,7 +45,7 @@ CREATE TABLE QNA(
     QID VARCHAR2(50) , --글쓴이 사용자 OR 관리자
     QSUBJECT VARCHAR2(250) NOT NULL, --글 제목
     QCONTENT VARCHAR2(4000) NOT NULL, --글 내용
-    QHIT NUMBER(8), -- 조회수
+    QHIT NUMBER(8) default 0, -- 조회수
     QGROUP NUMBER(8), --글 그룹
     QSTEP NUMBER(8), -- 그룹내 출력 순서
     QRDATE DATE DEFAULT SYSDATE, -- 등록 시점
