@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body> 
-	220817RyuStart
+	220817RyuAfterMerge
    <jsp:forward page="main.do"/>  
   
 </body>
