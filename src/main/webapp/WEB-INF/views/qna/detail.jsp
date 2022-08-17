@@ -45,7 +45,7 @@
 			<tr>
 				<td colspan="2"><c:if test="${member.mid eq qDto.qid }">
 						<button class="btn"
-							onclick="location='${conPath}/qna/modifyView.do?qno=${qDto.qno }&pageNum=${param.pageNum }'">수정</button>
+							onclick="location='${conPath}/qna/modifyView.do?qno=${qDto.qno }&pageNum=${param.pageNum }&qgroup=${param.qgroup }'">수정</button>
 					</c:if> 
 					<c:if test="${member.mid eq qDto.qid || not empty admin}">
 						<button class="btn"

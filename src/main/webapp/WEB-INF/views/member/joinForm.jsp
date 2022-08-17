@@ -36,6 +36,10 @@
 <link rel="stylesheet" href="assets/css/responsive.css" />
 
 <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>	
 <style>
 body, html {
 	height: 100%;
@@ -45,7 +49,6 @@ body, html {
 	background-color: white;
 }
 </style>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 	$(document)
 			.ready(
@@ -134,12 +137,7 @@ body, html {
 										});
 					});//mIdConfirm의 click이벤트
 </script>
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="${conPath }/js/address.js"></script>
+
 <script>
 	$(function() {
 		$("#mbirth").datepicker(
@@ -159,9 +157,11 @@ body, html {
 				});
 	});
 </script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="${conPath }/js/address.js"></script>
 </head>
 <body>
-	<jsp:include page="../main/header2.jsp" />
+	<jsp:include page="../main/header.jsp" />
 	<main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
 		<div class="container">
 			<div class="card login-card">
@@ -252,22 +252,5 @@ body, html {
 
 		</div>
 	</main>
-	<script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
-	<script src="assets/js/vendor/bootstrap.min.js"></script>
-
-	<script src="assets/js/isotope.min.js"></script>
-	<script src="assets/js/jquery.magnific-popup.js"></script>
-	<script src="assets/js/jquery.easing.1.3.js"></script>
-	<script src="assets/js/slick.min.js"></script>
-	<script src="assets/js/jquery.collapse.js"></script>
-	<script src="assets/js/bootsnav.js"></script>
-	<script src="assets/js/masonry.min.js"></script>
-
-	<script type="text/javascript">
-		var msnry = new Masonry('.blog_area');
-	</script>
-
-	<script src="assets/js/plugins.js"></script>
-	<script src="assets/js/main.js"></script>
 </body>
 </html>
