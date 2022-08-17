@@ -158,12 +158,13 @@ span {
 					</td> 
 				</tr> 
 			</c:forEach>
+		</c:if>	
 			<tr>
 				<td style="text-align: center;" colspan="4">
 				<input type="button" class="btn" value="가게등록" onclick="location.href='${conPath}/store/storeRegisterView.do'">
 				</td>
 			</tr>
-		</c:if>
+		
 	</table>
 		<div id="paging" align="center">
 		<c:if test="${paging.startPage> paging.blockSize }">

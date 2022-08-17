@@ -31,11 +31,13 @@
 	</resultMap>
 	
 <insert id="storeRegister" parameterType="Store">
-	insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, sTime, sHoliday,
+	insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, 
+	        sTel, sType, sPrice, sTime, sHoliday,
             sMenu1 , sMenu1cost , sMenu2, sMenu2cost, sMenu3, sMenu3cost, sSearchtag, sstart, send) 
-	values (store_sq.nextval, #{oid}, #{simage1}, #{simage2}, #{simage3}, #{sname}, #{saddress}, #{slocation}, #{stel}, #{stype}, 
-	        #{sprice} , #{stime}, #{sholiday}, #{smenu1}, #{smenu1cost} , #{smenu2}, #{smenu2cost}, 
-	        #{smenu3}, #{smenu3cost}, #{ssearchtag}, #{sstart}, #{send}, #{slati}, #{slongti})
+	values (store_sq.nextval, #{oid}, #{simage1}, #{simage2}, #{simage3}, #{sname}, #{saddress}, #{slocation}, 
+	        #{stel}, #{stype}, #{sprice} , #{stime}, #{sholiday}, 
+	        #{smenu1}, #{smenu1cost} , #{smenu2}, #{smenu2cost}, 
+	        #{smenu3}, #{smenu3cost}, #{ssearchtag}, #{sstart}, #{send})
         
 </insert>
 <update id="storeModify" parameterType="Store">
