@@ -83,7 +83,6 @@
 							<li><a href="${conPath }/member/joinForm.do">Join</a></li>
 							<li><a href="${conPath }/store/storeList.do">맛집 리스트</a></li>
 							<li><a href="${conPath }/qna/list.do">Q&A</a></li>
-							<li><a href="contactus.html">contact</a></li>
 						</ul>
 					</div>
 				</c:if>

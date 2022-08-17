@@ -63,9 +63,14 @@
 	<!-- 답변글 영역 -->
 	<c:if test="${not empty replyDto }">
 		<div id="border">
-			<p class="title left font2_0">관리자 답변</p>
-			<hr color="#4B89DC" class="blue"><br>
-			<p class="content_box">${replyDto.qcontent }</p>
+			<table>
+			<tr>
+				<td><b>관리자 답변</b></td>
+			</tr>
+			<tr>
+				<td><b>${replyDto.qcontent }</b></td>
+			</tr>
+			</table>
 		</div>
 	</c:if>
 	</div>
