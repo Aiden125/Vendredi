@@ -33,7 +33,6 @@ public class QnAServiceImpl implements QnAService {
 	//QNA 글 쓰기
 	@Override
 	public int qnaWrite(QnA qna) {
-		System.out.println("저장할 글 : " + qna);
 		return qnaDao.qnaWrite(qna);
 	}
 	//QNA 상세보기
