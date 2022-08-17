@@ -35,63 +35,27 @@
 
 
 ## 4. 핵심 기능
-사용자는 보다 편리하게 맛집 조회가 가능합니다
-각 가게의 검색 태그를 통해 가게 및 음식 검색이 가능하며,
-다른 사용자들의 리뷰를 한 눈에 확인할 수 있습니다.
+- 사용자는 보다 편리하게 맛집 조회가 가능합니다.
+- 각 가게의 검색 태그를 통해 가게 및 음식 검색이 가능합니다.
+- 다른 사용자들의 리뷰를 한 눈에 확인할 수 있습니다.
 
 <details>
 <summary><b>핵심 기능 설명 펼치기</b></summary>
 <div markdown="1">
 
 ### 4.1. 전체 흐름
-![image](https://user-images.githubusercontent.com/101315869/185061236-b246569c-2141-4a03-b49d-73b68c5d2998.png)
+![image](https://user-images.githubusercontent.com/101315869/185076337-ebd4d939-41d5-46fc-8096-d1423dafc283.png)
 
 ### 4.2. 핵심 기능
 
 - **사용자 예약처리** :pushpin: [코드 확인](https://github.com/Aiden125/Vendredi/blob/d6f4c2e36ba05fe1bf750be1f18ce5a26063410a/src/main/webapp/WEB-INF/views/reservation/reservation.jsp#L107-L116)
   - 시각적으로 한 눈에 들어올 수 있도록 select 타입을 사용하지 않는 페이지를 구현했습니다.
+  
+- **ajax를 통한 비동기 회원 가입페이지** :pushpin: [코드 확인](https://github.com/Aiden125/Vendredi/blob/491e2daf6d24deb2004be1635eaac91450f1a02d/src/main/webapp/WEB-INF/views/member/joinForm.jsp#L77-L135)
+  - ajax를 통해 비동기식 회원가입 페이지를 구현했습니다.
 
-- **Axios 비동기 요청** :pushpin: [코드 확인]()
-  - URL의 모양새인 경우, 컨텐츠를 등록하는 POST 요청을 비동기로 날립니다.
-
-### 4.3. Controller
-
-![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_controller.png)
-
-- **요청 처리** :pushpin: [코드 확인](https://github.com/Integerous/goQuality/blob/b2c5e60761b6308f14eebe98ccdb1949de6c4b99/src/main/java/goQuality/integerous/controller/PostRestController.java#L55)
-  - Controller에서는 요청을 화면단에서 넘어온 요청을 받고, Service 계층에 로직 처리를 위임합니다.
-
-- **결과 응답** :pushpin: [코드 확인]()
-  - Service 계층에서 넘어온 로직 처리 결과(메세지)를 화면단에 응답해줍니다.
-
-### 4.4. Service
-
-![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_service1.png)
-
-- **Http 프로토콜 추가 및 trim()** :pushpin: [코드 확인]()
-  - 사용자가 URL 입력 시 Http 프로토콜을 생략하거나 공백을 넣은 경우,  
-  올바른 URL이 될 수 있도록 Http 프로토콜을 추가해주고, 공백을 제거해줍니다.
-
-- **URL 접속 확인** :pushpin: [코드 확인]()
-  - 화면단에서 모양새만 확인한 URL이 실제 리소스로 연결되는지 HttpUrlConnection으로 테스트합니다.
-  - 이 때, 빠른 응답을 위해 Request Method를 GET이 아닌 HEAD를 사용했습니다.
-  - (HEAD 메소드는 GET 메소드의 응답 결과의 Body는 가져오지 않고, Header만 확인하기 때문에 GET 메소드에 비해 응답속도가 빠릅니다.)
-
-  ![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_service2.png)
-
-- **Jsoup 이미지, 제목 파싱** :pushpin: [코드 확인]()
-  - URL 접속 확인결과 유효하면 Jsoup을 사용해서 입력된 URL의 이미지와 제목을 파싱합니다.
-  - 이미지는 Open Graphic Tag를 우선적으로 파싱하고, 없을 경우 첫 번째 이미지와 제목을 파싱합니다.
-  - 컨텐츠에 이미지가 없을 경우, 미리 설정해둔 기본 이미지를 사용하고, 제목이 없을 경우 생략합니다.
-
-
-### 4.5. Repository
-
-![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_repo.png)
-
-- **컨텐츠 저장** :pushpin: [코드 확인]()
-  - URL 유효성 체크와 이미지, 제목 파싱이 끝난 컨텐츠는 DB에 저장합니다.
-  - 저장된 컨텐츠는 다시 Repository - Service - Controller를 거쳐 화면단에 송출됩니다.
+- **업체 등록 승인 처리** :pushpin: [코드 확인](https://github.com/Aiden125/Vendredi/blob/38be89e3804dafa1879a66b64e343c73d7b8fff8/src/main/java/com/pro/vendredi/controller/RequestController.java#L42-L46)
+  - Controller 및 Service를 통해 업체 승인 처리 되도록 구현했습니다.
 
 </div>
 </details>
@@ -99,96 +63,22 @@
 </br>
 
 ## 5. 핵심 트러블 슈팅
-### 5.1. 컨텐츠 필터와 페이징 처리 문제
-- 저는 이 서비스가 페이스북이나 인스타그램 처럼 가볍게, 자주 사용되길 바라는 마음으로 개발했습니다.  
-때문에 페이징 처리도 무한 스크롤을 적용했습니다.
+### 5.1. 예약 기능 문제
+- 고객이 예약 서비스를 사용할 때 번거로움을 느끼지 않고 편리하게 진행할 수 있도록 만들고 싶었습니다.
+- 예약 페이지를 시각적으로 한 눈에 들어올 수 있도록 option 타입을 사용하지 않는 페이지로 구현했습니다.
 
-- 하지만 [무한스크롤, 페이징 혹은 “더보기” 버튼? 어떤 걸 써야할까](https://cyberx.tistory.com/82) 라는 글을 읽고 무한 스크롤의 단점들을 알게 되었고,  
-다양한 기준(카테고리, 사용자, 등록일, 인기도)의 게시물 필터 기능을 넣어서 이를 보완하고자 했습니다.
+### 5.2. 즐겨찾기 추가/ 삭제 기능 추가 문제 
+- 사용자가 즐겨찾기를 눌렀을 경우, 안눌렀을 경우에 대한 로직 처리에 어려움이 있었습니다.
+- 사용자가 즐겨찾기를 누른 시점에 가게의 고유번호 및 사용자 세션 값을 받아와 테이블로 구성하여 문제를 해결했습니다.
 
-- 그런데 게시물이 필터링 된 상태에서 무한 스크롤이 동작하면,  
-필터링 된 게시물들만 DB에 요청해야 하기 때문에 아래의 **기존 코드** 처럼 각 필터별로 다른 Query를 날려야 했습니다.
+### 5.3. 부트스트랩 충돌 문제
+- 부트스트랩을 사용 했을 때 검색 기능 충돌로 인해 파라미터가 안넘어가는 문제가 있었습니다.
+- jQuery를 통해 파라미터를 입력했을 때 form 태그가 작동하여 파라미터가 넘어가도록 문제를 해결했습니다.
 
-<details>
-<summary><b>기존 코드</b></summary>
-<div markdown="1">
+### 5.4. 깃 충돌 & 플로우 문제
+- 깃 협업을 처음 해보는 상황이고 정해진 기간에 대한 어려움이 있었습니다.
+- 규모가 크지 않고 협업이 익숙하지 않다는 것을 고려해 각자의 브랜치를 나눠 마스터에 머지하는 방식으로 문제를 해결했습니다.
 
-~~~java
-/**
- * 게시물 Top10 (기준: 댓글 수 + 좋아요 수)
- * @return 인기순 상위 10개 게시물
- */
-public Page<PostResponseDto> listTopTen() {
-
-    PageRequest pageRequest = PageRequest.of(0, 10, Sort.Direction.DESC, "rankPoint", "likeCnt");
-    return postRepository.findAll(pageRequest).map(PostResponseDto::new);
-}
-
-/**
- * 게시물 필터 (Tag Name)
- * @param tagName 게시물 박스에서 클릭한 태그 이름
- * @param pageable 페이징 처리를 위한 객체
- * @return 해당 태그가 포함된 게시물 목록
- */
-public Page<PostResponseDto> listFilteredByTagName(String tagName, Pageable pageable) {
-
-    return postRepository.findAllByTagName(tagName, pageable).map(PostResponseDto::new);
-}
-
-// ... 게시물 필터 (Member) 생략 
-
-/**
- * 게시물 필터 (Date)
- * @param createdDate 게시물 박스에서 클릭한 날짜
- * @return 해당 날짜에 등록된 게시물 목록
- */
-public List<PostResponseDto> listFilteredByDate(String createdDate) {
-
-    // 등록일 00시부터 24시까지
-    LocalDateTime start = LocalDateTime.of(LocalDate.parse(createdDate), LocalTime.MIN);
-    LocalDateTime end = LocalDateTime.of(LocalDate.parse(createdDate), LocalTime.MAX);
-
-    return postRepository
-                    .findAllByCreatedAtBetween(start, end)
-                    .stream()
-                    .map(PostResponseDto::new)
-                    .collect(Collectors.toList());
-    }
-~~~
-
-</div>
-</details>
-
-- 이 때 카테고리(tag)로 게시물을 필터링 하는 경우,  
-각 게시물은 최대 3개까지의 카테고리(tag)를 가질 수 있어 해당 카테고리를 포함하는 모든 게시물을 질의해야 했기 때문에  
-- 아래 **개선된 코드**와 같이 QueryDSL을 사용하여 다소 복잡한 Query를 작성하면서도 페이징 처리를 할 수 있었습니다.
-
-<details>
-<summary><b>개선된 코드</b></summary>
-<div markdown="1">
-
-~~~java
-/**
- * 게시물 필터 (Tag Name)
- */
-@Override
-public Page<Post> findAllByTagName(String tagName, Pageable pageable) {
-
-    QueryResults<Post> results = queryFactory
-            .selectFrom(post)
-            .innerJoin(postTag)
-                .on(post.idx.eq(postTag.post.idx))
-            .innerJoin(tag)
-                .on(tag.idx.eq(postTag.tag.idx))
-            .where(tag.name.eq(tagName))
-            .orderBy(post.idx.desc())
-                .limit(pageable.getPageSize())
-                .offset(pageable.getOffset())
-            .fetchResults();
-
-    return new PageImpl<>(results.getResults(), pageable, results.getTotal());
-}
-~~~
 
 </div>
 </details>
@@ -388,5 +278,12 @@ public Page<Post> findAllByTagName(String tagName, Pageable pageable) {
     
 </br>
 
-## 6. 회고 / 느낀점
+## 7. 차후 개선 사항
+- https 적용 및 서버 최적화를 통해 실제 사용 가능한 수준으로
+- 회원 별 예약 내용 및 결제 내역, 리뷰 수에 따른 등급제 적용
+- 로그인 및 결제 API 연동, 모바일 UX/UI 적용
+- 업체 리뷰 수에 따른 상위 노출 기준 적용
+
+
+## 8. 회고 / 느낀점
 >프로젝트 개발 회고 글: https://zuminternet.github.io/ZUM-Pilot-integer/
