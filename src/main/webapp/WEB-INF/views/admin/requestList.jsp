@@ -19,6 +19,13 @@
 <body>
 <jsp:include page="../admin/header.jsp"/>
 <div id="content">
+<c:if test="${empty admin }">
+	<table id="main_table2">
+		<tr class="tr_top">
+			<th>관리자 로그인 이후 볼 수 있는 페이지입니다.</th>
+		</tr>
+	</table>
+</c:if>
 <c:if test="${not empty admin }">
 	<table id="main_table2">
 		<caption>업체 요청 리스트</caption>

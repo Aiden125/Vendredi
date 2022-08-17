@@ -21,7 +21,10 @@
 		<script>alert('${result}');</script>
 	</c:if>
 
-<jsp:include page="../admin/header.jsp"/>
+	
+<c:if test="${not empty admin}">
+	<jsp:include page="../admin/header.jsp"/>	
+</c:if>
 
 <div id="content">
 	<form action="${conPath }/admin/login.do" method="POST">
