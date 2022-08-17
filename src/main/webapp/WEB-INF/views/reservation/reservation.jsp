@@ -101,7 +101,7 @@
 		        		if(dateText == temp){
 		        			for(var i = 0; i <=today.getHours()+1; i++){
 		        				$('#' + i).attr('disabled', true);
-		        				$('#' + i).css('color', '#cccccc');
+		        				$('#' + i).css('background-color', '#495057');
 		        			}
 		        		}
 		         $(resList).each(function(idx, item){
@@ -109,7 +109,7 @@
 		        		 for(var i=0; i<=24; i++){
 		        			 if(item.rtime == i){
 		        				 $('#' + i).attr('disabled', true);
-		        				 $('#' + i).css('color', '#cccccc');
+		        				 $('#' + i).css('background-color', '#495057');
 		        			 }
 		        		 }
 		        	 }
