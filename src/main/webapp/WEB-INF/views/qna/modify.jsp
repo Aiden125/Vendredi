@@ -8,19 +8,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${conPath }/assets/css/boardwrite.css">
+<link rel="stylesheet" href="${conPath }/assets/css/qnawrite.css">
+
 </head>
 <body>
-	<jsp:include page="../main/header2.jsp"/>
+	<jsp:include page="../main/header.jsp"/>
 	<div id="logos">
 		<p>QNA_MODIFY</p>
 	</div>
-	<div id="border3">
+	<div id="border">
 	<form action="${conPath }/qna/modify.do" method="post">
 	<input type="hidden" name="qno" value="${qDto.qno }">
+	<input type="hidden" name="qgroup" value="${qDto.qgroup }">
 	<input type="hidden" name="pageNum" value="${param.pageNum }">
-		<table>
-			<caption>${qDto.qno }번글 수정</caption>
+		<table id="writeboard">
 			<tr>
 				<th>작성자</th>
 				<td><input type="text" required="required" value="${qDto.qid }" readonly="readonly"></td>

@@ -138,21 +138,16 @@
 			<div class="container">
 
 				<div class="section-title">
-					<h2>맛집 추천</h2>
-					<p>Magnam dolores commodi suscipit. Necessitatibus eius
-						consequatur ex aliquid fuga eum quidem. Sit sint consectetur
-						velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
-						suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem
-						hic quas.</p>
+					<h2>이달의 음식</h2>
+					
 				</div>
 
 				<div class="row">
 					<div class="col-lg-12 d-flex justify-content-center">
 						<ul id="portfolio-flters">
 							<li data-filter="*" class="filter-active">All</li>
-							<li data-filter=".filter-app">지역별</li>
-							<li data-filter=".filter-card">메뉴별</li>
-							<li data-filter=".filter-web">흐음</li>
+							<li data-filter=".filter-app">This Week</li>
+							<li data-filter=".filter-card">Last Week</li>
 						</ul>
 					</div>
 				</div>
@@ -164,14 +159,12 @@
 							<img src="${conPath }/assets/img/일식1.jpg" class="img-fluid"
 								alt="" style="width: 416, height:312">
 							<div class="portfolio-info">
-								<h4>서울</h4>
-								<p>서울</p>
+								<h4>벤또</h4>
+								<p>벤또</p>
 								<div class="portfolio-links">
 									<a href="${conPath }/assets/img/일식1.jpg"
 										data-gallery="portfolioGallery" class="portfolio-lightbox"
-										title="App 1"><i class="bx bx-plus"></i></a> <a
-										href="portfolio-details.html" title="More Details"><i
-										class="bx bx-link"></i></a>
+										title="#벤또#일식#회"><i class="bx bx-plus"></i></a>
 								</div>
 							</div>
 						</div>
@@ -182,14 +175,12 @@
 							<img src="${conPath }/assets/img/중식1.jpg" class="img-fluid"
 								alt="">
 							<div class="portfolio-info">
-								<h4>Web 3</h4>
-								<p>Web</p>
+								<h4>짜장면</h4>
+								<p>짜장면</p>
 								<div class="portfolio-links">
 									<a href="${conPath }/assets/img/중식1.jpg"
 										data-gallery="portfolioGallery" class="portfolio-lightbox"
-										title="Web 3"><i class="bx bx-plus"></i></a> <a
-										href="portfolio-details.html" title="More Details"><i
-										class="bx bx-link"></i></a>
+										title="#짜장면#중식"><i class="bx bx-plus"></i></a> 
 								</div>
 							</div>
 						</div>
@@ -199,14 +190,12 @@
 						<div class="portfolio-wrap">
 							<img src="${conPath }/assets/img/한식.jpg" class="img-fluid" alt="">
 							<div class="portfolio-info">
-								<h4>App 2</h4>
-								<p>App</p>
+								<h4>비빔밥</h4>
+								<p>비빔밥</p>
 								<div class="portfolio-links">
 									<a href="${conPath }/assets/img/한식.jpg"
 										data-gallery="portfolioGallery" class="portfolio-lightbox"
-										title="App 2"><i class="bx bx-plus"></i></a> <a
-										href="portfolio-details.html" title="More Details"><i
-										class="bx bx-link"></i></a>
+										title="#비빔밥#한식#한류"><i class="bx bx-plus"></i></a> 
 								</div>
 							</div>
 						</div>
@@ -216,14 +205,12 @@
 						<div class="portfolio-wrap">
 							<img src="${conPath }/assets/img/치킨.jpg" class="img-fluid" alt="">
 							<div class="portfolio-info">
-								<h4>Card 2</h4>
-								<p>Card</p>
+								<h4>치킨</h4>
+								<p>치킨</p>
 								<div class="portfolio-links">
 									<a href="${conPath }/assets/img/치킨.jpg"
 										data-gallery="portfolioGallery" class="portfolio-lightbox"
-										title="Card 2"><i class="bx bx-plus"></i></a> <a
-										href="portfolio-details.html" title="More Details"><i
-										class="bx bx-link"></i></a>
+										title="#치느님#행복"><i class="bx bx-plus"></i></a> 
 								</div>
 							</div>
 						</div>
@@ -234,14 +221,12 @@
 							<img src="${conPath }/assets/img/스파게티.jpg" class="img-fluid"
 								alt="">
 							<div class="portfolio-info">
-								<h4>Web 2</h4>
-								<p>Web</p>
+								<h4>스파게티</h4>
+								<p>스파게티</p>
 								<div class="portfolio-links">
 									<a href="${conPath }/assets/img/스파게티.jpg"
 										data-gallery="portfolioGallery" class="portfolio-lightbox"
-										title="Web 2"><i class="bx bx-plus"></i></a> <a
-										href="portfolio-details.html" title="More Details"><i
-										class="bx bx-link"></i></a>
+										title="#스파게티#양식#레스토랑"><i class="bx bx-plus"></i></a> 
 								</div>
 							</div>
 						</div>
@@ -252,14 +237,12 @@
 							<img src="${conPath }/assets/img/한식1.jpg" class="img-fluid"
 								alt="">
 							<div class="portfolio-info">
-								<h4>App 3</h4>
-								<p>App</p>
+								<h4>모듬 한상</h4>
+								<p>모듬 한상</p>
 								<div class="portfolio-links">
-									<a href="${conPath }/assets/img/스파게티.jpg"
+									<a href="${conPath }/assets/img/한식1.jpg"
 										data-gallery="portfolioGallery" class="portfolio-lightbox"
-										title="App 3"><i class="bx bx-plus"></i></a> <a
-										href="portfolio-details.html" title="More Details"><i
-										class="bx bx-link"></i></a>
+										title="#모듬한상#한식"><i class="bx bx-plus"></i></a> 
 								</div>
 							</div>
 						</div>
@@ -269,14 +252,12 @@
 						<div class="portfolio-wrap">
 							<img src="${conPath }/assets/img/피자.jpg" class="img-fluid" alt="">
 							<div class="portfolio-info">
-								<h4>Card 1</h4>
-								<p>Card</p>
+								<h4>피자</h4>
+								<p>피자</p>
 								<div class="portfolio-links">
 									<a href="${conPath }/assets/img/피자.jpg"
 										data-gallery="portfolioGallery" class="portfolio-lightbox"
-										title="Card 1"><i class="bx bx-plus"></i></a> <a
-										href="portfolio-details.html" title="More Details"><i
-										class="bx bx-link"></i></a>
+										title="#피자"><i class="bx bx-plus"></i></a>
 								</div>
 							</div>
 						</div>
@@ -287,14 +268,12 @@
 							<img src="${conPath }/assets/img/디저트.jpg" class="img-fluid"
 								alt="">
 							<div class="portfolio-info">
-								<h4>Card 3</h4>
-								<p>Card</p>
+								<h4>디저트</h4>
+								<p>디저트</p>
 								<div class="portfolio-links">
 									<a href="${conPath }/assets/img/디저트.jpg"
 										data-gallery="portfolioGallery" class="portfolio-lightbox"
-										title="Card 3"><i class="bx bx-plus"></i></a> <a
-										href="portfolio-details.html" title="More Details"><i
-										class="bx bx-link"></i></a>
+										title="#디저트"><i class="bx bx-plus"></i></a>
 								</div>
 							</div>
 						</div>
@@ -305,14 +284,12 @@
 							<img src="${conPath }/assets/img/쌀국수.jpg" class="img-fluid"
 								alt="">
 							<div class="portfolio-info">
-								<h4>Web 3</h4>
-								<p>Web</p>
+								<h4>쌀국수</h4>
+								<p>쌀국수</p>
 								<div class="portfolio-links">
 									<a href="${conPath }/assets/img/쌀국수.jpg"
 										data-gallery="portfolioGallery" class="portfolio-lightbox"
-										title="Web 3"><i class="bx bx-plus"></i></a> <a
-										href="portfolio-details.html" title="More Details"><i
-										class="bx bx-link"></i></a>
+										title="#쌀국수#베트남"><i class="bx bx-plus"></i></a>
 								</div>
 							</div>
 						</div>
@@ -330,23 +307,18 @@
 
 				<div class="section-title">
 					<h2>지역별 인기 맛집</h2>
-					<p>Magnam dolores commodi suscipit. Necessitatibus eius
-						consequatur ex aliquid fuga eum quidem. Sit sint consectetur
-						velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
-						suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem
-						hic quas.</p>
 				</div>
 
 				<div class="row">
 
 					<div class="col-xl-3 col-lg-4 col-md-6">
 						<div class="member">
-							<img src="assets/img/한식.jpg" class="img-fluid" alt="">
+							<img src="assets/img/신사.jpg" class="img-fluid" alt="">
 							<div class="member-info"
 								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=신사'">
 								<div class="member-info-content">
 									<h4>신사/가로수길</h4>
-									<span>소개글</span>
+									<span>#일식 다이닝</span>
 								</div>
 							</div>
 						</div>
@@ -354,12 +326,12 @@
 
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s">
 						<div class="member">
-							<a><img src="assets/img/중식1.jpg" class="img-fluid" alt=""></a>
+							<a><img src="assets/img/강남역.jpg" class="img-fluid" alt=""></a>
 							<div class="member-info"
 								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=강남'">
 								<div class="member-info-content">
 									<h4>강남역</h4>
-									<span>소개글</span>
+									<span>#피자</span>
 								</div>
 							</div>
 						</div>
@@ -367,12 +339,12 @@
 
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
 						<div class="member">
-							<img src="assets/img/일식1.jpg" class="img-fluid" alt="">
+							<img src="assets/img/도산.jpg" class="img-fluid" alt="">
 							<div class="member-info"
 								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=로데오'">
 								<div class="member-info-content">
 									<h4>도산공원/로데오</h4>
-									<span>소개란</span>
+									<span>#도산분식</span>
 								</div>
 							</div>
 						</div>
@@ -380,12 +352,12 @@
 
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
 						<div class="member">
-							<img src="assets/img/스파게티.jpg" class="img-fluid" alt="">
+							<img src="assets/img/청담.jpg" class="img-fluid" alt="">
 							<div class="member-info"
 								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=청담'">
 								<div class="member-info-content">
 									<h4>청담</h4>
-									<span>소개란</span>
+									<span>#전골</span>
 								</div>
 							</div>
 						</div>
@@ -393,12 +365,12 @@
 
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
 						<div class="member">
-							<img src="assets/img/디저트.jpg" class="img-fluid" alt="">
+							<img src="assets/img/성수.jpg" class="img-fluid" alt="">
 							<div class="member-info"
 								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=청담'">
 								<div class="member-info-content">
 									<h4>성수</h4>
-									<span>소개란</span>
+									<span>#솥밥</span>
 								</div>
 							</div>
 						</div>
@@ -406,12 +378,12 @@
 
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
 						<div class="member">
-							<img src="assets/img/쌀국수.jpg" class="img-fluid" alt="">
+							<img src="assets/img/이태원.jpg" class="img-fluid" alt="">
 							<div class="member-info"
 								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=이태원'">
 								<div class="member-info-content">
 									<h4>이태원</h4>
-									<span>소개란</span>
+									<span>#곱창</span>
 								</div>
 							</div>
 						</div>
@@ -419,12 +391,12 @@
 
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
 						<div class="member">
-							<img src="assets/img/쌀국수.jpg" class="img-fluid" alt="">
+							<img src="assets/img/한남동.jpg" class="img-fluid" alt="">
 							<div class="member-info"
 								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=한남동'">
 								<div class="member-info-content">
 									<h4>한남동</h4>
-									<span>소개란</span>
+									<span>#양식</span>
 								</div>
 							</div>
 						</div>
@@ -432,36 +404,36 @@
 
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
 						<div class="member">
-							<img src="assets/img/쌀국수.jpg" class="img-fluid" alt="">
+							<img src="assets/img/홍대.jpg" class="img-fluid" alt="">
 							<div class="member-info"
 								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=홍대'">
 								<div class="member-info-content">
 									<h4>홍대</h4>
-									<span>소개란</span>
+									<span>#치즈</span>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
 						<div class="member">
-							<img src="assets/img/쌀국수.jpg" class="img-fluid" alt="">
+							<img src="assets/img/건대.jpg" class="img-fluid" alt="">
 							<div class="member-info"
 								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=건대'">
 								<div class="member-info-content">
 									<h4>건대</h4>
-									<span>소개란</span>
+									<span>#마라샹궈</span>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
 						<div class="member">
-							<img src="assets/img/쌀국수.jpg" class="img-fluid" alt="">
+							<img src="assets/img/신촌.jpg" class="img-fluid" alt="">
 							<div class="member-info"
 								onclick="location.href='${conPath }/store/storeListSearch.do?ssearchtag=신촌'">
 								<div class="member-info-content">
 									<h4>신촌</h4>
-									<span>소개란</span>
+									<span>#멕시칸</span>
 								</div>
 							</div>
 						</div>
@@ -478,11 +450,7 @@
 
 				<div class="section-title">
 					<h2>메뉴별 인기 맛집</h2>
-					<p>Magnam dolores commodi suscipit. Necessitatibus eius
-						consequatur ex aliquid fuga eum quidem. Sit sint consectetur
-						velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
-						suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem
-						hic quas.</p>
+					
 				</div>
 
 				<div class="row">
