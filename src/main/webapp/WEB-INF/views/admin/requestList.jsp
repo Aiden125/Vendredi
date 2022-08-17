@@ -18,8 +18,8 @@
 </head>
 <body>
 <jsp:include page="../admin/header.jsp"/>
-
 <div id="content">
+<c:if test="${not empty admin }">
 	<table id="main_table2">
 		<caption>업체 요청 리스트</caption>
 		<tr class="tr_top">
@@ -29,6 +29,7 @@
 		<c:if test="${paging.totCnt eq 0 }">
 			<tr> <th colspan="6">등록된 요청 없습니다.</th> </tr>
 		</c:if>
+		
 		<c:if test="${paging.totCnt != 0 }">
 			<c:forEach items="${requestList }" var="request">
 				<tr> 
@@ -68,7 +69,7 @@
 		[<a href="${conPath }/request/requestList.do?pageNum=${paging.endPage +1}" class="dis_inline">다음</a>]
 		</c:if>
 	</div>
-	
+</c:if>	
 </div>
 	
 </body>

@@ -96,7 +96,7 @@
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/groovin-free-bootstrap-theme/ -->
-         <a href="${conPath }/admin/main.do">Admin</a>
+         <a href="${conPath }/admin/loginView.do">Admin</a>
       </div>
     </div>
   </footer><!-- End Footer -->
