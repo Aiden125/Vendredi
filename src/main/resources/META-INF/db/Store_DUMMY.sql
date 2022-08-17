@@ -508,3 +508,12 @@ values (store_sq.nextval, 'owner2', 'ggnorth005_1.jpg', 'ggnorth005_2.jpg', 'ggn
 
 
 -- ---------- 경기 남부 TOP 10 -------------------------------
+
+insert into store (sNo, oId, sImage1, sImage2, sImage3, sName, sAddress, sLocation, sTel, sType, sPrice, 
+                   sTime, sHoliday, sMenu1 , sMenu1cost , sMenu2, sMenu2cost, 
+                   sMenu3, sMenu3cost, sSearchtag, sStart, sEnd) 
+values (store_sq.nextval, 'owner2', 'ggsouth001_1.jpg', 'ggsouth001_2.jpg', 'ggsouth001_3.jpg', 
+        '모노톤베이크하우스', '경기도 성남시 분당구 느티로51번길 4-10 1F' ,'경기 남부', '070-4046-1486', 
+        '디저트 / 커피, 케이크', '1만원 - 2만원', '오전 11시 - 오후 8시', 
+        '월요일', '아메리카노', '4500원', '케이크 + 아메리카노 1잔', '9500원', '케이크세트', '15000원',
+        '#디저트#케이크#정자역#경기남부', 11, 20); 
