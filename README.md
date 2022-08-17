@@ -31,7 +31,7 @@
 </br>
 
 ## 3. ERD 설계
-![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/final_erd.png)
+![image](https://user-images.githubusercontent.com/101315869/185061441-8ad21132-26de-4624-8864-fbae375cec38.png)
 
 
 ## 4. 핵심 기능
@@ -44,7 +44,7 @@
 <div markdown="1">
 
 ### 4.1. 전체 흐름
-![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow1.png)
+![image](https://user-images.githubusercontent.com/101315869/185061236-b246569c-2141-4a03-b49d-73b68c5d2998.png)
 
 ### 4.2. 사용자 요청
 ![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_vue.png)
