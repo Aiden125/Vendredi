@@ -34,6 +34,7 @@ public class QnAController {
 	//문의글 쓰기 처리
 	@RequestMapping(value="/write", method= RequestMethod.POST)
 	public String write(QnA qna, Model model) {
+		System.out.println("저장할 글 : "+qna);
 		model.addAttribute("writeResult",qnaService.qnaWrite(qna));
 		return "forward:list.do";
 	}
