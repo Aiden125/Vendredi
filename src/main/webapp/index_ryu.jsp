@@ -8,7 +8,7 @@
 </head>
 <body> 
 	220817RyuStart
-   <jsp:forward page="store/storeList.do"/>  
+   <jsp:forward page="main.do"/>  
   
 </body>
 </html>

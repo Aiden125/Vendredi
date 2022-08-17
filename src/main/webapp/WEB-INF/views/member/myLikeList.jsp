@@ -23,7 +23,7 @@
     position: absolute;
 }
 .form-wrap {
-    width: 380px;
+    width: 500px;
     height: 480px;
     position: relative;
     margin: 6% auto;
@@ -45,17 +45,7 @@
     border: 0;
     outline: none;
     position: relative;
-}
-#btn {
-    top: 0;
-    left: 0;
-    position: absolute;
-    width: 110px;
-    height: 100%;
-    background: linear-gradient(to right, #ff105f, #ffad06);
-    border-radius: 30px;
-    transition: .5s;
-}
+} 
 .social-icons {
     margin: 30px auto;
     text-align: center;
@@ -105,6 +95,25 @@ span {
 #register {
     left: 450px;
 }
+
+.btn { 
+			width : 90px;
+			height : 30px;
+			margin:  0px 0;
+			padding : 10px;
+			color : black;
+			font-weight : bold;
+			border : grey 1px solid;
+            background: #fff;
+            border-color: black;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+	}
+
 </style>
 	<link href="conPath/assets/css/style.css" rel="stylesheet">
 	
@@ -131,7 +140,9 @@ span {
 				<c:forEach items="${myLikeList }" var="storeLike">
 				<tr onclick="trclicked(${storeLike.sno })">  
 					<td>${storeLike.sname }</td> 
-					<td><a href="${conPath }/storeLike/deleteLike.do?mid=${storeLike.mid}&sno=${storeLike.sno}">삭제하기</a></td> 
+					<td> 
+					<input type="button" class="btn" value="삭제" onclick="location.href='${conPath}/storeLike/deleteLike.do?mid=${storeLike.mid}&sno=${storeLike.sno}'">
+					</td> 
 				</tr> 
 			</c:forEach>
 		</c:if>
