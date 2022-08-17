@@ -32,15 +32,15 @@
 	
 	<!-- 문의글 작성 -->
 	<insert id="qnaWrite" parameterType="QnA">
-	<if test="qsecret == 'Y'">
+	<if test="qsecret!=null">
 		INSERT INTO QNA (qno,qid,qsubject,qcontent,qhit,qgroup,qstep,qreplycheck,qsecret)
 			VALUES
-			(QNA_SQ.NEXTVAL , #{qid},#{qsubject},#{qcontent},0,QNA_SQ.CURRVAL,0,0,#{qsecret})
+			(QNA_SQ.NEXTVAL,#{qid},#{qsubject},#{qcontent},0,QNA_SQ.CURRVAL,0,0,'Y')
 	</if>
-	<if test ="qsecret == null or qsecret != 'Y'">
+	<if test ="qsecret == null">
 		INSERT INTO QNA (qno,qid,qsubject,qcontent,qhit,qgroup,qstep,qreplycheck)
 			VALUES
-			(QNA_SQ.NEXTVAL, #{qid},#{qsubject},#{qcontent},0,QNA_SQ.CURRVAL,0,0)	
+			(QNA_SQ.NEXTVAL,#{qid},#{qsubject},#{qcontent},0,QNA_SQ.CURRVAL,0,0)	
 	</if>
 	</insert>
 	<!-- 문의글(원글) 상세보기 -->
