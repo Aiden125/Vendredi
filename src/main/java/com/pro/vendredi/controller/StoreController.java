@@ -82,7 +82,7 @@ public class StoreController {
 		@RequestMapping(value = "myStoreList", method = {RequestMethod.POST, RequestMethod.GET})
 		public String myStoreList(String pageNum, Model model, Store store, String oid ) {
 			model.addAttribute("storeList", storeService.myStoreList(pageNum, store, oid));
-			model.addAttribute("paging", new Paging(storeService.storeCntMy(oid), pageNum, 5, 1));
+			model.addAttribute("paging", new Paging(storeService.storeCntMy(oid), pageNum, 4, 1));
 			return "store/myStoreList";
 		}
 	

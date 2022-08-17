@@ -23,7 +23,7 @@
     position: absolute;
 }
 .form-wrap {
-    width: 380px;
+    width: 850px;
     height: 100%;
     position: relative;
     margin: 6% auto;
@@ -105,6 +105,22 @@ span {
 #register {
     left: 450px;
 }
+
+.btn{ 
+			width : 150px;
+			height : 50px;
+			margin:  0px 0;
+			color : black;
+			font-weight : bold;
+            background: #fff;
+            border-color: black;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+	}
 </style>
 	<link href="conPath/assets/css/style.css" rel="stylesheet">
 	
@@ -129,7 +145,7 @@ span {
 		</c:if>
 		<c:if test="${paging.totCnt != 0 }">
 				<c:forEach items="${storeList }" var="store">
-				<tr onclick="trclicked(${store.sno })"> 
+				<tr onclick="trclicked(${store.sno })" style="text-align: center;"> 
 					<td>
 						<img alt="가게 이미지" src="${conPath }/storeImgFileUpload/${store.simage1}" width = "100px">
 					</td>
@@ -143,7 +159,7 @@ span {
 				</tr> 
 			</c:forEach>
 			<tr>
-				<td>
+				<td style="text-align: center;" colspan="4">
 				<input type="button" class="btn" value="가게등록" onclick="location.href='${conPath}/store/storeRegisterView.do'">
 				</td>
 			</tr>
