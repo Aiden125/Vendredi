@@ -24,7 +24,7 @@
 			history.back();
 		</script>
 	</c:if>
-	<jsp:include page="../main/header2.jsp" />
+	<jsp:include page="../main/header.jsp" />
 	<div id="logos">
 		<p>QNA상세보기</p>
 	</div>
@@ -60,21 +60,19 @@
 				</td>
 			</tr>
 		</table>
+	</div>
 	<!-- 답변글 영역 -->
 	<c:if test="${not empty replyDto }">
 		<div id="border">
 			<table>
 			<tr>
-				<td><b>관리자 답변</b></td>
-			</tr>
-			<tr>
+				<td><b style="font-size: 1.2em; font-weight: bold;">관리자 답변 : </b></td>
 				<td><b>${replyDto.qcontent }</b></td>
 			</tr>
 			</table>
 		</div>
 	</c:if>
-	</div>
-
+<jsp:include page="../main/footer.jsp"/>
 	<script src="${conPath}/store/js/vendor/jquery-1.11.2.min.js"></script>
 	<script src="${conPath}/store/js/vendor/bootstrap.min.js"></script>
 

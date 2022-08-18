@@ -120,7 +120,7 @@
 										<h2>${store.sname }</h2>
 										<ul class="list-inline">
 											<li><a href="#" class="text-black">운영시간 : </a></li>
-											<li><a href="#" class="text-black">${store.stime }</a></li>
+											<li><a href="#" class="text-black"><i class="fa fa-clock-o"></i>${store.stime }</a></li>
 											<li><a href="#" class="text-black">휴무 : </a></li>
 											<li><a href="#" class="text-black">${store.sholiday }</a></li>
 											<li><c:if test="${storeLike.mid eq 'aaa' }">
@@ -311,32 +311,29 @@
 							<h6 class="m-bottom-40 text-uppercase">대표 메뉴</h6>
 							<div class="post_item">
 								<div class="item_img">
-									<img src="assets/images/s-post-img1.jpg" alt="" />
+									<img src="${conPath}/assets/img/menu1.jpg" alt="" />
 								</div>
 								<div class="item_text">
 									<h6>${store.smenu1}</h6>
-									<p>
-										<i class="fa fa-clock-o"></i>${store.smenu1cost }</p>
+									<p>${store.smenu1cost }</p>
 								</div>
 							</div>
 							<div class="post_item">
 								<div class="item_img">
-									<img src="assets/images/s-post-img2.jpg" alt="" />
+									<img src="${conPath}/assets/img/menu2.jpg" alt="" />
 								</div>
 								<div class="item_text">
 									<h6>${store.smenu2}</h6>
-									<p>
-										<i class="fa fa-clock-o"></i>${store.smenu2cost }</p>
+									<p>${store.smenu2cost }</p>
 								</div>
 							</div>
 							<div class="post_item">
 								<div class="item_img">
-									<img src="assets/images/s-post-img3.jpg" alt="" />
+									<img src="${conPath}/assets/img/menu3.jpg" alt="" />
 								</div>
 								<div class="item_text">
 									<h6>${store.smenu3}</h6>
-									<p>
-										<i class="fa fa-clock-o"></i>${store.smenu3cost }</p>
+									<p>${store.smenu3cost }</p>
 								</div>
 							</div>
 						</div>
@@ -381,22 +378,22 @@
                      <h6 class="text-uppercase">instagram</h6>
                      <div class="socail_items m-top-40">
                         <div class="socail_item">
-                           <img src="assets/images/gram-img1.jpg" alt="" />
+                           <img src="${conPath}/assets/img/insta0.jpg" alt="" />
                         </div>
                         <div class="socail_item">
-                           <img src="assets/images/gram-img2.jpg" alt="" />
+                           <img src="${conPath}/assets/img/insta7.jpg" alt=""  />
                         </div>
                         <div class="socail_item">
-                           <img src="assets/images/gram-img3.jpg" alt="" />
+                           <img src="${conPath}/assets/img/insta8.jpg" alt=""  />
                         </div>
                         <div class="socail_item">
-                           <img src="assets/images/gram-img4.jpg" alt="" />
+                           <img src="${conPath}/assets/img/insta1.jpg" alt=""  />
                         </div>
                         <div class="socail_item">
-                           <img src="assets/images/gram-img5.jpg" alt="" />
+                           <img src="${conPath}/assets/img/insta2.jpg" alt="" style="width: 200px;"/>
                         </div>
                         <div class="socail_item">
-                           <img src="assets/images/gram-img6.jpg" alt="" />
+                           <img src="${conPath}/assets/img/insta3.jpg" alt="" style="width: 200px;"/>
                         </div>
                      </div>
                   </div>

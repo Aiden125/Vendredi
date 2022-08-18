@@ -44,14 +44,24 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		$(document).ready(function(){
-			var aid = '${aid}';
 			var mid = '${mid}';
 			var qid = '${qid}';
 			$('tr').click(function(){
 				var qno = Number($(this).children().eq(0).text());
+				var qsubject = $(this).children().eq(3).text().trim();
+				qsubject1 = qsubject.lastIndexOf(".jpg");
 				if(!isNaN(qno)){
-					location.href='${conPath}/qna/detail.do?qno='+qno+'&qgroup='+qno+'&pageNum=${paging.currentPage}';
-				}
+					if(qsubject1 !='.jpg'){
+						alert('test1'+qsubject);
+						location.href='${conPath}/qna/detail.do?qno='+qno+'&qgroup='+qno+'&pageNum=${paging.currentPage}';
+					}else if(mid == qid){
+						alert('test2'+qsubject);
+						location.href='${conPath}/qna/detail.do?qno='+qno+'&qgroup='+qno+'&pageNum=${paging.currentPage}';
+					}else if(mid != qid){
+						alert('비밀글은 본인과 관리자만 확인할 수 있습니다.');
+					}
+					
+				}//if
 				
 			});
 		});
