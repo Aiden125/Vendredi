@@ -68,6 +68,7 @@
 	border-radius: 3px;
 	padding-left:10px;
 	}
+	
 	b{
 		color: green;
 	}

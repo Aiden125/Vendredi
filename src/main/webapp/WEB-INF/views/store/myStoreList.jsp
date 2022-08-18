@@ -9,109 +9,51 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<style>
-	* {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-}
-.wrap {
-    height: 100%;
-    width: 100%;
-    background-image: url(assets/img/디저트.jpg);
-    background-position: center;
-    background-size: cover;
-    position: absolute;
-}
-.form-wrap {
-    width: 850px;
-    height: 100%;
-    position: relative;
-    margin: 6% auto;
-    background: #fff;
-    padding: 5px;
-    overflow: hidden;
-}
-.button-wrap {
-    width: 230px;
-    margin: 35px auto;
-    position: relative;
-    box-shadow: 0 0 600px 9px #fcae8f;
-    border-radius: 30px;
-}
-.togglebtn {
-    padding: 10px 30px;
-    cursor: pointer;
-    background: transparent;
-    border: 0;
-    outline: none;
-    position: relative;
-}
-#btn {
-    top: 0;
-    left: 0;
-    position: absolute;
-    width: 110px;
-    height: 100%;
-    background: linear-gradient(to right, #ff105f, #ffad06);
-    border-radius: 30px;
-    transition: .5s;
-}
-.social-icons {
-    margin: 30px auto;
-    text-align: center;
-}
-.social-icons img {
-    width: 30px ;
-    cursor: pointer;
-}
-.input-group {
-    top: 180px;
-    position: absolute;
-    width: 280px;
-    transition: .5s;
-}
-.input-field {
-    width: 100%;
-    padding: 10px 0;
-    margin: 5px 0;
-    border: none;
-    border-bottom: 1px solid #999;
-    outline: none;
-    background: transparent;
-}
-.submit {
-    width: 85%;
-    padding: 10px 30px;
-    cursor: pointer;
-    display: block;
-    margin: auto;
-    background: linear-gradient(to right, #ff105f, #ffad06);
-    border: 0;
-    outline: none;
-    border-radius: 30px;
-}
-.checkbox {
-    margin: 30px 10px 30px 0;
-}
-span {
-    color: #777;
-    font-size: 12px;
-    bottom: 68px;
-    position: absolute;
-}
-#login {
-    left: 50px;
-}
-#register {
-    left: 450px;
-}
-
-.btn{ 
-			width : 150px;
-			height : 50px;
-			margin:  0px 0;
-			color : black;
-			font-weight : bold;
+	#content{
+			width: 800px;
+	        height : 100%;
+	        margin: 0 auto;
+	        margin-top: 200px;
+	        margin-bottom:80px;
+	        padding: 20px;
+	        background: #fff;
+	        -webkit-border-radius: 10px;
+	        -moz-border-radius: 10px;
+	        border-radius: 10px;
+	        -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	        -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+		}
+		#content table{
+			width: 700px;
+		}
+		#content table th{
+			width: 100px;
+		}
+		#content table tr td{
+			width:300px;
+			text-align: center;
+			padding-top:10px;
+		}
+		#content textarea{
+			width:230px;
+			padding-top:10px;
+			margin-left: 30px;
+			border:none;
+		}
+		#content input{
+			border-left:none;
+			border-right:none;
+			border-top:none;
+		}
+		#content input[type='file']{
+			margin-left: 60px;
+		}
+		#content .btn{
+			font-size: 1em;
+			width: 80px;
+			height: 50px;
+			margin:  30px;
             background: #fff;
             border-color: black;
             -webkit-border-radius: 10px;
@@ -120,8 +62,8 @@ span {
             -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
             -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
             box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
-	}
-</style>
+		}
+	</style>
 	<link href="conPath/assets/css/style.css" rel="stylesheet">
 	
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -137,8 +79,7 @@ span {
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-	<div class="wrap">
-	<div class="form-wrap">
+	<div id="content">
 	<table style="margin : 0 auto;"> 
 		<c:if test="${paging.totCnt eq 0 }">
 			<tr> <th colspan="5">등록된 가게가 없습니다.</th> </tr>
@@ -159,8 +100,8 @@ span {
 				</tr> 
 			</c:forEach>
 			<tr>
-				<td style="text-align: center;" colspan="4">
-				<input type="button" class="btn" value="가게등록" onclick="location.href='${conPath}/store/storeRegisterView.do'">
+				<td>
+					<input type="button" class="btn" value="가게등록" onclick="location.href='${conPath}/store/storeRegisterView.do'">
 				</td>
 			</tr>
 		</c:if>
@@ -182,8 +123,6 @@ span {
 		</c:if>
 		</div>
 	</div>
-	</div>
-	</div> 
 
 </body>
 </html>
