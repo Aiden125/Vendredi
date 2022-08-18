@@ -41,31 +41,29 @@
 			text-align: center;
 		}
 		</style>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script>
-		$(document).ready(function(){
-			var mid = '${mid}';
-			var qid = '${qid}';
-			$('tr').click(function(){
-				var qno = Number($(this).children().eq(0).text());
-				var qsubject = $(this).children().eq(3).text().trim();
-				qsubject1 = qsubject.lastIndexOf(".jpg");
-				if(!isNaN(qno)){
-					if(qsubject1 !='.jpg'){
-						alert('test1'+qsubject);
-						location.href='${conPath}/qna/detail.do?qno='+qno+'&qgroup='+qno+'&pageNum=${paging.currentPage}';
-					}else if(mid == qid){
-						alert('test2'+qsubject);
-						location.href='${conPath}/qna/detail.do?qno='+qno+'&qgroup='+qno+'&pageNum=${paging.currentPage}';
-					}else if(mid != qid){
-						alert('비밀글은 본인과 관리자만 확인할 수 있습니다.');
-					}
-					
-				}//if
-				
-			});
-		});
-	</script>
+		<script>
+      $(document).ready(function(){
+         var mid = '${mid}';
+         var aid = '${aid}';
+         var qsecret = '${qsecret}';
+         $('tr').click(function(){
+            var qno = Number($(this).children().eq(0).text());
+            var qsecret = $(this).children().eq(2).html();
+            var qid = $(this).children().eq(1).html();
+            qsubject1 = qsecret.lastIndexOf(".jpg");
+            if(!isNaN(qno)){
+               if(qsubject1 != -1 && mid == qid){
+                  location.href='${conPath}/qna/detail.do?qno='+qno+'&qgroup='+qno+'&pageNum=${paging.currentPage}';
+               }else if(mid != qid){
+                  alert('비밀글은 본인만  확인할 수 있습니다.');
+               }
+            }
+           
+         });
+      });
+   </script>
 </head>
 <body>
 	<c:set var="SUCCESS" value="1"/>
